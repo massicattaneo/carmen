@@ -1,0 +1,20 @@
+{
+  "name": "carmen",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "mcattaneo <mcattaneo@riplife.es>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/massicattaneo/carmen",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "corejs": "https://github.com/massicattaneo/corejs.git"
+  }
+}
