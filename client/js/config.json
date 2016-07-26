@@ -1,0 +1,11 @@
+{
+  "organizationName": "in&out centro de belleza",
+  "mainColor": "#52ae1b",
+  "secondaryColor": "#ccaa99",
+  "mainTextColor": "#ffffff",
+  "secondaryTextColor": "#000000",
+  "baseUrl": "images",
+  "logoUrl": "{{baseUrl}}/logo.png",
+  "depilacionText": "Depilacion",
+  "beautyText": "Beauty"
+}

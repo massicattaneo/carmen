@@ -14,7 +14,7 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
-    "corejs": "https://github.com/massicattaneo/corejs.git"
+  "dependencies": {
+    "corejs": "https://github.com/massicattaneo/corejs.git#*"
   }
 }

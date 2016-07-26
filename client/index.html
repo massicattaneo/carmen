@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="../bower_components/corejs/dist/corejs.js"></script>
     <title>Carmen</title>
+    <style>
+        button:focus {outline:0;}
+        #website {min-width: 320px;}
+    </style>
 </head>
-<body>
-
+<body background="images/background.jpg">
+    <div id="website"></div>
+    <script>
+        navigator.import('js/bootstrap.js').then(function (bootstrap) {
+            bootstrap();
+        })
+    </script>
 </body>
 </html>
