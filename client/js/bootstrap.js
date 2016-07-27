@@ -10,15 +10,11 @@
  */
 
 function boostrap(imports) {
-    var Header = imports('js/header/controller.js');
+    var Header = imports('components/header/controller.js');
     var config = imports('js/config.json');
-    var roundButtonController = imports('js/round-button/controller.js');
-    var roundButtonTemplate = imports('js/round-button/template.html');
-    var roundButtonStyle = imports('js/round-button/style.scss');
-
-    var roundColoredButtonController = imports('js/round-colored-button/controller.js');
-    var roundColoredButtonTemplate = imports('js/round-colored-button/template.html');
-    var roundColoredButtonStyle = imports('js/round-colored-button/style.scss');
+    var roundButtonController = imports('components/round-button/controller.js');
+    var roundButtonTemplate = imports('components/round-button/template.html');
+    var roundButtonStyle = imports('components/round-button/style.scss');
 
     return function () {
 
@@ -31,30 +27,9 @@ function boostrap(imports) {
             config: config
         });
 
-        Component.register({
-            name: 'roundColoredButton',
-            controller: roundColoredButtonController(),
-            template: roundColoredButtonTemplate,
-            style: roundColoredButtonStyle,
-            config: config
-        });
-
-        var header = Header(config);
-        // var list = L(config);
-        // var server = Sv();
-        //
+        var header = Header(config);        
         header.createIn(document.getElementById('website'));
-        // list.createIn(p.list);
-        // server.createIn(p.server);
-        //
-        // list.addItem(['Test item']);
-        //
-        // standard.submit = function () {
-        //     if (standard.isValid()) {
-        //         list.addItem(standard.getValue());
-        //         standard.setValue('');
-        //     }
-        // };
+        
         
     };
 }

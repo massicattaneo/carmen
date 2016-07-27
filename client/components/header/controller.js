@@ -9,10 +9,21 @@
  //////////////////////////////////////////////////////////////////////////////
  */
 
-function controller() {
+function controller(imports) {
 
-    return function () {
+    var template = imports('components/header/template.html');
+    var style = imports('components/header/style.scss');
+
+    return function (config) {
         
+        var c = Component({
+            template: template,
+            style: style,
+            config: config
+        });
+
+        return c;
+
     }
 
-}
+};

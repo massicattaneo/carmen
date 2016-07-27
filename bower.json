@@ -15,6 +15,7 @@
     "tests"
   ],
   "dependencies": {
-    "corejs": "https://github.com/massicattaneo/corejs.git#*"
+    "corejs": "https://github.com/massicattaneo/corejs.git#*",
+    "components-font-awesome": "^4.6.3"
   }
 }
