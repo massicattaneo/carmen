@@ -1,8 +1,8 @@
 {
   "organizationName": "In & Out centro de belleza",
   "mainColor": "#52ae1b",
-  "secondaryColor": "#ccaa99",
   "mainTextColor": "#ffffff",
+  "secondaryColor": "#ffffff",
   "secondaryTextColor": "#000000",
   "baseUrl": "images",
   "logoUrl": "{{baseUrl}}/logo.png",

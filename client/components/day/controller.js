@@ -9,21 +9,10 @@
  //////////////////////////////////////////////////////////////////////////////
  */
 
-function controller(imports) {
+function controller() {
 
-    var template = imports('components/header/template.html');
-    var style = imports('components/header/style.scss');
-
-    return function (config) {
+    return function () {
         
-        var c = cjs.Component({
-            template: template,
-            style: style,
-            config: config
-        });
-
-        return c;
-
     }
 
-};
+}

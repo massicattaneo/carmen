@@ -11,25 +11,17 @@
 
 function boostrap(imports) {
     var Header = imports('components/header/controller.js');
+    var Calendar = imports('components/calendar/controller.js');
     var config = imports('js/config.json');
-    var roundButtonController = imports('components/round-button/controller.js');
-    var roundButtonTemplate = imports('components/round-button/template.html');
-    var roundButtonStyle = imports('components/round-button/style.scss');
+    var register = imports('js/register.js');
 
     return function () {
+        register(config);
+        var header = Header(config);
+        header.createIn(document.getElementById('header'));
 
-        /** ROUND-BUTTON **/
-        Component.register({
-            name: 'roundButton',
-            controller: roundButtonController(),
-            template: roundButtonTemplate,
-            style: roundButtonStyle,
-            config: config
-        });
+        var calendar = Calendar(config);
+        calendar.createIn(document.getElementById('page'));
 
-        var header = Header(config);        
-        header.createIn(document.getElementById('website'));
-        
-        
     };
 }

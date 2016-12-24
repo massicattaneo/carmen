@@ -11,8 +11,8 @@
 
 function controller(imports) {
 
-    var template = imports('components/header/template.html');
-    var style = imports('components/header/style.scss');
+    var template = imports('components/calendar/template.html');
+    var style = imports('components/calendar/style.scss');
 
     return function (config) {
         
