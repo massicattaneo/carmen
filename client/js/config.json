@@ -1,11 +1,13 @@
 {
-  "organizationName": "in&out centro de belleza",
+  "organizationName": "In & Out centro de belleza",
   "mainColor": "#52ae1b",
   "secondaryColor": "#ccaa99",
   "mainTextColor": "#ffffff",
   "secondaryTextColor": "#000000",
   "baseUrl": "images",
   "logoUrl": "{{baseUrl}}/logo.png",
-  "depilacionText": "Depilacion",
-  "beautyText": "Beauty"
+  "calendarText": "Calendario",
+  "settingsText": "Adjustes",
+  "usersText": "Usuarios",
+  "clientsText": "Clienti"
 }

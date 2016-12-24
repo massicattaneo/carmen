@@ -1,1 +1,17 @@
-{width: 120px; height: 60px; display: inline-block; border-radius: 60px; margin: 0 5px; font-size: 20px; background-color: $mainColor; color: $mainTextColor;}
+.& {
+  width: auto;
+  height: 60px;
+  display: inline-block;
+  border-radius: 60px;
+  margin: 0 5px;
+  padding: 0 10px;
+  font-size: 20px;
+  background-color: $mainColor;
+  color: $mainTextColor;
+  font-family: Arial;
+}
+
+.&:before {
+  font-family: FontAwesome;
+  padding-right: 10px;
+}
