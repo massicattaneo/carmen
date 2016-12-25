@@ -1,7 +1,6 @@
 .& {
   font-family: Arial;
   background-color: #cccccc;
-  border-color: chartreuse;
   width: 155px;
   height: 600px;
   float: left;
@@ -9,11 +8,22 @@
   padding: 0 10px;
   font-size: 20px;
   border-radius: 11px;
+  color: #555;
 }
 
 .& h6 {
   margin: 5px 0;
   font-size: 20px;
   text-align: center;
-  color: #555;
 }
+
+.& .hour {
+  font-size: 11px;
+  border-bottom: 1px dotted black;
+}
+
+.& .hour:hover {
+  background-color: #999;
+}
+
+.& .users {display: inline-block}
