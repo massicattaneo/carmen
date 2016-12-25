@@ -11,6 +11,7 @@
 
 function boostrap(imports) {
     var Header = imports('components/header/controller.js');
+    var BlackScreen = imports('components/black-screen/controller.js');
     var Calendar = imports('components/calendar/controller.js');
     var config = imports('js/config.json');
     var register = imports('js/register.js');
@@ -23,5 +24,8 @@ function boostrap(imports) {
         var calendar = Calendar(config);
         calendar.createIn(document.getElementById('page'));
 
+        var blackScreen = BlackScreen(config);
+        blackScreen.createIn(document.body);
+        blackScreen.removeCover(1000);
     };
 }
