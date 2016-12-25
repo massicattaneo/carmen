@@ -26,6 +26,7 @@ function boostrap(imports) {
 
         var blackScreen = BlackScreen(config);
         blackScreen.createIn(document.body);
+        document.body.className = '';
         blackScreen.removeCover(1000);
     };
 }
