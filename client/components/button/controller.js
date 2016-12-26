@@ -11,8 +11,14 @@
 
 function controller() {
 
-    return function () {
+    return function (config) {
+        var obj = {};
         
+        obj.change = function () {
+            cjs.bus.UI.fire('button-click', config.type)
+        };
+        
+        return obj;
     }
 
 }

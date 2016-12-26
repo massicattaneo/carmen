@@ -17,6 +17,10 @@ function boostrap(imports) {
     var register = imports('js/register.js');
 
     return function () {
+        cjs.bus.addBus('UI');
+        cjs.bus.UI.on('button-click', function (type) {
+            console.log(type)
+        })
         register(config);
         var header = Header(config);
         header.createIn(document.getElementById('header'));

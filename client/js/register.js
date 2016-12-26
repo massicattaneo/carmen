@@ -17,7 +17,7 @@ function register(imports) {
         /** ROUND-BUTTON **/
         cjs.Component.register({
             name: 'button',
-            controller: buttonController(),
+            controller: buttonController,
             template: buttonTemplate,
             style: buttonStyle,
             config: config
@@ -26,7 +26,7 @@ function register(imports) {
         /** CALENDAR DAY **/
         cjs.Component.register({
             name: 'day',
-            controller: dayController(),
+            controller: dayController,
             template: dayTemplate,
             style: dayStyle,
             config: config

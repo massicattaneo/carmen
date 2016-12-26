@@ -12,7 +12,7 @@
 function controller() {
 
     return function () {
-        
+        return {};
     }
 
 }

@@ -1,4 +1,7 @@
 .& {
+  display: inline-block;
+}
+.& button {
   width: auto;
   height: 60px;
   display: inline-block;
@@ -10,7 +13,7 @@
   font-family: Arial;
 }
 
-.&:before {
+.& button:before {
   font-family: FontAwesome;
   padding-right: 10px;
 }
