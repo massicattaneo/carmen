@@ -13,6 +13,7 @@ function boostrap(imports) {
     var Header = imports('components/header/controller.js');
     var BlackScreen = imports('components/black-screen/controller.js');
     var Calendar = imports('components/calendar/controller.js');
+    var Users = imports('components/users/controller.js');
     var config = imports('js/config.json');
     var register = imports('js/register.js');
 
@@ -20,13 +21,17 @@ function boostrap(imports) {
         cjs.bus.addBus('UI');
         cjs.bus.UI.on('button-click', function (type) {
             console.log(type)
-        })
+        });
+
         register(config);
         var header = Header(config);
         header.createIn(document.getElementById('header'));
 
         var calendar = Calendar(config);
         calendar.createIn(document.getElementById('page'));
+
+        var users = Users(config);
+        //users.createIn(document.getElementById('page'));
 
         var blackScreen = BlackScreen(config);
         blackScreen.createIn(document.body);

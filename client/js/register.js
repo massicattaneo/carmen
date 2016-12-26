@@ -12,6 +12,10 @@ function register(imports) {
     var dayTemplate = imports('components/day/template.html');
     var dayStyle = imports('components/day/style.scss');
 
+    var userController = imports('components/user/controller.js');
+    var userTemplate = imports('components/user/template.html');
+    var userStyle = imports('components/user/style.scss');
+
     return function (config) {
 
         /** ROUND-BUTTON **/
@@ -31,6 +35,16 @@ function register(imports) {
             style: dayStyle,
             config: config
         });
+
+        /** USER **/
+        cjs.Component.register({
+            name: 'user',
+            controller: userController,
+            template: userTemplate,
+            style: userStyle,
+            config: config
+        });
+
     }
 
 }

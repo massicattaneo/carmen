@@ -1,0 +1,19 @@
+.& {
+  width: 100%;
+  text-align: left;
+  color: $mainTextColor;
+}
+
+.& .add {
+  padding: 15px;
+}
+
+.& .add input, .& .add button {
+  width: 300px;
+  height: 25px;
+  padding: 2px;
+  margin: 5px;
+}
+.& .add button {
+  height:33px;
+}

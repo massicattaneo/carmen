@@ -3,7 +3,7 @@
   "mainColor": "#52ae1b",
   "mainTextColor": "#ffffff",
   "secondaryColor": "#ffffff",
-  "secondaryTextColor": "#000000",
+  "secondaryTextColor": "#555",
   "baseUrl": "images",
   "logoUrl": "{{baseUrl}}/logo.png",
   "calendarText": "Calendario",
