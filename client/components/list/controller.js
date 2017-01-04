@@ -15,21 +15,22 @@ function controller() {
         var obj = {};
 
         obj.filter = function () {
+            var filterText = obj.get('filter').getValue();
             var all = obj.get('collection').children().filter(function (c) {
                 return c.get().nodeType === 1
             });
             var filter = all.filter(function (c) {
-                return c.getValue().indexOf(obj.get('filter').getValue())!== -1
+                return c.getValue().indexOf(filterText)!== -1
             });
 
+            all.forEach(function (c) {
+                c.removeStyle('visible')
+            });
             if (filter.length) {
-                all.forEach(function (c) {
-                    c.removeStyle('visible')
-                });
                 filter.forEach(function (c) {
                     c.addStyle('visible')
                 })
-            } else {
+            } else if (!filter.length && filterText === '') {
                 all.forEach(function (c) {
                     c.addStyle('visible')
                 });
