@@ -21,8 +21,8 @@ function boostrap(imports) {
 
     return function () {
         cjs.bus.addBus('UI');
-        cjs.bus.UI.on('button-click', function (type) {
-            showPopUp(type);
+        cjs.bus.UI.on('button-click', function (o) {
+            console.log(o.type, o.id)
         });
 
         register(config);
@@ -36,7 +36,7 @@ function boostrap(imports) {
         //users.createIn(document.getElementById('page'));
         
         var clients = Clients(config);
-        //clients.createIn(document.getElementById('page'));
+        clients.createIn(document.getElementById('page'));
 
         var blackScreen = BlackScreen(config);
         blackScreen.createIn(document.body);
