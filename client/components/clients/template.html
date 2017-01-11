@@ -1,13 +1,15 @@
 <div>
     <h1>{{clientsText}}</h1>
-    <fieldset class="add">
-        Anadir:
-        <cjs:client-edit><text>Anade</text></cjs:client-edit>
-    </fieldset>
-    <br/>
     <fieldset class="list">
         <legend>Listado</legend>
-        <cjs:list></cjs:list>
+        <cjs:list data-on="listChange:refresh"></cjs:list>
+    </fieldset>
+    <br/>
+    <fieldset data-item="add" class="add hidden">
+        Anadir:
+        <cjs:client-edit>
+            <button-text>Anade</button-text>
+        </cjs:client-edit>
     </fieldset>
 
 </div>

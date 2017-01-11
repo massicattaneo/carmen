@@ -35,6 +35,7 @@ function controller() {
                     c.addStyle('visible')
                 });
             }
+            obj.get().fire('listChange', {empty: !filter.length && filterText !== '' })
         };
 
         return obj;

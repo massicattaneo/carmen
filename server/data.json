@@ -7,15 +7,13 @@
       "name": "Massimiliano",
       "surname": "Cattaneo",
       "email": "massi.cattaneo@alice.it",
-      "phone": "684069797",
-      "id": 1
+      "phone": "684069797"
     },
     {
       "name": "Giovanni",
       "surname": "Cattaneo",
-      "email": "massi.cattaneo@alice.it",
-      "phone": "684069797",
-      "id": 2
+      "email": "gio.cattaneo@alice.it",
+      "phone": "684060213"
     }
   ]
 }
