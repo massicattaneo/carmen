@@ -4,6 +4,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=0">
     <link href="../bower_components/components-font-awesome/css/font-awesome.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyC8aJIXp0QBbzLsCethcKEdNmJrPEaNhoU",
+            authDomain: "inandout-76471.firebaseapp.com",
+            databaseURL: "https://inandout-76471.firebaseio.com",
+            storageBucket: "inandout-76471.appspot.com",
+            messagingSenderId: "927198449105"
+        };
+        firebase.initializeApp(config);
+    </script>
     <script src="../bower_components/corejs/dist/corejs.js"></script>
     <title>Carmen</title>
     <style>
@@ -32,11 +43,15 @@
     <div id="page"></div>
 </div>
 <script>
-    cjs.navigator
-            .import('js/bootstrap.js')
-            .done(function (bootstrap) {
-                bootstrap();
-            });
+    firebase.auth().signInWithEmailAndPassword("info@inandoutbelleza.com", "inandout11").then(function () {
+        cjs.navigator
+                .import('js/bootstrap.js')
+                .done(function (bootstrap) {
+                    bootstrap();
+                });
+    }).catch(function () {
+        alert('Connection error!')
+    });
 </script>
 </body>
 </html>

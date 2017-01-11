@@ -25,7 +25,20 @@ function register(imports) {
     var clientTemplate = imports('components/client/template.html');
     var clientStyle = imports('components/client/style.scss');
 
+    var clientEditController = imports('components/client-edit/controller.js');
+    var clientEditTemplate = imports('components/client-edit/template.html');
+    var clientEditStyle = imports('components/client-edit/style.scss');
+
     return function (config) {
+
+        cjs.Component.registerParserFunction('mailto', function (data, item) {
+            item.setAttribute('href', 'mailto:' + data);
+        });
+        cjs.Component.registerParserFunction('tel', function (data, item) {
+            item.setAttribute('href', 'tel:' + data);
+        });
+
+        cjs.Component.injectDatabaseProxy(firebase.database());
 
         /** ROUND-BUTTON **/
         cjs.Component.register({
@@ -69,6 +82,15 @@ function register(imports) {
             controller: clientController,
             template: clientTemplate,
             style: clientStyle,
+            config: config
+        });
+
+        /** CLIENT EDIT **/
+        cjs.Component.register({
+            name: 'clientEdit',
+            controller: clientEditController,
+            template: clientEditTemplate,
+            style: clientEditStyle,
             config: config
         });
 

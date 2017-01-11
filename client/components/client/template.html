@@ -1,10 +1,15 @@
-<div class="visible">
+<div class="visible client">
     <span class="name-surname">
-        <span>{{name}}</span>
-        <span>{{surname}}</span>
+        <span data-server="clients/{{id}}/name"></span>
+        <span data-server="clients/{{id}}/surname"></span>
     </span>
-    <span class="email"><a href="mailto:{{email}}">{{email}}</a></span>
-    <span class="phone"><a href="tel:{{phone}}">{{phone}}</a></span>
+    <span class="email"><a data-server-parser="mailto" data-server="clients/{{id}}/email"></a></span>
+    <span class="phone"><a data-server-parser="tel" data-server="clients/{{id}}/phone"></a></span>
+    <cjs:button>
+        <type>client-edit</type>
+        <id>{{id}}</id>
+        <class>fa-pencil</class>
+    </cjs:button>
     <cjs:button>
         <type>client-history</type>
         <id>{{id}}</id>

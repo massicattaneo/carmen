@@ -1,5 +1,5 @@
-.& input.filter {
-  width: 300px;
+.& input, .& button {
+  width: 220px;
   height: 25px;
   padding: 2px;
   margin: 5px;
@@ -7,7 +7,4 @@
 .& button {
   height:33px;
   width: 100px;
-}
-.& .client {
-  margin: 6px 0;
 }

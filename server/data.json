@@ -1,0 +1,21 @@
+{
+  "clients": [
+    {
+      "name": "empty"
+    },
+    {
+      "name": "Massimiliano",
+      "surname": "Cattaneo",
+      "email": "massi.cattaneo@alice.it",
+      "phone": "684069797",
+      "id": 1
+    },
+    {
+      "name": "Giovanni",
+      "surname": "Cattaneo",
+      "email": "massi.cattaneo@alice.it",
+      "phone": "684069797",
+      "id": 2
+    }
+  ]
+}

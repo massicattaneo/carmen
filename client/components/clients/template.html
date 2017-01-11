@@ -2,12 +2,10 @@
     <h1>{{clientsText}}</h1>
     <fieldset class="add">
         Anadir:
-        <input type="text" placeholder="nombre" />
-        <input type="email" placeholder="email" />
-        <button>Anade</button>
+        <cjs:client-edit><text>Anade</text></cjs:client-edit>
     </fieldset>
     <br/>
-    <fieldset>
+    <fieldset class="list">
         <legend>Listado</legend>
         <cjs:list></cjs:list>
     </fieldset>

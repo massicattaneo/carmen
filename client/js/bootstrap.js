@@ -25,6 +25,7 @@ function boostrap(imports) {
         var pages = {};
         var audio = cjs.Audio();
         audio.init(audioConfig);
+
         cjs.bus.addBus('UI');
         cjs.bus.UI.on('button-click', function (o) {
             audio.play(o.type);
@@ -53,9 +54,11 @@ function boostrap(imports) {
         var blackScreen = BlackScreen(config);
         blackScreen.createIn(document.body);
         document.body.className = '';
-        blackScreen.removeCover(2000);
-
-        showPage('clients');
+        cjs.Component.collectData().done(function () {
+            blackScreen.removeCover(1);
+            // blackScreen.removeCover(2000);
+            showPage('clients');
+        });
 
         function showPage(pageName) {
             Object.keys(pages).forEach(function (k) {
