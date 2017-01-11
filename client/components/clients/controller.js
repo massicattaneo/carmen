@@ -22,13 +22,17 @@ function controller(imports) {
             config: config
         });
 
+        c.populate = function () {
+            return c.get('list').populate();
+        };
+
         c.refresh = function (e) {
             if (e.data.empty) {
                 c.get('add').removeStyle('hidden')
             } else {
                 c.get('add').addStyle('hidden')
             }
-        }
+        };
 
         return c;
 

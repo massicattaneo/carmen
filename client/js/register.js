@@ -34,6 +34,7 @@ function register(imports) {
         cjs.Component.registerParserFunction('mailto', function (data, item) {
             item.setAttribute('href', 'mailto:' + data);
         });
+
         cjs.Component.registerParserFunction('tel', function (data, item) {
             item.setAttribute('href', 'tel:' + data);
         });

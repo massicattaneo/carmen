@@ -2,12 +2,12 @@
     <h1>{{clientsText}}</h1>
     <fieldset class="list">
         <legend>Listado</legend>
-        <cjs:list data-on="listChange:refresh"></cjs:list>
+        <cjs:list data-id="list" data-on="refresh:refresh"></cjs:list>
     </fieldset>
     <br/>
     <fieldset data-item="add" class="add hidden">
-        Anadir:
-        <cjs:client-edit>
+        <legend>Nuevo</legend>
+        <cjs:client-edit data-on="refresh:refresh">
             <button-text>Anade</button-text>
         </cjs:client-edit>
     </fieldset>

@@ -54,11 +54,15 @@ function boostrap(imports) {
         var blackScreen = BlackScreen(config);
         blackScreen.createIn(document.body);
         document.body.className = '';
-        cjs.Component.collectData().done(function () {
-            blackScreen.removeCover(1);
-            // blackScreen.removeCover(2000);
-            showPage('clients');
-        });
+        cjs.Need([
+            pages.clients.populate,
+            cjs.Component.collectData,
+            function () {
+                blackScreen.removeCover(1);
+                // blackScreen.removeCover(2000);
+                showPage('clients');
+            }
+        ]).start();
 
         function showPage(pageName) {
             Object.keys(pages).forEach(function (k) {

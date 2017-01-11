@@ -1,8 +1,9 @@
 <div class="visible">
-    <form>
-        <input type="text" {{autofocus}} placeholder="nombre" />
-        <input type="text" placeholder="appelido" />
-        <input type="email" placeholder="email" />
+    <form data-on="submit:submit">
+        <input type="text" data-item="name" required {{autofocus}} placeholder="nombre" />
+        <input type="text" data-item="surname" required placeholder="appelido" />
+        <input type="email" data-item="email" required placeholder="correo" />
+        <input type="tel" data-item="tel" required placeholder="telefono" />
         <input type="submit" value="{{buttonText}}" />
     </form>
 </div>

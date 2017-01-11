@@ -1,8 +1,14 @@
 .& input, .& button {
-  width: 220px;
+  width: 180px;
   height: 25px;
   padding: 2px;
   margin: 5px;
+}
+.& input[type=email] {
+  width: 220px;
+}
+.& input[type=tel] {
+  width: 90px;
 }
 .& input[type=submit] {
   height:33px;

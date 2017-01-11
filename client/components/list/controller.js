@@ -14,6 +14,20 @@ function controller() {
     return function (config) {
         var obj = {};
 
+        obj.populate = function () {
+            var n = cjs.Need();
+            firebase.database().ref('clients/').once('value').then(function (data) {
+                Object.keys(data.val()).forEach(obj.add);
+                n.resolve();
+            });
+            return n;
+        };
+
+        obj.add = function (id) {
+            var c = cjs.Component.create('client', {config: {id: id}});
+            c.createIn(obj.get('collection').get())
+        };
+
         obj.filter = function () {
             var filterText = obj.get('filter').getValue().toLowerCase();
             var all = obj.get('collection').children().filter(function (c) {
@@ -36,7 +50,7 @@ function controller() {
                     c.addStyle('visible')
                 });
             }
-            obj.get().fire('listChange', {empty: !filter.length && filterText !== '' })
+            obj.get().fire('refresh', {empty: !filter.length && filterText !== '' })
         };
 
         return obj;
