@@ -15,12 +15,13 @@ function controller() {
         var obj = {};
 
         obj.filter = function () {
-            var filterText = obj.get('filter').getValue();
+            var filterText = obj.get('filter').getValue().toLowerCase();
             var all = obj.get('collection').children().filter(function (c) {
                 return c.get().nodeType === 1
             });
+
             var filter = all.filter(function (c) {
-                return c.getValue().indexOf(filterText)!== -1
+                return c.getValue().toLowerCase().indexOf(filterText)!== -1
             });
 
             all.forEach(function (c) {
