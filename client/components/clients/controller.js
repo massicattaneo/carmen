@@ -27,6 +27,12 @@ function controller(imports) {
         };
 
         c.refresh = function (e) {
+            if (e.data.key !== undefined) {
+                c.get('list').add(e.data.key)
+                var listNode = c.get('list').get('filter').get();
+                listNode.focus();
+                listNode.select();
+            }
             if (e.data.empty) {
                 c.get('add').removeStyle('hidden')
             } else {

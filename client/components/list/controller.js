@@ -15,17 +15,20 @@ function controller() {
         var obj = {};
 
         obj.populate = function () {
-            var n = cjs.Need();
+            var n = cjs.Need([]);
             firebase.database().ref('clients/').once('value').then(function (data) {
-                Object.keys(data.val()).forEach(obj.add);
-                n.resolve();
+                Object.keys(data.val()).forEach(function (key) {
+                    n.add(obj.add(key))
+                });
+                if (n.size() === 0) n.add(cjs.Need().resolve());
             });
             return n;
         };
 
         obj.add = function (id) {
             var c = cjs.Component.create('client', {config: {id: id}});
-            c.createIn(obj.get('collection').get())
+            c.createIn(obj.get('collection').get());
+            return cjs.Component.collectData();
         };
 
         obj.filter = function () {
@@ -50,7 +53,7 @@ function controller() {
                     c.addStyle('visible')
                 });
             }
-            obj.get().fire('refresh', {empty: !filter.length && filterText !== '' })
+            obj.get().fire('refresh', {empty: !filter.length && filterText !== '' });
         };
 
         return obj;

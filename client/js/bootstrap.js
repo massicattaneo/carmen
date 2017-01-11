@@ -56,7 +56,6 @@ function boostrap(imports) {
         document.body.className = '';
         cjs.Need([
             pages.clients.populate,
-            cjs.Component.collectData,
             function () {
                 blackScreen.removeCover(1);
                 // blackScreen.removeCover(2000);
