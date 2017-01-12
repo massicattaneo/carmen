@@ -29,9 +29,9 @@ function boostrap(imports) {
         cjs.bus.addBus('UI');
         cjs.bus.UI.on('button-click', function (o) {
             audio.play(o.type);
-            console.log(o)
-            if (o.type=== 'header') {
-                showPage(o.id);
+            switch (o.type) {
+                case 'header':showPage(o.id);break;
+                case 'client-delete':deleteClient(o.id);break;
             }
         });
 
@@ -69,20 +69,31 @@ function boostrap(imports) {
             });
             pages[pageName].get().addStyle({display: 'block'});
         }
-
+        function deleteClient(id) {
+            showPopUp('delete-client').done(function (what) {
+                if (what === 'delete') {
+                    firebase.database().ref('clients/' + id).remove();
+                }
+            })
+        }
         function showPopUp(type) {
-            var popUp = PopUp(cjs.Object.extend({type: 'temp'}, config));
+            var popUp = PopUp(cjs.Object.extend({type: type}, config));
             popUp.createIn(document.body);
+            var n = cjs.Need();
             cjs.Need([
                 blackScreen.show,
                 popUp.show,
+                function (q, whatToDo) {
+                    n.resolve(whatToDo);
+                    return cjs.Need().resolve();
+                },
                 popUp.hide,
                 function () {
                     blackScreen.hide();
                     document.body.removeChild(popUp.get().get())
                 }
             ]).start()
-
+            return n;
         }
     };
 }

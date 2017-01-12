@@ -17,11 +17,16 @@ function controller(imports) {
     return function (config) {
 
         var types = {
-            temp: {
-                title: 'Titulo',
-                text: 'eso esto una sentencia de prueba. <br/> Nueva linea.',
+            'delete-client': {
+                title: 'BORRAR?',
+                text: '¿Está seguro de que quiere eliminar este cliente?',
                 buttons: [{
-                    text: 'Close',
+                    text: 'YES',
+                    type: 'delete',
+                    useBus: false,
+                    class: 'popup'
+                },{
+                    text: 'NO',
                     type: 'close',
                     useBus: false,
                     class: 'popup'
@@ -37,23 +42,16 @@ function controller(imports) {
 
         var buttons = [];
         var n = cjs.Need();
-        var Button = cjs.Component.get('button');
 
         types[config.type].buttons.forEach(function (b, i) {
-            var config = cjs.Object.extend(b, config);
-            buttons.push(cjs.Component({
-                template: Button.template,
-                style: Button.style,
-                config: config
-            },
-                Button.controller(config)
-            ));
+            buttons.push(cjs.Component.create('button', {config: b}));
             buttons[i].createIn(c.get('buttons').get());
-            buttons[i].promise().done(n.resolve)
+            buttons[i].promise().done(function () {
+                n.resolve(config.type)
+            })
         });
 
-        c.show = function (type) {
-            var t = types[type];
+        c.show = function () {
             c.get().addStyle('show');
             c.runAnimation('show', 500);
             return n;
