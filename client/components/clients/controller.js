@@ -26,6 +26,10 @@ function controller(imports) {
             return c.get('list').populate();
         };
 
+        c.remove = function (id) {
+            c.get('list').removeItem(id);
+        };
+
         c.refresh = function (e) {
             if (e.data.key !== undefined) {
                 c.get('list').add(e.data.key)

@@ -39,8 +39,6 @@ function register(imports) {
             item.setAttribute('href', 'tel:' + data);
         });
 
-        cjs.Component.injectDatabaseProxy(firebase.database());
-
         /** ROUND-BUTTON **/
         cjs.Component.register({
             name: 'button',

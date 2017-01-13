@@ -46,8 +46,8 @@ function controller(imports) {
         types[config.type].buttons.forEach(function (b, i) {
             buttons.push(cjs.Component.create('button', {config: b}));
             buttons[i].createIn(c.get('buttons').get());
-            buttons[i].promise().done(function () {
-                n.resolve(config.type)
+            buttons[i].promise().done(function (type) {
+                n.resolve(type)
             })
         });
 

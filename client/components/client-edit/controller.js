@@ -29,7 +29,7 @@ function controller() {
         }
 
         function addClient(p){
-            var storesRef = firebase.database().ref().child('clients');
+            var storesRef = config.db.get('clients');
             var newStoreRef = storesRef.push();
             newStoreRef.set({
                 name: p.name,

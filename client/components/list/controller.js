@@ -13,10 +13,11 @@ function controller() {
 
     return function (config) {
         var obj = {};
+        var clients = cjs.Collection();
 
         obj.populate = function () {
             var n = cjs.Need([]);
-            firebase.database().ref('clients/').once('value').then(function (data) {
+            config.db.once('clients/', function (data) {
                 Object.keys(data.val()).forEach(function (key) {
                     n.add(obj.add(key))
                 });
@@ -27,8 +28,13 @@ function controller() {
 
         obj.add = function (id) {
             var c = cjs.Component.create('client', {config: {id: id}});
+            clients.add(c, id);
             c.createIn(obj.get('collection').get());
             return cjs.Component.collectData();
+        };
+
+        obj.removeItem = function (id) {
+            clients.get(id).remove();
         };
 
         obj.filter = function () {

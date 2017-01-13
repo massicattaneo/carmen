@@ -35,7 +35,11 @@ function boostrap(imports) {
             }
         });
 
+        var db = cjs.Db.firebaseAdapter(firebase.database());
+        cjs.Component.injectDatabaseProxy(db);
+        config.db = db;
         register(config);
+
         var header = Header(config);
         header.createIn(document.getElementById('header'));
 
@@ -51,9 +55,9 @@ function boostrap(imports) {
         pages.clients = Clients(config);
         pages.clients.createIn(document.getElementById('page'));
 
-        firebase.database().ref('clients').on('child_removed', function () {
-            data.key
-        })
+        db.onRemove('clients', function (data) {
+            pages.clients.remove(data.key)
+        });
 
         var blackScreen = BlackScreen(config);
         blackScreen.createIn(document.body);
@@ -75,9 +79,8 @@ function boostrap(imports) {
         }
         function deleteClient(id) {
             showPopUp('delete-client').done(function (what) {
-                debugger;
-                if (what === 'delete-client') {
-                    firebase.database().ref('clients/' + id).remove();
+                if (what === 'delete') {
+                    db.remove('clients/' + id);
                 }
             })
         }
