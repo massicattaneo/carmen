@@ -51,6 +51,10 @@ function boostrap(imports) {
         pages.clients = Clients(config);
         pages.clients.createIn(document.getElementById('page'));
 
+        firebase.database().ref('clients').on('child_removed', function () {
+            data.key
+        })
+
         var blackScreen = BlackScreen(config);
         blackScreen.createIn(document.body);
         document.body.className = '';
@@ -71,7 +75,8 @@ function boostrap(imports) {
         }
         function deleteClient(id) {
             showPopUp('delete-client').done(function (what) {
-                if (what === 'delete') {
+                debugger;
+                if (what === 'delete-client') {
                     firebase.database().ref('clients/' + id).remove();
                 }
             })
