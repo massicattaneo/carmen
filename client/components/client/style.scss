@@ -19,3 +19,6 @@
   color: $mainColor;
   text-decoration: none;
 }
+.& .client-view-wrapper.hidden {
+  display: none;
+}

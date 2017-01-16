@@ -19,9 +19,9 @@ function controller(imports) {
         var types = {
             'delete-client': {
                 title: 'BORRAR?',
-                text: '¿Está seguro de que quiere eliminar este cliente?',
+                text: '¿Estás seguro de que quieres borrar este cliente?',
                 buttons: [{
-                    text: 'YES',
+                    text: 'SI',
                     type: 'delete',
                     useBus: false,
                     class: 'popup'

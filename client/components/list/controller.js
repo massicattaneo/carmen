@@ -19,14 +19,14 @@ function controller() {
             var n = cjs.Need([]);
             config.db.once('clients/', function (data) {
                 Object.keys(data.val()).forEach(function (key) {
-                    n.add(obj.add(key))
+                    n.add(obj.addItem(key))
                 });
                 if (n.size() === 0) n.add(cjs.Need().resolve());
             });
             return n;
         };
 
-        obj.add = function (id) {
+        obj.addItem = function (id) {
             var c = cjs.Component.create('client', {config: {id: id}});
             clients.add(c, id);
             c.createIn(obj.get('collection').get());
@@ -34,7 +34,11 @@ function controller() {
         };
 
         obj.removeItem = function (id) {
-            clients.get(id).remove();
+            clients.get(id.toString()).remove();
+        };
+
+        obj.editItem = function (id) {
+            clients.get(id.toString()).showEdit();
         };
 
         obj.filter = function () {

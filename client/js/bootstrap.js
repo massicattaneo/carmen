@@ -32,6 +32,7 @@ function boostrap(imports) {
             switch (o.type) {
                 case 'header':showPage(o.id);break;
                 case 'client-delete':deleteClient(o.id);break;
+                case 'client-edit':editClient(o.id);break;
             }
         });
 
@@ -83,6 +84,9 @@ function boostrap(imports) {
                     db.remove('clients/' + id);
                 }
             })
+        }
+        function editClient(id) {
+            pages.clients.edit(id);
         }
         function showPopUp(type) {
             var popUp = PopUp(cjs.Object.extend({type: type}, config));

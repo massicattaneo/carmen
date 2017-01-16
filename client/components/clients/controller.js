@@ -30,19 +30,41 @@ function controller(imports) {
             c.get('list').removeItem(id);
         };
 
+        c.edit = function (id) {
+            c.get('list').editItem(id);
+        };
+
+        c.addClient = function () {
+            var addComponent = c.get('client-add');
+            var key = addClient(addComponent.toJSON());
+            addComponent.emptyForm();
+            c.get('list').addItem(key);
+            var listNode = c.get('list').get('filter').get();
+            listNode.focus();
+            listNode.select();
+            c.refresh();
+        };
+
         c.refresh = function (e) {
-            if (e.data.key !== undefined) {
-                c.get('list').add(e.data.key)
-                var listNode = c.get('list').get('filter').get();
-                listNode.focus();
-                listNode.select();
-            }
+            e = e || {data: {}};
             if (e.data.empty) {
                 c.get('add').removeStyle('hidden')
             } else {
                 c.get('add').addStyle('hidden')
             }
         };
+
+        function addClient(p){
+            var storesRef = config.db.get('clients');
+            var newStoreRef = storesRef.push();
+            newStoreRef.set({
+                name: p.name,
+                surname: p.surname,
+                email: p.email,
+                tel: p.tel
+            });
+            return newStoreRef.key;
+        }
 
         return c;
 
