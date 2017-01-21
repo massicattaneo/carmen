@@ -3,7 +3,10 @@
 .& span {
   display: inline-block;
 }
-.& .name-surname, .& .email {
+.& .name-surname {
+  width: 240px;
+}
+.& .email {
   width: 290px;
 }
 .& .phone {

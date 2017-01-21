@@ -13,38 +13,29 @@ function controller() {
 
     return function (config) {
         var obj = {};
-        var clients = cjs.Collection();
+        var items = cjs.Collection();
 
-        obj.populate = function () {
-            var n = cjs.Need([]);
-            var defer = cjs.Need();
-            var clients;
-            config.db.once('clients/', function (data) {
-                clients = data.exportVal();
-                Object.keys(data.val()).forEach(function (key) {
-                    n.add(obj.addItem(key))
-                });
-                if (n.size() === 0) n.add(cjs.Need().resolve());
+        obj.populate = function (componentName, itemsToAdd) {
+            Object.keys(itemsToAdd).forEach(function (key) {
+                obj.addItem(componentName, key);
             });
-            n.done(function () {
-                defer.resolve(clients);
-            })
-            return defer;
         };
 
-        obj.addItem = function (id) {
-            var c = cjs.Component.create('client', {config: {id: id}});
-            clients.add(c, id);
+        obj.addItem = function (componentName, id) {
+            var c = cjs.Component.create(componentName, {config: {id: id}});
+            items.add(c, id);
             c.createIn(obj.get('collection').get());
             return cjs.Component.collectData();
         };
 
         obj.removeItem = function (id) {
-            clients.get(id.toString()).remove();
+            var key = id.toString();
+            items.get(key).remove();
+            items.remove(key);
         };
 
         obj.editItem = function (id, client) {
-            clients.get(id.toString()).showEdit(id, client);
+            items.get(id.toString()).showEdit(id, client);
         };
 
         obj.filter = function () {

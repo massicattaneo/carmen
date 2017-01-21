@@ -23,7 +23,12 @@ function controller(imports) {
         });
 
         c.populate = function () {
-            return c.get('list').populate();
+            var defer = cjs.Need();
+            config.db.once('clients/', function (data) {
+                c.get('list').populate('client', data.val());
+                defer.resolve(data.exportVal());
+            });
+            return defer;
         };
 
         c.remove = function (id) {
@@ -38,7 +43,7 @@ function controller(imports) {
             var addComponent = c.get('client-add');
             var key = addClient(addComponent.toJSON());
             addComponent.emptyForm();
-            c.get('list').addItem(key);
+            c.get('list').addItem('client', key);
             var listNode = c.get('list').get('filter').get();
             listNode.focus();
             listNode.select();
@@ -61,7 +66,7 @@ function controller(imports) {
                 email: p.email,
                 tel: p.tel
             });            
-        }
+        };
 
         return c;
 

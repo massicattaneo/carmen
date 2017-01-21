@@ -16,6 +16,7 @@ function boostrap(imports) {
     var Settings = imports('components/settings/controller.js');
     var Users = imports('components/users/controller.js');
     var Clients = imports('components/clients/controller.js');
+    var Cash = imports('components/cash/controller.js');
     var PopUp = imports('components/pop-up/controller.js');
     var config = imports('js/config.json');
     var register = imports('js/register.js');
@@ -32,6 +33,10 @@ function boostrap(imports) {
             audio.play(o.type);
             switch (o.type) {
                 case 'header':showPage(o.id);break;
+                case 'client-cash':
+                    pages.cash.open(clients[o.id]);
+                    showPage('cash');
+                    break;
                 case 'client-delete':deleteClient(o.id);break;
                 case 'client-edit':editClient(o.id);break;
                 case 'client-update':updateClient(o.id, o.info);break;
@@ -58,6 +63,9 @@ function boostrap(imports) {
         pages.clients = Clients(config);
         pages.clients.createIn(document.getElementById('page'));
 
+        pages.cash = Cash(config);
+        pages.cash.createIn(document.getElementById('page'));
+        
         db.onRemove('clients', function (data) {
             pages.clients.remove(data.key)
         });
@@ -76,7 +84,7 @@ function boostrap(imports) {
             }
         ]).start();
 
-        function showPage(pageName) {
+        function showPage(pageName, data) {
             Object.keys(pages).forEach(function (k) {
                 pages[k].get().addStyle({display: 'none'});
             });
