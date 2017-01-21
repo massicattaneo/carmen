@@ -15,8 +15,9 @@ function controller() {
         var obj = {};
         var items = cjs.Collection();
 
-        obj.populate = function (componentName, itemsToAdd) {
-            Object.keys(itemsToAdd).forEach(function (key) {
+        obj.populate = function (componentName, keys) {
+            console.log(keys);
+            keys.forEach(function (key) {
                 obj.addItem(componentName, key);
             });
         };

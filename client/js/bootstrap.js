@@ -34,7 +34,7 @@ function boostrap(imports) {
             switch (o.type) {
                 case 'header':showPage(o.id);break;
                 case 'client-cash':
-                    pages.cash.open(clients[o.id]);
+                    pages.cash.populate(clients[o.id], o.id);
                     showPage('cash');
                     break;
                 case 'client-delete':deleteClient(o.id);break;

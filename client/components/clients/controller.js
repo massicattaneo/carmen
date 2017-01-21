@@ -25,7 +25,8 @@ function controller(imports) {
         c.populate = function () {
             var defer = cjs.Need();
             config.db.once('clients/', function (data) {
-                c.get('list').populate('client', data.val());
+                var keys = Object.keys(data.val()).map(function (key) {return key;});
+                c.get('list').populate('client', keys);
                 defer.resolve(data.exportVal());
             });
             return defer;

@@ -1,0 +1,15 @@
+.& {display: none;}
+.&.visible {display: block;}
+.& span {
+  display: inline-block;
+}
+.& button {
+  width: 50px;
+}
+.& button:before {
+  padding: 0
+}
+.& a:link, .& a:visited, .& a {
+  color: $mainColor;
+  text-decoration: none;
+}

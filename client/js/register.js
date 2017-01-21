@@ -29,6 +29,11 @@ function register(imports) {
     var clientEditTemplate = imports('components/client-edit/template.html');
     var clientEditStyle = imports('components/client-edit/style.scss');
 
+    var transactionController = imports('components/transaction/controller.js');
+    var transactionTemplate = imports('components/transaction/template.html');
+    var transactionStyle = imports('components/transaction/style.scss');
+
+
     return function (config) {
 
         cjs.Component.registerParserFunction('mailto', function (data, item) {
@@ -37,6 +42,11 @@ function register(imports) {
 
         cjs.Component.registerParserFunction('tel', function (data, item) {
             item.setAttribute('href', 'tel:' + data);
+        });
+
+        cjs.Component.registerParserFunction('currency', function (data, item) {
+            var currency = new cjs.Currency(data);
+            item.setValue(currency.format('v i.ff'));
         });
 
         /** ROUND-BUTTON **/
@@ -90,6 +100,15 @@ function register(imports) {
             controller: clientEditController,
             template: clientEditTemplate,
             style: clientEditStyle,
+            config: config
+        });
+
+        /** TRANSACTION **/
+        cjs.Component.register({
+            name: 'transaction',
+            controller: transactionController,
+            template: transactionTemplate,
+            style: transactionStyle,
             config: config
         });
 
