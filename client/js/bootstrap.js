@@ -23,6 +23,7 @@ function boostrap(imports) {
 
     return function () {
         var pages = {};
+        var clients;
         var audio = cjs.Audio();
         audio.init(audioConfig);
 
@@ -33,6 +34,7 @@ function boostrap(imports) {
                 case 'header':showPage(o.id);break;
                 case 'client-delete':deleteClient(o.id);break;
                 case 'client-edit':editClient(o.id);break;
+                case 'client-update':updateClient(o.id, o.info);break;
             }
         });
 
@@ -65,7 +67,9 @@ function boostrap(imports) {
         document.body.className = '';
         cjs.Need([
             pages.clients.populate,
-            function () {
+            function (queue, c) {
+                clients = c;
+
                 blackScreen.removeCover(1);
                 // blackScreen.removeCover(2000);
                 showPage('clients');
@@ -85,8 +89,11 @@ function boostrap(imports) {
                 }
             })
         }
+        function updateClient(id, info) {
+            db.update('clients/' + id, info);
+        }
         function editClient(id) {
-            pages.clients.edit(id);
+            pages.clients.edit(id, clients[id]);
         }
         function showPopUp(type) {
             var popUp = PopUp(cjs.Object.extend({type: type}, config));
@@ -104,7 +111,7 @@ function boostrap(imports) {
                     blackScreen.hide();
                     document.body.removeChild(popUp.get().get())
                 }
-            ]).start()
+            ]).start();
             return n;
         }
     };

@@ -17,13 +17,19 @@ function controller() {
 
         obj.populate = function () {
             var n = cjs.Need([]);
+            var defer = cjs.Need();
+            var clients;
             config.db.once('clients/', function (data) {
+                clients = data.exportVal();
                 Object.keys(data.val()).forEach(function (key) {
                     n.add(obj.addItem(key))
                 });
                 if (n.size() === 0) n.add(cjs.Need().resolve());
             });
-            return n;
+            n.done(function () {
+                defer.resolve(clients);
+            })
+            return defer;
         };
 
         obj.addItem = function (id) {
@@ -37,8 +43,8 @@ function controller() {
             clients.get(id.toString()).remove();
         };
 
-        obj.editItem = function (id) {
-            clients.get(id.toString()).showEdit();
+        obj.editItem = function (id, client) {
+            clients.get(id.toString()).showEdit(id, client);
         };
 
         obj.filter = function () {

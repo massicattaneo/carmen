@@ -30,8 +30,8 @@ function controller(imports) {
             c.get('list').removeItem(id);
         };
 
-        c.edit = function (id) {
-            c.get('list').editItem(id);
+        c.edit = function (id, client) {
+            c.get('list').editItem(id, client);
         };
 
         c.addClient = function () {
@@ -55,15 +55,12 @@ function controller(imports) {
         };
 
         function addClient(p){
-            var storesRef = config.db.get('clients');
-            var newStoreRef = storesRef.push();
-            newStoreRef.set({
+            return config.db.add('clients', {
                 name: p.name,
                 surname: p.surname,
                 email: p.email,
                 tel: p.tel
-            });
-            return newStoreRef.key;
+            });            
         }
 
         return c;
