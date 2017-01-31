@@ -31,7 +31,8 @@
 <script>
 
     cjs.navigator.import('../server/data.json').done(function (JSON) {
-        var db = cjs.Db.staticJSONAdapter(JSON);
+        //var db = cjs.Db.staticJSONAdapter(JSON);
+        var db = cjs.Db.firebaseAdapter();
         db.init({
             apiKey: "AIzaSyC8aJIXp0QBbzLsCethcKEdNmJrPEaNhoU",
             authDomain: "inandout-76471.firebaseapp.com",
