@@ -1,15 +1,30 @@
-.& {display: none;}
-.&.visible {display: block;}
+.& {
+  display: none;
+  line-height: 33px;
+}
+.&.visible {
+  display: block;
+}
+.&:hover {
+  background-color: rgba(255,255,255,0.2);
+}
 .& span {
   display: inline-block;
 }
-.& button {
-  width: 50px;
+.& .creation {
+  width: 100px;
 }
-.& button:before {
-  padding: 0
+.& .description {
+  width: 605px;
 }
-.& a:link, .& a:visited, .& a {
-  color: $mainColor;
-  text-decoration: none;
+.& .type {
+  width: 80px;
+}
+.& .value {
+  width: 120px;
+  color: #70e26b;
+  text-align: right;
+}
+.& .value.negative {
+  color: #e26b6b;
 }

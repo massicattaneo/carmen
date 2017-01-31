@@ -17,12 +17,13 @@ function boostrap(imports) {
     var Users = imports('components/users/controller.js');
     var Clients = imports('components/clients/controller.js');
     var Cash = imports('components/cash/controller.js');
+    var History = imports('components/history/controller.js');
     var PopUp = imports('components/pop-up/controller.js');
     var config = imports('js/config.json');
     var register = imports('js/register.js');
     var audioConfig = imports('sounds/config.json');
 
-    return function () {
+    return function (db) {
         var pages = {};
         var clients;
         var audio = cjs.Audio();
@@ -33,9 +34,9 @@ function boostrap(imports) {
             audio.play(o.type);
             switch (o.type) {
                 case 'header':showPage(o.id);break;
-                case 'client-cash':
-                    pages.cash.populate(clients[o.id], o.id);
-                    showPage('cash');
+                case 'client-history':
+                    pages.history.populate(clients[o.id], o.id);
+                    showPage('history');
                     break;
                 case 'client-delete':deleteClient(o.id);break;
                 case 'client-edit':editClient(o.id);break;
@@ -43,8 +44,6 @@ function boostrap(imports) {
             }
         });
 
-        var db = cjs.Db.firebaseAdapter(firebase.database());
-        cjs.Component.injectDatabaseProxy(db);
         config.db = db;
         register(config);
 
@@ -63,9 +62,12 @@ function boostrap(imports) {
         pages.clients = Clients(config);
         pages.clients.createIn(document.getElementById('page'));
 
+        pages.history = History(config);
+        pages.history.createIn(document.getElementById('page'));
+
         pages.cash = Cash(config);
         pages.cash.createIn(document.getElementById('page'));
-        
+
         db.onRemove('clients', function (data) {
             pages.clients.remove(data.key)
         });
@@ -89,6 +91,7 @@ function boostrap(imports) {
                 pages[k].get().addStyle({display: 'none'});
             });
             pages[pageName].get().addStyle({display: 'block'});
+            pages[pageName].update && pages[pageName].update();
         }
         function deleteClient(id) {
             showPopUp('delete-client').done(function (what) {

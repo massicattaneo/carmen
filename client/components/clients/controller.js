@@ -52,8 +52,9 @@ function controller(imports) {
         };
 
         c.refresh = function (e) {
-            e = e || {data: {}};
-            if (e.data.empty) {
+            var isEmpty = false;
+            if (e && e.data && e.data.keys) isEmpty = e.data.keys.length === 0  && e.data.filterText !== '' ;
+            if (isEmpty) {
                 c.get('add').removeStyle('hidden')
             } else {
                 c.get('add').addStyle('hidden')

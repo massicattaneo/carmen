@@ -33,6 +33,9 @@ function register(imports) {
     var transactionTemplate = imports('components/transaction/template.html');
     var transactionStyle = imports('components/transaction/style.scss');
 
+    var transactionListController = imports('components/transaction-list/controller.js');
+    var transactionListTemplate = imports('components/transaction-list/template.html');
+    var transactionListStyle = imports('components/transaction-list/style.scss');
 
     return function (config) {
 
@@ -46,7 +49,13 @@ function register(imports) {
 
         cjs.Component.registerParserFunction('currency', function (data, item) {
             var currency = new cjs.Currency(data);
-            item.setValue(currency.format('v i.ff'));
+            item.setValue(currency.format('s i,ff'));
+            data < 0 && item.addStyle('negative');
+        });
+
+        cjs.Component.registerParserFunction('short-date', function (data, item) {
+            var date = new cjs.Date(data);
+            item.setValue(date.format('dd-mm-yyyy'));
         });
 
         /** ROUND-BUTTON **/
@@ -109,6 +118,15 @@ function register(imports) {
             controller: transactionController,
             template: transactionTemplate,
             style: transactionStyle,
+            config: config
+        });
+
+        /** TRANSACTION LIST **/
+        cjs.Component.register({
+            name: 'transactionList',
+            controller: transactionListController,
+            template: transactionListTemplate,
+            style: transactionListStyle,
             config: config
         });
 

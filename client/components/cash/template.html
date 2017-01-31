@@ -1,11 +1,21 @@
 <div>
-    <h1>Acquisti:</h1>
-    <hr/>
-    Cliente:
-    <span data-item="name"></span>
-    <span data-item="surname"></span> -
-    Email: <span data-item="email"></span> -
-    Tel: <span data-item="tel"></span>
-    <hr/>
-    <cjs:list data-id="list" data-on="refresh:refresh"></cjs:list>
+    <div class="sub-menu">
+        <cjs:button>
+            <type>card-new</type>
+            <text>CARD</text>
+            <class>fa-plus-square</class>
+        </cjs:button>
+        <cjs:button>
+            <type>transaction-new</type>
+            <text>TRANSACTION</text>
+            <class>fa-plus-square</class>
+        </cjs:button>
+        <cjs:button>
+            <type>cash-print</type>
+            <text>IMPRIMIR</text>
+            <class>fa-print</class>
+        </cjs:button>
+    </div>
+    <h3>CASSA DEL GIORNO</h3>
+    <cjs:transaction-list data-id="transaction-list"></cjs:transaction-list>
 </div>

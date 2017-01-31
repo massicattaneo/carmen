@@ -1,9 +1,6 @@
 {
   "clients": [
     {
-      "name": "empty"
-    },
-    {
       "name": "Massimiliano",
       "surname": "Cattaneo",
       "email": "massi.cattaneo@alice.it",
@@ -14,6 +11,36 @@
       "surname": "Cattaneo",
       "email": "gio.cattaneo@alice.it",
       "tel": "684060213"
+    }
+  ],
+  "transactions": [
+    {
+      "value":50.00,
+      "type": "CARD",
+      "creation": 1485832691568,
+      "id": 0,
+      "description": "Entrata"
+    },
+    {
+      "value":-15.00,
+      "type": "CREDIT",
+      "creation": 1485832691568,
+      "id": 0,
+      "description": "sopracciglia"
+    },
+    {
+      "value":50.23,
+      "type": "CASH",
+      "creation": 1485642691568,
+      "id": 1,
+      "description": "Carta credito"
+    },
+    {
+      "value":50.23,
+      "type": "CASH",
+      "creation": 1485832691568,
+      "id": 1,
+      "description": "Carta credito"
     }
   ]
 }

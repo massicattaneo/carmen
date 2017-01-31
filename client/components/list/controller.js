@@ -16,14 +16,20 @@ function controller() {
         var items = cjs.Collection();
 
         obj.populate = function (componentName, keys) {
-            console.log(keys);
-            keys.forEach(function (key) {
-                obj.addItem(componentName, key);
+            keys.forEach(function (key, index) {
+                obj.addItem(componentName, key, index + 1);
             });
         };
 
-        obj.addItem = function (componentName, id) {
-            var c = cjs.Component.create(componentName, {config: {id: id}});
+        obj.emptyCollection = function () {
+            items.each(function (i,k,o) {
+                o.remove()
+            });
+            items.clear();
+        };
+
+        obj.addItem = function (componentName, id, count) {
+            var c = cjs.Component.create(componentName, {config: {id: id, count: count}});
             items.add(c, id);
             c.createIn(obj.get('collection').get());
             return cjs.Component.collectData();
@@ -41,27 +47,21 @@ function controller() {
 
         obj.filter = function () {
             var filterText = obj.get('filter').getValue().toLowerCase();
-            var all = obj.get('collection').children().filter(function (c) {
-                return c.get().nodeType === 1
+            var filter = items.filter(function (c) {
+                return c.get().getValue().toLowerCase().indexOf(filterText)!== -1
             });
 
-            var filter = all.filter(function (c) {
-                return c.getValue().toLowerCase().indexOf(filterText)!== -1
-            });
-
-            all.forEach(function (c) {
-                c.removeStyle('visible')
-            });
-            if (filter.length) {
-                filter.forEach(function (c) {
-                    c.addStyle('visible')
+            items.forEach(function (c) {c.get().removeStyle('visible')});
+            if (!filter.isEmpty()) {
+                filter.forEach(function (k) {
+                    k.get().addStyle('visible')
                 })
-            } else if (!filter.length && filterText === '') {
-                all.forEach(function (c) {
-                    c.addStyle('visible')
+            } else if (!filter.size() && filterText === '') {
+                items.forEach(function (c) {
+                    c.get().addStyle('visible')
                 });
             }
-            obj.get().fire('refresh', {empty: !filter.length && filterText !== '' });
+            obj.get().fire('refresh', {keys: filter.keysToArray(), filterText: filterText});
         };
 
         return obj;

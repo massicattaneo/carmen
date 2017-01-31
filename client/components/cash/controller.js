@@ -1,51 +1,26 @@
-/*/
- ///////////////////////////////////////////////////////////////////////////
- Module: controller
- Created Date: 14 July 2016
- Author: mcattaneo
-
- //////////////////////////////////////////////////////////////////////////////
- //       Copyright (c) 2016.
- //////////////////////////////////////////////////////////////////////////////
+/**
+ * Created by max on 31/01/17.
  */
 
-function controller(imports) {
-
+function cash(imports) {
     var template = imports('components/cash/template.html');
     var style = imports('components/cash/style.scss');
 
     return function (config) {
-        
-        var c = cjs.Component({
+
+        var obj = cjs.Component({
             template: template,
             style: style,
             config: config
         });
 
-        c.populate = function (clientData, id) {
-            var defer = cjs.Need();
-            c.get('name').setValue(clientData.name);
-            c.get('surname').setValue(clientData.surname);
-            c.get('email').setValue(clientData.email);
-            c.get('tel').setValue(clientData.tel);
-            config.db.once('clients/', function (data) {
-                var keys = Object.keys(data.val())
-                    .map(function (key) {return key;})
-                    .filter(function (key) {
-                        return key.toString() === id.toString();
-                    });
-                c.get('list').populate('transaction', keys);
-                defer.resolve(data.val());
+        obj.update = function () {
+            return obj.get('transaction-list').populate(function (k, data) {
+                return cjs.Date.isToday(data[k].creation);
             });
-            return defer;
         };
 
-        c.refresh = function (e) {
-
-        };
-
-        return c;
+        return obj;
 
     }
-
-};
+}

@@ -1,0 +1,13 @@
+.& {
+  color: $mainTextColor;
+  position: relative;
+}
+.& .total span {display: inline-block;}
+.& .total .label {
+  width: 798px;
+  text-align: right;
+}
+.& .total .value {
+  width: 120px;
+  text-align: right;
+}
