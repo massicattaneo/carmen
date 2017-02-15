@@ -40,7 +40,7 @@ function boostrap(imports) {
                     break;
                 case 'client-delete':deleteClient(o.id);break;
                 case 'client-edit':editClient(o.id);break;
-                case 'client-update':updateClient(o.id, o.info);break;
+                case 'client-update':updateClient(o.id, o.info); break;
             }
         });
 
@@ -72,14 +72,19 @@ function boostrap(imports) {
             pages.clients.remove(data.key)
         });
 
+        var getClients = cjs.Need();
+        db.onChange('clients', function (data) {
+            clients = data;
+            pages.clients.populate(data);
+            getClients.resolve();
+        });
+
         var blackScreen = BlackScreen(config);
         blackScreen.createIn(document.body);
         document.body.className = '';
         cjs.Need([
-            pages.clients.populate,
+            function () {return getClients},
             function (queue, c) {
-                clients = c;
-
                 blackScreen.removeCover(1);
                 // blackScreen.removeCover(2000);
                 showPage('clients');

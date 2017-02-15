@@ -22,18 +22,18 @@ function controller(imports) {
             config: config
         });
 
-        c.populate = function () {
-            var defer = cjs.Need();
-            config.db.once('clients/', function (data) {
-                var keys = Object.keys(data.val()).map(function (key) {return key;});
-                c.get('list').populate('client', keys);
-                defer.resolve(data.exportVal());
-            });
-            return defer;
+        c.populate = function (data) {
+            c.get('list').emptyCollection();
+            var keys = Object.keys(data).map(function (key) {return key;});
+            c.get('list').populate('client', keys);
         };
 
         c.remove = function (id) {
             c.get('list').removeItem(id);
+        };
+
+        c.update = function (id, client) {
+
         };
 
         c.edit = function (id, client) {
