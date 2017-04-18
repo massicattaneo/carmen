@@ -16,24 +16,18 @@ function controller() {
 
         var data;
 
-        obj.populate = function (filter) {
-            var defer = cjs.Need();
+        obj.populate = function (data, filter) {
             var list = obj.get('list');
             list.emptyCollection();
-            config.db.once('transactions/', function (d) {
-                data = d.val();
-                var keys = Object.keys(data).filter(function (k) {
-                    return filter(k, data);
-                });
-                var total = 0;
-                keys.forEach(function (k) {
-                    total += data[k].value;
-                });
-                list.populate('transaction', keys);
-                defer.resolve(data);
-                cjs.Component.parse('currency', total, obj.get('total'));
+            var keys = Object.keys(data).filter(function (k) {
+                return filter(k, data);
             });
-            return defer;
+            var total = 0;
+            keys.forEach(function (k) {
+                total += data[k].value;
+            });
+            list.populate('transaction', keys);
+            cjs.Component.parse('currency', total, obj.get('total'));
         };
 
         obj.refresh = function (e) {

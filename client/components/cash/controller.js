@@ -14,8 +14,8 @@ function cash(imports) {
             config: config
         });
 
-        obj.update = function () {
-            return obj.get('transaction-list').populate(function (k, data) {
+        obj.update = function (transactions) {
+            obj.get('transaction-list').populate(transactions, function (k, data) {
                 return cjs.Date.isToday(data[k].creation);
             });
         };

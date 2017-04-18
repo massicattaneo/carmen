@@ -32,19 +32,14 @@ function controller(imports) {
             c.get('list').removeItem(id);
         };
 
-        c.update = function (id, client) {
-
-        };
-
         c.edit = function (id, client) {
             c.get('list').editItem(id, client);
         };
 
         c.addClient = function () {
             var addComponent = c.get('client-add');
-            var key = addClient(addComponent.toJSON());
+            addClient(addComponent.toJSON());
             addComponent.emptyForm();
-            c.get('list').addItem('client', key);
             var listNode = c.get('list').get('filter').get();
             listNode.focus();
             listNode.select();

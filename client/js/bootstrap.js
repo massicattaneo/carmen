@@ -26,6 +26,7 @@ function boostrap(imports) {
     return function (db) {
         var pages = {};
         var clients;
+        var transactions;
         var audio = cjs.Audio();
         audio.init(audioConfig);
 
@@ -41,6 +42,7 @@ function boostrap(imports) {
                 case 'client-delete':deleteClient(o.id);break;
                 case 'client-edit':editClient(o.id);break;
                 case 'client-update':updateClient(o.id, o.info); break;
+                case 'transaction-new':addTransaction(); break;
             }
         });
 
@@ -68,35 +70,47 @@ function boostrap(imports) {
         pages.cash = Cash(config);
         pages.cash.createIn(document.getElementById('page'));
 
+        addEmptyPage()
+
         db.onRemove('clients', function (data) {
             pages.clients.remove(data.key)
         });
 
-        var getClients = cjs.Need();
-        db.onChange('clients', function (data) {
+        var loadData = cjs.Need([]);
+        loadData.add(db.onChange('clients', function (data) {
             clients = data;
             pages.clients.populate(data);
-            getClients.resolve();
-        });
+        }));
+        loadData.add(db.onChange('transactions/', function (data) {
+            transactions = data;
+            pages.cash.update(transactions);
+        }));
 
         var blackScreen = BlackScreen(config);
         blackScreen.createIn(document.body);
         document.body.className = '';
         cjs.Need([
-            function () {return getClients},
+            function () {return loadData},
             function (queue, c) {
                 blackScreen.removeCover(1);
                 // blackScreen.removeCover(2000);
-                showPage('clients');
+                showPage('cash');
             }
         ]).start();
 
+        function addEmptyPage() {
+            pages.empty && pages.empty.remove();
+            pages.empty = cjs.Component({
+                template: '<div><h1 data-item="title"></h1><div data-item="container"></div></div>',
+                style: '.& {color: white}'
+            });
+            pages.empty.createIn(document.getElementById('page'));
+        }
         function showPage(pageName, data) {
             Object.keys(pages).forEach(function (k) {
                 pages[k].get().addStyle({display: 'none'});
             });
             pages[pageName].get().addStyle({display: 'block'});
-            pages[pageName].update && pages[pageName].update();
         }
         function deleteClient(id) {
             showPopUp('delete-client').done(function (what) {
@@ -110,6 +124,33 @@ function boostrap(imports) {
         }
         function editClient(id) {
             pages.clients.edit(id, clients[id]);
+        }
+        function addTransaction() {
+            cjs.Need([
+                function () {
+                    addEmptyPage();
+                    showPage('empty');
+                    pages.empty.get('title').setValue('SELECT A CLIENT');
+                    var keys = Object.keys(clients).map(function (key) {return key;});
+                    var list = cjs.Component.create('list', {});
+                    list.populate('client-select', keys);
+                    list.createIn(pages.empty.get('container'));
+                    return cjs.bus.UI.need('button-click');
+                },
+                function (queue, o) {
+                    addEmptyPage();
+                    pages.empty.get('title').setValue('INSERT TRANSACTION INFORMATION');
+                    var transaction = cjs.Component.create('transaction-add', {});
+                    transaction.createIn(pages.empty.get('container'));
+                    return cjs.bus.UI.need('button-click');
+                },
+                function (queue, o) {
+                    addEmptyPage();
+                    pages.empty.get('title').setValue('SAVED');
+                }
+            ]).start();
+
+
         }
         function showPopUp(type) {
             var popUp = PopUp(cjs.Object.extend({type: type}, config));

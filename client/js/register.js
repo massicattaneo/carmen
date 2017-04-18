@@ -23,6 +23,7 @@ function register(imports) {
 
     var clientController = imports('components/client/controller.js');
     var clientTemplate = imports('components/client/template.html');
+    var clientSelectTemplate = imports('components/client/template-select.html');
     var clientStyle = imports('components/client/style.scss');
 
     var clientEditController = imports('components/client-edit/controller.js');
@@ -32,6 +33,10 @@ function register(imports) {
     var transactionController = imports('components/transaction/controller.js');
     var transactionTemplate = imports('components/transaction/template.html');
     var transactionStyle = imports('components/transaction/style.scss');
+
+    var transactionAddController = imports('components/transaction-add/controller.js');
+    var transactionAddTemplate = imports('components/transaction-add/template.html');
+    var transactionAddStyle = imports('components/transaction-add/style.scss');
 
     var transactionListController = imports('components/transaction-list/controller.js');
     var transactionListTemplate = imports('components/transaction-list/template.html');
@@ -103,6 +108,15 @@ function register(imports) {
             config: config
         });
 
+        /** CLIENT SELECT **/
+        cjs.Component.register({
+            name: 'client-select',
+            controller: clientController,
+            template: clientSelectTemplate,
+            style: clientStyle,
+            config: config
+        });
+
         /** CLIENT EDIT **/
         cjs.Component.register({
             name: 'clientEdit',
@@ -118,6 +132,15 @@ function register(imports) {
             controller: transactionController,
             template: transactionTemplate,
             style: transactionStyle,
+            config: config
+        });
+
+        /** TRANSACTION **/
+        cjs.Component.register({
+            name: 'transaction-add',
+            controller: transactionAddController,
+            template: transactionAddTemplate,
+            style: transactionAddStyle,
             config: config
         });
 
