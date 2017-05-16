@@ -14,6 +14,11 @@ function controller() {
     return function (config) {
         var obj = {};
 
+		obj.saveTransaction = function () {
+			console.log('SAVED !!', obj.get().toJSON());
+			obj.get().fire('transaction-add')
+		};
+
         return obj;
     }
 

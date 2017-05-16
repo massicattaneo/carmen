@@ -20,6 +20,10 @@ function cash(imports) {
             });
         };
 
+		obj.show = function () {
+			obj.get().addStyle({display: 'block'});
+		};
+
         return obj;
 
     }

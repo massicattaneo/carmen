@@ -13,20 +13,11 @@ function controller() {
 
     return function (config) {
         var obj = {};
-        var n = cjs.Need();
-        var useBus = config.useBus === undefined ? true : config.useBus;
 
         obj.change = function () {
-            if (useBus) {
-                cjs.bus.UI.fire('button-click', {type: config.type, id: config.id});
-            }
-            n.resolve(config.type);
+			obj.get().fire('tap-'+config.type, config.id)
         };
 
-        obj.promise = function () {
-            return n;
-        };
-        
         return obj;
     }
 

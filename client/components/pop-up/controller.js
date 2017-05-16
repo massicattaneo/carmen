@@ -14,7 +14,7 @@ function controller(imports) {
     var template = imports('components/pop-up/template.html');
     var style = imports('components/pop-up/style.scss');
 
-    return function (config) {
+    return function (config, where) {
 
         var types = {
             'delete-client': {
@@ -23,12 +23,10 @@ function controller(imports) {
                 buttons: [{
                     text: 'SI',
                     type: 'delete',
-                    useBus: false,
                     class: 'popup'
                 },{
                     text: 'NO',
                     type: 'close',
-                    useBus: false,
                     class: 'popup'
                 }]
             }
@@ -46,22 +44,28 @@ function controller(imports) {
         types[config.type].buttons.forEach(function (b, i) {
             buttons.push(cjs.Component.create('button', {config: b}));
             buttons[i].createIn(c.get('buttons').get());
-            buttons[i].promise().done(function (type) {
-                n.resolve(type)
+            buttons[i].get().addListener('tap-'+b.type, function () {
+                n.resolve(b.type)
             })
         });
 
         c.show = function () {
             c.get().addStyle('show');
             c.runAnimation('show', 500);
+			n = cjs.Need();
             return n;
         };
 
         c.hide = function () {
-            return c.runAnimation('hide', 500);
+            return c.runAnimation('hide', 500).done(function () {
+				c.get().removeStyle('show');
+			});
         };
 
-        return c;
+		c.createIn(where);
+
+
+		return c;
 
     }
 

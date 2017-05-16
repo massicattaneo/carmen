@@ -23,7 +23,7 @@ function controller() {
             edit.get('email').setValue(client.email);
             edit.get('tel').setValue(client.tel);
             edit.get().addListener('submit', function () {
-                cjs.bus.UI.fire('button-click', {type: 'client-update',info: edit.toJSON(), id: id});
+				obj.get().fire('tap-client-update', edit.toJSON());
                 edit.remove();
                 obj.get('client-view-wrapper').removeStyle('hidden');
             });

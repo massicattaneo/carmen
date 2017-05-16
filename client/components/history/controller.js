@@ -15,14 +15,14 @@ function controller(imports) {
     var style = imports('components/history/style.scss');
 
     return function (config) {
-        
+
         var obj = cjs.Component({
             template: template,
             style: style,
             config: config
         });
 
-        obj.populate = function (clientData, id) {
+        obj.populate = function (id, clientData) {
             obj.get('name').setValue(clientData.name);
             obj.get('surname').setValue(clientData.surname);
             obj.get('email').setValue(clientData.email);
@@ -31,7 +31,11 @@ function controller(imports) {
                 return data[k].id.toString() === id.toString();
             });
         };
-        
+
+		obj.show = function () {
+			obj.get().addStyle({display: 'block'});
+		};
+
         return obj;
 
     }

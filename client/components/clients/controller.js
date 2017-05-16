@@ -15,12 +15,16 @@ function controller(imports) {
     var style = imports('components/clients/style.scss');
 
     return function (config) {
-        
+
         var c = cjs.Component({
             template: template,
             style: style,
             config: config
         });
+
+		c.show = function () {
+			c.get().addStyle({display: 'block'});
+		};
 
         c.populate = function (data) {
             c.get('list').emptyCollection();
@@ -62,7 +66,7 @@ function controller(imports) {
                 surname: p.surname,
                 email: p.email,
                 tel: p.tel
-            });            
+            });
         };
 
         return c;

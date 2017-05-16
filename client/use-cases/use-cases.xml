@@ -1,0 +1,72 @@
+<use-cases>
+
+    <uc name="start-app">
+        <run component="utils" action="init"/>
+        <run component="utils" action="loadClients"/>
+        <run component="utils" action="loadTransactions"/>
+		<run component="utils" action="hideAllPages"/>
+		<run component="cash" action="show"/>
+        <run component="blackScreen" action="removeCover"/>
+    </uc>
+
+	<event component="cash" on="tap-transaction-new">
+		<run component="utils" action="hideAllPages"/>
+		<run component="utils" action="selectAClient"/>
+		<set path="activeClient"/>
+		<run component="utils" action="addTransactionInfo"/>
+		<run component="utils" action="saveTransaction"/>
+	</event>
+
+	<event component="clients" on="tap-client-edit">
+		<set path="activeClient" value="{0}"/>
+		<read path="clientsData/{0}"/>
+		<run component="clients" action="edit"/>
+	</event>
+
+	<event component="clients" on="tap-client-update">
+		<read path="activeClient"/>
+		<run component="db" action="update"/>
+	</event>
+
+	<event component="clients" on="tap-client-delete">
+		<set path="activeClient" value="{0}"/>
+		<reset-args/>
+		<read value="delete-client" />
+		<run component="blackScreen" action="show"/>
+		<run component="popUpDelete" action="show"/>
+		<if test="{2} === 'delete'">
+			<reset-args/>
+			<read path="activeClient"/>
+			<run component="db" action="delete"/>
+		</if>
+		<run component="popUpDelete" action="hide"/>
+		<run component="blackScreen" action="hide"/>
+	</event>
+
+	<event component="clients" on="tap-client-history">
+		<read path="clientsData/{0}"/>
+		<run component="utils" action="hideAllPages"/>
+		<run component="history" action="populate"/>
+		<run component="history" action="show"/>
+	</event>
+
+    <event component="header" on="tap-header">
+		<if test="{0}==='cash'">
+			<run component="utils" action="hideAllPages"/>
+			<run component="cash" action="show"/>
+		</if>
+		<if test="{0}==='clients'">
+			<run component="utils" action="hideAllPages"/>
+			<run component="clients" action="show"/>
+		</if>
+		<if test="{0}==='users'">
+			<run component="utils" action="hideAllPages"/>
+			<run component="users" action="show"/>
+		</if>
+		<if test="{0}==='settings'">
+			<run component="utils" action="hideAllPages"/>
+			<run component="settings" action="show"/>
+		</if>
+    </event>
+
+</use-cases>

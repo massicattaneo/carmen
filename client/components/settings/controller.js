@@ -15,12 +15,16 @@ function controller(imports) {
     var style = imports('components/settings/style.scss');
 
     return function (config) {
-        
+
         var c = cjs.Component({
             template: template,
             style: style,
             config: config
         });
+
+		c.show = function () {
+			c.get().addStyle({display: 'block'});
+		};
 
         return c;
 

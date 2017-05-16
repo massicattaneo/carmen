@@ -54,7 +54,7 @@
 
 		var webSocket = new WebSocket('ws://127.0.0.1:8081');
 		webSocket.onmessage = function(event){
-			alert(event.data);
+			console.log(event.data);
 		};
 		var data = JSON.stringify({type: 'add'});
 		webSocket.onopen = function(){

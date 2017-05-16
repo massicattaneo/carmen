@@ -10,166 +10,137 @@
  */
 
 function boostrap(imports) {
-    var Header = imports('components/header/controller.js');
-    var BlackScreen = imports('components/black-screen/controller.js');
-    // var Calendar = imports('components/calendar/controller.js');
-    var Settings = imports('components/settings/controller.js');
-    var Users = imports('components/users/controller.js');
-    var Clients = imports('components/clients/controller.js');
-    var Cash = imports('components/cash/controller.js');
-    var History = imports('components/history/controller.js');
-    var PopUp = imports('components/pop-up/controller.js');
-    var config = imports('js/config.json');
-    var register = imports('js/register.js');
-    var audioConfig = imports('sounds/config.json');
+	var Header = imports('components/header/controller.js');
+	var BlackScreen = imports('components/black-screen/controller.js');
+	// var Calendar = imports('components/calendar/controller.js');
+	var Settings = imports('components/settings/controller.js');
+	var Users = imports('components/users/controller.js');
+	var Clients = imports('components/clients/controller.js');
+	var Cash = imports('components/cash/controller.js');
+	var History = imports('components/history/controller.js');
+	var PopUp = imports('components/pop-up/controller.js');
+	var config = imports('js/config.json');
+	var register = imports('js/register.js');
+	var audioConfig = imports('sounds/config.json');
+	var useCases = imports('use-cases/use-cases.xml');
+	var StateMachine = imports('js/state-machine.js');
 
-    return function (db) {
-        var pages = {};
-        var clients;
-        var transactions;
-        var audio = cjs.Audio();
-        audio.init(audioConfig);
+	return function (db) {
+		var clientsData = {};
+		var transactions;
+		var audio = cjs.Audio();
+		audio.init(audioConfig);
 
-        cjs.bus.addBus('UI');
-        cjs.bus.UI.on('button-click', function (o) {
-            audio.play(o.type);
-            switch (o.type) {
-                case 'header':showPage(o.id);break;
-                case 'client-history':
-                    pages.history.populate(clients[o.id], o.id);
-                    showPage('history');
-                    break;
-                case 'client-delete':deleteClient(o.id);break;
-                case 'client-edit':editClient(o.id);break;
-                case 'client-update':updateClient(o.id, o.info); break;
-                case 'transaction-new':addTransaction(); break;
-            }
-        });
+		config.db = db;
+		register(config);
 
-        config.db = db;
-        register(config);
+		var header = Header(config);
+		header.createIn(document.getElementById('header'));
 
-        var header = Header(config);
-        header.createIn(document.getElementById('header'));
+		// var calendar = Calendar(config);
+		// calendar.createIn(document.getElementById('page'));
 
-        // var calendar = Calendar(config);
-        // calendar.createIn(document.getElementById('page'));
+		var settings = Settings(config);
+		settings.createIn(document.getElementById('page'));
 
-        pages.settings = Settings(config);
-        pages.settings.createIn(document.getElementById('page'));
+		var users = Users(config);
+		users.createIn(document.getElementById('page'));
 
-        pages.users = Users(config);
-        pages.users.createIn(document.getElementById('page'));
+		var clients = Clients(config);
+		clients.createIn(document.getElementById('page'));
 
-        pages.clients = Clients(config);
-        pages.clients.createIn(document.getElementById('page'));
+		var history = History(config);
+		history.createIn(document.getElementById('page'));
 
-        pages.history = History(config);
-        pages.history.createIn(document.getElementById('page'));
+		var cash = Cash(config);
+		cash.createIn(document.getElementById('page'));
 
-        pages.cash = Cash(config);
-        pages.cash.createIn(document.getElementById('page'));
+		var blackScreen = BlackScreen(config);
+		blackScreen.createIn(document.body);
+		document.body.className = '';
 
-        addEmptyPage()
+		var emptyPage = cjs.Component({
+			template: '<div><h1 data-item="title"></h1><div data-item="container"></div></div>',
+			style: '.& {color: white}'
+		});
+		emptyPage.show = function () {
+			emptyPage.get().addStyle({display: 'block'});
+		};
+		emptyPage.createIn(document.getElementById('page'));
 
-        db.onRemove('clients', function (data) {
-            pages.clients.remove(data.key)
-        });
+		var popUpDelete = PopUp(cjs.Object.extend({ type: 'delete-client' }, config), document.body);
 
-        var loadData = cjs.Need([]);
-        loadData.add(db.onChange('clients', function (data) {
-            clients = data;
-            pages.clients.populate(data);
-        }));
-        loadData.add(db.onChange('transactions/', function (data) {
-            transactions = data;
-            pages.cash.update(transactions);
-        }));
+		var sm = new StateMachine(useCases, { clientsData: clientsData }, {
+			header, blackScreen, clients, users, history, cash, settings, popUpDelete, emptyPage,
+			db: {
+				update: function (info, id) {
+					db.update('clients/' + id, info);
+				},
+				remove: function (id) {
+					db.remove('clients/' + id);
+				},
+				delete: function (id) {
+					debugger;
+					db.remove('clients/' + id);
+				}
+			},
+			utils: {
+				init: function () {
+					db.onRemove('clients', function (data) {
+						clients.remove(data.key)
+					});
+				},
+				loadClients: function () {
+					return db.onChange('clients', function (data) {
+						Object.assign(clientsData, data);
+						clients.populate(data);
+					})
+				},
+				loadTransactions: function () {
+					return db.onChange('transactions/', function (data) {
+						transactions = data;
+						cash.update(transactions);
+					})
+				},
+				hideAllPages: function (pageName, data) {
+					emptyPage.get().addStyle({ display: 'none' });
+					clients.get().addStyle({ display: 'none' });
+					cash.get().addStyle({ display: 'none' });
+					users.get().addStyle({ display: 'none' });
+					history.get().addStyle({ display: 'none' });
+					settings.get().addStyle({ display: 'none' });
+				},
+				selectAClient: function () {
+					emptyPage.show();
+					emptyPage.get('title').setValue('SELECT A CLIENT');
+					var keys = Object.keys(clientsData).map(function (key) {return key;});
+					var list = cjs.Component.create('list', {});
+					list.populate('client-select', keys);
+					list.createIn(emptyPage.get('container'));
+					var d = cjs.Need();
+					list.get().addListener('tap-client-select', function (e) {
+						list.remove()
+						d.resolve(e.data);
+					});
+					return d;
+				},
+				addTransactionInfo: function () {
+					emptyPage.get('title').setValue('INSERT TRANSACTION INFORMATION');
+					var transaction = cjs.Component.create('transaction-add', {});
+					transaction.createIn(emptyPage.get('container'));
+					var d = cjs.Need();
+					transaction.get().addListener('transaction-add', function (e) {
+						transaction.remove();
+						d.resolve(e.data);
+					});
+					return d;
+				},
+				saveTransaction: function () {
+					emptyPage.get('title').setValue('SAVED');
+				}
+			}
+		});
+		sm.enter('start-app');
 
-        var blackScreen = BlackScreen(config);
-        blackScreen.createIn(document.body);
-        document.body.className = '';
-        cjs.Need([
-            function () {return loadData},
-            function (queue, c) {
-                blackScreen.removeCover(1);
-                // blackScreen.removeCover(2000);
-                showPage('cash');
-            }
-        ]).start();
-
-        function addEmptyPage() {
-            pages.empty && pages.empty.remove();
-            pages.empty = cjs.Component({
-                template: '<div><h1 data-item="title"></h1><div data-item="container"></div></div>',
-                style: '.& {color: white}'
-            });
-            pages.empty.createIn(document.getElementById('page'));
-        }
-        function showPage(pageName, data) {
-            Object.keys(pages).forEach(function (k) {
-                pages[k].get().addStyle({display: 'none'});
-            });
-            pages[pageName].get().addStyle({display: 'block'});
-        }
-        function deleteClient(id) {
-            showPopUp('delete-client').done(function (what) {
-                if (what === 'delete') {
-                    db.remove('clients/' + id);
-                }
-            })
-        }
-        function updateClient(id, info) {
-            db.update('clients/' + id, info);
-        }
-        function editClient(id) {
-            pages.clients.edit(id, clients[id]);
-        }
-        function addTransaction() {
-            cjs.Need([
-                function () {
-                    addEmptyPage();
-                    showPage('empty');
-                    pages.empty.get('title').setValue('SELECT A CLIENT');
-                    var keys = Object.keys(clients).map(function (key) {return key;});
-                    var list = cjs.Component.create('list', {});
-                    list.populate('client-select', keys);
-                    list.createIn(pages.empty.get('container'));
-                    return cjs.bus.UI.need('button-click');
-                },
-                function (queue, o) {
-                    addEmptyPage();
-                    pages.empty.get('title').setValue('INSERT TRANSACTION INFORMATION');
-                    var transaction = cjs.Component.create('transaction-add', {});
-                    transaction.createIn(pages.empty.get('container'));
-                    return cjs.bus.UI.need('button-click');
-                },
-                function (queue, o) {
-                    addEmptyPage();
-                    pages.empty.get('title').setValue('SAVED');
-                }
-            ]).start();
-
-
-        }
-        function showPopUp(type) {
-            var popUp = PopUp(cjs.Object.extend({type: type}, config));
-            popUp.createIn(document.body);
-            var n = cjs.Need();
-            cjs.Need([
-                blackScreen.show,
-                popUp.show,
-                function (q, whatToDo) {
-                    n.resolve(whatToDo);
-                    return cjs.Need().resolve();
-                },
-                popUp.hide,
-                function () {
-                    blackScreen.hide();
-                    document.body.removeChild(popUp.get().get())
-                }
-            ]).start();
-            return n;
-        }
-    };
+	};
 }
