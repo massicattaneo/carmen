@@ -2,9 +2,10 @@
   "name": "carmen",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node -r babel-register main.js",
     "postinstall": "bower install"
   },
   "repository": {
@@ -16,8 +17,21 @@
   "bugs": {
     "url": "https://github.com/massicattaneo/carmen/issues"
   },
+  "dependencies": {
+    "@pokusew/pcsclite": "^0.4.17"
+  },
   "homepage": "https://github.com/massicattaneo/carmen#readme",
   "devDependencies": {
-    "bower": "^1.8.0"
+    "babel-cli": "^6.24.0",
+    "babel-plugin-transform-async-to-generator": "^6.22.0",
+    "babel-plugin-transform-class-properties": "^6.23.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "babel-register": "^6.24.0",
+    "bower": "^1.8.0",
+    "chalk": "^1.1.3",
+    "prettyjson": "^1.2.1",
+    "websocket": "^1.0.24",
+    "winston": "^2.3.1"
   }
 }

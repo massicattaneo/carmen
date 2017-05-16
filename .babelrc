@@ -1,0 +1,10 @@
+{
+	"presets": [
+		"es2015-node6/object-rest"
+	],
+	"plugins": [
+		"transform-object-rest-spread",
+		"transform-async-to-generator",
+		"transform-class-properties"
+	]
+}

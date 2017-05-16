@@ -30,7 +30,7 @@
 </div>
 <script>
 
-    cjs.navigator.import('../server/data.json').done(function (JSON) {
+    cjs.navigator.import('../server/data.json').done(function (json) {
         //var db = cjs.Db.staticJSONAdapter(JSON);
         var db = cjs.Db.firebaseAdapter();
         db.init({
@@ -51,7 +51,20 @@
                 }).fail(function () {
             alert('Connection error!')
         });
-    });
+
+		var webSocket = new WebSocket('ws://127.0.0.1:8081');
+		webSocket.onmessage = function(event){
+			alert(event.data);
+		};
+		var data = JSON.stringify({type: 'add'});
+		webSocket.onopen = function(){
+			console.log(data)
+			webSocket.send(data)
+		};
+
+	});
+
+
 </script>
 </body>
 </html>
