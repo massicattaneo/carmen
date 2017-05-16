@@ -15,6 +15,7 @@
 		<set path="activeClient"/>
 		<run component="utils" action="addTransactionInfo"/>
 		<run component="utils" action="saveTransaction"/>
+		<run component="db" action="saveTransaction"/>
 	</event>
 
 	<event component="clients" on="tap-client-edit">
@@ -25,7 +26,7 @@
 
 	<event component="clients" on="tap-client-update">
 		<read path="activeClient"/>
-		<run component="db" action="update"/>
+		<run component="db" action="updateClients"/>
 	</event>
 
 	<event component="clients" on="tap-client-delete">
@@ -37,7 +38,7 @@
 		<if test="{2} === 'delete'">
 			<reset-args/>
 			<read path="activeClient"/>
-			<run component="db" action="delete"/>
+			<run component="db" action="deleteClients"/>
 		</if>
 		<run component="popUpDelete" action="hide"/>
 		<run component="blackScreen" action="hide"/>
@@ -46,6 +47,7 @@
 	<event component="clients" on="tap-client-history">
 		<read path="clientsData/{0}"/>
 		<run component="utils" action="hideAllPages"/>
+		<read path="clientsData"/>
 		<run component="history" action="populate"/>
 		<run component="history" action="show"/>
 	</event>

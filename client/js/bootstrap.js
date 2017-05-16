@@ -73,15 +73,20 @@ function boostrap(imports) {
 		var sm = new StateMachine(useCases, { clientsData: clientsData }, {
 			header, blackScreen, clients, users, history, cash, settings, popUpDelete, emptyPage,
 			db: {
-				update: function (info, id) {
+				updateClients: function (info, id) {
 					db.update('clients/' + id, info);
 				},
-				remove: function (id) {
+				deleteClients: function (id) {
 					db.remove('clients/' + id);
 				},
-				delete: function (id) {
-					debugger;
-					db.remove('clients/' + id);
+				saveTransaction: function (a,b,id,data) {
+					config.db.add('transactions', {
+						description: data.description,
+						id: id,
+						value: data.value,
+						type: data.type,
+						creation: new Date().getTime()
+					});
 				}
 			},
 			utils: {

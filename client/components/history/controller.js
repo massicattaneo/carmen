@@ -22,13 +22,13 @@ function controller(imports) {
             config: config
         });
 
-        obj.populate = function (id, clientData) {
+        obj.populate = function (id, clientData,a, data) {
             obj.get('name').setValue(clientData.name);
             obj.get('surname').setValue(clientData.surname);
             obj.get('email').setValue(clientData.email);
             obj.get('tel').setValue(clientData.tel);
-            return obj.get('transaction-list').populate(function (k, data) {
-                return data[k].id.toString() === id.toString();
+            return obj.get('transaction-list').populate(data, function (k) {
+                return k.toString() === id.toString();
             });
         };
 

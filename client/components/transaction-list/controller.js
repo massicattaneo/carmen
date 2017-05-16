@@ -17,7 +17,7 @@ function controller() {
         var data;
 
         obj.populate = function (data, filter) {
-            var list = obj.get('list');
+			var list = obj.get('list');
             list.emptyCollection();
             var keys = Object.keys(data).filter(function (k) {
                 return filter(k, data);

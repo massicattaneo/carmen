@@ -1,14 +1,14 @@
 <div>
     <label>VALUE:</label>
-    <input type="text" placeholder="value"/><br/>
+    <input data-item="value" type="text" placeholder="value"/><br/>
     <label>TYPE:</label>
-    <select>
+    <select data-item="type">
         <option>CASH</option>
         <option>CREDIT CARD</option>
         <option>GIFT CARD</option>
     </select><br/>
     <label>DESCRIPTION:</label>
-    <textarea placeholder="DESCRIPTION" rows="6"></textarea>
+    <textarea data-item="description" placeholder="DESCRIPTION" rows="6"></textarea>
     <br/>
     <cjs:button data-on="tap-transaction-save:saveTransaction">
         <text>SAVE</text>

@@ -57,7 +57,7 @@ function controller(imports) {
         };
 
         c.hide = function () {
-            return c.runAnimation('hide', 500).done(function () {
+            return c.runAnimation('hide', {time: 500}).done(function () {
 				c.get().removeStyle('show');
 			});
         };

@@ -15,8 +15,12 @@ function controller() {
         var obj = {};
 
 		obj.saveTransaction = function () {
-			console.log('SAVED !!', obj.get().toJSON());
-			obj.get().fire('transaction-add')
+			var data = {
+				value: parseFloat(obj.get('value').getValue()),
+				type: obj.get('type').getValue(),
+				description: obj.get('description').getValue()
+			};
+			obj.get().fire('transaction-add', data)
 		};
 
         return obj;
