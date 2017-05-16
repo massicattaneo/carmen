@@ -113,18 +113,20 @@ function boostrap(imports) {
 				selectAClient: function () {
 					emptyPage.show();
 					emptyPage.get('title').setValue('SELECT A CLIENT');
+					emptyPage.get('container').setValue('');
 					var keys = Object.keys(clientsData).map(function (key) {return key;});
 					var list = cjs.Component.create('list', {});
 					list.populate('client-select', keys);
 					list.createIn(emptyPage.get('container'));
 					var d = cjs.Need();
 					list.get().addListener('tap-client-select', function (e) {
-						list.remove()
+						list.remove();
 						d.resolve(e.data);
 					});
 					return d;
 				},
 				addTransactionInfo: function () {
+					emptyPage.get('container').setValue('');
 					emptyPage.get('title').setValue('INSERT TRANSACTION INFORMATION');
 					var transaction = cjs.Component.create('transaction-add', {});
 					transaction.createIn(emptyPage.get('container'));
