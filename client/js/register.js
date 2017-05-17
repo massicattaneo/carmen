@@ -42,6 +42,10 @@ function register(imports) {
     var transactionListTemplate = imports('components/transaction-list/template.html');
     var transactionListStyle = imports('components/transaction-list/style.scss');
 
+	var cardController = imports('components/card/controller.js');
+	var cardTemplate = imports('components/card/template.html');
+	var cardStyle = imports('components/card/style.scss');
+
     return function (config) {
 
         cjs.Component.registerParserFunction('mailto', function (data, item) {
@@ -141,6 +145,15 @@ function register(imports) {
             controller: transactionListController,
             template: transactionListTemplate,
             style: transactionListStyle,
+            config: config
+        });
+
+		/** CARD **/
+        cjs.Component.register({
+            name: 'card',
+            controller: cardController,
+            template: cardTemplate,
+            style: cardStyle,
             config: config
         });
 

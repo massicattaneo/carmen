@@ -6,11 +6,25 @@
         <run component="utils" action="loadTransactions"/>
         <run component="utils" action="loadCards"/>
 		<run component="utils" action="hideAllPages"/>
-		<run component="cash" action="show"/>
+		<run component="cards" action="show"/>
         <run component="blackScreen" action="removeCover"/>
     </uc>
 
-	<event component="cash" on="tap-transaction-new">
+	<event component="cards" on="tap-card-new">
+		<run component="utils" action="hideAllPages"/>
+		<run component="clients" action="show"/>
+		<reset-args/>
+		<read value="select"/>
+		<run component="clients" action="enterMode"/>
+		<reset-args/>
+		<wait component="clients" event="tap-client-select"/>
+		<set path="activeClient" value="{0}"/>
+		<run component="utils" action="hideAllPages"/>
+		<run component="db" action="saveCard"/>
+		<run component="cards" action="show"/>
+	</event>
+
+	<event component="cash" on="tap-transaction-pay">
 		<run component="utils" action="hideAllPages"/>
 		<run component="clients" action="show"/>
 		<reset-args/>
@@ -28,6 +42,17 @@
 		<wait component="transactionAdd" event="transaction-add"/>
 		<run component="utils" action="hideAllPages"/>
 		<run component="db" action="saveTransaction"/>
+		<run component="cash" action="show"/>
+	</event>
+
+	<event component="cash" on="tap-transaction-buy">
+		<run component="utils" action="hideAllPages"/>
+		<run component="transactionAdd" action="show"/>
+		<run component="transactionAdd" action="genericBuy"/>
+		<reset-args/>
+		<wait component="transactionAdd" event="transaction-add"/>
+		<run component="utils" action="hideAllPages"/>
+		<run component="db" action="saveBuy"/>
 		<run component="cash" action="show"/>
 	</event>
 

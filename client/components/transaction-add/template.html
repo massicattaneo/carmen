@@ -1,15 +1,17 @@
 <div>
 	<h1 data-item="title">ANADE LA INFORMACION DE LA TRANSACION</h1>
-	<hr/>
-	Cliente:
-	<span data-item="name"></span>
-	<span data-item="surname"></span> -
-	Email: <span data-item="email"></span> -
-	Tel: <span data-item="tel"></span>
-	<hr/>
+	<div data-item="client-data">
+		<hr/>
+		Cliente:
+		<span data-item="name"></span>
+		<span data-item="surname"></span> -
+		Email: <span data-item="email"></span> -
+		Tel: <span data-item="tel"></span>
+		<hr/>
+	</div>
 	<form data-on="submit:saveTransaction">
 		<label>NAME:</label>
-		<input data-item="payer-name" type="text" placeholder="name"/><br/>
+		<input data-item="payer-name" type="text" required placeholder="name"/><br/>
 		<label>VALUE:</label>
 		<input data-item="value" type="number" placeholder="value" required autofocus /><br/>
 		<label>TYPE:</label>

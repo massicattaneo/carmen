@@ -1,0 +1,22 @@
+.& {
+  display: none;
+  line-height: 33px;
+}
+.&.visible {
+  display: block;
+}
+.&:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+.& span {
+  display: inline-block;
+}
+.& .created {
+  width: 100px;
+}
+.& .name {
+	width: 555px;
+}
+.& button {
+	width: 40px;
+}

@@ -1,5 +1,12 @@
 <div>
     <h1 data-item="title">{{cardsText}}</h1>
+	<div class="sub-menu">
+		<cjs:button>
+			<type>card-new</type>
+			<text>CARD</text>
+			<class>fa-plus-square</class>
+		</cjs:button>
+	</div>
     <fieldset class="list">
         <legend>Listado</legend>
         <cjs:list data-id="list" data-on="refresh:refresh"></cjs:list>

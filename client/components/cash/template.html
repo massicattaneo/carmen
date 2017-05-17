@@ -1,21 +1,26 @@
 <div>
-    <div class="sub-menu">
+	<h1>{{cashText}}</h1>
+	<div class="sub-menu">
         <cjs:button>
-            <type>card-new</type>
-            <text>CARD</text>
-            <class>fa-plus-square</class>
+            <type>transaction-pay</type>
+            <text>PAGO</text>
+            <class>fa-money</class>
         </cjs:button>
+		<cjs:button>
+			<type>transaction-gift</type>
+			<text>ABONO</text>
+			<class>fa-vcard-o</class>
+		</cjs:button>
         <cjs:button>
-            <type>transaction-new</type>
-            <text>TRANSACTION</text>
-            <class>fa-plus-square</class>
-        </cjs:button>
+			<type>transaction-buy</type>
+			<text>COMPRAS</text>
+			<class>fa-shopping-cart</class>
+		</cjs:button>
         <cjs:button>
             <type>cash-print</type>
             <text>IMPRIMIR</text>
             <class>fa-print</class>
         </cjs:button>
     </div>
-    <h3>CASSA DEL GIORNO</h3>
     <cjs:transaction-list data-id="transaction-list"></cjs:transaction-list>
 </div>

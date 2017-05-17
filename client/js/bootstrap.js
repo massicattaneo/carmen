@@ -88,10 +88,24 @@ function boostrap(imports) {
 				saveTransaction: function (id, data) {
 					db.add('transactions', {
 						description: data.description,
-						id: id,
+						clientId: id,
 						name: data.name,
 						value: data.value,
 						type: data.type
+					});
+				},
+				saveBuy: function (data) {
+					db.add('transactions', {
+						description: data.description,
+						name: data.name,
+						value: data.value,
+						type: data.type
+					});
+				},
+				saveCard: function (id) {
+					db.add('cards', {
+						clientId: id,
+						name: clientsData[id].name + ' ' + clientsData[id].surname
 					});
 				}
 			},
