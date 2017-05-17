@@ -50,7 +50,7 @@ function stateMachine(imports) {
 			if (event.getAttribute('component')) {
 				components[event.getAttribute('component')].get().addListener(event.getAttribute('on'), function (e) {
 					args = [];
-					args.push(e.data);
+					e.data !== undefined && args.push(e.data);
 					exe(toArray(event));
 				})
 			}
@@ -75,7 +75,7 @@ function stateMachine(imports) {
 						stack.run(function (next) {
 							this.array.push(components[a.component][a.action].apply(null,args) || cjs.Need().resolve());
 							this.array[this.array.length - 1].done(function () {
-								args.push(arguments[0])
+								arguments[0] !== undefined && args.push(arguments[0]);
 								next()
 							});
 						});
@@ -100,15 +100,19 @@ function stateMachine(imports) {
 						stack.run(function (next) {
 							if (a.path) {
 								var p = a.path.split('/');
-								var result = Object.assign({}, db);
-								p.forEach((prop) => {
-									if (/{\d}/.test(prop)) {
-										result = result[args[prop.match(/{(\d)}/)[1]]];
-									} else {
-										result = result[prop]
-									}
-								});
-								args.push(result);
+								if (p.length === 1) {
+									args.push(db[p[0]]);
+								} else {
+									var result = Object.assign({}, db);
+									p.forEach((prop) => {
+										if (/{\d}/.test(prop)) {
+											result = result[args[prop.match(/{(\d)}/)[1]]];
+										} else {
+											result = result[prop]
+										}
+									});
+									args.push(result);
+								}
 							} else if (a.value) {
 								args.push(a.value)
 							}

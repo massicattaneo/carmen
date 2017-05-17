@@ -13,6 +13,8 @@
 		<run component="utils" action="hideAllPages"/>
 		<run component="utils" action="selectAClient"/>
 		<set path="activeClient"/>
+		<reset-args/>
+		<read path="activeClient"/>
 		<run component="utils" action="addTransactionInfo"/>
 		<run component="utils" action="saveTransaction"/>
 		<run component="db" action="saveTransaction"/>
@@ -47,7 +49,7 @@
 	<event component="clients" on="tap-client-history">
 		<read path="clientsData/{0}"/>
 		<run component="utils" action="hideAllPages"/>
-		<read path="clientsData"/>
+		<read path="transactionsData"/>
 		<run component="history" action="populate"/>
 		<run component="history" action="show"/>
 	</event>

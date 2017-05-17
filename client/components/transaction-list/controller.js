@@ -16,15 +16,16 @@ function controller() {
 
         var data;
 
-        obj.populate = function (data, filter) {
+        obj.populate = function (d, filter) {
 			var list = obj.get('list');
             list.emptyCollection();
-            var keys = Object.keys(data).filter(function (k) {
-                return filter(k, data);
+			data =d;
+            var keys = Object.keys(d).filter(function (k) {
+                return filter(k, d);
             });
             var total = 0;
             keys.forEach(function (k) {
-                total += data[k].value;
+                total += d[k].value;
             });
             list.populate('transaction', keys);
             cjs.Component.parse('currency', total, obj.get('total'));

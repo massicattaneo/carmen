@@ -18,6 +18,7 @@ function controller() {
 			var data = {
 				value: parseFloat(obj.get('value').getValue()),
 				type: obj.get('type').getValue(),
+				name: obj.get('payer-name').getValue(),
 				description: obj.get('description').getValue()
 			};
 			obj.get().fire('transaction-add', data)

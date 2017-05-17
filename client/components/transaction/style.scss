@@ -11,11 +11,14 @@
 .& span {
   display: inline-block;
 }
-.& .creation {
+.& .created {
   width: 100px;
 }
+.& .name {
+	width: 205px;
+}
 .& .description {
-  width: 605px;
+  width: 400px;
 }
 .& .type {
   width: 80px;

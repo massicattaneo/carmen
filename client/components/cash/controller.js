@@ -16,7 +16,7 @@ function cash(imports) {
 
         obj.update = function (transactions) {
             obj.get('transaction-list').populate(transactions, function (k, data) {
-                return cjs.Date.isToday(data[k].creation);
+                return cjs.Date.isToday(data[k].created);
             });
         };
 

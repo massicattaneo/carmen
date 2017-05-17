@@ -27,7 +27,7 @@ function boostrap(imports) {
 
 	return function (db) {
 		var clientsData = {};
-		var transactions;
+		var transactionsData = {};
 		var audio = cjs.Audio();
 		audio.init(audioConfig);
 
@@ -64,13 +64,14 @@ function boostrap(imports) {
 			style: '.& {color: white}'
 		});
 		emptyPage.show = function () {
-			emptyPage.get().addStyle({display: 'block'});
+			emptyPage.get().addStyle({ display: 'block' });
 		};
 		emptyPage.createIn(document.getElementById('page'));
 
 		var popUpDelete = PopUp(cjs.Object.extend({ type: 'delete-client' }, config), document.body);
 
-		var sm = new StateMachine(useCases, { clientsData: clientsData }, {
+		var staticData = { clientsData, transactionsData };
+		var sm = new StateMachine(useCases, staticData, {
 			header, blackScreen, clients, users, history, cash, settings, popUpDelete, emptyPage,
 			db: {
 				updateClients: function (info, id) {
@@ -79,13 +80,13 @@ function boostrap(imports) {
 				deleteClients: function (id) {
 					db.remove('clients/' + id);
 				},
-				saveTransaction: function (a,b,id,data) {
+				saveTransaction: function (a, b, id, data) {
 					config.db.add('transactions', {
 						description: data.description,
 						id: id,
+						name: data.name,
 						value: data.value,
-						type: data.type,
-						creation: new Date().getTime()
+						type: data.type
 					});
 				}
 			},
@@ -103,8 +104,8 @@ function boostrap(imports) {
 				},
 				loadTransactions: function () {
 					return db.onChange('transactions/', function (data) {
-						transactions = data;
-						cash.update(transactions);
+						Object.assign(transactionsData, data);
+						cash.update(transactionsData);
 					})
 				},
 				hideAllPages: function (pageName, data) {
@@ -119,7 +120,9 @@ function boostrap(imports) {
 					emptyPage.show();
 					emptyPage.get('title').setValue('SELECT A CLIENT');
 					emptyPage.get('container').setValue('');
-					var keys = Object.keys(clientsData).map(function (key) {return key;});
+					var keys = Object.keys(clientsData).map(function (key) {
+						return key;
+					});
 					var list = cjs.Component.create('list', {});
 					list.populate('client-select', keys);
 					list.createIn(emptyPage.get('container'));
