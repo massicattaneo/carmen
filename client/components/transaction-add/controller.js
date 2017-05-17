@@ -14,7 +14,8 @@ function controller() {
     return function (config) {
         var obj = {};
 
-		obj.addClientData = function (data) {
+		obj.addClientData = function (clientId, clientsData) {
+			var data = clientsData[clientId];
 			obj.get('name').setValue(data.name);
 			obj.get('surname').setValue(data.surname);
 			obj.get('email').setValue(data.email);
@@ -22,7 +23,8 @@ function controller() {
 			obj.get('payer-name').setValue(data.name + ' ' + data.surname);
 		};
 
-		obj.saveTransaction = function () {
+		obj.saveTransaction = function (e) {
+			e.preventDefault();
 			var data = {
 				value: parseFloat(obj.get('value').getValue()),
 				type: obj.get('type').getValue(),
@@ -30,6 +32,10 @@ function controller() {
 				description: obj.get('description').getValue()
 			};
 			obj.get().fire('transaction-add', data)
+		};
+
+		obj.show = function () {
+			obj.get().addStyle({ display: 'block' });
 		};
 
         return obj;

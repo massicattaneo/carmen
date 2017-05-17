@@ -1,26 +1,31 @@
 <div class="visible client">
-    <div data-item="client-view-wrapper" class="client-view-wrapper">
-        <span class="name-surname">
-        <span data-server="clients/{{id}}/name"></span>
-        <span data-server="clients/{{id}}/surname"></span>
-    </span>
-        <span class="email"><a data-parser="mailto" data-server="clients/{{id}}/email"></a></span>
-        <span class="phone"><a data-parser="tel" data-server="clients/{{id}}/tel"></a></span>
-        <cjs:button>
-            <type>client-edit</type>
-            <id>{{id}}</id>
-            <class>fa-pencil</class>
-        </cjs:button>
-        <cjs:button>
-            <type>client-history</type>
-            <id>{{id}}</id>
-            <class>fa-clock-o</class>
-        </cjs:button>
-        <cjs:button>
-            <type>client-delete</type>
-            <id>{{id}}</id>
-            <class>fa-trash</class>
-        </cjs:button>
-    </div>
-    <div data-item="client-edit-wrapper" class="client-edit-wrapper"></div>
+	<div data-item="client-view-wrapper" class="client-view-wrapper">
+		<cjs:button class="select">
+			<type>client-select</type>
+			<id>{{id}}</id>
+			<class>fa-check</class>
+		</cjs:button>
+		<span class="name-surname">
+			<span data-server="clients/{{id}}/name"></span>
+			<span data-server="clients/{{id}}/surname"></span>
+		</span>
+		<span class="email"><a data-parser="mailto" data-server="clients/{{id}}/email"></a></span>
+		<span class="phone"><a data-parser="tel" data-server="clients/{{id}}/tel"></a></span>
+		<cjs:button class="no-select">
+			<type>client-edit</type>
+			<id>{{id}}</id>
+			<class>fa-pencil</class>
+		</cjs:button>
+		<cjs:button class="no-select">
+			<type>client-history</type>
+			<id>{{id}}</id>
+			<class>fa-clock-o</class>
+		</cjs:button>
+		<cjs:button class="no-select">
+			<type>client-delete</type>
+			<id>{{id}}</id>
+			<class>fa-trash</class>
+		</cjs:button>
+	</div>
+	<div data-item="client-edit-wrapper" class="client-edit-wrapper"></div>
 </div>

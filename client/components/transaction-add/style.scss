@@ -1,3 +1,8 @@
+.& {
+	width: 100%;
+	text-align: left;
+	color: $mainTextColor;
+}
 .& {line-height: 33px;}
 .& label {display: inline-block; width: 150px}
 .& input, .& select, .& textarea {width: 500px;height: 25px;padding: 2px;margin: 5px;}

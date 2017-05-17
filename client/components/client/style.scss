@@ -25,3 +25,13 @@
 .& .client-view-wrapper.hidden {
   display: none;
 }
+.& .select {
+	display: none;
+}
+.select .& .select {
+	display: inline-block;
+}
+.select .& .no-select {
+	display: none;
+}
+

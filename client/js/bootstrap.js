@@ -16,6 +16,7 @@ function boostrap(imports) {
 	var Settings = imports('components/settings/controller.js');
 	var Users = imports('components/users/controller.js');
 	var Clients = imports('components/clients/controller.js');
+	var Cards = imports('components/cards/controller.js');
 	var Cash = imports('components/cash/controller.js');
 	var History = imports('components/history/controller.js');
 	var PopUp = imports('components/pop-up/controller.js');
@@ -28,6 +29,7 @@ function boostrap(imports) {
 	return function (db) {
 		var clientsData = {};
 		var transactionsData = {};
+		var cardsData = {};
 		var audio = cjs.Audio();
 		audio.init(audioConfig);
 
@@ -49,31 +51,30 @@ function boostrap(imports) {
 		var clients = Clients(config);
 		clients.createIn(document.getElementById('page'));
 
+		var cards = Cards(config);
+		cards.createIn(document.getElementById('page'));
+
 		var history = History(config);
 		history.createIn(document.getElementById('page'));
 
 		var cash = Cash(config);
 		cash.createIn(document.getElementById('page'));
 
+		var transactionAdd = cjs.Component.create('transaction-add', {});
+		transactionAdd.createIn(document.getElementById('page'));
+
 		var blackScreen = BlackScreen(config);
 		blackScreen.createIn(document.body);
 		document.body.className = '';
 
-		var emptyPage = cjs.Component({
-			template: '<div><h1 data-item="title"></h1><div data-item="container"></div></div>',
-			style: '.& {color: white}'
-		});
-		emptyPage.show = function () {
-			emptyPage.get().addStyle({ display: 'block' });
-		};
-		emptyPage.createIn(document.getElementById('page'));
-
 		var popUpDeleteClient = PopUp(cjs.Object.extend({ type: 'delete-client' }, config), document.body);
 		var popUpDeleteTransaction = PopUp(cjs.Object.extend({ type: 'delete-transaction' }, config), document.body);
 
-		var staticData = { clientsData, transactionsData };
+		var staticData = { clientsData, transactionsData, cardsData };
 		var sm = new StateMachine(useCases, staticData, {
-			header, blackScreen, clients, users, history, cash, settings, popUpDeleteClient, emptyPage, popUpDeleteTransaction,
+			header, blackScreen, clients, users, history, cash,
+			settings, popUpDeleteClient, popUpDeleteTransaction,
+			transactionAdd, cards,
 			db: {
 				updateClients: function (info, id) {
 					db.update('clients/' + id, info);
@@ -85,7 +86,7 @@ function boostrap(imports) {
 					db.remove('transactions/' + id);
 				},
 				saveTransaction: function (id, data) {
-					config.db.add('transactions', {
+					db.add('transactions', {
 						description: data.description,
 						id: id,
 						name: data.name,
@@ -108,55 +109,29 @@ function boostrap(imports) {
 				loadClients: function () {
 					return db.onChange('clients', function (data) {
 						Object.assign(clientsData, data);
-						clients.populate(data);
+						data && clients.populate(data);
+					})
+				},
+				loadCards: function () {
+					return db.onChange('cards', function (data) {
+						Object.assign(cardsData, data);
+						data && cards.populate(data);
 					})
 				},
 				loadTransactions: function () {
 					return db.onChange('transactions/', function (data) {
 						Object.assign(transactionsData, data);
-						cash.update(data);
+						data && cash.update(data);
 					})
 				},
-				hideAllPages: function (pageName, data) {
-					emptyPage.get().addStyle({ display: 'none' });
+				hideAllPages: function () {
 					clients.get().addStyle({ display: 'none' });
+					cards.get().addStyle({ display: 'none' });
+					transactionAdd.get().addStyle({ display: 'none' });
 					cash.get().addStyle({ display: 'none' });
 					users.get().addStyle({ display: 'none' });
 					history.get().addStyle({ display: 'none' });
 					settings.get().addStyle({ display: 'none' });
-				},
-				selectAClient: function () {
-					emptyPage.show();
-					emptyPage.get('title').setValue('SELECT A CLIENT');
-					emptyPage.get('container').setValue('');
-					var keys = Object.keys(clientsData).map(function (key) {
-						return key;
-					});
-					var list = cjs.Component.create('list', {});
-					list.populate('client-select', keys);
-					list.createIn(emptyPage.get('container'));
-					var d = cjs.Need();
-					list.get().addListener('tap-client-select', function (e) {
-						list.remove();
-						d.resolve(e.data);
-					});
-					return d;
-				},
-				addTransactionInfo: function (clientId) {
-					emptyPage.get('container').setValue('');
-					emptyPage.get('title').setValue('INSERT TRANSACTION INFORMATION');
-					var transaction = cjs.Component.create('transaction-add', {});
-					transaction.createIn(emptyPage.get('container'));
-					transaction.addClientData(clientsData[clientId]);
-					var d = cjs.Need();
-					transaction.get().addListener('transaction-add', function (e) {
-						transaction.remove();
-						d.resolve(e.data);
-					});
-					return d;
-				},
-				saveTransaction: function () {
-					emptyPage.get('title').setValue('SAVED');
 				}
 			}
 		});

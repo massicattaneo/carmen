@@ -108,15 +108,6 @@ function register(imports) {
             config: config
         });
 
-        /** CLIENT SELECT **/
-        cjs.Component.register({
-            name: 'client-select',
-            controller: clientController,
-            template: clientSelectTemplate,
-            style: clientStyle,
-            config: config
-        });
-
         /** CLIENT EDIT **/
         cjs.Component.register({
             name: 'clientEdit',

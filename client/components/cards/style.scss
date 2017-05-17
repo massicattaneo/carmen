@@ -1,0 +1,13 @@
+.& {
+  width: 100%;
+  text-align: left;
+  color: $mainTextColor;
+}
+
+.& .add {
+  padding: 15px;
+}
+
+.& .add.hidden {
+  display: none;
+}

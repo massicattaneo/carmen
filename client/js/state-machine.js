@@ -30,7 +30,7 @@ function stateMachine(imports) {
 
 		var obj = {};
 		var map = new cjs.Collection();
-
+		var listeners = [];
 		var args = [];
 		var parser = new DOMParser();
 		var a = parser.parseFromString(params, "text/xml").firstChild;
@@ -51,6 +51,8 @@ function stateMachine(imports) {
 				components[event.getAttribute('component')].get().addListener(event.getAttribute('on'), function (e) {
 					args = [];
 					e.data !== undefined && args.push(e.data);
+					listeners.forEach(function (fn) {fn();});
+					listeners = [];
 					exe(toArray(event));
 				})
 			}
@@ -58,6 +60,8 @@ function stateMachine(imports) {
 
 		obj.enter = function (stateName) {
 			args = [];
+			listeners.forEach(function (fn) {fn();})
+			listeners = [];
 			return exe(map.get(stateName));
 		};
 
@@ -82,18 +86,27 @@ function stateMachine(imports) {
 						break;
 					case 'wait':
 						stack.run(function (next) {
-							var when = a.until.split(',').map(o => o.trim());
-							var all = when.map((o) => {
-								if (isNaN(o)) {
-									return this.array[Number(o.replace('id_', ''))];
-								} else {
-									var d = cjs.Need();
-									setTimeout(d.resolve, Number(o));
-									return d;
-								}
-							});
-							this.array.push(cjs.Need(all));
-							this.array[this.array.length - 1].done(next);
+							if (a.until) {
+								var when = a.until.split(',').map(o => o.trim());
+								var all = when.map((o) => {
+									if (isNaN(o)) {
+										return this.array[Number(o.replace('id_', ''))];
+									} else {
+										var d = cjs.Need();
+										setTimeout(d.resolve, Number(o));
+										return d;
+									}
+								});
+								this.array.push(cjs.Need(all));
+								this.array[this.array.length - 1].done(next);
+							} else if (a.event) {
+								listeners.push(components[a.component].get().addListener(a.event, function (e) {
+									var removeListener = listeners.pop();
+									removeListener();
+									e && e.data && args.push(e.data);
+									next()
+								}))
+							}
 						});
 						break;
 					case 'read':

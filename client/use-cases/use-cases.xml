@@ -4,6 +4,7 @@
         <run component="utils" action="init"/>
         <run component="utils" action="loadClients"/>
         <run component="utils" action="loadTransactions"/>
+        <run component="utils" action="loadCards"/>
 		<run component="utils" action="hideAllPages"/>
 		<run component="cash" action="show"/>
         <run component="blackScreen" action="removeCover"/>
@@ -11,13 +12,23 @@
 
 	<event component="cash" on="tap-transaction-new">
 		<run component="utils" action="hideAllPages"/>
-		<run component="utils" action="selectAClient"/>
+		<run component="clients" action="show"/>
+		<reset-args/>
+		<read value="select"/>
+		<run component="clients" action="enterMode"/>
+		<reset-args/>
+		<wait component="clients" event="tap-client-select"/>
 		<set path="activeClient" value="{0}"/>
+		<run component="utils" action="hideAllPages"/>
+		<run component="transactionAdd" action="show"/>
+		<read path="clientsData"/>
+		<run component="transactionAdd" action="addClientData"/>
 		<reset-args/>
 		<read path="activeClient"/>
-		<run component="utils" action="addTransactionInfo"/>
-		<run component="utils" action="saveTransaction"/>
+		<wait component="transactionAdd" event="transaction-add"/>
+		<run component="utils" action="hideAllPages"/>
 		<run component="db" action="saveTransaction"/>
+		<run component="cash" action="show"/>
 	</event>
 
 	<event component="clients" on="tap-client-edit">
@@ -73,9 +84,14 @@
 			<run component="utils" action="hideAllPages"/>
 			<run component="cash" action="show"/>
 		</if>
+		<if test="{0}==='cards'">
+			<run component="utils" action="hideAllPages"/>
+			<run component="cards" action="show"/>
+		</if>
 		<if test="{0}==='clients'">
 			<run component="utils" action="hideAllPages"/>
 			<run component="clients" action="show"/>
+			<run component="clients" action="enterMode"/>
 		</if>
 		<if test="{0}==='users'">
 			<run component="utils" action="hideAllPages"/>

@@ -6,9 +6,8 @@
   "secondaryTextColor": "#555",
   "baseUrl": "images",
   "logoUrl": "{{baseUrl}}/logo.png",
-  "calendarText": "Calendario",
-  "settingsText": "Adjustes",
   "usersText": "Usuarios",
   "cashText": "Caja",
-  "clientsText": "Clienti"
+  "clientsText": "Clientes",
+  "cardsText": "Tarjetas"
 }

@@ -60,6 +60,19 @@ function controller(imports) {
             }
         };
 
+        c.enterMode = function (mode) {
+			c.get().removeStyle('select');
+			switch (mode) {
+				case 'select':
+					c.get('title').setValue('Select a client');
+					c.get().addStyle(mode);
+					break;
+				default:
+					c.get('title').setValue('Clienti');
+					break;
+			}
+		};
+
         function addClient(p){
             return config.db.add('clients', {
                 name: p.name,
