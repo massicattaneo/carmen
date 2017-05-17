@@ -18,7 +18,7 @@
 	width: 205px;
 }
 .& .description {
-  width: 400px;
+  width: 350px;
 }
 .& .type {
   width: 80px;
@@ -30,4 +30,8 @@
 }
 .& .value.negative {
   color: #e26b6b;
+}
+
+.& button {
+	width: 40px;
 }

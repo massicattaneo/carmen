@@ -12,7 +12,7 @@
 	<event component="cash" on="tap-transaction-new">
 		<run component="utils" action="hideAllPages"/>
 		<run component="utils" action="selectAClient"/>
-		<set path="activeClient"/>
+		<set path="activeClient" value="{0}"/>
 		<reset-args/>
 		<read path="activeClient"/>
 		<run component="utils" action="addTransactionInfo"/>
@@ -34,16 +34,30 @@
 	<event component="clients" on="tap-client-delete">
 		<set path="activeClient" value="{0}"/>
 		<reset-args/>
-		<read value="delete-client" />
 		<run component="blackScreen" action="show"/>
-		<run component="popUpDelete" action="show"/>
-		<if test="{2} === 'delete'">
+		<run component="popUpDeleteClient" action="show"/>
+		<if test="{0} === 'delete'">
 			<reset-args/>
-			<read path="activeClient"/>
+			<read path="activeClient" />
 			<run component="db" action="deleteClients"/>
 		</if>
-		<run component="popUpDelete" action="hide"/>
+		<run component="popUpDeleteClient" action="hide"/>
 		<run component="blackScreen" action="hide"/>
+	</event>
+
+	<event component="cash" on="tap-transaction-delete">
+		<set path="activeClient" value="{0}"/>
+		<reset-args/>
+		<run component="blackScreen" action="show"/>
+		<run component="popUpDeleteTransaction" action="show"/>
+		<if test="{0} === 'delete'">
+			<reset-args/>
+			<read path="activeClient" />
+			<run component="db" action="deleteTransactions"/>
+		</if>
+		<run component="popUpDeleteTransaction" action="hide"/>
+		<run component="blackScreen" action="hide"/>
+
 	</event>
 
 	<event component="clients" on="tap-client-history">

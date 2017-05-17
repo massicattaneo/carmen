@@ -68,11 +68,12 @@ function boostrap(imports) {
 		};
 		emptyPage.createIn(document.getElementById('page'));
 
-		var popUpDelete = PopUp(cjs.Object.extend({ type: 'delete-client' }, config), document.body);
+		var popUpDeleteClient = PopUp(cjs.Object.extend({ type: 'delete-client' }, config), document.body);
+		var popUpDeleteTransaction = PopUp(cjs.Object.extend({ type: 'delete-transaction' }, config), document.body);
 
 		var staticData = { clientsData, transactionsData };
 		var sm = new StateMachine(useCases, staticData, {
-			header, blackScreen, clients, users, history, cash, settings, popUpDelete, emptyPage,
+			header, blackScreen, clients, users, history, cash, settings, popUpDeleteClient, emptyPage, popUpDeleteTransaction,
 			db: {
 				updateClients: function (info, id) {
 					db.update('clients/' + id, info);
@@ -80,7 +81,10 @@ function boostrap(imports) {
 				deleteClients: function (id) {
 					db.remove('clients/' + id);
 				},
-				saveTransaction: function (a, b, id, data) {
+				deleteTransactions: function (id) {
+					db.remove('transactions/' + id);
+				},
+				saveTransaction: function (id, data) {
 					config.db.add('transactions', {
 						description: data.description,
 						id: id,
@@ -93,7 +97,12 @@ function boostrap(imports) {
 			utils: {
 				init: function () {
 					db.onRemove('clients', function (data) {
+						delete clientsData[data.key];
 						clients.remove(data.key)
+					});
+					db.onRemove('transactions', function (data) {
+						delete clientsData[transactionsData.key];
+						cash.remove(data.key)
 					});
 				},
 				loadClients: function () {
@@ -105,7 +114,7 @@ function boostrap(imports) {
 				loadTransactions: function () {
 					return db.onChange('transactions/', function (data) {
 						Object.assign(transactionsData, data);
-						cash.update(transactionsData);
+						cash.update(data);
 					})
 				},
 				hideAllPages: function (pageName, data) {
@@ -133,11 +142,12 @@ function boostrap(imports) {
 					});
 					return d;
 				},
-				addTransactionInfo: function () {
+				addTransactionInfo: function (clientId) {
 					emptyPage.get('container').setValue('');
 					emptyPage.get('title').setValue('INSERT TRANSACTION INFORMATION');
 					var transaction = cjs.Component.create('transaction-add', {});
 					transaction.createIn(emptyPage.get('container'));
+					transaction.addClientData(clientsData[clientId]);
 					var d = cjs.Need();
 					transaction.get().addListener('transaction-add', function (e) {
 						transaction.remove();

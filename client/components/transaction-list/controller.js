@@ -39,6 +39,10 @@ function controller() {
             cjs.Component.parse('currency', total, obj.get('total'));
         };
 
+		obj.removeItem = function (id) {
+			obj.get('list').removeItem(id);
+		};
+
         return obj;
     }
 

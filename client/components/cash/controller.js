@@ -24,6 +24,10 @@ function cash(imports) {
 			obj.get().addStyle({display: 'block'});
 		};
 
+		obj.remove = function (id) {
+			obj.get('transaction-list').removeItem(id);
+		};
+
         return obj;
 
     }

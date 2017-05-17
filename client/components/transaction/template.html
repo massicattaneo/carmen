@@ -4,4 +4,9 @@
 	<span class="name" data-server="transactions/{{id}}/name"></span>
     <span class="description" data-server="transactions/{{id}}/description"></span>
     <span class="value" data-parser="currency" data-server="transactions/{{id}}/value"></span>
+	<cjs:button>
+		<type>transaction-delete</type>
+		<id>{{id}}</id>
+		<class>fa-trash</class>
+	</cjs:button>
 </div>
