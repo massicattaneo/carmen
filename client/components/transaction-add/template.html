@@ -6,23 +6,20 @@
 	Email: <span data-item="email"></span> -
 	Tel: <span data-item="tel"></span>
 	<hr/>
-	<label>NAME:</label>
-	<input data-item="payer-name" type="text" placeholder="name"/><br/>
-    <label>VALUE:</label>
-    <input data-item="value" type="text" placeholder="value"/><br/>
-    <label>TYPE:</label>
-    <select data-item="type">
-        <option>CASH</option>
-        <option>CREDIT CARD</option>
-        <option>GIFT CARD</option>
-    </select><br/>
-    <label>DESCRIPTION:</label>
-    <textarea data-item="description" placeholder="DESCRIPTION" rows="6"></textarea>
-    <br/>
-    <cjs:button data-on="tap-transaction-save:saveTransaction">
-        <text>SAVE</text>
-        <type>transaction-save</type>
-        <id>{{id}}</id>
-        <class>fa-save</class>
-    </cjs:button>
+	<form data-on="submit:saveTransaction">
+		<label>NAME:</label>
+		<input data-item="payer-name" type="text" placeholder="name"/><br/>
+		<label>VALUE:</label>
+		<input data-item="value" type="number" placeholder="value" required autofocus /><br/>
+		<label>TYPE:</label>
+		<select data-item="type">
+			<option>CASH</option>
+			<option>CREDIT CARD</option>
+			<option>GIFT CARD</option>
+		</select><br/>
+		<label>DESCRIPTION:</label>
+		<textarea data-item="description" placeholder="DESCRIPTION" rows="6"></textarea>
+		<br/>
+		<input type="submit" class="save" value="SAVE" />
+	</form>
 </div>
