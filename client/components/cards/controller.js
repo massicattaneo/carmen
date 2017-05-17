@@ -32,6 +32,19 @@ function controller(imports) {
             c.get('list').populate('card', keys);
         };
 
+		c.enterMode = function (mode) {
+			c.get().removeStyle('select');
+			switch (mode) {
+				case 'select':
+					c.get('title').setValue('Seleciona una tarjeta');
+					c.get().addStyle(mode);
+					break;
+				default:
+					c.get('title').setValue(config.cardsText);
+					break;
+			}
+		};
+
         return c;
 
     }

@@ -15,3 +15,12 @@
 .& .sub-menu button {
 	height: 33px;
 }
+.& .select {
+	display: none;
+}
+.select .& .select {
+	display: inline-block;
+}
+.select .& .no-select {
+	display: none;
+}

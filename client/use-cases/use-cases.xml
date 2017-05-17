@@ -45,6 +45,14 @@
 		<run component="cash" action="show"/>
 	</event>
 
+	<event component="cash" on="tap-transaction-gift">
+		<run component="utils" action="hideAllPages"/>
+		<run component="cards" action="show"/>
+		<reset-args/>
+		<read value="select"/>
+		<run component="cards" action="enterMode"/>
+	</event>
+
 	<event component="cash" on="tap-transaction-buy">
 		<run component="utils" action="hideAllPages"/>
 		<run component="transactionAdd" action="show"/>
@@ -112,6 +120,7 @@
 		<if test="{0}==='cards'">
 			<run component="utils" action="hideAllPages"/>
 			<run component="cards" action="show"/>
+			<run component="cards" action="enterMode"/>
 		</if>
 		<if test="{0}==='clients'">
 			<run component="utils" action="hideAllPages"/>
