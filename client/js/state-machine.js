@@ -26,14 +26,14 @@ function stateMachine(imports) {
 		return array;
 	}
 
-	return function (params, db, components) {
+	return function (xmlString, staticData, components) {
 
 		var obj = {};
 		var map = new cjs.Collection();
 		var listeners = [];
 		var args = [];
 		var parser = new DOMParser();
-		var a = parser.parseFromString(params, "text/xml").firstChild;
+		var a = parser.parseFromString(xmlString, "text/xml").firstChild;
 		var array = Object.keys(a.children).map(function (k, i) {
 			return a.children[k]
 		});
@@ -114,9 +114,9 @@ function stateMachine(imports) {
 							if (a.path) {
 								var p = a.path.split('/');
 								if (p.length === 1) {
-									args.push(db[p[0]]);
+									args.push(staticData[p[0]]);
 								} else {
-									var result = Object.assign({}, db);
+									var result = Object.assign({}, staticData);
 									p.forEach((prop) => {
 										if (/{\d}/.test(prop)) {
 											result = result[args[prop.match(/{(\d)}/)[1]]];
@@ -136,7 +136,7 @@ function stateMachine(imports) {
 						stack.run(function (next) {
 							var p = a.path.split('/');
 							var last = p.splice(p.length - 1, 1)[0];
-							var result = Object.assign({}, db);
+							var result = Object.assign({}, staticData);
 							p.forEach((prop) => {
 								result = result[prop]
 							});
@@ -152,10 +152,10 @@ function stateMachine(imports) {
 								if (/{\d}/.test(value)) {
 									value = args[value.match(/{(\d)}/)[1]];
 								}
-								db[p[0]] = isNaN(value) ? value : parseFloat(value);
+								staticData[p[0]] = isNaN(value) ? value : parseFloat(value);
 							} else {
 								var last = p.splice(p.length - 1, 1)[0];
-								var result = Object.assign({}, db);
+								var result = Object.assign({}, staticData);
 								p.forEach((prop) => {
 									result = result[prop]
 								});
@@ -173,7 +173,7 @@ function stateMachine(imports) {
 							if (a.path) {
 								var p = a.path.split('/');
 								var last = p.splice(p.length - 1, 1)[0];
-								var result = Object.assign({}, db);
+								var result = Object.assign({}, staticData);
 								p.forEach((prop) => {
 									result = result[prop]
 								});

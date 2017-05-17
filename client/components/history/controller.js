@@ -28,7 +28,7 @@ function controller(imports) {
             obj.get('email').setValue(clientData.email);
             obj.get('tel').setValue(clientData.tel);
             return obj.get('transaction-list').populate(data, function (k, data) {
-                return data[k].id.toString() === id.toString();
+                return data[k].clientId && data[k].clientId.toString() === id.toString();
             });
         };
 

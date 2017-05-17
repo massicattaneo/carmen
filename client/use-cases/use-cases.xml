@@ -6,7 +6,7 @@
         <run component="utils" action="loadTransactions"/>
         <run component="utils" action="loadCards"/>
 		<run component="utils" action="hideAllPages"/>
-		<run component="cards" action="show"/>
+		<run component="clients" action="show"/>
         <run component="blackScreen" action="removeCover"/>
     </uc>
 
