@@ -42,6 +42,19 @@ function controller(imports) {
 					type: 'close',
 					class: 'popup'
 				}]
+			},
+			'delete-card': {
+				title: 'BORRAR?',
+				text: '¿Estás seguro de que quieres borrar esta tarjeta?',
+				buttons: [{
+					text: 'SI',
+					type: 'delete',
+					class: 'popup'
+				},{
+					text: 'NO',
+					type: 'close',
+					class: 'popup'
+				}]
 			}
 
         };

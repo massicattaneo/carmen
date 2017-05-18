@@ -32,6 +32,10 @@
   color: #e26b6b;
 }
 
+.&.bonus .value.negative {
+	color: #6b6b6b;
+}
+
 .& button {
 	width: 40px;
 }

@@ -14,6 +14,7 @@ function controller() {
     return function (config) {
         var obj = {};
 		var transactionMultiplier = 1;
+
 		obj.addClientData = function (clientId, clientsData) {
 			transactionMultiplier = 1;
 			var data = clientsData[clientId];
@@ -23,19 +24,33 @@ function controller() {
 			obj.get('email').setValue(data.email);
 			obj.get('tel').setValue(data.tel);
 			obj.get('payer-name').setValue(data.name + ' ' + data.surname);
+			obj.get('card-id').setAttribute('value', '');
+			obj.get('extra-info').setValue('');
+			obj.get().removeStyle('bonus-mode');
 		};
 
 		obj.genericBuy = function () {
 			transactionMultiplier = -1;
+			obj.get().removeStyle('bonus-mode');
 			obj.get('client-data').addStyle({display: 'none'});
 			obj.get('payer-name').setValue('');
+			obj.get('card-id').setAttribute('value', '');
+			obj.get('extra-info').setValue('');
+		};
+
+		obj.bonusMode = function (cardId, cardTotal) {
+			obj.get('card-id').setAttribute('value', cardId);
+			obj.get('extra-info').setValue('Total residuo de la tarjeta: ' + cardTotal);
+			obj.get().addStyle('bonus-mode');
 		};
 
 		obj.saveTransaction = function (e) {
 			e.preventDefault();
-			var data = {
+			var cardId = obj.get('card-id').getValue();
+            var data = {
 				value: transactionMultiplier * parseFloat(obj.get('value').getValue()),
-				type: obj.get('type').getValue(),
+				type: cardId === '' ? obj.get('type').getValue() : 'BONUS',
+				cardId: cardId,
 				name: obj.get('payer-name').getValue(),
 				description: obj.get('description').getValue()
 			};

@@ -6,7 +6,7 @@
         <run component="utils" action="loadTransactions"/>
         <run component="utils" action="loadCards"/>
 		<run component="utils" action="hideAllPages"/>
-		<run component="cards" action="show"/>
+		<run component="cash" action="show"/>
         <run component="blackScreen" action="removeCover"/>
     </uc>
 
@@ -45,12 +45,26 @@
 		<run component="cash" action="show"/>
 	</event>
 
-	<event component="cash" on="tap-transaction-gift">
-		<run component="utils" action="hideAllPages"/>
-		<run component="cards" action="show"/>
+	<event component="nfcReader" on="card-detect">
+		<set path="activeCard" value="{0}"/>
+		<run component="utils" action="getClientFromCard"/>
+		<set path="activeClient" value="{1}"/>
 		<reset-args/>
-		<read value="select"/>
-		<run component="cards" action="enterMode"/>
+		<run component="utils" action="hideAllPages"/>
+		<read path="activeClient"/>
+		<read path="clientsData"/>
+		<run component="transactionAdd" action="addClientData"/>
+		<reset-args/>
+		<read path="activeCard"/>
+		<run component="utils" action="calculateCardTotal"/>
+		<run component="transactionAdd" action="bonusMode"/>
+		<reset-args/>
+		<read path="activeClient"/>
+		<run component="transactionAdd" action="show"/>
+		<wait component="transactionAdd" event="transaction-add"/>
+		<run component="utils" action="hideAllPages"/>
+		<run component="db" action="saveTransaction"/>
+		<run component="cash" action="show"/>
 	</event>
 
 	<event component="cash" on="tap-transaction-buy">
@@ -139,6 +153,20 @@
 
 	<event component="cards" on="tap-card-write">
 		<run component="utils" action="writeCard"/>
+	</event>
+
+	<event component="cards" on="tap-card-delete">
+		<set path="activeCard" value="{0}"/>
+		<reset-args/>
+		<run component="blackScreen" action="show"/>
+		<run component="popUpDeleteCard" action="show"/>
+		<if test="{0} === 'delete'">
+			<reset-args/>
+			<read path="activeCard" />
+			<run component="db" action="deleteCard"/>
+		</if>
+		<run component="popUpDeleteCard" action="hide"/>
+		<run component="blackScreen" action="hide"/>
 	</event>
 
 </use-cases>

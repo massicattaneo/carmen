@@ -8,3 +8,4 @@
 .& input, .& select, .& textarea {width: 500px;height: 25px;padding: 2px;margin: 5px;}
 .& textarea {height: auto; vertical-align: top;}
 .& input.save {margin-left: 162px;height: 38px;}
+.&.bonus-mode .hide-on-bonus-mode {display: none;}

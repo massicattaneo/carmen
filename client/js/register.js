@@ -62,6 +62,12 @@ function register(imports) {
             data < 0 && item.addStyle('negative');
         });
 
+		cjs.Component.registerParserFunction('transactionType', function (data, item) {
+            if (data === 'BONUS') {
+				item.get().parentElement.className += ' bonus'
+			}
+        });
+
         cjs.Component.registerParserFunction('short-date', function (data, item) {
             var date = new cjs.Date(data);
             item.setValue(date.format('dd-mm-yyyy'));

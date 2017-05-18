@@ -8,18 +8,20 @@
 		Email: <span data-item="email"></span> -
 		Tel: <span data-item="tel"></span>
 		<hr/>
+		<span data-item="extra-info"></span>
 	</div>
 	<form data-on="submit:saveTransaction">
-		<label>NAME:</label>
-		<input data-item="payer-name" type="text" required placeholder="name"/><br/>
+		<label class="hide-on-bonus-mode">NAME:</label>
+		<input class="hide-on-bonus-mode" data-item="payer-name" type="text" required placeholder="name"/>
+		<br class="hide-on-bonus-mode"/>
 		<label>VALUE:</label>
-		<input data-item="value" type="number" placeholder="value" required autofocus /><br/>
-		<label>TYPE:</label>
-		<select data-item="type">
+		<input data-item="value" type="number" placeholder="value" required autofocus /><br />
+		<input data-item="card-id" type="hidden" />
+		<label class="hide-on-bonus-mode">TYPE:</label>
+		<select data-item="type" class="hide-on-bonus-mode">
 			<option>CASH</option>
 			<option>CREDIT CARD</option>
-			<option>GIFT CARD</option>
-		</select><br/>
+		</select><br class="hide-on-bonus-mode"/>
 		<label>DESCRIPTION:</label>
 		<textarea data-item="description" placeholder="DESCRIPTION" rows="6"></textarea>
 		<br/>

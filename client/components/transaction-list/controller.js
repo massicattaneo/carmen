@@ -25,7 +25,9 @@ function controller() {
             });
             var total = 0;
             keys.forEach(function (k) {
-                total += d[k].value;
+				if (!(d[k].type === 'BONUS' && d[k].value<0)) {
+					total += d[k].value;
+				}
             });
             list.populate('transaction', keys);
             cjs.Component.parse('currency', total, obj.get('total'));

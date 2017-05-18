@@ -69,12 +69,15 @@ function boostrap(imports) {
 
 		var popUpDeleteClient = PopUp(cjs.Object.extend({ type: 'delete-client' }, config), document.body);
 		var popUpDeleteTransaction = PopUp(cjs.Object.extend({ type: 'delete-transaction' }, config), document.body);
+		var popUpDeleteCard = PopUp(cjs.Object.extend({ type: 'delete-card' }, config), document.body);
 
 		var staticData = { clientsData, transactionsData, cardsData };
+		var nfcReader = cjs.Component({template: '<div/>',style: '.& {display: none}'});
+
 		var sm = new StateMachine(useCases, staticData, {
 			header, blackScreen, clients, users, history, cash,
-			settings, popUpDeleteClient, popUpDeleteTransaction,
-			transactionAdd, cards,
+			settings, popUpDeleteClient, popUpDeleteTransaction,popUpDeleteCard,
+			transactionAdd, cards, nfcReader,
 			db: {
 				updateClients: function (info, id) {
 					db.update('clients/' + id, info);
@@ -89,6 +92,7 @@ function boostrap(imports) {
 					db.add('transactions', {
 						description: data.description,
 						clientId: id,
+						cardId: data.cardId,
 						name: data.name,
 						value: data.value,
 						type: data.type
@@ -105,8 +109,11 @@ function boostrap(imports) {
 				saveCard: function (id) {
 					db.add('cards', {
 						clientId: id,
-						name: clientsData[id].name + ' ' + clientsData[id].surname
+						name: clientsData[id].name + ' ' + clientsData[id].surname + ' - tel: ' + clientsData[id].tel
 					});
+				},
+				deleteCard: function (id) {
+					db.remove('cards/' + id);
 				}
 			},
 			utils: {
@@ -149,12 +156,28 @@ function boostrap(imports) {
 				},
 				writeCard: function (cardId) {
 					webSocket.send(JSON.stringify({cardId: cardId}));
+				},
+				getClientFromCard: function (cardId) {
+					return cjs.Need().resolve(cardsData[cardId].clientId)
+				},
+				calculateCardTotal: function (cardId) {
+					var filter = Object.keys(transactionsData).map(function (key) {
+						return transactionsData[key]
+					}).filter(function (t) {
+                        return t.cardId === cardId;
+                    }).map(function (t) {
+						return t.value
+					});
+					if (!filter.length) return cjs.Need().resolve(0);
+                    return cjs.Need().resolve(filter.reduce(function (a, b) {
+						return a+b;
+					}))
 				}
 			}
 		});
 
 		webSocket.onmessage = function(event){
-			console.log(event.data);
+			nfcReader.get().fire('card-detect', event.data);
 		};
 
 		sm.enter('start-app');
