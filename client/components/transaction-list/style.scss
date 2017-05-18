@@ -2,10 +2,14 @@
   color: $mainTextColor;
   position: relative;
 }
-.& .total span {display: inline-block;}
+.& .total span {display: inline-block; color: #6b6b6b}
 .& .total .label {
   width: 798px;
   text-align: right;
+}
+.& .total .strong {
+	color: white;
+	font-weight: bold;
 }
 .& .total .value {
   width: 120px;

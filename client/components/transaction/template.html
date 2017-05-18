@@ -1,9 +1,9 @@
 <div class="visible">
     <span class="created" data-parser="short-date" data-server="transactions/{{id}}/created"></span>
-    <span class="type" data-parser="transactionType" data-server="transactions/{{id}}/type"></span>
-	<span class="name" data-server="transactions/{{id}}/name"></span>
-    <span class="description" data-server="transactions/{{id}}/description"></span>
-    <span class="value" data-parser="currency" data-server="transactions/{{id}}/value"></span>
+    <span data-item="type" class="type" data-parser="transactionType" data-server="transactions/{{id}}/type"></span>
+	<span data-item="name" class="name" data-server="transactions/{{id}}/name"></span>
+    <span data-item="description" class="description" data-server="transactions/{{id}}/description"></span>
+    <span data-item="value" class="value" data-parser="currency" data-server="transactions/{{id}}/value"></span>
 	<cjs:button>
 		<type>transaction-delete</type>
 		<id>{{id}}</id>

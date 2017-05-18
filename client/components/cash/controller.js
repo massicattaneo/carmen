@@ -28,6 +28,20 @@ function cash(imports) {
 			obj.get('transaction-list').removeItem(id);
 		};
 
+		obj.getList = function () {
+			var list = obj.get('transaction-list').get('list');
+			var array = [];
+			list.each(function (k,i,o) {
+				array.push({
+					type: o.get('type').getValue(),
+					name: o.get('name').getValue(),
+					value: parseFloat(o.get('value').getValue().replace('€','').replace(',', '|').replace('.', ',').replace('|', '.')),
+					description: o.get('description').getValue()
+				})
+			});
+            return cjs.Need().resolve(array);
+		};
+
         return obj;
 
     }

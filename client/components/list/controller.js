@@ -28,6 +28,10 @@ function controller() {
             items.clear();
         };
 
+		obj.each = function (callback) {
+			items.each(callback);
+		};
+
         obj.addItem = function (componentName, id, count) {
             var c = cjs.Component.create(componentName, {config: {id: id, count: count}});
             items.add(c, id);

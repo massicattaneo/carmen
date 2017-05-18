@@ -6,7 +6,7 @@
         <run component="utils" action="loadTransactions"/>
         <run component="utils" action="loadCards"/>
 		<run component="utils" action="hideAllPages"/>
-		<run component="cash" action="show"/>
+		<run component="clients" action="show"/>
         <run component="blackScreen" action="removeCover"/>
     </uc>
 
@@ -169,4 +169,9 @@
 		<run component="blackScreen" action="hide"/>
 	</event>
 
+	<event component="cash" on="tap-print">
+		<reset-args/>
+		<run component="cash" action="getList"/>
+		<run component="utils" action="print"/>
+	</event>
 </use-cases>

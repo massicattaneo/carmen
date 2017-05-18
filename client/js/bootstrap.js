@@ -123,7 +123,11 @@ function boostrap(imports) {
 						clients.remove(data.key)
 					});
 					db.onRemove('transactions', function (data) {
-						delete clientsData[transactionsData.key];
+						delete transactionsData[data.key];
+						cash.remove(data.key)
+					});
+					db.onRemove('cards', function (data) {
+						delete cardsData[data.key];
 						cash.remove(data.key)
 					});
 				},
@@ -156,6 +160,7 @@ function boostrap(imports) {
 				},
 				writeCard: function (cardId) {
 					webSocket.send(JSON.stringify({cardId: cardId}));
+					nfcReader.get().fire('card-detect', cardId);
 				},
 				getClientFromCard: function (cardId) {
 					return cjs.Need().resolve(cardsData[cardId].clientId)
@@ -172,6 +177,45 @@ function boostrap(imports) {
                     return cjs.Need().resolve(filter.reduce(function (a, b) {
 						return a+b;
 					}))
+				},
+				print: function (list) {
+					var doc = new jsPDF('p', 'mm', [297, 210]);
+					var linesHeight = 6;
+					var x = 0;
+					var y = 0;
+					var numOFLinesPErPAge = 30;
+
+					var total = 0;
+
+					list.forEach(function (b, i) {
+						if (!(b.type === 'BONUS' && b.value<0)) {
+							total += b.value;
+						}
+						if (i % numOFLinesPErPAge === 0) {
+							y = 20;
+							i!==0 && doc.addPage();
+						}
+						y += linesHeight;
+						doc.setFontSize(12);
+						// doc.setFontType("italic");
+						doc.text(b.type, x+7, y);
+						doc.text(b.name, x+40, y);
+						doc.text(b.description, x+100, y);
+						doc.text(cjs.Component.parse('currency', b.value), x+170, y);
+
+						// doc.setFontType("bold");
+						// doc.setFontSize(20);
+						// doc.text('POSTO PRENOTATO', x+28, y+20);
+						// doc.setFontSize(12);
+						// doc.setFontType("normal");
+						// doc.text('Sig.:' + b.name, x+28, y+29);
+					});
+					doc.setFontType("bold");
+					doc.text('TOTAL', x+100, y+10);
+					doc.text(cjs.Component.parse('currency', total), x+170, y+10);
+
+
+					doc.save('report.pdf');
 				}
 			}
 		});

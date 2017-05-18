@@ -24,12 +24,17 @@ function controller() {
                 return filter(k, d);
             });
             var total = 0;
+            var cardTotal = 0;
             keys.forEach(function (k) {
 				if (!(d[k].type === 'BONUS' && d[k].value<0)) {
 					total += d[k].value;
 				}
+				if (d[k].type === 'BONUS') {
+					cardTotal += d[k].value;
+				}
             });
             list.populate('transaction', keys);
+            cjs.Component.parse('currency', cardTotal, obj.get('card-total'));
             cjs.Component.parse('currency', total, obj.get('total'));
         };
 

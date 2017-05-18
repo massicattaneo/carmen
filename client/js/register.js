@@ -58,8 +58,11 @@ function register(imports) {
 
         cjs.Component.registerParserFunction('currency', function (data, item) {
             var currency = new cjs.Currency(data);
-            item.setValue(currency.format('s i,ff'));
-            data < 0 && item.addStyle('negative');
+			if (item) {
+				item.setValue(currency.format('s i,ff'));
+				data < 0 && item.addStyle('negative');
+			}
+			return currency.format('s i,ff');
         });
 
 		cjs.Component.registerParserFunction('transactionType', function (data, item) {
