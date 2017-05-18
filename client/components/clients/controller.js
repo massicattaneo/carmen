@@ -68,7 +68,7 @@ function controller(imports) {
 					c.get().addStyle(mode);
 					break;
 				default:
-					c.get('title').setValue('Clienti');
+					c.get('title').setValue(config.clientsText);
 					break;
 			}
 		};
