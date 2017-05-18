@@ -30,8 +30,17 @@
     <div id="page"></div>
 </div>
 <script>
+	var webSocket = new WebSocket('ws://127.0.0.1:8081');
+	var webSocketPromise = cjs.Need();
+	webSocket.onopen = function(){
+		webSocketPromise.resolve();
+	};
 
-    cjs.navigator.import('../server/data.json').done(function (json) {
+
+    cjs.Need([
+    	cjs.navigator.import('../server/data.json'),
+    	webSocketPromise
+	]).done(function (json) {
         //var db = cjs.Db.staticJSONAdapter(JSON);
         var db = cjs.Db.firebaseAdapter();
         db.init({
@@ -47,21 +56,12 @@
                     cjs.navigator
                             .import('js/bootstrap.js')
                             .done(function (bootstrap) {
-                                bootstrap(db);
+                                bootstrap(db, webSocket);
+
                             });
                 }).fail(function () {
-            alert('Connection error!')
+            alert('Falta la conexion a Internet!')
         });
-
-		var webSocket = new WebSocket('ws://127.0.0.1:8081');
-		webSocket.onmessage = function(event){
-			console.log(event.data);
-		};
-		var data = JSON.stringify({type: 'add'});
-		webSocket.onopen = function(){
-			console.log(data)
-			webSocket.send(data)
-		};
 
 	});
 

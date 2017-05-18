@@ -26,7 +26,7 @@ function boostrap(imports) {
 	var useCases = imports('use-cases/use-cases.xml');
 	var StateMachine = imports('js/state-machine.js');
 
-	return function (db) {
+	return function (db, webSocket) {
 		var clientsData = {};
 		var transactionsData = {};
 		var cardsData = {};
@@ -146,10 +146,19 @@ function boostrap(imports) {
 					users.get().addStyle({ display: 'none' });
 					history.get().addStyle({ display: 'none' });
 					settings.get().addStyle({ display: 'none' });
+				},
+				writeCard: function (cardId) {
+					webSocket.send(JSON.stringify({cardId: cardId}));
 				}
 			}
 		});
+
+		webSocket.onmessage = function(event){
+			console.log(event.data);
+		};
+
 		sm.enter('start-app');
 
 	};
+
 }

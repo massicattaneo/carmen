@@ -8,16 +8,18 @@
  //       Copyright (c) 2017.
  //////////////////////////////////////////////////////////////////////////////
  */
-export default class ServerApp {
+import EventEmitter from 'events';
+import http  from 'http';
+import fs from 'fs';
+import path from 'path';
+
+export default class ServerApp extends EventEmitter {
 
 	constructor() {
-		var http = require('http');
-		var fs = require('fs');
-		var path = require('path');
+		super();
+		const server = http.createServer((request, response) => {
 
-		var server = http.createServer(function (request, response) {
-
-			var filePath;
+			let filePath;
 			if (request.url.indexOf('bower_components/') !== -1) {
 				filePath = '.' + request.url;
 			} else if (request.url.indexOf('server/') !== -1) {
@@ -25,9 +27,9 @@ export default class ServerApp {
 			} else {
 				filePath = './client' + request.url;
 			}
-			var extname = String(path.extname(filePath)).toLowerCase();
-			var contentType = 'text/html';
-			var mimeTypes = {
+			const extname = String(path.extname(filePath)).toLowerCase();
+			let contentType = 'text/html';
+			const mimeTypes = {
 				'.html': 'text/html',
 				'.js': 'text/javascript',
 				'.css': 'text/css',
@@ -46,10 +48,10 @@ export default class ServerApp {
 
 			contentType = mimeTypes[extname] || 'application/octet-stream';
 
-			fs.readFile(filePath, function(error, content) {
+			fs.readFile(filePath, (error, content) =>{
 				if (error) {
 					if(error.code == 'ENOENT'){
-						fs.readFile('./404.html', function(error, content) {
+						fs.readFile('./404.html', (error, content) => {
 							response.writeHead(200, { 'Content-Type': contentType });
 							response.end(content, 'utf-8');
 						});
@@ -68,22 +70,25 @@ export default class ServerApp {
 
 		}).listen(8081);
 
-		var WebSocketServer = require('websocket').server;
+		const WebSocketServer = require('websocket').server;
 
-		var socket = new WebSocketServer({
+		const socket = new WebSocketServer({
 			httpServer: server
 		});
 
-		socket.on('request', function(request) {
-			var connection = request.accept(null, request.origin);
+		let connection;
 
-			connection.sendUTF('this is a websocket example');
+		socket.on('request', (request) => {
+			connection = request.accept(null, request.origin);
 
-			connection.on('message', function(message) {
-				console.log(JSON.parse(message.utf8Data).type);
+			//send message
+			//connection.sendUTF('this is a websocket example');
+
+			connection.on('message', (message) => {
+				this.emit('web-socket-message', JSON.parse(message.utf8Data));
 			});
 
-			connection.on('close', function(connection) {
+			connection.on('close', (connection) => {
 				console.log('connection closed');
 			});
 		});

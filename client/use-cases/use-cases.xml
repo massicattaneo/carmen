@@ -6,7 +6,7 @@
         <run component="utils" action="loadTransactions"/>
         <run component="utils" action="loadCards"/>
 		<run component="utils" action="hideAllPages"/>
-		<run component="clients" action="show"/>
+		<run component="cards" action="show"/>
         <run component="blackScreen" action="removeCover"/>
     </uc>
 
@@ -136,5 +136,9 @@
 			<run component="settings" action="show"/>
 		</if>
     </event>
+
+	<event component="cards" on="tap-card-write">
+		<run component="utils" action="writeCard"/>
+	</event>
 
 </use-cases>

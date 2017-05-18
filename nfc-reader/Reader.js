@@ -560,8 +560,8 @@ class Reader extends EventEmitter {
 		}
 
 		this.logger.info('writing data to card', this.card);
-
 		if (data.length < blockSize || data.length % blockSize !== 0) {
+
 			throw new WriteError('invalid_data_length', 'Invalid data length. You can only update the entire data block(s).');
 		}
 
@@ -610,7 +610,6 @@ class Reader extends EventEmitter {
 		try {
 
 			response = await this.transmit(packet, 2);
-
 			this.logger.info('response received', response);
 
 
@@ -623,6 +622,7 @@ class Reader extends EventEmitter {
 		const statusCode = response.readUInt16BE(0);
 
 		if (statusCode !== 0x9000) {
+
 			throw new WriteError(OPERATION_FAILED, `Write operation failed: Status code: 0x${statusCode.toString(16)}`);
 		}
 
