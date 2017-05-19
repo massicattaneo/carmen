@@ -3,3 +3,26 @@
   text-align: left;
   color: $mainTextColor;
 }
+
+.& .bg span {
+	display: block;
+	float: left;
+	width: 60px;
+	height: 60px;
+	margin: 5px;
+	border: 3px solid white;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.& .bg span:nth-child(2) {background-image: url('images/bg/1.jpg')}
+.& .bg span:nth-child(3) {background-image: url('images/bg/2.jpg')}
+.& .bg span:nth-child(4) {background-image: url('images/bg/3.jpg')}
+.& .bg span:nth-child(5) {background-image: url('images/bg/4.jpg')}
+.& .bg span:nth-child(6) {background-image: url('images/bg/5.jpg')}
+.& .bg span:nth-child(7) {background-image: url('images/bg/6.jpg')}
+.& .bg span:nth-child(8) {background-image: url('images/bg/7.jpg')}
+.& .bg span:nth-child(9) {background-image: url('images/bg/8.jpg')}
+.& .bg span:nth-child(10) {background-image: url('images/bg/9.jpg')}
+.& .bg span:nth-child(11) {background-image: url('images/bg/10.jpg')}
+.& .bg span:last-child {background-image: url('images/bg/11.jpg')}
+

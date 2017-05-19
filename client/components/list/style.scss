@@ -11,3 +11,7 @@
 .& .client {
   margin: 6px 0;
 }
+.& .scrollable {
+	overflow-y: scroll;
+	max-height: 450px;
+}

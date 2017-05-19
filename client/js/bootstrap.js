@@ -65,7 +65,8 @@ function boostrap(imports) {
 
 		var blackScreen = BlackScreen(config);
 		blackScreen.createIn(document.body);
-		document.body.className = '';
+
+		settings.init();
 
 		var popUpDeleteClient = PopUp(cjs.Object.extend({ type: 'delete-client' }, config), document.body);
 		var popUpDeleteTransaction = PopUp(cjs.Object.extend({ type: 'delete-transaction' }, config), document.body);

@@ -26,6 +26,18 @@ function controller(imports) {
 			c.get().addStyle({display: 'block'});
 		};
 
+		c.changeBg = function (e) {
+			var index = e.target.getAttribute('data-index');
+			localStorage.setItem('bg-image', index);
+			document.body.style.backgroundImage = 'url(images/bg/' + index + '.jpg)';
+		};
+
+		c.init = function () {
+			var index = localStorage.getItem('bg-image') || 1;
+			document.body.style.backgroundImage = 'url(images/bg/' + index + '.jpg)';
+			document.body.className = '';
+		};
+
         return c;
 
     }

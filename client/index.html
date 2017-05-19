@@ -17,12 +17,29 @@
         }
         body {
             font-family: Arial;
-            background: url("images/background.jpg");
+            background: url("images/bg/1.jpg");
         }
         body.loading {
             background: #000;
         }
-
+		::-webkit-scrollbar {
+			width: 12px;
+		}
+		::-webkit-scrollbar-track {
+			border-radius: 10px;
+			-webkit-box-shadow: inset 0 0 6px rgba(82, 174, 27, 0.5);
+		}
+		::-webkit-scrollbar-thumb {
+			border-radius: 10px;
+			background: rgba(82, 174, 27, 0.5);
+		}
+		fieldset {
+			background-color: rgba(82, 174, 27, 0.1);
+			border-radius: 20px;
+		}
+		fieldset legend {
+			display: none;
+		}
     </style>
 </head>
 <body class="loading">

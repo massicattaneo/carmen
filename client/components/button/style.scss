@@ -1,19 +1,21 @@
 .& {
-  display: inline-block;
+	display: inline-block;
 }
+
 .& button {
-  width: auto;
-  height: 60px;
-  display: inline-block;
-  border-radius: 60px;
-  margin: 0 5px;
-  padding: 0 10px;
-  font-size: 20px;
-  color: $secondaryTextColor;
-  font-family: Arial;
+	width: auto;
+	height: 60px;
+	display: inline-block;
+	border-radius: 10px;
+	margin: 0 5px;
+	padding: 0 10px;
+	font-size: 20px;
+	color: $secondaryTextColor;
+	font-family: Arial;
+	background-color: white;
 }
 
 .& button:before {
-  font-family: FontAwesome;
-  padding-right: 10px;
+	font-family: FontAwesome;
+	padding-right: 10px;
 }
