@@ -214,8 +214,7 @@ function boostrap(imports) {
 					doc.text('TOTAL', x+100, y+10);
 					doc.text(cjs.Component.parse('currency', total), x+170, y+10);
 
-
-					doc.save('report.pdf');
+					doc.output('dataurlnewwindow', {});
 				}
 			}
 		});
