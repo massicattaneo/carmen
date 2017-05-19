@@ -118,6 +118,20 @@
 
 	</event>
 
+	<event component="history" on="tap-transaction-delete">
+		<set path="activeClient" value="{0}"/>
+		<reset-args/>
+		<run component="blackScreen" action="show"/>
+		<run component="popUpDeleteTransaction" action="show"/>
+		<if test="{0} === 'delete'">
+			<reset-args/>
+			<read path="activeClient" />
+			<run component="db" action="deleteTransactions"/>
+		</if>
+		<run component="popUpDeleteTransaction" action="hide"/>
+		<run component="blackScreen" action="hide"/>
+	</event>
+
 	<event component="clients" on="tap-client-history">
 		<read path="clientsData/{0}"/>
 		<run component="utils" action="hideAllPages"/>

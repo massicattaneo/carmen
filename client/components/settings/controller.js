@@ -27,16 +27,33 @@ function controller(imports) {
 		};
 
 		c.changeBg = function (e) {
-			var index = e.target.getAttribute('data-index');
-			localStorage.setItem('bg-image', index);
-			document.body.style.backgroundImage = 'url(images/bg/' + index + '.jpg)';
+			setBg(e.target.getAttribute('data-index'));
 		};
 
-		c.init = function () {
-			var index = localStorage.getItem('bg-image') || 1;
-			document.body.style.backgroundImage = 'url(images/bg/' + index + '.jpg)';
+		c.changeAudio = function (e) {
+			setAudio(e.target.checked)
+		};
+
+		c.initSettings = function () {
+			setBg(localStorage.getItem('bg-image') || 1);
+			setAudio(localStorage.getItem('audio-on') === 'true');
 			document.body.className = '';
 		};
+
+		function setBg(bgIndex) {
+			localStorage.setItem('bg-image', bgIndex);
+			document.body.style.backgroundImage = 'url(images/bg/' + bgIndex + '.jpg)';
+		}
+
+		function setAudio(audioOn) {
+			localStorage.setItem('audio-on', audioOn.toString());
+			c.get('switch').get('checkbox').get().checked = audioOn;
+			if (audioOn) {
+				config.audioPlayer.unmute()
+			} else {
+				config.audioPlayer.mute()
+			}
+		}
 
         return c;
 

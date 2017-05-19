@@ -32,6 +32,7 @@ function boostrap(imports) {
 		var cardsData = {};
 		var audio = cjs.Audio();
 		audio.init(audioConfig);
+		config.audioPlayer = audio;
 
 		config.db = db;
 		register(config);
@@ -66,7 +67,7 @@ function boostrap(imports) {
 		var blackScreen = BlackScreen(config);
 		blackScreen.createIn(document.body);
 
-		settings.init();
+		settings.initSettings();
 
 		var popUpDeleteClient = PopUp(cjs.Object.extend({ type: 'delete-client' }, config), document.body);
 		var popUpDeleteTransaction = PopUp(cjs.Object.extend({ type: 'delete-transaction' }, config), document.body);

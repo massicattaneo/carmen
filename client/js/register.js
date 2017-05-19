@@ -46,6 +46,10 @@ function register(imports) {
 	var cardTemplate = imports('components/card/template.html');
 	var cardStyle = imports('components/card/style.scss');
 
+	var switchController = imports('components/switch/controller.js');
+	var switchTemplate = imports('components/switch/template.html');
+	var switchStyle = imports('components/switch/style.scss');
+
     return function (config) {
 
         cjs.Component.registerParserFunction('mailto', function (data, item) {
@@ -165,6 +169,15 @@ function register(imports) {
             style: cardStyle,
             config: config
         });
+
+		/** SWITCH **/
+		cjs.Component.register({
+			name: 'switch',
+			controller: switchController,
+			template: switchTemplate,
+			style: switchStyle,
+			config: config
+		});
 
     }
 

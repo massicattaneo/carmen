@@ -1,11 +1,5 @@
 {
-  "header": {
-    "url": "sounds/button.mp3"
-  },
-  "client-history": {
-    "url": "sounds/button.mp3"
-  },
-  "client-delete": {
+  "button": {
     "url": "sounds/button.mp3"
   },
   "filter-change": {

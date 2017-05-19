@@ -1,8 +1,8 @@
-<span>
+<div>
     <h1>{{settingsText}}</h1>
     <br/>
 	<fieldset class="bg">
-		<legend style="display: block;">SELECIONA UNO SFONDO</legend>
+		<legend>SELECIONA UNO SFONDO</legend>
 		<span data-index="1" data-on="click:changeBg"></span>
 		<span data-index="2" data-on="click:changeBg"></span>
 		<span data-index="3" data-on="click:changeBg"></span>
@@ -14,5 +14,9 @@
 		<span data-index="9" data-on="click:changeBg"></span>
 		<span data-index="10" data-on="click:changeBg"></span>
 		<span data-index="11" data-on="click:changeBg"></span>
+	</fieldset>
+	<fieldset class="audio">
+		<legend>AUDIO</legend>
+		<cjs:switch data-on="change:changeAudio" data-id="switch"></cjs:switch>
 	</fieldset>
 </div>

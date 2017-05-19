@@ -16,8 +16,6 @@ function controller() {
 
         obj.change = function () {
 			config.audioPlayer.play('button');
-			obj.get().fire('tap-'+config.type, config.id);
-
         };
 
         return obj;
