@@ -140,6 +140,15 @@
 		<run component="history" action="show"/>
 	</event>
 
+	<event component="cards" on="tap-card-history">
+		<run component="utils" action="hideAllPages"/>
+		<read path="cardsData"/>
+		<read path="clientsData"/>
+		<read path="transactionsData"/>
+		<run component="history" action="populateByCardId"/>
+		<run component="history" action="show"/>
+	</event>
+
     <event component="header" on="tap-header">
 		<if test="{0}==='cash'">
 			<run component="utils" action="hideAllPages"/>

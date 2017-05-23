@@ -32,6 +32,18 @@ function controller(imports) {
             });
         };
 
+        obj.populateByCardId = function (cardId, cardsData, clientsData, transactionData) {
+			var id = cardsData[cardId].clientId;
+			var clientData = clientsData[id];
+			obj.get('name').setValue(clientData.name);
+			obj.get('surname').setValue(clientData.surname);
+			obj.get('email').setValue(clientData.email);
+			obj.get('tel').setValue(clientData.tel);
+			return obj.get('transaction-list').populate(transactionData, function (k, data) {
+				return data[k].cardId && data[k].cardId.toString() === cardId.toString();
+			});
+		};
+
 		obj.show = function () {
 			obj.get().addStyle({display: 'block'});
 		};
