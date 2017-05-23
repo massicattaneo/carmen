@@ -188,4 +188,11 @@
 		<run component="cash" action="getList"/>
 		<run component="utils" action="print"/>
 	</event>
+
+	<event component="cash" on="tap-transaction-filter-hoy">
+		<run component="cash" action="filterToday"/>
+	</event>
+	<event component="cash" on="tap-transaction-filter-empty">
+		<run component="cash" action="filterEmpty"/>
+	</event>
 </use-cases>

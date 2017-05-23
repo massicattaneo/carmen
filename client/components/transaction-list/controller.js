@@ -40,11 +40,19 @@ function controller() {
 
         obj.refresh = function (e) {
             var total = 0;
-            e.data.keys.forEach(function (k) {
-                total += data[k].value;
+			var cardTotal = 0;
+			e.data.keys.forEach(function (k) {
+				if (!(data[k].type === 'BONUS' && data[k].value<0)) {
+					total += data[k].value;
+				}
+				if (data[k].type === 'BONUS') {
+					cardTotal += data[k].value;
+				}
             });
             cjs.Component.parse('currency', total, obj.get('total'));
-        };
+			cjs.Component.parse('currency', cardTotal, obj.get('card-total'));
+
+		};
 
 		obj.removeItem = function (id) {
 			obj.get('list').removeItem(id);

@@ -16,7 +16,7 @@ function cash(imports) {
 
         obj.update = function (transactions) {
             obj.get('transaction-list').populate(transactions, function (k, data) {
-                return cjs.Date.isToday(data[k].created);
+                return true;
             });
         };
 
@@ -32,14 +32,29 @@ function cash(imports) {
 			var list = obj.get('transaction-list').get('list');
 			var array = [];
 			list.each(function (k,i,o) {
-				array.push({
-					type: o.get('type').getValue(),
-					name: o.get('name').getValue(),
-					value: parseFloat(o.get('value').getValue().replace('€','').replace(',', '|').replace('.', ',').replace('|', '.')),
-					description: o.get('description').getValue()
-				})
+				if (o.get().hasStyle('visible')) {
+					array.push({
+						type: o.get('type').getValue(),
+						name: o.get('name').getValue(),
+						value: parseFloat(o.get('value').getValue().replace('€','').replace(',', '|').replace('.', ',').replace('|', '.')),
+						description: o.get('description').getValue()
+					})
+				}
 			});
             return cjs.Need().resolve(array);
+		};
+
+		obj.filterToday = function () {
+			var list = obj.get('transaction-list').get('list');
+			var a = new cjs.Date();
+			list.get('filter').setValue('filter: created='+ a.format('dd-mm-yyyy'));
+			list.filter()
+		};
+
+		obj.filterEmpty = function () {
+			var list = obj.get('transaction-list').get('list');
+			list.get('filter').setValue('');
+			list.filter()
 		};
 
         return obj;

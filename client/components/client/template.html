@@ -6,11 +6,11 @@
 			<class>fa-check</class>
 		</cjs:button>
 		<span class="name-surname">
-			<span data-server="clients/{{id}}/name"></span>
-			<span data-server="clients/{{id}}/surname"></span>
+			<span data-item="name" data-server="clients/{{id}}/name"></span>
+			<span data-item="surname" data-server="clients/{{id}}/surname"></span>
 		</span>
-		<span class="email"><a data-parser="mailto" data-server="clients/{{id}}/email"></a></span>
-		<span class="phone"><a data-parser="tel" data-server="clients/{{id}}/tel"></a></span>
+		<span data-item="email" class="email"><a data-parser="mailto" data-server="clients/{{id}}/email"></a></span>
+		<span data-item="phone" class="phone"><a data-parser="tel" data-server="clients/{{id}}/tel"></a></span>
 		<cjs:button class="no-select">
 			<type>client-edit</type>
 			<id>{{id}}</id>
