@@ -23,7 +23,6 @@ function register(imports) {
 
     var clientController = imports('components/client/controller.js');
     var clientTemplate = imports('components/client/template.html');
-    var clientSelectTemplate = imports('components/client/template-select.html');
     var clientStyle = imports('components/client/style.scss');
 
     var clientEditController = imports('components/client-edit/controller.js');
