@@ -4,6 +4,7 @@
 	<span data-item="name" class="name" data-server="transactions/{{id}}/name"></span>
     <span data-item="description" class="description" data-server="transactions/{{id}}/description"></span>
     <span data-item="value" class="value" data-parser="currency" data-server="transactions/{{id}}/value"></span>
+	<span style="display: none" data-item="user" data-server="transactions/{{id}}/user"></span>
 	<cjs:button>
 		<type>transaction-delete</type>
 		<id>{{id}}</id>

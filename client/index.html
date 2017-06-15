@@ -63,7 +63,8 @@
     	webSocketPromise
 	]).done(function (json) {
         //var db = cjs.Db.staticJSONAdapter(JSON);
-		var electron = require('electron');
+		const require = window.require || undefined;
+		var electron = (require !== undefined) ? require('electron') : {};
         var db = cjs.Db.firebaseAdapter();
         db.init({
             apiKey: "AIzaSyC8aJIXp0QBbzLsCethcKEdNmJrPEaNhoU",
@@ -73,7 +74,7 @@
             messagingSenderId: "927198449105"
         });
         cjs.Component.injectDatabaseProxy(db);
-		var password = electron.remote.getCurrentWindow().getPassword();
+		var password = require ? electron.remote.getCurrentWindow().getPassword() : 'inandout11';
 		db.login("info@inandoutbelleza.com", password)
                 .done(function () {
                     cjs.navigator

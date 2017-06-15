@@ -75,6 +75,7 @@ function controller(imports) {
 
         function addClient(p){
             return config.db.add('clients', {
+				user: config.user,
                 name: p.name,
                 surname: p.surname,
                 email: p.email,

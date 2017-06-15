@@ -1,6 +1,17 @@
 <div>
     <h1>{{settingsText}}</h1>
-    <br/>
+	<fieldset class="users">
+		<legend>SELECIONA UN USUARIO</legend>
+		<cjs:switch data-on="change:setUserSalitre" data-id="user-salitre"></cjs:switch>
+		CALLE SALITRE
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<cjs:switch data-on="change:setUserCompania" data-id="user-compania"></cjs:switch>
+		CALLE COMPANIA
+	</fieldset>
+	<fieldset class="audio">
+		<legend>AUDIO</legend>
+		<cjs:switch data-on="change:changeAudio" data-id="switch"></cjs:switch>
+	</fieldset>
 	<fieldset class="bg">
 		<legend>SELECIONA UNO SFONDO</legend>
 		<span data-index="1" data-on="click:changeBg"></span>
@@ -14,9 +25,5 @@
 		<span data-index="9" data-on="click:changeBg"></span>
 		<span data-index="10" data-on="click:changeBg"></span>
 		<span data-index="11" data-on="click:changeBg"></span>
-	</fieldset>
-	<fieldset class="audio">
-		<legend>AUDIO</legend>
-		<cjs:switch data-on="change:changeAudio" data-id="switch"></cjs:switch>
 	</fieldset>
 </div>

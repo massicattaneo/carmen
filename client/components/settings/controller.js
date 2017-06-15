@@ -34,10 +34,20 @@ function controller(imports) {
 			setAudio(e.target.checked)
 		};
 
+		c.setUserSalitre = function (e) {
+			setUser('salitre')
+		};
+
+		c.setUserCompania = function (e) {
+			setUser('compania')
+		};
+
 		c.initSettings = function () {
 			setBg(localStorage.getItem('bg-image') || 1);
 			setAudio(localStorage.getItem('audio-on') === 'true');
+			setUser(localStorage.getItem('user'));
 			document.body.className = '';
+			config.user = localStorage.getItem('user');
 		};
 
 		function setBg(bgIndex) {
@@ -53,6 +63,13 @@ function controller(imports) {
 			} else {
 				config.audioPlayer.mute()
 			}
+		}
+
+		function setUser(user) {
+			localStorage.setItem('user', user);
+			c.get('user-salitre').get('checkbox').get().checked = false;
+			c.get('user-compania').get('checkbox').get().checked = false;
+			if (user !== 'null') c.get('user-' + user).get('checkbox').get().checked = true;
 		}
 
         return c;

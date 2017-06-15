@@ -92,6 +92,7 @@ function boostrap(imports) {
 				},
 				saveTransaction: function (id, data) {
 					db.add('transactions', {
+						user: config.user,
 						description: data.description,
 						clientId: id,
 						cardId: data.cardId,
@@ -102,6 +103,7 @@ function boostrap(imports) {
 				},
 				saveBuy: function (data) {
 					db.add('transactions', {
+						user: config.user,
 						description: data.description,
 						name: data.name,
 						value: data.value,
@@ -111,6 +113,7 @@ function boostrap(imports) {
 				saveCard: function (id) {
 					db.add('cards', {
 						clientId: id,
+						user: config.user,
 						name: clientsData[id].name + ' ' + clientsData[id].surname + ' - tel: ' + clientsData[id].tel
 					});
 				},
