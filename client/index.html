@@ -63,6 +63,7 @@
     	webSocketPromise
 	]).done(function (json) {
         //var db = cjs.Db.staticJSONAdapter(JSON);
+		var electron = require('electron');
         var db = cjs.Db.firebaseAdapter();
         db.init({
             apiKey: "AIzaSyC8aJIXp0QBbzLsCethcKEdNmJrPEaNhoU",
@@ -72,7 +73,8 @@
             messagingSenderId: "927198449105"
         });
         cjs.Component.injectDatabaseProxy(db);
-        db.login("info@inandoutbelleza.com", "12345678")
+		var password = electron.remote.getCurrentWindow().getPassword();
+		db.login("info@inandoutbelleza.com", password)
                 .done(function () {
                     cjs.navigator
                             .import('js/bootstrap.js')

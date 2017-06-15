@@ -28,11 +28,18 @@ const url = require('url')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow;
+var params = {};
+process.argv.forEach(function (val) {
+	params[val.split('=')[0]] = val.split('=')[1];
+});
 
 function createWindow () {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({width: 1100, height: 900, icon: __dirname + '/client/images/icon.png'});
+	mainWindow.getPassword = function () {
+		return params.password;
+	};
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(url.format({
