@@ -49,7 +49,7 @@ function controller() {
 			var cardId = obj.get('card-id').getValue();
             var data = {
 				value: transactionMultiplier * parseFloat(obj.get('value').getValue()),
-				type: cardId === '' ? obj.get('type').getValue() : 'BONUS',
+				type: obj.get('type').getValue(),
 				cardId: cardId,
 				name: obj.get('payer-name').getValue(),
 				description: obj.get('description').getValue()

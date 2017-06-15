@@ -26,10 +26,10 @@ function controller() {
             var total = 0;
             var cardTotal = 0;
             keys.forEach(function (k) {
-				if (!(d[k].type === 'BONUS' && d[k].value<0)) {
+				if (!(d[k].cardId && d[k].value<0)) {
 					total += d[k].value;
 				}
-				if (d[k].type === 'BONUS') {
+				if (d[k].cardId) {
 					cardTotal += d[k].value;
 				}
             });
@@ -42,10 +42,10 @@ function controller() {
             var total = 0;
 			var cardTotal = 0;
 			e.data.keys.forEach(function (k) {
-				if (!(data[k].type === 'BONUS' && data[k].value<0)) {
+				if (!(data[k].cardId && data[k].value<0)) {
 					total += data[k].value;
 				}
-				if (data[k].type === 'BONUS') {
+				if (data[k].cardId) {
 					cardTotal += data[k].value;
 				}
             });

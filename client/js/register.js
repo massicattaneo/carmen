@@ -69,7 +69,7 @@ function register(imports) {
         });
 
 		cjs.Component.registerParserFunction('transactionType', function (data, item) {
-            if (data === 'BONUS') {
+            if (data) {
 				item.get().parentElement.className += ' bonus'
 			}
         });

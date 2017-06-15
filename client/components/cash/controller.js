@@ -36,6 +36,7 @@ function cash(imports) {
 					array.push({
 						type: o.get('type').getValue(),
 						name: o.get('name').getValue(),
+						cardId: o.get('cardId').getValue(),
 						value: parseFloat(o.get('value').getValue().replace('€','').replace(',', '|').replace('.', ',').replace('|', '.')),
 						description: o.get('description').getValue()
 					})
@@ -54,7 +55,7 @@ function cash(imports) {
 		obj.filterTodayBills = function () {
 			var list = obj.get('transaction-list').get('list');
 			var a = new cjs.Date();
-			list.get('filter').setValue('filter: created='+ a.format('dd-mm-yyyy') + ' & type=tarjeta credito');
+			list.get('filter').setValue('filter: created='+ a.format('dd-mm-yyyy') + ' & type=tarjeta credito  & value>0');
 			list.filter()
 		};
 

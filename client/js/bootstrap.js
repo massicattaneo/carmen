@@ -192,19 +192,20 @@ function boostrap(imports) {
 					var total = 0;
 
 					list.forEach(function (b, i) {
-						if (!(b.type === 'BONUS' && b.value < 0)) {
+						if (!(b.cardId && b.value < 0)) {
 							total += b.value;
+							if (i % numOFLinesPErPAge === 0) {
+								y = 20;
+								i !== 0 && doc.addPage();
+							}
+							y += linesHeight;
+							doc.setFontSize(12);
+							doc.text(b.type, x + 7, y);
+							doc.text(b.name, x + 40, y);
+							doc.text(b.description, x + 100, y);
+							doc.text(cjs.Component.parse('currency', b.value), x + 170, y);
 						}
-						if (i % numOFLinesPErPAge === 0) {
-							y = 20;
-							i !== 0 && doc.addPage();
-						}
-						y += linesHeight;
-						doc.setFontSize(12);
-						doc.text(b.type, x + 7, y);
-						doc.text(b.name, x + 40, y);
-						doc.text(b.description, x + 100, y);
-						doc.text(cjs.Component.parse('currency', b.value), x + 170, y);
+
 					});
 					doc.setFontType("bold");
 					doc.text('TOTAL', x + 100, y + 10);
