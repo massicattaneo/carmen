@@ -198,8 +198,17 @@
 		<run component="utils" action="print"/>
 	</event>
 
+	<event component="cash" on="tap-print-bills">
+		<reset-args/>
+		<run component="cash" action="getList"/>
+		<run component="utils" action="printBills"/>
+	</event>
+
 	<event component="cash" on="tap-transaction-filter-hoy">
 		<run component="cash" action="filterToday"/>
+	</event>
+	<event component="cash" on="tap-transaction-filter-hoy-bills">
+		<run component="cash" action="filterTodayBills"/>
 	</event>
 	<event component="cash" on="tap-transaction-filter-empty">
 		<run component="cash" action="filterEmpty"/>

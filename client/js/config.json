@@ -1,14 +1,15 @@
 {
-  "organizationName": "In & Out centro de belleza",
-  "mainColor": "#52ae1b",
-  "mainTextColor": "#ffffff",
-  "secondaryColor": "#ffffff",
-  "secondaryTextColor": "#555",
-  "baseUrl": "images",
-  "logoUrl": "{{baseUrl}}/logo.png",
-  "usersText": "Usuarios",
-  "cashText": "Caja",
-  "clientsText": "Clientes",
-  "settingsText": "Adjustes",
-  "cardsText": "Tarjetas"
+	"organizationName": "In & Out centro de belleza",
+	"mainColor": "#52ae1b",
+	"mainTextColor": "#ffffff",
+	"secondaryColor": "#ffffff",
+	"secondaryTextColor": "#555",
+	"baseUrl": "images",
+	"logoUrl": "{{baseUrl}}/logo.png",
+	"usersText": "Usuarios",
+	"cashText": "Caja",
+	"clientsText": "Clientes",
+	"settingsText": "Adjustes",
+	"cardsText": "Tarjetas",
+	"IVA": 21
 }

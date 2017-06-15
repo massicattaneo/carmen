@@ -64,7 +64,7 @@ function controller(imports) {
 			c.get().removeStyle('select');
 			switch (mode) {
 				case 'select':
-					c.get('title').setValue('Select a client');
+					c.get('title').setValue('Seleciona un cliente');
 					c.get().addStyle(mode);
 					break;
 				default:

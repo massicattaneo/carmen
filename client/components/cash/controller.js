@@ -51,6 +51,13 @@ function cash(imports) {
 			list.filter()
 		};
 
+		obj.filterTodayBills = function () {
+			var list = obj.get('transaction-list').get('list');
+			var a = new cjs.Date();
+			list.get('filter').setValue('filter: created='+ a.format('dd-mm-yyyy') + ' & type=tarjeta credito');
+			list.filter()
+		};
+
 		obj.filterEmpty = function () {
 			var list = obj.get('transaction-list').get('list');
 			list.get('filter').setValue('');
