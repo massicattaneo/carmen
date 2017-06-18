@@ -12,6 +12,7 @@
 
 	<event component="cards" on="tap-card-new">
 		<run component="utils" action="hideAllPages"/>
+		<run component="clients" action="closeEdit"/>
 		<run component="clients" action="show"/>
 		<reset-args/>
 		<read value="select"/>
@@ -26,6 +27,7 @@
 
 	<event component="cash" on="tap-transaction-pay">
 		<run component="utils" action="hideAllPages"/>
+		<run component="clients" action="closeEdit"/>
 		<run component="clients" action="show"/>
 		<reset-args/>
 		<read value="select"/>
@@ -34,6 +36,7 @@
 		<wait component="clients" event="tap-client-select"/>
 		<set path="activeClient" value="{0}"/>
 		<run component="utils" action="hideAllPages"/>
+		<run component="transactionAdd" action="resetData"/>
 		<run component="transactionAdd" action="show"/>
 		<read path="clientsData"/>
 		<run component="transactionAdd" action="addClientData"/>
@@ -53,6 +56,7 @@
 		<run component="utils" action="hideAllPages"/>
 		<read path="activeClient"/>
 		<read path="clientsData"/>
+		<run component="transactionAdd" action="resetData"/>
 		<run component="transactionAdd" action="addClientData"/>
 		<reset-args/>
 		<read path="activeCard"/>
@@ -69,6 +73,7 @@
 
 	<event component="cash" on="tap-transaction-buy">
 		<run component="utils" action="hideAllPages"/>
+		<run component="transactionAdd" action="resetData"/>
 		<run component="transactionAdd" action="show"/>
 		<run component="transactionAdd" action="genericBuy"/>
 		<reset-args/>
@@ -162,6 +167,7 @@
 		<if test="{0}==='clients'">
 			<run component="utils" action="hideAllPages"/>
 			<run component="clients" action="show"/>
+			<run component="clients" action="closeEdit"/>
 			<run component="clients" action="enterMode"/>
 		</if>
 		<if test="{0}==='users'">

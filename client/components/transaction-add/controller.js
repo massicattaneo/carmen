@@ -39,6 +39,7 @@ function controller() {
 		};
 
 		obj.bonusMode = function (cardId, cardTotal) {
+			transactionMultiplier = 1;
 			obj.get('card-id').setAttribute('value', cardId);
 			obj.get('extra-info').setValue('Total residuo de la tarjeta: ' + cardTotal);
 			obj.get().addStyle('bonus-mode');
@@ -47,9 +48,10 @@ function controller() {
 		obj.saveTransaction = function (e) {
 			e.preventDefault();
 			var cardId = obj.get('card-id').getValue();
+			var value = transactionMultiplier * parseFloat(obj.get('value').getValue());
             var data = {
-				value: transactionMultiplier * parseFloat(obj.get('value').getValue()),
-				type: obj.get('type').getValue(),
+				value: value,
+				type: ((!cardId) || value>=0) ? obj.get('type').getValue() : 'utilizo bonus',
 				cardId: cardId,
 				name: obj.get('payer-name').getValue(),
 				description: obj.get('description').getValue()
@@ -59,6 +61,23 @@ function controller() {
 
 		obj.show = function () {
 			obj.get().addStyle({ display: 'block' });
+		};
+
+		obj.resetData = function () {
+			debugger;
+			transactionMultiplier = 1;
+			obj.get('client-data').addStyle({display: 'block'});
+			obj.get('name').setValue('');
+			obj.get('surname').setValue('');
+			obj.get('email').setValue('');
+			obj.get('tel').setValue('');
+			obj.get('value').get().value = '';
+			obj.get('type').get().selectedIndex = 0;
+			obj.get('description').get().value = '';
+			obj.get('payer-name').setValue('');
+			obj.get('card-id').setAttribute('value', '');
+			obj.get('extra-info').setValue('');
+			obj.get().removeStyle('bonus-mode');
 		};
 
         return obj;

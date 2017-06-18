@@ -49,6 +49,12 @@ function controller() {
 			items.get(id.toString()).showEdit(id, client);
 		};
 
+		obj.closeEdit = function () {
+			items.forEach(function (c) {
+				c.closeEdit()
+			});
+		};
+
 		obj.filter = function () {
 			var filterText = obj.get('filter').getValue().toLowerCase();
 			var filter = isExpression(filterText) ? complexFilter(filterText) : normalFilter(filterText)

@@ -44,6 +44,11 @@ function stateMachine(imports) {
 		});
 
 
+		function emptyListeners() {
+			listeners.forEach(function (fn) {fn();});
+			listeners = [];
+		}
+
 		array.filter(function (o) {
 			return o.tagName === 'event'
 		}).forEach(function (event) {
@@ -51,8 +56,7 @@ function stateMachine(imports) {
 				components[event.getAttribute('component')].get().addListener(event.getAttribute('on'), function (e) {
 					args = [];
 					e.data !== undefined && args.push(e.data);
-					listeners.forEach(function (fn) {fn();});
-					listeners = [];
+					emptyListeners();
 					exe(toArray(event));
 				})
 			}
@@ -60,14 +64,14 @@ function stateMachine(imports) {
 
 		obj.enter = function (stateName) {
 			args = [];
-			listeners.forEach(function (fn) {fn();})
-			listeners = [];
+			emptyListeners();
 			return exe(map.get(stateName));
 		};
 
 		function exe(array) {
 			const stack = new Stack();
 			array.map(function (a) {
+				emptyListeners();
 				switch (a.exe) {
 					case 'reset-args':
 						stack.run(function (next) {

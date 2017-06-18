@@ -40,6 +40,10 @@ function controller(imports) {
             c.get('list').editItem(id, client);
         };
 
+		c.closeEdit = function () {
+			c.get('list').closeEdit()
+		};
+
         c.addClient = function () {
             var addComponent = c.get('client-add');
             addClient(addComponent.toJSON());
