@@ -63,6 +63,14 @@
 		<run component="utils" action="calculateCardTotal"/>
 		<run component="transactionAdd" action="bonusMode"/>
 		<reset-args/>
+		<read path="activeCard"/>
+		<read path="cardsData"/>
+		<read path="clientsData"/>
+		<read path="transactionsData"/>
+		<run component="history" action="populateByCardId"/>
+		<run component="history" action="show"/>
+		<run component="history" action="hideTitles"/>
+		<reset-args/>
 		<read path="activeClient"/>
 		<run component="transactionAdd" action="show"/>
 		<wait component="transactionAdd" event="transaction-add"/>

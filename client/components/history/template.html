@@ -1,12 +1,14 @@
 <div>
-    <h1>Historial compras:</h1>
-    <hr/>
-    Cliente:
-    <span data-item="name"></span>
-    <span data-item="surname"></span> -
-    Email: <span data-item="email"></span> -
-    Tel: <span data-item="tel"></span>
-    <hr/>
+    <h1 data-item="title">Historial compras:</h1>
+	<div data-item="client-data">
+    	<hr/>
+		Cliente:
+		<span data-item="name"></span>
+		<span data-item="surname"></span> -
+		Email: <span data-item="email"></span> -
+		Tel: <span data-item="tel"></span>
+		<hr/>
+	</div>
 	<fieldset class="list">
 		<legend>Listado</legend>
 		<cjs:transaction-list data-id="transaction-list"></cjs:transaction-list>

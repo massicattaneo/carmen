@@ -46,6 +46,15 @@ function controller(imports) {
 
 		obj.show = function () {
 			obj.get().addStyle({display: 'block'});
+			obj.get('client-data').addStyle({display: 'block'});
+			obj.get('title').addStyle({display: 'block'});
+			obj.get('transaction-list').get('list').get('collection').addStyle({'max-height': ''})
+		};
+
+		obj.hideTitles = function () {
+			obj.get('client-data').addStyle({display: 'none'});
+			obj.get('title').addStyle({display: 'none'});
+			obj.get('transaction-list').get('list').get('collection').addStyle({'max-height': '200px'})
 		};
 
         return obj;

@@ -64,7 +64,6 @@ function controller() {
 		};
 
 		obj.resetData = function () {
-			debugger;
 			transactionMultiplier = 1;
 			obj.get('client-data').addStyle({display: 'block'});
 			obj.get('name').setValue('');

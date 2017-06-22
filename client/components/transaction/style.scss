@@ -1,6 +1,6 @@
 .& {
   display: none;
-  line-height: 33px;
+  line-height: 29px;
 }
 .&.visible {
   display: block;
@@ -10,18 +10,23 @@
 }
 .& span {
   display: inline-block;
+	overflow: hidden;
+	height: 23px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 .& .created {
   width: 100px;
 }
 .& .name {
-	width: 165px;
+	width: 185px;
 }
 .& .description {
   width: 300px;
+	font-size: 11px;
 }
 .& .type {
-  width: 120px;
+  width: 100px;
 }
 .& .value {
   width: 120px;

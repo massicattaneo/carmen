@@ -55,14 +55,14 @@ function boostrap(imports) {
 		var cards = Cards(config);
 		cards.createIn(document.getElementById('page'));
 
+		var transactionAdd = cjs.Component.create('transaction-add', {});
+		transactionAdd.createIn(document.getElementById('page'));
+
 		var history = History(config);
 		history.createIn(document.getElementById('page'));
 
 		var cash = Cash(config);
 		cash.createIn(document.getElementById('page'));
-
-		var transactionAdd = cjs.Component.create('transaction-add', {});
-		transactionAdd.createIn(document.getElementById('page'));
 
 		var blackScreen = BlackScreen(config);
 		blackScreen.createIn(document.body);
@@ -201,8 +201,8 @@ function boostrap(imports) {
 							y += linesHeight;
 							doc.setFontSize(12);
 							doc.text(b.type, x + 7, y);
-							doc.text(b.name, x + 40, y);
-							doc.text(b.description, x + 100, y);
+							doc.text(b.name.substr(0, 30), x + 40, y);
+							doc.text(b.description.substr(0, 30), x + 100, y);
 							doc.text(cjs.Component.parse('currency', b.value), x + 170, y);
 						}
 
