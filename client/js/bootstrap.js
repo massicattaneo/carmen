@@ -188,7 +188,7 @@ function boostrap(imports) {
 					var linesHeight = 6;
 					var x = 0;
 					var y = 0;
-					var numOFLinesPErPAge = 30;
+					var numOFLinesPErPAge = 40;
 					var total = 0;
 
 					list.forEach(function (b, i) {
@@ -199,7 +199,7 @@ function boostrap(imports) {
 								i !== 0 && doc.addPage();
 							}
 							y += linesHeight;
-							doc.setFontSize(12);
+							doc.setFontSize(10);
 							doc.text(b.type, x + 7, y);
 							doc.text(b.name.substr(0, 30), x + 40, y);
 							doc.text(b.description.substr(0, 30), x + 100, y);
