@@ -53,9 +53,9 @@
 <script>
 	var webSocket = new WebSocket('ws://127.0.0.1:8081');
 	var webSocketPromise = cjs.Need();
-	webSocket.onopen = function(){
+//	webSocket.onopen = function(){
 		webSocketPromise.resolve();
-	};
+//	};
 
 
     cjs.Need([
@@ -74,7 +74,7 @@
             messagingSenderId: "927198449105"
         });
         cjs.Component.injectDatabaseProxy(db);
-		var password = require ? electron.remote.getCurrentWindow().getPassword() : 'inandout11';
+		var password = require ? electron.remote.getCurrentWindow().getPassword() : '12345678';
 		db.login("info@inandoutbelleza.com", password)
                 .done(function () {
                     cjs.navigator
