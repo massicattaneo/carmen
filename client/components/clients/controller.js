@@ -54,6 +54,14 @@ function controller(imports) {
             c.refresh();
         };
 
+        c.update = function (info, id) {
+			c.get('list').updateItem(info, id)
+		};
+
+        c.add = function (id, info, count) {
+			c.get('list').addItemByInfo('client', id, info, count)
+		};
+
         c.refresh = function (e) {
             var isEmpty = false;
             if (e && e.data && e.data.keys) isEmpty = e.data.keys.length === 0  && e.data.filterText !== '' ;

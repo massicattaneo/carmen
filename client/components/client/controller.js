@@ -14,7 +14,7 @@ function controller() {
     return function (config) {
         var obj = {};
 		var edit;
-		
+
         obj.showEdit = function (id, client) {
             edit = cjs.Component.create('clientEdit', {config: {buttonText: 'guardar'}});
             edit.createIn(obj.get('client-edit-wrapper'));
@@ -35,6 +35,13 @@ function controller() {
 				obj.get('client-view-wrapper').removeStyle('hidden');
 				edit = undefined;
 			}
+		};
+
+		obj.update = function (client) {
+			obj.get('name').setValue(client.name);
+			obj.get('surname').setValue(client.surname);
+			obj.get('email').setValue(client.email);
+			obj.get('tel').setValue(client.tel);
 		};
 
 

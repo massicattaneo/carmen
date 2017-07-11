@@ -83,6 +83,7 @@ function boostrap(imports) {
 			db: {
 				updateClients: function (info, id) {
 					db.update('clients/' + id, info);
+					clients.update(info, id);
 				},
 				deleteClients: function (id) {
 					db.remove('clients/' + id);
@@ -137,10 +138,13 @@ function boostrap(imports) {
 					});
 				},
 				loadClients: function () {
-					return db.onChange('clients', function (data) {
-						Object.assign(clientsData, data);
-						data && clients.populate(data);
-					})
+					firebase.database().ref('clients/').on('child_added', function(d) {
+						clientsData[d.key] = d.val();
+						clients.add(d.key, d.val(), clientsData.length)
+					});
+					firebase.database().ref('clients/').on('child_changed', function(d) {
+						clientsData[d.key] = d.val();
+					});
 				},
 				loadCards: function () {
 					return db.onChange('cards', function (data) {

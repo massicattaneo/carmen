@@ -39,6 +39,17 @@ function controller() {
 			return cjs.Component.collectData();
 		};
 
+		obj.addItemByInfo = function (componentName, id, info, count) {
+			var c = cjs.Component.create(componentName, { config: { id: id, count: count } });
+			items.add(c, id);
+			c.createIn(obj.get('collection').get());
+			c.get('name').setValue(info.name);
+			c.get('surname').setValue(info.surname);
+			c.get('user').setValue(info.user);
+			c.get('email').setValue(info.email);
+			c.get('tel').setValue(info.tel);
+		};
+
 		obj.removeItem = function (id) {
 			var key = id.toString();
 			items.get(key).remove();
@@ -71,6 +82,10 @@ function controller() {
 				});
 			}
 			obj.get().fire('refresh', { keys: filter.keysToArray(), filterText: filterText });
+		};
+
+		obj.updateItem = function (info, id) {
+			items.get(id.toString()).update(info);
 		};
 
 		function isExpression(filterText) {
