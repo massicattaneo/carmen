@@ -14,18 +14,16 @@ function cash(imports) {
             config: config
         });
 
-        obj.update = function (transactions) {
-            obj.get('transaction-list').populate(transactions, function (k, data) {
-                return true;
-            });
-        };
-
 		obj.show = function () {
 			obj.get().addStyle({display: 'block'});
 		};
 
 		obj.remove = function (id) {
 			obj.get('transaction-list').removeItem(id);
+		};
+
+		obj.add = function (id, info, count) {
+			obj.get('transaction-list').add(id, info, count)
 		};
 
 		obj.getList = function () {

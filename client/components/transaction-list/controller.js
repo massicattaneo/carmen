@@ -14,29 +14,52 @@ function controller() {
     return function (config) {
         var obj = {};
 
-        var data;
+        var data = {};
 
-        obj.populate = function (d, filter) {
-			var list = obj.get('list');
-            list.emptyCollection();
-			data =d;
-            var keys = Object.keys(d).filter(function (k) {
-                return filter(k, d);
-            });
-            var total = 0;
-            var cardTotal = 0;
-            keys.forEach(function (k) {
-				if (!(d[k].cardId && d[k].value<0)) {
-					total += d[k].value;
+        // obj.populate = function (d, filter) {
+			// var list = obj.get('list');
+        //     list.emptyCollection();
+			// data =d;
+        //     var keys = Object.keys(d).filter(function (k) {
+        //         return filter(k, d);
+        //     });
+        //     var total = 0;
+        //     var cardTotal = 0;
+        //     keys.forEach(function (k) {
+			// 	if (!(d[k].cardId && d[k].value<0)) {
+			// 		total += d[k].value;
+			// 	}
+			// 	if (d[k].cardId) {
+			// 		cardTotal += d[k].value;
+			// 	}
+        //     });
+        //     // list.populate('transaction', keys);
+        //     cjs.Component.parse('currency', cardTotal, obj.get('card-total'));
+        //     cjs.Component.parse('currency', total, obj.get('total'));
+        // };
+
+		obj.add = function(id, info, count) {
+			data[id] = info;
+			obj.get('list').addItemByInfo('transaction', id, info, count);
+
+			var total = 0;
+			var cardTotal = 0;
+			var keys = Object.keys(data);
+			keys.forEach(function (k) {
+				if (!(data[k].cardId && data[k].value<0)) {
+					total += data[k].value;
 				}
-				if (d[k].cardId) {
-					cardTotal += d[k].value;
+				if (data[k].cardId) {
+					cardTotal += data[k].value;
 				}
-            });
-            list.populate('transaction', keys);
-            cjs.Component.parse('currency', cardTotal, obj.get('card-total'));
-            cjs.Component.parse('currency', total, obj.get('total'));
-        };
+			});
+			cjs.Component.parse('currency', cardTotal, obj.get('card-total'));
+			cjs.Component.parse('currency', total, obj.get('total'));
+		};
+
+		obj.empty = function () {
+			obj.get('list').emptyCollection()
+		};
 
         obj.refresh = function (e) {
             var total = 0;

@@ -153,10 +153,10 @@ function boostrap(imports) {
 					});
 				},
 				loadTransactions: function () {
-					return db.onChange('transactions/', function (data) {
-						Object.assign(transactionsData, data);
-						data && cash.update(data);
-					})
+					firebase.database().ref('transactions/').on('child_added', function(d) {
+						transactionsData[d.key] = d.val();
+						cash.add(d.key, d.val(), Object.keys(transactionsData).length)
+					});
 				},
 				hideAllPages: function () {
 					clients.get().addStyle({ display: 'none' });

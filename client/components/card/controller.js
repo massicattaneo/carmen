@@ -18,7 +18,7 @@ function controller() {
 			var date = new cjs.Date(info.created);
 			obj.get('name').setValue(info.name);
 			obj.get('user').setValue(info.user);
-			obj.get('created').setValue(date.format('dd-mm-yyyy'));
+			cjs.Component.parse('short-date', info.created, obj.get('created'));
 		};
 
         return obj;
