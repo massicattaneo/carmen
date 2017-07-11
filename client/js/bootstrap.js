@@ -134,23 +134,23 @@ function boostrap(imports) {
 					});
 					db.onRemove('cards', function (data) {
 						delete cardsData[data.key];
-						cash.remove(data.key)
+						cards.remove(data.key)
 					});
 				},
 				loadClients: function () {
 					firebase.database().ref('clients/').on('child_added', function(d) {
 						clientsData[d.key] = d.val();
-						clients.add(d.key, d.val(), clientsData.length)
+						clients.add(d.key, d.val(), Object.keys(clientsData).length)
 					});
 					firebase.database().ref('clients/').on('child_changed', function(d) {
 						clientsData[d.key] = d.val();
 					});
 				},
 				loadCards: function () {
-					return db.onChange('cards', function (data) {
-						Object.assign(cardsData, data);
-						data && cards.populate(data);
-					})
+					firebase.database().ref('cards/').on('child_added', function(d) {
+						cardsData[d.key] = d.val();
+						cards.add(d.key, d.val(), Object.keys(cardsData).length)
+					});
 				},
 				loadTransactions: function () {
 					return db.onChange('transactions/', function (data) {

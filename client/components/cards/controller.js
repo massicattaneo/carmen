@@ -26,11 +26,19 @@ function controller(imports) {
 			c.get().addStyle({display: 'block'});
 		};
 
-        c.populate = function (data) {
-            c.get('list').emptyCollection();
-            var keys = Object.keys(data).map(function (key) {return key;});
-            c.get('list').populate('card', keys);
-        };
+		c.remove = function (id) {
+			c.get('list').removeItem(id);
+		};
+
+        // c.populate = function (data) {
+        //     c.get('list').emptyCollection();
+        //     var keys = Object.keys(data).map(function (key) {return key;});
+        //     c.get('list').populate('card', keys);
+        // };
+
+		c.add = function (id, info, count) {
+			c.get('list').addItemByInfo('card', id, info, count)
+		};
 
 		c.enterMode = function (mode) {
 			c.get().removeStyle('select');

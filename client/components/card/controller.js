@@ -14,6 +14,13 @@ function controller() {
     return function (config) {
         var obj = {};
 
+		obj.update = function (info) {
+			var date = new cjs.Date(info.created);
+			obj.get('name').setValue(info.name);
+			obj.get('user').setValue(info.user);
+			obj.get('created').setValue(date.format('dd-mm-yyyy'));
+		};
+
         return obj;
     }
 
