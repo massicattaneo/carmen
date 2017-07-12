@@ -58,6 +58,7 @@ function controller() {
 		};
 
 		obj.empty = function () {
+			data = {};
 			obj.get('list').emptyCollection()
 		};
 

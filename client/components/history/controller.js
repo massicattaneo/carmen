@@ -23,7 +23,7 @@ function controller(imports) {
 		});
 
 		obj.populate = function (id, clientData, data) {
-			obj.get('transaction-list').empty()
+			obj.get('transaction-list').empty();
 			obj.get('name').setValue(clientData.name);
 			obj.get('surname').setValue(clientData.surname);
 			obj.get('email').setValue(clientData.email);
@@ -38,7 +38,7 @@ function controller(imports) {
 		};
 
 		obj.populateByCardId = function (cardId, cardsData, clientsData, data) {
-			obj.get('transaction-list').empty()
+			obj.get('transaction-list').empty();
 			var id = cardsData[cardId].clientId;
 			var clientData = clientsData[id];
 			obj.get('name').setValue(clientData.name);
