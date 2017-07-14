@@ -42,6 +42,10 @@ function controller(imports) {
 			setUser('compania')
 		};
 
+		c.setUserAdmin = function (e) {
+			setUser('admin')
+		};
+
 		c.initSettings = function () {
 			setBg(localStorage.getItem('bg-image') || 1);
 			setAudio(localStorage.getItem('audio-on') === 'true');
@@ -69,6 +73,7 @@ function controller(imports) {
 			localStorage.setItem('user', user);
 			c.get('user-salitre').get('checkbox').get().checked = false;
 			c.get('user-compania').get('checkbox').get().checked = false;
+			c.get('user-admin').get('checkbox').get().checked = false;
 			if (user !== 'null') c.get('user-' + user).get('checkbox').get().checked = true;
 		}
 
