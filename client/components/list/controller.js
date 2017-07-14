@@ -62,6 +62,11 @@ function controller() {
 			});
 		};
 
+		obj.resetFilter = function () {
+			obj.get('filter').setValue('');
+			obj.filter();
+		};
+
 		obj.filter = function () {
 			var filterText = obj.get('filter').getValue().toLowerCase();
 			var filter = isExpression(filterText) ? complexFilter(filterText) : normalFilter(filterText)

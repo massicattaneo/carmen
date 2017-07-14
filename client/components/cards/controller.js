@@ -23,6 +23,7 @@ function controller(imports) {
         });
 
 		c.show = function () {
+			c.get('list').resetFilter();
 			c.get().addStyle({display: 'block'});
 		};
 

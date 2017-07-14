@@ -15,6 +15,7 @@ function cash(imports) {
         });
 
 		obj.show = function () {
+			obj.get('transaction-list').get('list').resetFilter();
 			obj.get().addStyle({display: 'block'});
 		};
 

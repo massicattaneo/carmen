@@ -24,6 +24,7 @@ function controller(imports) {
 
 		c.show = function () {
 			c.get().addStyle({display: 'block'});
+			c.get('list').resetFilter()
 		};
 
         c.remove = function (id) {

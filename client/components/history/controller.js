@@ -55,6 +55,7 @@ function controller(imports) {
 		};
 
 		obj.show = function () {
+			obj.get('transaction-list').get('list').resetFilter();
 			obj.get().addStyle({ display: 'block' });
 			obj.get('client-data').addStyle({ display: 'block' });
 			obj.get('title').addStyle({ display: 'block' });
