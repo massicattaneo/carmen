@@ -14,6 +14,12 @@ function cash(imports) {
             config: config
         });
 
+		obj.initialise = function () {
+			obj.get('salitre').get('checkbox').get().checked = localStorage.getItem('user') === 'salitre';
+			obj.get('compania').get('checkbox').get().checked = localStorage.getItem('user') === 'compania';
+			obj.filterByUser();
+		};
+
 		obj.show = function () {
 			obj.get('transaction-list').get('list').resetFilter();
 			obj.get().addStyle({display: 'block'});
@@ -42,6 +48,16 @@ function cash(imports) {
 				}
 			});
             return cjs.Need().resolve(array);
+		};
+
+		obj.filterByUser = function () {
+			var salitre = obj.get('salitre').get('checkbox').get().checked;
+			var compania = obj.get('compania').get('checkbox').get().checked;
+			var filter = '';
+			if (salitre && compania) filter = 'user=salitre||compania';
+			else if (salitre) filter = 'user=salitre';
+			else if (compania) filter = 'user=compania';
+			obj.get('transaction-list').get('list').setFixedFilter(filter);
 		};
 
         return obj;

@@ -14,6 +14,7 @@ function controller() {
 	return function (config) {
 		var obj = {};
 		var items = cjs.Collection();
+		var fixedFilter = '';
 
 		obj.populate = function (componentName, keys) {
 			keys.forEach(function (key, index) {
@@ -67,21 +68,24 @@ function controller() {
 			obj.filter();
 		};
 
+		obj.setFixedFilter = function (flt) {
+			fixedFilter = flt;
+			obj.filter();
+		};
+
 		obj.filter = function () {
 			var filterText = obj.get('filter').getValue().toLowerCase();
-			var filter = isExpression(filterText) ? complexFilter(filterText) : normalFilter(filterText)
+			var filter = isExpression(filterText) ? complexFilter(filterText, items) : normalFilter(filterText, items);
+			if (filter.isEmpty() && filterText === '') filter = items.clone();
+			if (fixedFilter !== '') {
+				filter = complexFilter('filter: ' + fixedFilter, filter)
+			}
 			items.forEach(function (c) {
 				c.get().removeStyle('visible')
 			});
-			if (!filter.isEmpty()) {
-				filter.forEach(function (k) {
-					k.get().addStyle('visible')
-				})
-			} else if (!filter.size() && filterText === '') {
-				items.forEach(function (c) {
-					c.get().addStyle('visible')
-				});
-			}
+			filter.forEach(function (k) {
+				k.get().addStyle('visible')
+			});
 			obj.get().fire('refresh', { keys: filter.keysToArray(), filterText: filterText });
 		};
 
@@ -93,25 +97,26 @@ function controller() {
 			return filterText.substr(0, 7) === 'filter:';
 		}
 
-		function normalFilter(filterText) {
-			return items.filter(function (c) {
+		function normalFilter(filterText, itms) {
+			return itms.filter(function (c) {
 				return c.get().getValue().toLowerCase().indexOf(filterText) !== -1
 			});
 		}
 
-		function complexFilter(filterText) {
-			var array = filterText.substr(7).split(/&/).map(function (f) {
+		function complexFilter(filterText, itms) {
+			var array = filterText.substr(7).split(/&[^&]]/).map(function (f) {
 				var values = f.split(/(=|>=|<=|>|<)/)
 				return { key: values[0].trim(), value: values[2].trim(), expression: values[1].trim() }
 			}).filter(function (f) {
 				return f.key && f.value && f.expression;
 			});
 
-			return items.filter(function (c) {
+			return itms.filter(function (c) {
 				return array.filter(function (f) {
 						var value = c.get(f.key).getValue().toLowerCase();
 						if (f.expression === '=') {
-							return value.indexOf(f.value) !== -1
+							var values = f.value.split('||');
+							return values.indexOf(value) !== -1;
 						} else {
 							if (isDate(value) && isDate(f.value)) {
 								return eval('date(value) '+f.expression+' date(f.value)');

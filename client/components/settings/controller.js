@@ -11,19 +11,19 @@
 
 function controller(imports) {
 
-    var template = imports('components/settings/template.html');
-    var style = imports('components/settings/style.scss');
+	var template = imports('components/settings/template.html');
+	var style = imports('components/settings/style.scss');
 
-    return function (config) {
+	return function (config) {
 
-        var c = cjs.Component({
-            template: template,
-            style: style,
-            config: config
-        });
+		var c = cjs.Component({
+			template: template,
+			style: style,
+			config: config
+		});
 
 		c.show = function () {
-			c.get().addStyle({display: 'block'});
+			c.get().addStyle({ display: 'block' });
 		};
 
 		c.changeBg = function (e) {
@@ -52,6 +52,13 @@ function controller(imports) {
 			setUser(localStorage.getItem('user'));
 			document.body.className = '';
 			config.user = localStorage.getItem('user');
+			if (config.user === 'compania') {
+				var css = '.admin { display: none !important; }',
+					style = document.createElement('style');
+				style.type = 'text/css';
+				style.appendChild(document.createTextNode(css));
+				document.head.appendChild(style);
+			}
 		};
 
 		function setBg(bgIndex) {
@@ -77,8 +84,8 @@ function controller(imports) {
 			if (user !== 'null') c.get('user-' + user).get('checkbox').get().checked = true;
 		}
 
-        return c;
+		return c;
 
-    }
+	}
 
 };

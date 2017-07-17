@@ -6,13 +6,19 @@
 	width: auto;
 	height: 60px;
 	display: inline-block;
-	border-radius: 10px;
-	margin: 0 5px;
+	border: none;
+	border-radius: 6px;
+	margin: 1px 1px;
 	padding: 0 10px;
 	font-size: 20px;
 	color: $secondaryTextColor;
 	font-family: Arial;
 	background-color: white;
+	cursor: pointer;
+}
+
+.& button:active {
+	opacity: 0.5;
 }
 
 .& button:before {

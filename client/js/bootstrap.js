@@ -64,10 +64,11 @@ function boostrap(imports) {
 
 		var cash = Cash(config);
 		cash.createIn(document.getElementById('page'));
+		cash.initialise();
 
 		var print = Print(config);
 		print.createIn(document.getElementById('page'));
-		print.init();
+		print.initialise();
 
 		var blackScreen = BlackScreen(config);
 		blackScreen.createIn(document.body);

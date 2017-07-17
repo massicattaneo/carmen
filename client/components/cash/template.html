@@ -10,18 +10,12 @@
 			<type>transaction-buy</type>
 			<text>COMPRAS</text>
 			<class>fa-shopping-cart</class>
-		</cjs:button>
-		<!--|-->
-        <!--<cjs:button>-->
-            <!--<type>print-list</type>-->
-            <!--<text>LISTADO</text>-->
-            <!--<class>fa-print</class>-->
-        <!--</cjs:button>-->
-		<!--<cjs:button>-->
-			<!--<type>print-bills</type>-->
-			<!--<text>FACTURAS</text>-->
-			<!--<class>fa-print</class>-->
-		<!--</cjs:button>-->
+		</cjs:button>&nbsp;
+		<span class="users admin" data-item="users">
+			<cjs:switch data-on="change:filterByUser" data-id="salitre" data-value="salitre"></cjs:switch> SALITRE
+			&nbsp;&nbsp;
+			<cjs:switch data-on="change:filterByUser" data-id="compania" data-value="compania"></cjs:switch> COMPANIA
+		</span>
     </div>
 	<fieldset class="list">
 		<legend>Listado</legend>
