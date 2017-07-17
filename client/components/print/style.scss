@@ -1,0 +1,19 @@
+.& {
+  width: 100%;
+  text-align: left;
+  color: $mainTextColor;
+}
+.& fieldset legend {display:block;}
+
+.& strong {
+	display: inline-block;
+	width: 100px;
+}
+
+.& .button-print {
+	float: right;
+}
+.& .button-print button {
+	height: 30px;
+}
+

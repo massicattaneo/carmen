@@ -36,7 +36,7 @@ process.argv.forEach(function (val) {
 
 function createWindow () {
 	// Create the browser window.
-	mainWindow = new BrowserWindow({width: 1100, height: 900, icon: __dirname + '/client/images/icon.png'});
+	mainWindow = new BrowserWindow({width: 1100, height: 890, icon: __dirname + '/client/images/icon.png'});
 	mainWindow.getPassword = function () {
 		return params.password;
 	};

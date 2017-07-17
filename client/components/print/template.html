@@ -1,0 +1,28 @@
+<div>
+    <h1>{{printText}}</h1>
+	<fieldset>
+		<legend>LISTADO CAJA</legend>
+		<cjs:button data-on="click:printList" class="button-print">
+			<text>IMPRIME</text>
+			<class>fa-print</class>
+		</cjs:button>
+		<strong>FECHA</strong>
+		DESDE <input type="date" data-item="filter-day-from" required />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		HASTA <input type="date" data-item="filter-day-to" required />
+	</fieldset>
+	<br/><br/>
+	<fieldset>
+		<legend>FACTURAS</legend>
+		<cjs:button data-on="click:printBills" class="button-print">
+			<text>IMPRIME</text>
+			<class>fa-print</class>
+		</cjs:button>
+		<strong>FECHA</strong>
+		DESDE <input type="date" data-item="filter-bill-from" required />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		HASTA <input type="date" data-item="filter-bill-to" required />
+		<br/><br/>
+		PRIMERO NUMERO DE FACTURA: <input type="number" data-item="billNumber" value="1"/>
+	</fieldset>
+</div>

@@ -186,6 +186,10 @@
 			<run component="utils" action="hideAllPages"/>
 			<run component="settings" action="show"/>
 		</if>
+		<if test="{0}==='print'">
+			<run component="utils" action="hideAllPages"/>
+			<run component="print" action="show"/>
+		</if>
     </event>
 
 	<event component="cards" on="tap-card-write">
@@ -206,15 +210,11 @@
 		<run component="blackScreen" action="hide"/>
 	</event>
 
-	<event component="cash" on="tap-print">
-		<reset-args/>
-		<run component="cash" action="getList"/>
-		<run component="utils" action="print"/>
+	<event component="print" on="tap-print-list">
+		<run component="utils" action="printList"/>
 	</event>
 
-	<event component="cash" on="tap-print-bills">
-		<reset-args/>
-		<run component="cash" action="getList"/>
+	<event component="print" on="tap-print-bills">
 		<run component="utils" action="printBills"/>
 	</event>
 
