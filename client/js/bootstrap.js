@@ -155,7 +155,9 @@ function boostrap(imports) {
 				loadTransactions: function () {
 					firebase.database().ref('transactions/').on('child_added', function(d) {
 						transactionsData[d.key] = d.val();
-						cash.add(d.key, d.val(), Object.keys(transactionsData).length)
+						if(cjs.Date.isToday(d.val().created)) {
+							cash.add(d.key, d.val(), Object.keys(transactionsData).length)
+						}
 					});
 				},
 				hideAllPages: function () {

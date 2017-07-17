@@ -44,26 +44,6 @@ function cash(imports) {
             return cjs.Need().resolve(array);
 		};
 
-		obj.filterToday = function () {
-			var list = obj.get('transaction-list').get('list');
-			var a = new cjs.Date();
-			list.get('filter').setValue('filter: created='+ a.format('dd-mm-yyyy'));
-			list.filter()
-		};
-
-		obj.filterTodayBills = function () {
-			var list = obj.get('transaction-list').get('list');
-			var a = new cjs.Date();
-			list.get('filter').setValue('filter: created='+ a.format('dd-mm-yyyy') + ' & type=tarjeta credito  & value>0');
-			list.filter()
-		};
-
-		obj.filterEmpty = function () {
-			var list = obj.get('transaction-list').get('list');
-			list.get('filter').setValue('');
-			list.filter()
-		};
-
         return obj;
 
     }
