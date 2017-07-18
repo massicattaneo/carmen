@@ -18,7 +18,8 @@ function controller() {
 
         };
 
-		obj.update = function (info) {
+		obj.update = function (info, id) {
+			obj.get().get().id = id;
 			cjs.Component.parse('short-date', info.created, obj.get('created'));
 			obj.get('type').setValue(info.type);
 			cjs.Component.parse('transactionType', info.cardId, obj.get('cardId'));

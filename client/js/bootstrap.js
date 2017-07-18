@@ -245,6 +245,88 @@ function boostrap(imports) {
 
 					doc.output('dataurlnewwindow', {});
 				},
+				printCards: function (filter) {
+					var doc = new jsPDF('p', 'mm', [297, 210]);
+					var linesHeight = 6;
+					var x = 0;
+					var y = 0;
+					var numOFLinesPErPAge = 40;
+					var total = 0;
+					Object.keys(cardsData)
+						.filter(function (k) {
+							return filter(cardsData[k])
+						})
+						.forEach(function (cardId, i) {
+							var transactions = Object.keys(transactionsData)
+								.map(function (k) {return transactionsData[k]})
+								.filter(function(o) {return o.cardId === cardId });
+							var tt = 0;
+							if (transactions.length) {
+								tt = transactions.map(function (o) {
+									return o.value;
+								}).reduce(function (a, b) {
+									return a+b;
+								})
+							}
+
+							total += tt;
+							if (i % numOFLinesPErPAge === 0) {
+								y = 20;
+								i !== 0 && doc.addPage();
+							}
+							y += linesHeight;
+							doc.setFontSize(10);
+							doc.text(cardsData[cardId].name, x + 7, y);
+							doc.text(cjs.Component.parse('currency', tt), x + 190, y, 'right');
+							doc.text('('+ transactions.length+')', x + 200, y, 'right');
+						});
+					doc.setFontType("bold");
+					doc.text('TOTAL', x + 100, y + 10);
+					doc.text(cjs.Component.parse('currency', total), x + 190, y + 10, 'right');
+					doc.output('dataurlnewwindow', {});
+				},
+				printClients: function (filter) {
+					var doc = new jsPDF('p', 'mm', [297, 210]);
+					var linesHeight = 6;
+					var x = 0;
+					var y = 0;
+					var numOFLinesPErPAge = 40;
+					var total = 0;
+					Object.keys(clientsData)
+						.filter(function (k) {
+							return filter(clientsData[k])
+						})
+						.forEach(function (clientId, i) {
+							var transactions = Object.keys(transactionsData)
+								.map(function (k) {return transactionsData[k]})
+								.filter(function(o) {return o.clientId === clientId && filter(o) });
+							var tt = 0;
+							if (transactions.length) {
+								tt = transactions.map(function (o) {
+									return o.value;
+								}).reduce(function (a, b) {
+									return a+b;
+								})
+							}
+
+							if (tt > 0) {
+								total += tt;
+								if (i % numOFLinesPErPAge === 0) {
+									y = 20;
+									i !== 0 && doc.addPage();
+								}
+								y += linesHeight;
+								doc.setFontSize(10);
+								doc.text(clientsData[clientId].name + ' ' + clientsData[clientId].surname , x + 7, y);
+								doc.text(cjs.Component.parse('currency', tt), x + 190, y, 'right');
+								doc.text('('+ transactions.length+')', x + 200, y, 'right');
+							}
+						});
+					doc.setFontType("bold");
+					doc.text('TOTAL', x + 100, y + 10);
+					doc.text(cjs.Component.parse('currency', total), x + 190, y + 10, 'right');
+					doc.output('dataurlnewwindow', {});
+				},
 				printBills: function (params) {
 					var doc = new jsPDF('p', 'mm', [297, 210]);
 					var startNumber = Number(params.start) || 1;

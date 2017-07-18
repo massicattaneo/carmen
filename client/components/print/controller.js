@@ -74,6 +74,26 @@ function controller(imports) {
 			})
 		};
 
+		obj.printCards = function () {
+			var salitre = obj.get('filter-cards-salitre').get('checkbox').get().checked;
+			var compania = obj.get('filter-cards-compania').get('checkbox').get().checked;
+			obj.get().fire('tap-print-cards', function (item) {
+				if (!salitre && item.user === 'salitre') return false;
+				if (!compania && item.user === 'compania') return false;
+				return true;
+			})
+		};
+
+		obj.printClients = function () {
+			var salitre = obj.get('filter-clients-salitre').get('checkbox').get().checked;
+			var compania = obj.get('filter-clients-compania').get('checkbox').get().checked;
+			obj.get().fire('tap-print-clients', function (item) {
+				if (!salitre && item.user === 'salitre') return false;
+				if (!compania && item.user === 'compania') return false;
+				return true;
+			})
+		};
+
         return obj;
 
     }

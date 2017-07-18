@@ -219,4 +219,12 @@
 		<run component="utils" action="printBills"/>
 	</event>
 
+	<event component="print" on="tap-print-cards">
+		<run component="utils" action="printCards"/>
+	</event>
+
+	<event component="print" on="tap-print-clients">
+		<run component="utils" action="printClients"/>
+	</event>
+
 </use-cases>

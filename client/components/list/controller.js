@@ -44,7 +44,7 @@ function controller() {
 			var c = cjs.Component.create(componentName, { config: { id: id, count: count } });
 			items.add(c, id);
 			c.createIn(obj.get('collection').get());
-			items.get(id.toString()).update(info);
+			items.get(id.toString()).update(info, id.toString());
 		};
 
 		obj.removeItem = function (id) {

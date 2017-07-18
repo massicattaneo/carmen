@@ -43,4 +43,36 @@
 		<br/><br/>
 		PRIMERO NUMERO DE FACTURA: <input type="number" data-item="billNumber" value="1"/>
 	</fieldset>
+	<br/><br/>
+	<fieldset>
+		<legend>RESIDUOS TARJETAS</legend>
+		<cjs:button data-on="click:printCards" class="button-print">
+			<text>IMPRIME</text>
+			<class>fa-print</class>
+		</cjs:button>
+		<span class="admin">
+			USUARIOS:
+			<cjs:switch data-id="filter-cards-salitre"></cjs:switch>
+			SALITRE
+			&nbsp;&nbsp;
+			<cjs:switch data-id="filter-cards-compania"></cjs:switch>
+			COMPANIA
+		</span>
+	</fieldset>
+	<br/><br/>
+	<fieldset>
+		<legend>TOTAL POR CLIENTES</legend>
+		<cjs:button data-on="click:printClients" class="button-print">
+			<text>IMPRIME</text>
+			<class>fa-print</class>
+		</cjs:button>
+		<span class="admin">
+			USUARIOS:
+			<cjs:switch data-id="filter-clients-salitre"></cjs:switch>
+			SALITRE
+			&nbsp;&nbsp;
+			<cjs:switch data-id="filter-clients-compania"></cjs:switch>
+			COMPANIA
+		</span>
+	</fieldset>
 </div>

@@ -14,7 +14,8 @@ function controller() {
     return function (config) {
         var obj = {};
 
-		obj.update = function (info) {
+		obj.update = function (info, id) {
+			obj.get().get().id = id;
 			var date = new cjs.Date(info.created);
 			obj.get('name').setValue(info.name);
 			obj.get('user').setValue(info.user);
