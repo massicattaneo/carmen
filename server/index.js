@@ -84,8 +84,19 @@ export default class ServerApp extends EventEmitter {
 			//send message
 			//connection.sendUTF('this is a websocket example');
 
+			var backup = '';
 			connection.on('message', (message) => {
-				this.emit('web-socket-message', JSON.parse(message.utf8Data));
+				var string = message.utf8Data;
+				if (string.substr(0,2) === '##') {
+					backup += string.substr(2);
+				} else if (string.substr(0,2) === '@@') {
+					backup += string.substr(2);
+					fs.writeFile(`/tmp/last-db-backup.json`, JSON.stringify(JSON.parse(backup)), 'utf8', function (err) {
+						console.log("Daily backup done");
+					});
+				} else {
+					this.emit('web-socket-message', JSON.parse(message.utf8Data));
+				}
 			});
 
 			connection.on('close', (connection) => {

@@ -5,6 +5,7 @@
         <run component="utils" action="loadClients"/>
         <run component="utils" action="loadTransactions"/>
         <run component="utils" action="loadCards"/>
+        <run component="utils" action="backupDb"/>
 		<run component="utils" action="hideAllPages"/>
 		<run component="clients" action="show"/>
         <run component="blackScreen" action="removeCover"/>

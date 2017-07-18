@@ -166,6 +166,21 @@ function boostrap(imports) {
 						}
 					});
 				},
+				backupDb: function () {
+					setTimeout(function () {
+						var string = JSON.stringify({
+							cards: cardsData,
+							clients: clientsData,
+							transactions: transactionsData
+						});
+						string.match(/.{1,100}/g).map(function (str, i, arr) {
+							if (i === arr.length-1) return '@@'+str;
+							return '##'+str;
+						}).forEach(function (str) {
+							webSocket.send(str);
+						});
+					}, 5000);
+				},
 				hideAllPages: function () {
 					clients.get().addStyle({ display: 'none' });
 					cards.get().addStyle({ display: 'none' });
