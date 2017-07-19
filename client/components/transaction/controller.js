@@ -20,6 +20,11 @@ function controller() {
 
 		obj.update = function (info, id) {
 			obj.get().get().id = id;
+			obj.get('wrapper').setAttribute('title', 'ID = ' + id + ', USER = ' + info.user);
+			obj.get('created').setAttribute('title', cjs.Component.parse('short-date', info.created));
+			obj.get('type').setAttribute('title', info.type);
+			obj.get('name').setAttribute('title', info.name);
+			obj.get('description').setAttribute('title', info.description);
 			cjs.Component.parse('short-date', info.created, obj.get('created'));
 			obj.get('type').setValue(info.type);
 			cjs.Component.parse('transactionType', info.cardId, obj.get('cardId'));

@@ -37,10 +37,15 @@ function controller() {
 			}
 		};
 
-		obj.update = function (client) {
+		obj.update = function (client, id) {
+			obj.get('client-view-wrapper').setAttribute('title', 'ID = ' + id + ', USER = ' + client.user);
+			obj.get('name-surname').setAttribute('title', client.name + ' ' + client.surname);
+			obj.get('email').setAttribute('title', client.email);
+			obj.get('tel').setAttribute('title', client.tel);
 			obj.get('name').setValue(client.name);
 			obj.get('surname').setValue(client.surname);
 			obj.get('email').setValue(client.email);
+			obj.get('email').setAttribute('href', 'mailto:' + client.email);
 			obj.get('tel').setValue(client.tel);
 		};
 

@@ -367,7 +367,9 @@ function boostrap(imports) {
 						doc.setFontSize(12);
 						start += 10;
 						doc.text('1', 10, start);
-						doc.text(b.description.toString(), 30, start);
+						(b.description + ' ').match(/(.{1,33}\s)\s*/g).forEach(function (line, i) {
+							doc.text(line, 30, start + (i*5));
+						});
 						var netNumber = b.value * ((100 - config.IVA) / 100);
 						var net = new cjs.Currency(netNumber);
 						var iva = new cjs.Currency(b.value - netNumber);

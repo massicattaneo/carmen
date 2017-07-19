@@ -16,6 +16,8 @@ function controller() {
 
 		obj.update = function (info, id) {
 			obj.get().get().id = id;
+			obj.get('wrapper').setAttribute('title', 'ID = ' + id + ', USER = ' + info.user);
+			obj.get('name').setAttribute('title', info.name);
 			var date = new cjs.Date(info.created);
 			obj.get('name').setValue(info.name);
 			obj.get('user').setValue(info.user);

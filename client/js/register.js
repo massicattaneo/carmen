@@ -51,14 +51,6 @@ function register(imports) {
 
     return function (config) {
 
-        cjs.Component.registerParserFunction('mailto', function (data, item) {
-            item.setAttribute('href', 'mailto:' + data);
-        });
-
-        cjs.Component.registerParserFunction('tel', function (data, item) {
-            item.setAttribute('href', 'tel:' + data);
-        });
-
         cjs.Component.registerParserFunction('currency', function (data, item) {
             var currency = new cjs.Currency(data);
 			if (item) {
@@ -76,7 +68,10 @@ function register(imports) {
 
         cjs.Component.registerParserFunction('short-date', function (data, item) {
             var date = new cjs.Date(data);
-            item.setValue(date.format('dd-mm-yyyy'));
+			var formatted = date.format('dd-mm-yyyy');
+			if (item) {
+				item.setValue(formatted);
+			} return formatted;
         });
 
         /** ROUND-BUTTON **/
