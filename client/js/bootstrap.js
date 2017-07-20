@@ -31,9 +31,9 @@ function boostrap(imports) {
 		var clientsData = {};
 		var transactionsData = {};
 		var cardsData = {};
-		var audio = cjs.Audio();
-		audio.init(audioConfig);
-		config.audioPlayer = audio;
+		// var audio = cjs.Audio();
+		// audio.init(audioConfig);
+		config.audioPlayer = {play: function () {}, mute: function () {}, unmute: function () {}};
 
 		config.db = db;
 		register(config);
