@@ -31,6 +31,10 @@ function controller(imports) {
 			obj.get('filter-bill-compania').get('checkbox').get().checked = localStorage.getItem('user') === 'compania';
 			obj.get('filter-list-salitre').get('checkbox').get().checked = localStorage.getItem('user') === 'salitre';
 			obj.get('filter-list-compania').get('checkbox').get().checked = localStorage.getItem('user') === 'compania';
+			obj.get('filter-cards-salitre').get('checkbox').get().checked = localStorage.getItem('user') === 'salitre';
+			obj.get('filter-cards-compania').get('checkbox').get().checked = localStorage.getItem('user') === 'compania';
+			obj.get('filter-clients-salitre').get('checkbox').get().checked = localStorage.getItem('user') === 'salitre';
+			obj.get('filter-clients-compania').get('checkbox').get().checked = localStorage.getItem('user') === 'compania';
 		};
 
 		obj.show = function () {

@@ -12,5 +12,6 @@
 	"settingsText": "Adjustes",
 	"cardsText": "Tarjetas",
 	"printText": "Imprimir",
-	"IVA": 21
+	"IVA": 21,
+	"isLogged": false
 }

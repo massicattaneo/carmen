@@ -36,3 +36,5 @@ fieldset legend {
 h1 {
 	margin-top: 5px;
 }
+
+.admin { display: none !important; }

@@ -15,6 +15,7 @@ function controller(imports) {
 	var style = imports('components/settings/style.scss');
 
 	return function (config) {
+		var timeout, interval, countDownStart;
 
 		var c = cjs.Component({
 			template: template,
@@ -42,9 +43,40 @@ function controller(imports) {
 			setUser('compania')
 		};
 
-		c.setUserAdmin = function (e) {
-			setUser('admin')
-		};
+		function logout() {
+			c.get('login').removeStyle('logged-in');
+			c.get('login').addStyle('logged-out');
+			var css = '.admin { display: none !important; }',
+				style = document.createElement('style');
+			style.type = 'text/css';
+			style.appendChild(document.createTextNode(css));
+			document.head.appendChild(style);
+			clearTimeout(timeout);
+			clearInterval(interval);
+			c.get().fire('logout');
+			config.isLogged = false;
+		}
+		function login() {
+			c.get('login').removeStyle('logged-out');
+			c.get('login').addStyle('logged-in');
+			var css = '.admin { display: inline-block !important; }',
+				style = document.createElement('style');
+			style.type = 'text/css';
+			style.appendChild(document.createTextNode(css));
+			document.head.appendChild(style);
+
+			var minutes = c.get('minutes').getValue();
+			countDownStart = new Date().getTime();
+			timeout = setTimeout(logout, 1000 * 60 * minutes);
+			interval = setInterval(function () {
+				var seconds = (new Date().getTime() - countDownStart) / 1000;
+				var remaining = (minutes*60) - seconds;
+				var remMinutes = parseInt(remaining/60, 10);
+				var remSeconds = remaining - (remMinutes*60);
+				c.get('time').setValue(remMinutes + ':' + remSeconds.toString().padLeft(2,'0'))
+			}, 1000)
+			config.isLogged = true;
+		}
 
 		c.initSettings = function () {
 			setBg(localStorage.getItem('bg-image') || 1);
@@ -52,13 +84,18 @@ function controller(imports) {
 			setUser(localStorage.getItem('user'));
 			document.body.className = '';
 			config.user = localStorage.getItem('user');
-			if (config.user === 'compania') {
-				var css = '.admin { display: none !important; }',
-					style = document.createElement('style');
-				style.type = 'text/css';
-				style.appendChild(document.createTextNode(css));
-				document.head.appendChild(style);
+			logout();
+		};
+
+		c.log = function (e) {
+			e.preventDefault();
+			e.stopPropagation();
+			if (e.target.className === 'logged-out' && c.get('password').getValue() === 'paperella') {
+				login();
+			} else {
+				logout();
 			}
+			c.get('password').get().value = '';
 		};
 
 		function setBg(bgIndex) {
@@ -80,7 +117,6 @@ function controller(imports) {
 			localStorage.setItem('user', user);
 			c.get('user-salitre').get('checkbox').get().checked = false;
 			c.get('user-compania').get('checkbox').get().checked = false;
-			c.get('user-admin').get('checkbox').get().checked = false;
 			if (user !== 'null') c.get('user-' + user).get('checkbox').get().checked = true;
 		}
 

@@ -79,7 +79,7 @@ function boostrap(imports) {
 		var popUpDeleteTransaction = PopUp(cjs.Object.extend({ type: 'delete-transaction' }, config), document.body);
 		var popUpDeleteCard = PopUp(cjs.Object.extend({ type: 'delete-card' }, config), document.body);
 
-		var staticData = { clientsData, transactionsData, cardsData };
+		var staticData = { clientsData, transactionsData, cardsData, config };
 		var nfcReader = cjs.Component({ template: '<div/>', style: '.& {display: none}' });
 
 		var sm = new StateMachine(useCases, staticData, {
@@ -399,6 +399,9 @@ function boostrap(imports) {
 
 					});
 					doc.output('dataurlnewwindow', {});
+				},
+				logout: function () {
+					cash.initialise();
 				}
 			}
 		});

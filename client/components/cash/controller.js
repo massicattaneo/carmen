@@ -57,6 +57,7 @@ function cash(imports) {
 			if (salitre && compania) filter = 'user=salitre||compania';
 			else if (salitre) filter = 'user=salitre';
 			else if (compania) filter = 'user=compania';
+			else filter = 'user=none';
 			obj.get('transaction-list').get('list').setFixedFilter(filter);
 		};
 

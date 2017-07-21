@@ -28,3 +28,7 @@
 .& .bg span:nth-child(11) {background-image: url('images/bg/10.jpg')}
 .& .bg span:last-child {background-image: url('images/bg/11.jpg')}
 
+.& .logged-out .logged-out {display: block;}
+.& .logged-out .logged-in {display: none;}
+.& .logged-in .logged-out {display: none;}
+.& .logged-in .logged-in {display: block;}

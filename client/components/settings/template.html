@@ -7,9 +7,21 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<cjs:switch data-on="change:setUserCompania" data-id="user-compania"></cjs:switch>
 		CALLE COMPANIA
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<cjs:switch data-on="change:setUserAdmin" data-id="user-admin"></cjs:switch>
-		ADMIN
+	</fieldset>
+	<fieldset class="login">
+		<legend>LOGIN</legend>
+		<form data-on="submit:log" data-item="login">
+			<span class="logged-out">
+				CONTRASENA: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" data-item="password"/>
+				<input type="submit" value="LOGIN"/>
+				<br/><br/>
+				AUTO LOGOUT EN <input type="number" data-item="minutes" value="5" width="20"/> MINUTOS
+			</span>
+			<span class="logged-in">
+				AHORA ESTAS REGISTRADO COMO ADMIN (EN <span data-item="time"></span> LA SESION CADUCA AUTOMATICAMENTE)
+				<input type="submit" value="LOGOUT"/>
+			</span>
+		</form>
 	</fieldset>
 	<fieldset class="audio">
 		<legend>AUDIO</legend>
