@@ -3,6 +3,7 @@
   text-align: left;
   color: $mainTextColor;
 }
+.& .users {display: none;}
 .& fieldset {margin: 20px 0;}
 .& fieldset legend {display:block;}
 .& .audio {    width: 65px;}
