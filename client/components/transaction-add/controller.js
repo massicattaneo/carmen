@@ -15,8 +15,15 @@ function controller() {
         var obj = {};
 		var transactionMultiplier = 1;
 
+		function reset() {
+			obj.get().removeStyle('bonus-mode');
+			obj.get('zero-funds').addStyle({display: 'none'});
+			obj.get('save').setAttribute('disabled');
+		}
+
 		obj.addClientData = function (clientId, clientsData) {
 			transactionMultiplier = 1;
+			reset();
 			var data = clientsData[clientId];
 			obj.get('client-data').addStyle({display: 'block'});
 			obj.get('name').setValue(data.name);
@@ -26,12 +33,12 @@ function controller() {
 			obj.get('payer-name').setValue(data.name + ' ' + data.surname);
 			obj.get('card-id').setAttribute('value', '');
 			obj.get('extra-info').setValue('');
-			obj.get().removeStyle('bonus-mode');
 		};
 
 		obj.genericBuy = function () {
 			transactionMultiplier = -1;
-			obj.get().removeStyle('bonus-mode');
+			reset();
+			obj.get('zero-funds').addStyle({display: 'none'});
 			obj.get('client-data').addStyle({display: 'none'});
 			obj.get('payer-name').setValue('');
 			obj.get('card-id').setAttribute('value', '');
@@ -40,8 +47,13 @@ function controller() {
 
 		obj.bonusMode = function (cardId, cardTotal) {
 			transactionMultiplier = 1;
+			reset();
 			obj.get('card-id').setAttribute('value', cardId);
-			obj.get('extra-info').setValue('Total residuo de la tarjeta: ' + cardTotal);
+			obj.get('extra-info').setValue('Total residuo de la tarjeta: ' + cjs.Component.parse('currency', cardTotal));
+			if (Math.round(cardTotal) === 0) {
+				obj.get('zero-funds').addStyle({display: 'block'});
+				obj.get('save').setAttribute('disabled', 'disabled');
+			}
 			obj.get().addStyle('bonus-mode');
 		};
 
@@ -76,7 +88,7 @@ function controller() {
 			obj.get('payer-name').setValue('');
 			obj.get('card-id').setAttribute('value', '');
 			obj.get('extra-info').setValue('');
-			obj.get().removeStyle('bonus-mode');
+			reset();
 		};
 
         return obj;

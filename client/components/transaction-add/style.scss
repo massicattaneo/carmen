@@ -9,3 +9,4 @@
 .& textarea {height: auto; vertical-align: top;}
 .& input.save {margin-left: 162px;height: 38px;}
 .&.bonus-mode .hide-on-bonus-mode {display: none;}
+.& .zero-funds { border: 1px solid red; padding: 5px; text-align: center; background: rgba(255,0,0,0.2); display: none;}

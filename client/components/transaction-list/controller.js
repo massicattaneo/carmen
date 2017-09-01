@@ -46,11 +46,11 @@ function controller() {
 			var cardTotal = 0;
 			var keys = Object.keys(data);
 			keys.forEach(function (k) {
-				if (!(data[k].cardId && data[k].value<0)) {
-					total += data[k].value;
+				if (!(data[k].cardId && data[k].value < 0)) {
+					total += parseFloat(data[k].value);
 				}
 				if (data[k].cardId) {
-					cardTotal += data[k].value;
+					cardTotal += parseFloat(data[k].value);
 				}
 			});
 			cjs.Component.parse('currency', cardTotal, obj.get('card-total'));

@@ -8,6 +8,7 @@
 		Email: <span data-item="email"></span> -
 		Tel: <span data-item="tel"></span>
 		<hr/>
+		<div data-item="zero-funds" class="zero-funds">ESTA TARJETA NO TIENE MAS BONO DA UTILIZAR</div>
 		<span data-item="extra-info"></span>
 	</div>
 	<form data-on="submit:saveTransaction">
@@ -25,6 +26,6 @@
 		<label>DESCRIPTION:</label>
 		<textarea data-item="description" placeholder="DESCRIPTION" rows="6"></textarea>
 		<br/>
-		<input type="submit" class="save" value="GUARDAR" />
+		<input type="submit" data-item="save" class="save" value="GUARDAR" />
 	</form>
 </div>

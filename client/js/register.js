@@ -52,7 +52,7 @@ function register(imports) {
     return function (config) {
 
         cjs.Component.registerParserFunction('currency', function (data, item) {
-            var currency = new cjs.Currency(data);
+            var currency = new cjs.Currency(parseFloat(data).toFixed(2));
 			if (item) {
 				item.setValue(currency.format('s i,ff'));
 				data < 0 && item.addStyle('negative');
