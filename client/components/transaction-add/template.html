@@ -16,7 +16,7 @@
 		<input class="hide-on-bonus-mode" data-item="payer-name" type="text" required placeholder="name"/>
 		<br class="hide-on-bonus-mode"/>
 		<label>VALUE:</label>
-		<input data-item="value" type="number" step="0.01" placeholder="value" required autofocus /><br />
+		<input data-item="value" type="number" step="0.01" data-on="keyup:check" placeholder="value" required autofocus /><br />
 		<input data-item="card-id" type="hidden" />
 		<label>TYPE:</label>
 		<select data-item="type">

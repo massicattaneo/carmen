@@ -14,10 +14,13 @@ function controller() {
     return function (config) {
         var obj = {};
 		var transactionMultiplier = 1;
+		var totalOfTheCard = 0;
 
 		function reset() {
 			obj.get().removeStyle('bonus-mode');
 			obj.get('zero-funds').addStyle({display: 'none'});
+			obj.get('save').setAttribute('disabled');
+			totalOfTheCard = 0;
 		}
 
 		obj.addClientData = function (clientId, clientsData) {
@@ -45,8 +48,9 @@ function controller() {
 		};
 
 		obj.bonusMode = function (cardId, cardTotal) {
-			transactionMultiplier = 1;
 			reset();
+			transactionMultiplier = 1;
+			totalOfTheCard = cardTotal;
 			obj.get('card-id').setAttribute('value', cardId);
 			obj.get('extra-info').setValue('Total residuo de la tarjeta: ' + cjs.Component.parse('currency', cardTotal));
 			if (Math.round(cardTotal) === 0) {
@@ -67,6 +71,14 @@ function controller() {
 				description: obj.get('description').getValue()
 			};
 			obj.get().fire('transaction-add', data)
+		};
+
+		obj.check = function () {
+			if (obj.get().hasStyle('bonus-mode')) {
+				var value = transactionMultiplier * parseFloat(obj.get('value').getValue());
+				value = isNaN(value) ? 0 : value;
+				obj.get('save').setAttribute('disabled', (Math.round(totalOfTheCard) + value < 0) ? 'disabled' : undefined);
+			}
 		};
 
 		obj.show = function () {
