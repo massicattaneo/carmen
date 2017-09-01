@@ -18,7 +18,6 @@ function controller() {
 		function reset() {
 			obj.get().removeStyle('bonus-mode');
 			obj.get('zero-funds').addStyle({display: 'none'});
-			obj.get('save').setAttribute('disabled');
 		}
 
 		obj.addClientData = function (clientId, clientsData) {
@@ -52,7 +51,6 @@ function controller() {
 			obj.get('extra-info').setValue('Total residuo de la tarjeta: ' + cjs.Component.parse('currency', cardTotal));
 			if (Math.round(cardTotal) === 0) {
 				obj.get('zero-funds').addStyle({display: 'block'});
-				obj.get('save').setAttribute('disabled', 'disabled');
 			}
 			obj.get().addStyle('bonus-mode');
 		};
