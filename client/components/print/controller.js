@@ -68,13 +68,13 @@ function controller(imports) {
 				filter: function (item) {
 					if (dateFrom.getTime() > item.created) return false;
 					if (dateTo.getTime() < item.created) return false;
-					if (item.type !== 'tarjeta credito') return false;
 					if (item.value < 0) return false;
 					if (!salitre && item.user === 'salitre') return false;
 					if (!compania && item.user === 'compania') return false;
 					return true;
 				},
-				start: obj.get('billNumber').getValue()
+				start: obj.get('billNumber').getValue(),
+				cashMaximum: obj.get('cashMaximum').getValue(),
 			})
 		};
 
@@ -99,7 +99,5 @@ function controller(imports) {
 		};
 
         return obj;
-
-    }
-
-};
+    };
+}
