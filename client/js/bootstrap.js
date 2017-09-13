@@ -87,12 +87,28 @@ function boostrap(imports) {
 		var staticData = { clientsData, transactionsData, cardsData, config };
 		var nfcReader = cjs.Component({ template: '<div/>', style: '.& {display: none}' });
 
-		function newTot(goal, array) {
-			return array.reduce(function (a, b) {
-				if (b.type === "efectivo") {
-					var tot = a.reduce((a,b) => a + b.value, 0);
-					if (tot + b.value <= goal) a.push(b);
+		function newTot(goal, startArray) {
+			var array = startArray
+				.filter(b => b.type === "efectivo")
+				.sort((a,b) => a.created - b.created);
+			var res = [];
+			var counter = -1;
+			var start = 0;
+			var length = array.length;
+			var comparer = [];
+			while (res.length < length) {
+				if (comparer.indexOf((new cjs.Date(array[++counter].created)).format('dd-mm-yy'), start) === -1) {
+					comparer.push((new cjs.Date(array[counter].created)).format('dd-mm-yy'));
+					res.push(array.splice(counter, 1)[0]);
 				}
+				if (counter >= array.length-1) {
+					counter = -1;
+					start = res.length;
+				}
+			}
+			return res.reduce(function (a, b) {
+				var tot = a.reduce((a,b) => a + b.value, 0);
+				if (tot + b.value <= goal) a.push(b);
 				return a;
 			}, [])
 		}
@@ -356,6 +372,7 @@ function boostrap(imports) {
 					var cashIds = newTot(params.cashMaximum, Object.keys(transactionsData)
 						.map(function (k) {return transactionsData[k];})
 						.filter(params.filter));
+					console.log(cashIds)
 					Object.keys(transactionsData)
 						.map(function (k) {
 							return transactionsData[k];
