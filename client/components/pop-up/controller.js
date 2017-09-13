@@ -55,6 +55,15 @@ function controller(imports) {
 					type: 'close',
 					class: 'popup'
 				}]
+			},
+			'pop-up-warn': {
+				title: 'OPERACION NO CONSENTIDA!',
+				text: 'El cliente ya tiene una tarjeta!',
+				buttons: [{
+					text: 'OK',
+					type: 'ok',
+					class: 'popup'
+				}]
 			}
 
         };

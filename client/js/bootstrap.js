@@ -83,6 +83,7 @@ function boostrap(imports) {
 		var popUpDeleteClient = PopUp(cjs.Object.extend({ type: 'delete-client' }, config), document.body);
 		var popUpDeleteTransaction = PopUp(cjs.Object.extend({ type: 'delete-transaction' }, config), document.body);
 		var popUpDeleteCard = PopUp(cjs.Object.extend({ type: 'delete-card' }, config), document.body);
+		var popUpWarn = PopUp(cjs.Object.extend({ type: 'pop-up-warn' }, config), document.body);
 
 		var staticData = { clientsData, transactionsData, cardsData, config };
 		var nfcReader = cjs.Component({ template: '<div/>', style: '.& {display: none}' });
@@ -115,7 +116,7 @@ function boostrap(imports) {
 
 		var sm = new StateMachine(useCases, staticData, {
 			header, blackScreen, clients, users, history, cash,
-			settings, print, popUpDeleteClient, popUpDeleteTransaction, popUpDeleteCard,
+			settings, print, popUpDeleteClient, popUpDeleteTransaction, popUpDeleteCard, popUpWarn,
 			transactionAdd, cards, nfcReader,
 			db: {
 				updateClients: function (info, id) {
@@ -450,6 +451,11 @@ function boostrap(imports) {
 				},
 				logout: function () {
 					cash.initialise();
+				},
+				hasClientCard: function (clientId) {
+					return cjs.Need().resolve(Object.keys(cardsData).filter(function (key) {
+							return cardsData[key].clientId === clientId
+						}).length > 0);
 				}
 			}
 		});

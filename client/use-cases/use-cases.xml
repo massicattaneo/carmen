@@ -21,9 +21,21 @@
 		<reset-args/>
 		<wait component="clients" event="tap-client-select"/>
 		<set path="activeClient" value="{0}"/>
-		<run component="utils" action="hideAllPages"/>
-		<run component="db" action="saveCard"/>
-		<run component="cards" action="show"/>
+		<run component="utils" action="hasClientCard"/>
+		<if test="{1} === 'true'">
+			<run component="blackScreen" action="show"/>
+			<run component="popUpWarn" action="show"/>
+			<run component="popUpWarn" action="hide"/>
+			<run component="blackScreen" action="hide"/>
+			<run component="utils" action="hideAllPages"/>
+			<run component="cards" action="show"/>
+			<run component="cards" action="enterMode"/>
+		</if>
+		<if test="{1} === 'false'">
+			<run component="utils" action="hideAllPages"/>
+			<run component="db" action="saveCard"/>
+			<run component="cards" action="show"/>
+		</if>
 	</event>
 
 	<event component="cash" on="tap-transaction-pay">
