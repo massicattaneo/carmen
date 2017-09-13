@@ -15,12 +15,12 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-.& .created {
-  width: 100px;
-}
-.& .name {
-	width: 185px;
-}
+.& .created {width: 100px;}
+.& .toPrint {display: none;}
+.cash .& .toPrint {display: inline-block;}
+.& .name {width: 185px;}
+.cash .& .name {width: 165px;}
+
 .& .description {
   width: 300px;
 	font-size: 11px;

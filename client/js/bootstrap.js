@@ -133,6 +133,7 @@ function boostrap(imports) {
 						user: config.user,
 						description: data.description,
 						clientId: id,
+						toPrint: data.toPrint,
 						cardId: data.cardId,
 						name: data.name,
 						value: data.value,
@@ -193,7 +194,8 @@ function boostrap(imports) {
 					firebase.database().ref('transactions/').on('child_added', function (d) {
 						transactionsData[d.key] = d.val();
 						if (cjs.Date.isToday(d.val().created)) {
-							cash.add(d.key, d.val(), Object.keys(transactionsData).length)
+							cash.add(d.key, d.val(), Object.keys(transactionsData).length);
+							cjs.Component.collectData();
 						}
 					});
 				},

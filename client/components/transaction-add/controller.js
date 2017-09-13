@@ -63,10 +63,12 @@ function controller() {
 			e.preventDefault();
 			var cardId = obj.get('card-id').getValue();
 			var value = transactionMultiplier * parseFloat(obj.get('value').getValue());
-            var data = {
+			var type = ((!cardId) || value>=0) ? obj.get('type').getValue() : 'utilizo bonus';
+			var data = {
 				value: value,
-				type: ((!cardId) || value>=0) ? obj.get('type').getValue() : 'utilizo bonus',
+				type: type,
 				cardId: cardId,
+				toPrint: type === 'tarjeta credito',
 				name: obj.get('payer-name').getValue(),
 				description: obj.get('description').getValue()
 			};

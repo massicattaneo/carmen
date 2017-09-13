@@ -20,6 +20,8 @@ function controller() {
 
 		obj.update = function (info, id) {
 			obj.get().get().id = id;
+			obj.get('toPrint').setAttribute('disabled', info.type !== 'efectivo' ? 'disabled' : undefined);
+			// obj.get('toPrint').get().checked = info.toPrint;
 			obj.get('wrapper').setAttribute('title', 'ID = ' + id + ', USER = ' + info.user);
 			obj.get('created').setAttribute('title', cjs.Component.parse('short-date', info.created));
 			obj.get('type').setAttribute('title', info.type);
@@ -33,6 +35,16 @@ function controller() {
 			cjs.Component.parse('currency', info.value, obj.get('value'));
 			obj.get('user').setValue(info.user);
 		};
+
+		// obj.toPrintChange = function () {
+		// 	var param = {
+		// 		id: obj.get().get().id,
+		// 		toPrint: obj.get('toPrint').get().checked
+		// 	};
+		// 	config;
+		// 	debugger;
+		// 	obj.get().fire('toPrintChange', param)
+		// };
 
         return obj;
     }
