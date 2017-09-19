@@ -98,6 +98,16 @@ function controller(imports) {
 			})
 		};
 
+		obj.exportClients = function () {
+			var salitre = obj.get('filter-clients-salitre').get('checkbox').get().checked;
+			var compania = obj.get('filter-clients-compania').get('checkbox').get().checked;
+			obj.get().fire('tap-export-clients', function (item) {
+				if (!salitre && item.user === 'salitre') return false;
+				if (!compania && item.user === 'compania') return false;
+				return true;
+			});
+		};
+
         return obj;
     };
 }

@@ -24,7 +24,9 @@ function controller() {
 			edit.get('email').setValue(client.email);
 			edit.get('tel').setValue(client.tel);
 			edit.get().addListener('submit', function () {
-				obj.get().fire('tap-client-update', edit.toJSON());
+				var param = edit.toJSON();
+				param.user = client.user;
+				obj.get().fire('tap-client-update', param);
 				obj.closeEdit();
 			});
 		};

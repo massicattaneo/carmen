@@ -248,4 +248,8 @@
 		<run component="clients" action="show"/>
 	</event>
 
+	<event component="print" on="tap-export-clients">
+		<run component="utils" action="exportClients"/>
+	</event>
+
 </use-cases>

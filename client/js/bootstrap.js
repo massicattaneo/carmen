@@ -456,6 +456,32 @@ function boostrap(imports) {
 					return cjs.Need().resolve(Object.keys(cardsData).filter(function (key) {
 							return cardsData[key].clientId === clientId
 						}).length > 0);
+				},
+				exportClients: function (filter) {
+					var csvContent = "data:text/csv;charset=utf-8," + Object
+						.keys(clientsData)
+						.map(function (key) {
+							return clientsData[key];
+						})
+						.filter(function (client) {
+							return filter(client)
+						})
+						.sort(function (a, b) {
+							if(a.surname < b.surname) return -1;
+							if(a.surname > b.surname) return 1;
+							return 0;
+						})
+						.map(function (client) {
+							return client.user + ';' + client.surname + ';' + client.name + ';' + client.tel + ';' + client.email + ';'
+						})
+						.join('\n');
+
+
+					var encodedUri = encodeURI(csvContent);
+					var link = document.createElement("a");
+					link.setAttribute("href", encodedUri);
+					link.setAttribute("download", "clienti.csv");
+					link.click();
 				}
 			}
 		});

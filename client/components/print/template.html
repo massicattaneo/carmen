@@ -57,10 +57,15 @@
 	</fieldset>
 	<br/><br/>
 	<fieldset>
-		<legend>TOTAL POR CLIENTES</legend>
+		<legend>CLIENTES</legend>
 		<cjs:button data-on="click:printClients" class="button-print">
 			<text>IMPRIME</text>
 			<class>fa-print</class>
+		</cjs:button>
+		&nbsp;&nbsp;
+		<cjs:button data-on="click:exportClients" class="button-print">
+			<text>DESCARGA</text>
+			<class>fa-download</class>
 		</cjs:button>
 
 		USUARIOS:
@@ -70,4 +75,5 @@
 		<cjs:switch data-id="filter-clients-compania"></cjs:switch>
 		COMPANIA
 	</fieldset>
+
 </div>

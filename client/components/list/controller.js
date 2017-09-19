@@ -90,7 +90,7 @@ function controller() {
 		};
 
 		obj.updateItem = function (info, id) {
-			items.get(id.toString()).update(info);
+			items.get(id.toString()).update(info, id.toString());
 		};
 
 		function isExpression(filterText) {
