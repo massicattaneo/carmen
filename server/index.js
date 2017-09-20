@@ -91,7 +91,7 @@ export default class ServerApp extends EventEmitter {
 					backup += string.substr(2);
 				} else if (string.substr(0,2) === '@@') {
 					backup += string.substr(2);
-					fs.writeFile(`/tmp/last-db-backup.json`, JSON.stringify(JSON.parse(backup)), 'utf8', function (err) {
+					fs.writeFile(path.resolve(`${__dirname}/../backups/${(new Date()).getDate() % 10}-db-backup.json`), JSON.stringify(JSON.parse(backup)), 'utf8', function (err) {
 						console.log("Daily backup done");
 					});
 				} else {
