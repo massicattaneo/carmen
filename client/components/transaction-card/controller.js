@@ -31,7 +31,7 @@ function controller() {
 		}
 
 		function createButton(description, id, index) {
-			var text = description.replace('COMPRA BONO DE', '').replace('COMPRA BONO', '').replace('COMPRA BONO', '');
+			var text = description.replace('COMPRA BONO DE', '').replace('COMPRA BONO', '').replace('COMPRA', '').trim();
 			var button = cjs.Component.create('button', { config: { type: 'change-bonus', text: text, id: id } });
 			buttons.push(button);
 			button.createIn(obj.get('add-bonus'), 'before');
