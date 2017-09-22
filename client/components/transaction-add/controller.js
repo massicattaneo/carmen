@@ -18,7 +18,6 @@ function controller() {
 
 		function reset() {
 			obj.get().removeStyle('bonus-mode');
-			obj.get('zero-funds').addStyle({display: 'none'});
 			obj.get('save').setAttribute('disabled');
 			totalOfTheCard = 0;
 		}
@@ -40,30 +39,17 @@ function controller() {
 		obj.genericBuy = function () {
 			transactionMultiplier = -1;
 			reset();
-			obj.get('zero-funds').addStyle({display: 'none'});
 			obj.get('client-data').addStyle({display: 'none'});
 			obj.get('payer-name').setValue('');
 			obj.get('card-id').setAttribute('value', '');
 			obj.get('extra-info').setValue('');
 		};
 
-		obj.bonusMode = function (cardId, cardTotal) {
-			reset();
-			transactionMultiplier = 1;
-			totalOfTheCard = cardTotal;
-			obj.get('card-id').setAttribute('value', cardId);
-			obj.get('extra-info').setValue('Total residuo de la tarjeta: ' + cjs.Component.parse('currency', cardTotal));
-			if (Math.round(cardTotal) === 0) {
-				obj.get('zero-funds').addStyle({display: 'block'});
-			}
-			obj.get().addStyle('bonus-mode');
-		};
-
 		obj.saveTransaction = function (e) {
 			e.preventDefault();
 			var cardId = obj.get('card-id').getValue();
 			var value = transactionMultiplier * parseFloat(obj.get('value').getValue());
-			var type = ((!cardId) || value>=0) ? obj.get('type').getValue() : 'utilizo bonus';
+			var type = obj.get('type').getValue();
 			var data = {
 				value: value,
 				type: type,

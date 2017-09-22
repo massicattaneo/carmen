@@ -64,6 +64,9 @@ function boostrap(imports) {
 		var transactionAdd = cjs.Component.create('transaction-add', {});
 		transactionAdd.createIn(document.getElementById('page'));
 
+		var transactionCard = cjs.Component.create('transaction-card', {});
+		transactionCard.createIn(document.getElementById('page'));
+
 		var history = History(config);
 		history.createIn(document.getElementById('page'));
 
@@ -117,7 +120,7 @@ function boostrap(imports) {
 		var sm = new StateMachine(useCases, staticData, {
 			header, blackScreen, clients, users, history, cash,
 			settings, print, popUpDeleteClient, popUpDeleteTransaction, popUpDeleteCard, popUpWarn,
-			transactionAdd, cards, nfcReader,
+			transactionAdd, cards, nfcReader, transactionCard,
 			db: {
 				updateClients: function (info, id) {
 					db.update('clients/' + id, info);
@@ -177,22 +180,22 @@ function boostrap(imports) {
 					});
 				},
 				loadClients: function () {
-					firebase.database().ref('clients/').on('child_added', function (d) {
+					db.ref('clients/').on('child_added', function (d) {
 						clientsData[d.key] = d.val();
 						clients.add(d.key, d.val(), Object.keys(clientsData).length)
 					});
-					firebase.database().ref('clients/').on('child_changed', function (d) {
+					db.ref('clients/').on('child_changed', function (d) {
 						clientsData[d.key] = d.val();
 					});
 				},
 				loadCards: function () {
-					firebase.database().ref('cards/').on('child_added', function (d) {
+					db.ref('cards/').on('child_added', function (d) {
 						cardsData[d.key] = d.val();
 						cards.add(d.key, d.val(), Object.keys(cardsData).length)
 					});
 				},
 				loadTransactions: function () {
-					firebase.database().ref('transactions/').on('child_added', function (d) {
+					db.ref('transactions/').on('child_added', function (d) {
 						transactionsData[d.key] = d.val();
 						if (cjs.Date.isToday(d.val().created)) {
 							cash.add(d.key, d.val(), Object.keys(transactionsData).length);
@@ -219,6 +222,7 @@ function boostrap(imports) {
 					clients.get().addStyle({ display: 'none' });
 					cards.get().addStyle({ display: 'none' });
 					transactionAdd.get().addStyle({ display: 'none' });
+					transactionCard.get().addStyle({ display: 'none' });
 					cash.get().addStyle({ display: 'none' });
 					users.get().addStyle({ display: 'none' });
 					history.get().addStyle({ display: 'none' });

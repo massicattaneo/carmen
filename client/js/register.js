@@ -37,6 +37,10 @@ function register(imports) {
     var transactionAddTemplate = imports('components/transaction-add/template.html');
     var transactionAddStyle = imports('components/transaction-add/style.scss');
 
+	var transactionCardController = imports('components/transaction-card/controller.js');
+	var transactionCardTemplate = imports('components/transaction-card/template.html');
+	var transactionCardStyle = imports('components/transaction-card/style.scss');
+
     var transactionListController = imports('components/transaction-list/controller.js');
     var transactionListTemplate = imports('components/transaction-list/template.html');
     var transactionListStyle = imports('components/transaction-list/style.scss');
@@ -137,7 +141,7 @@ function register(imports) {
             config: config
         });
 
-        /** TRANSACTION **/
+        /** TRANSACTION ADD **/
         cjs.Component.register({
             name: 'transaction-add',
             controller: transactionAddController,
@@ -145,6 +149,15 @@ function register(imports) {
             style: transactionAddStyle,
             config: config
         });
+
+		/** TRANSACTION CARD **/
+		cjs.Component.register({
+			name: 'transaction-card',
+			controller: transactionCardController,
+			template: transactionCardTemplate,
+			style: transactionCardStyle,
+			config: config
+		});
 
         /** TRANSACTION LIST **/
         cjs.Component.register({
