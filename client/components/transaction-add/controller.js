@@ -14,12 +14,11 @@ function controller() {
     return function (config) {
         var obj = {};
 		var transactionMultiplier = 1;
-		var totalOfTheCard = 0;
 
 		function reset() {
 			obj.get().removeStyle('bonus-mode');
+			obj.get('title').setValue('PAGO');
 			obj.get('save').setAttribute('disabled');
-			totalOfTheCard = 0;
 		}
 
 		obj.addClientData = function (clientId, clientsData) {
@@ -33,23 +32,30 @@ function controller() {
 			obj.get('tel').setValue(data.tel);
 			obj.get('payer-name').setValue(data.name + ' ' + data.surname);
 			obj.get('card-id').setAttribute('value', '');
-			obj.get('extra-info').setValue('');
 		};
 
 		obj.genericBuy = function () {
 			transactionMultiplier = -1;
 			reset();
+			obj.get('title').setValue('COMPRA');
 			obj.get('client-data').addStyle({display: 'none'});
 			obj.get('payer-name').setValue('');
 			obj.get('card-id').setAttribute('value', '');
-			obj.get('extra-info').setValue('');
+		};
+
+		obj.bonusMode = function (cardId) {
+			reset();
+			transactionMultiplier = 1;
+			obj.get('card-id').setAttribute('value', cardId);
+			obj.get('title').setValue('ANADE BONUS');
+			obj.get().addStyle('bonus-mode');
 		};
 
 		obj.saveTransaction = function (e) {
 			e.preventDefault();
 			var cardId = obj.get('card-id').getValue();
 			var value = transactionMultiplier * parseFloat(obj.get('value').getValue());
-			var type = obj.get('type').getValue();
+			var type = ((!cardId) || value>=0) ? obj.get('type').getValue() : 'utilizo bonus';
 			var data = {
 				value: value,
 				type: type,
@@ -62,11 +68,9 @@ function controller() {
 		};
 
 		obj.check = function () {
-			if (obj.get().hasStyle('bonus-mode')) {
-				var value = transactionMultiplier * parseFloat(obj.get('value').getValue());
-				value = isNaN(value) ? 0 : value;
-				obj.get('save').setAttribute('disabled', (Math.round(totalOfTheCard) + value < 0) ? 'disabled' : undefined);
-			}
+			var value = parseFloat(obj.get('value').getValue());
+			value = isNaN(value) ? 0 : value;
+			obj.get('save').setAttribute('disabled', (value < 0) ? 'disabled' : undefined);
 		};
 
 		obj.show = function () {
@@ -85,7 +89,6 @@ function controller() {
 			obj.get('description').get().value = '';
 			obj.get('payer-name').setValue('');
 			obj.get('card-id').setAttribute('value', '');
-			obj.get('extra-info').setValue('');
 			reset();
 		};
 

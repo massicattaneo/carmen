@@ -1,0 +1,12 @@
+<div class="visible" data-item="wrapper">
+	<fieldset class="list">
+		<legend>Listado</legend>
+		<cjs:transaction-list data-id="transaction-list"></cjs:transaction-list>
+	</fieldset>
+	<h4>UTILIZAR BONUS:</h4>
+	<form data-on="submit:useBonus">
+		<input class="name" data-item="value" type="number" step="0.01" placeholder="valor" required autofocus />
+		<input class="description" data-item="description" type="text" placeholder="descriccion" required />
+		<input type="submit" data-item="save" class="save" value="UTILIZAR BONUS" />
+	</form>
+</div>

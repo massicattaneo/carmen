@@ -49,6 +49,10 @@ function register(imports) {
 	var cardTemplate = imports('components/card/template.html');
 	var cardStyle = imports('components/card/style.scss');
 
+	var bonusController = imports('components/bonus/controller.js');
+	var bonusTemplate = imports('components/bonus/template.html');
+	var bonusStyle = imports('components/bonus/style.scss');
+
 	var switchController = imports('components/switch/controller.js');
 	var switchTemplate = imports('components/switch/template.html');
 	var switchStyle = imports('components/switch/style.scss');
@@ -174,6 +178,15 @@ function register(imports) {
             controller: cardController,
             template: cardTemplate,
             style: cardStyle,
+            config: config
+        });
+
+		/** BONUS **/
+        cjs.Component.register({
+            name: 'bonus',
+            controller: bonusController,
+            template: bonusTemplate,
+            style: bonusStyle,
             config: config
         });
 

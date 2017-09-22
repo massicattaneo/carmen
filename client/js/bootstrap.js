@@ -249,6 +249,12 @@ function boostrap(imports) {
 						return a + b;
 					}))
 				},
+				getCardTransactions: function (cardId) {
+					return cjs.Need().resolve(Object.keys(transactionsData)
+						.filter(key => transactionsData[key].cardId === cardId)
+						.reduce((out, key) => {out[key] = transactionsData[key]; return out;}, {})
+					)
+				},
 				printList: function (filter) {
 					var doc = new jsPDF('p', 'mm', [297, 210]);
 					var linesHeight = 6;

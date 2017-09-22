@@ -2,7 +2,8 @@
   color: $mainTextColor;
   position: relative;
 }
-.& .total span {display: inline-block; color: #6b6b6b}
+.& .total span {display: inline-block; color: #6b6b6b; line-height: 20px;}
+.& .total .line {display: block; margin: 5px 0}
 .& .total .label {
   width: 748px;
   text-align: right;
@@ -15,3 +16,4 @@
   width: 120px;
   text-align: right;
 }
+

@@ -69,28 +69,25 @@
 		<run component="utils" action="hideAllPages"/>
 		<read path="activeClient"/>
 		<read path="clientsData"/>
-		<run component="transactionCard" action="show"/>
 		<run component="transactionCard" action="resetData"/>
-		<run component="transactionCard" action="addClientData"/>
-		<!--<reset-args/>-->
-		<!--<read path="activeCard"/>-->
-		<!--<run component="utils" action="calculateCardTotal"/>-->
-		<!--<run component="transactionCard" action="bonusMode"/>-->
-		<!--<reset-args/>-->
-		<!--<read path="activeCard"/>-->
-		<!--<read path="cardsData"/>-->
-		<!--<read path="clientsData"/>-->
-		<!--<read path="transactionsData"/>-->
-		<!--<run component="history" action="populateByCardId"/>-->
-		<!--<run component="history" action="show"/>-->
-		<!--<run component="history" action="hideTitles"/>-->
-		<!--<reset-args/>-->
-		<!--<read path="activeClient"/>-->
-		<!--<run component="transactionCard" action="show"/>-->
-		<!--<wait component="transactionCard" event="transaction-add"/>-->
-		<!--<run component="utils" action="hideAllPages"/>-->
-		<!--<run component="db" action="saveTransaction"/>-->
-		<!--<run component="cash" action="show"/>-->
+		<run component="transactionCard" action="setUp"/>
+		<run component="transactionCard" action="show"/>
+		<reset-args />
+		<read path="activeCard"/>
+		<run component="utils" action="getCardTransactions" />
+		<run component="transactionCard" action="addBonusesList"/>
+	</event>
+
+	<event component="transactionCard" on="tap-add-bonus">
+		<run component="utils" action="hideAllPages"/>
+		<read path="activeClient"/>
+		<read path="clientsData"/>
+		<run component="transactionAdd" action="resetData"/>
+		<run component="transactionAdd" action="addClientData"/>
+		<reset-args/>
+		<read path="activeCard"/>
+		<run component="transactionAdd" action="bonusMode"/>
+		<run component="transactionAdd" action="show"/>
 	</event>
 
 	<event component="cash" on="tap-transaction-buy">
