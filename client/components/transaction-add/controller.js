@@ -14,6 +14,7 @@ function controller() {
     return function (config) {
         var obj = {};
 		var transactionMultiplier = 1;
+		var storeClientId;
 
 		function reset() {
 			obj.get().removeStyle('bonus-mode');
@@ -25,6 +26,7 @@ function controller() {
 			transactionMultiplier = 1;
 			reset();
 			var data = clientsData[clientId];
+			storeClientId = clientId;
 			obj.get('client-data').addStyle({display: 'block'});
 			obj.get('name').setValue(data.name);
 			obj.get('surname').setValue(data.surname);
@@ -62,7 +64,8 @@ function controller() {
 				cardId: cardId,
 				toPrint: type === 'tarjeta credito',
 				name: obj.get('payer-name').getValue(),
-				description: obj.get('description').getValue()
+				description: obj.get('description').getValue(),
+				clientId: storeClientId
 			};
 			obj.get().fire('transaction-add', data)
 		};

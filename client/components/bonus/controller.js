@@ -27,11 +27,18 @@ function controller() {
 		obj.useBonus = function (e) {
 			e.preventDefault();
 			e.stopPropagation();
-			var info ={
-				name: obj.get('name').getValue(),
-				description: obj.get('description').getValue(),
+			var {transactionId, clientName, cardId, clientId} = config.data;
+			var data ={
+				value: obj.get('value').getValue(),
+				type: 'utilizo bonus',
+				cardId: cardId,
+				clientId: clientId,
+				transactionId: transactionId,
+				toPrint: false,
+				name: clientName,
+				description: obj.get('description').getValue()				
 			};
-			obj.get().fire('use-bonus', info);
+			obj.get().fire('transaction-add', data);
 		};
 
         return obj;

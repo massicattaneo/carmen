@@ -78,6 +78,12 @@
 		<run component="transactionCard" action="addBonusesList"/>
 	</event>
 
+	<event component="transactionCard" on="transaction-add">
+		<run component="utils" action="hideAllPages"/>
+		<run component="db" action="saveBonusUseTransaction"/>
+		<run component="cash" action="show"/>
+	</event>
+
 	<event component="transactionCard" on="tap-add-bonus">
 		<run component="utils" action="hideAllPages"/>
 		<read path="activeClient"/>
@@ -88,6 +94,11 @@
 		<read path="activeCard"/>
 		<run component="transactionAdd" action="bonusMode"/>
 		<run component="transactionAdd" action="show"/>
+		<reset-args/>
+		<wait component="transactionAdd" event="transaction-add"/>
+		<run component="utils" action="hideAllPages"/>
+		<run component="db" action="saveBonusBuyTransaction"/>
+		<run component="cash" action="show"/>
 	</event>
 
 	<event component="cash" on="tap-transaction-buy">

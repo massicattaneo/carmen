@@ -30,7 +30,7 @@ function controller() {
 			totalOfTheCard = 0;
 		}
 
-		function createButton(description, id, index) {
+		function createButton(description, id, index, cardId) {
 			var text = description.replace('COMPRA BONO DE', '').replace('COMPRA BONO', '').replace('COMPRA', '').trim();
 			var button = cjs.Component.create('button', { config: { type: 'change-bonus', text: text, id: id } });
 			buttons.push(button);
@@ -39,13 +39,17 @@ function controller() {
 				buttons.forEach(b => b.get().removeStyle('selected'));
 				buttons.filter(b => b.config.id === id.data)[0].get().addStyle('selected');
 				lists.forEach(b => b.get().removeStyle('selected'));
-				lists.filter(b => b.config.id === id.data)[0].get().addStyle('selected');
+				lists.filter(b => b.config.data.transactionId === id.data)[0].get().addStyle('selected');
 			});
 			index === 0 && button.get().addStyle('selected');
 		}
 
-		function createList(data, id, index) {
-			var list = cjs.Component.create('bonus', { config: { id: id } });
+		function createList(data, transactionId, index, cardId) {
+			var list = cjs.Component.create('bonus', { config: { data: {
+				transactionId, cardId,
+				clientId: obj.get('client-id').get().value,
+				clientName: obj.get('name').getValue() + ' ' + obj.get('surname').getValue()
+			} } });
 			lists.push(list);
 			list.createIn(obj.get('bonus-lists'));
 			Object.keys(data).forEach(function (key, i) {
@@ -62,6 +66,7 @@ function controller() {
 			obj.get('surname').setValue(data.surname);
 			obj.get('email').setValue(data.email);
 			obj.get('tel').setValue(data.tel);
+			obj.get('client-id').get().value = clientId;
 		};
 
 		obj.addBonusesList = function (cardId, data) {
@@ -70,16 +75,16 @@ function controller() {
 			var groups = Object.keys(data).reduce((out, key) => {
 				if (data[key].value > 0) {
 					referenceKey = key;
-					out[key] = [];
-					out[key].push(data[key]);
+					out[key] = {};
+					out[referenceKey][key] = data[key];
 				} else {
-					out[(data[key].transactionId || referenceKey)].push(data[key]);
+					out[(data[key].transactionId || referenceKey)][key] = data[key];
 				}
 				return out;
 			}, {});
 			Object.keys(groups).forEach(function (groupKey, index) {
-				createButton(data[groupKey].description, groupKey, index);
-				createList(groups[groupKey], groupKey, index);
+				createButton(data[groupKey].description, groupKey, index, cardId);
+				createList(groups[groupKey], groupKey, index, cardId);
 			});
 
 		};

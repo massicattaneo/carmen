@@ -144,6 +144,33 @@ function boostrap(imports) {
 						type: data.type
 					});
 				},
+				saveBonusBuyTransaction: function (data) {
+					debugger;
+					db.add('transactions', {
+						user: config.user,
+						description: data.description,
+						clientId: data.clientId,
+						toPrint: data.toPrint,
+						cardId: data.cardId,
+						name: data.name,
+						value: data.value,
+						type: data.type,
+						transactionId: data.transactionId
+					});
+				},
+				saveBonusUseTransaction: function (data) {
+					db.add('transactions', {
+						user: config.user,
+						description: data.description,
+						clientId: data.clientId,
+						toPrint: data.toPrint,
+						cardId: data.cardId,
+						name: data.name,
+						value: data.value,
+						type: data.type,
+						transactionId: data.transactionId
+					});
+				},
 				saveBuy: function (data) {
 					db.add('transactions', {
 						user: config.user,
