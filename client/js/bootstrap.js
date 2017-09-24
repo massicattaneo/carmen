@@ -165,7 +165,7 @@ function boostrap(imports) {
 						toPrint: data.toPrint,
 						cardId: data.cardId,
 						name: data.name,
-						value: -data.value,
+						value: data.value,
 						type: data.type,
 						transactionId: data.transactionId
 					});

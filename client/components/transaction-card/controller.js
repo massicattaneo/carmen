@@ -73,16 +73,21 @@ function controller() {
 			emptyAll();
 			var referenceKey;
 			var groups = Object.keys(data).reduce((out, key) => {
-				if (data[key].value > 0) {
-					referenceKey = key;
-					out[key] = {};
+				if (data[key].value >= 0) {
+					referenceKey = data[key].transactionId || key;
+					out[key] = out[key] || {};
 					out[referenceKey][key] = data[key];
 				} else {
 					out[(data[key].transactionId || referenceKey)][key] = data[key];
 				}
 				return out;
 			}, {});
-			Object.keys(groups).forEach(function (groupKey, index) {
+			Object.keys(groups)
+				.filter(function (groupKey) {
+					var keys = Object.keys(groups[groupKey]);
+                    return Math.round(keys.map(k => groups[groupKey][k]).reduce((a, b) => {a += b.value; return a;}, 0)) > 0;
+				})
+				.forEach(function (groupKey, index) {
 				createButton(data[groupKey].description, groupKey, index, cardId);
 				createList(groups[groupKey], groupKey, index, cardId);
 			});
