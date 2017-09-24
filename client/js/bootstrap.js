@@ -154,8 +154,7 @@ function boostrap(imports) {
 						cardId: data.cardId,
 						name: data.name,
 						value: data.value,
-						type: data.type,
-						transactionId: data.transactionId
+						type: data.type
 					});
 				},
 				saveBonusUseTransaction: function (data) {
@@ -166,7 +165,7 @@ function boostrap(imports) {
 						toPrint: data.toPrint,
 						cardId: data.cardId,
 						name: data.name,
-						value: data.value,
+						value: -data.value,
 						type: data.type,
 						transactionId: data.transactionId
 					});
