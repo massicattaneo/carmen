@@ -1212,12 +1212,6 @@
 			"name": "CARMEN  VALDERRAMA GONZALEZ - tel: 617315180",
 			"user": "salitre"
 		},
-		"-KtzO5yt5MjsVLNXIfQJ": {
-			"clientId": "-KtzO5dVxvO8yvlASpiE",
-			"created": 1505375842318,
-			"name": "MARIA  NIETO LOPEZ - tel: 665266681",
-			"user": "salitre"
-		},
 		"-KtzggBXen1d7t1ohpMP": {
 			"clientId": "-Ktzgfvl98v2j9p3TKEv",
 			"created": 1505380975484,
@@ -1301,6 +1295,96 @@
 			"created": 1505839342936,
 			"name": "ARANCHA CERVERA - tel: 696560355",
 			"user": "salitre"
+		},
+		"-KuUZepoFHjArwNHsVJd": {
+			"clientId": "-KuUZebkXNjiftI_Ktf7",
+			"created": 1505915743688,
+			"name": "ELISA  PEREZ ZUMAQUERO  - tel: 617928808",
+			"user": "salitre"
+		},
+		"-KuV-6cshn-16UTVrQcx": {
+			"clientId": "-KuV-5yUn2W8lZ4wdjKT",
+			"created": 1505922939527,
+			"name": "GEMA  JIMENEZ - tel: 637821492",
+			"user": "compania"
+		},
+		"-KuYpfz5ECydXNeLUe9Y": {
+			"clientId": "-KuYpfdxbgfJBL7P60IF",
+			"created": 1505987313933,
+			"name": "JOSE MIGUEL  MARIN - tel: 000000000",
+			"user": "salitre"
+		},
+		"-KuYwSdZbdW6Fva4wpFb": {
+			"clientId": "-KuYwSMo3C5AEzrFPj6y",
+			"created": 1505989090219,
+			"name": "GRACIELA  PEÑA - tel: 646668807",
+			"user": "salitre"
+		},
+		"-KuZHHeQZcxop7buiUCd": {
+			"clientId": "-KuZHHOXLz7SrAIa_0CB",
+			"created": 1505994812143,
+			"name": "ROCIO  CORTES POLO - tel: 607154219",
+			"user": "salitre"
+		},
+		"-KuZLfb6aqLuFYlg6Xg7": {
+			"clientId": "-KuZLfIrEtJYddNg-mrp",
+			"created": 1505995962907,
+			"name": "MARIBEL  SALARDON MERCHAN  - tel: 675559507",
+			"user": "salitre"
+		},
+		"-KuZbXAxqd6UmcFsvirX": {
+			"clientId": "-KuZbWpRpOMp0cdne83V",
+			"created": 1506000380754,
+			"name": "MERCEDES SORIANO  - tel: 000000000",
+			"user": "salitre"
+		},
+		"-Ku_AAPz5fZmWTOfoiE3": {
+			"clientId": "-Ku_AA4qngxidJgE6Yr5",
+			"created": 1506009724695,
+			"name": "SANDRA FERRER GARCIA - tel: 630327777",
+			"user": "salitre"
+		},
+		"-Ku_T-0wKj1M-mn-Ck97": {
+			"clientId": "-Ku_Sza2b76tU1eIY4T6",
+			"created": 1506014658771,
+			"name": "ANA BELEN  GARCIA BLANCO - tel: 649580104",
+			"user": "salitre"
+		},
+		"-Kud7mEIwex6QjR-aCpx": {
+			"clientId": "-Kud7lrHq_zVsKome9ta",
+			"created": 1506076206124,
+			"name": "ANA  TELLEZ GARCIA  - tel: 625410991",
+			"user": "salitre"
+		},
+		"-KudnO4wVdup4aALnjQ3": {
+			"clientId": "-KudnNnYAx8wkozctSpP",
+			"created": 1506087375312,
+			"name": "ELOISA  CHINCHURRETA - tel: 675958539",
+			"user": "salitre"
+		},
+		"-Kue-IMhawL2C4TSlJ7L": {
+			"clientId": "-Kue-Hlz6Zk63eS4AXBJ",
+			"created": 1506090760224,
+			"name": "JUANA AMORES - tel: 626801107",
+			"user": "compania"
+		},
+		"-KueBI7bIAVcg2ZhUhE4": {
+			"clientId": "-KueBHpi4ckPnS-PoNt3",
+			"created": 1506093904510,
+			"name": "ELISA  GOMEZ RIVERO  - tel: 656355948",
+			"user": "salitre"
+		},
+		"-KueOPwGpNUMbev2Guij": {
+			"clientId": "-KueOPMK_wWgz9eomFAW",
+			"created": 1506097344351,
+			"name": "ROSA GARCIA  - tel: 649975888",
+			"user": "compania"
+		},
+		"-KuqMx3neKzr6Z0PqBmE": {
+			"clientId": "-KuqMuwi5vMiS7YmBMy7",
+			"created": 1506298286489,
+			"name": "max cattaneo - tel: 0000",
+			"user": "compania"
 		}
 	},
 	"clients": {
@@ -3112,6 +3196,126 @@
 			"surname": "CERVERA",
 			"tel": "696560355",
 			"user": "salitre"
+		},
+		"-KuUZebkXNjiftI_Ktf7": {
+			"created": 1505915742788,
+			"email": "elimlg@hotmail.com",
+			"name": "ELISA ",
+			"surname": "PEREZ ZUMAQUERO ",
+			"tel": "617928808",
+			"user": "salitre"
+		},
+		"-KuV-5yUn2W8lZ4wdjKT": {
+			"created": 1505922936939,
+			"email": "",
+			"name": "GEMA ",
+			"surname": "JIMENEZ",
+			"tel": "637821492",
+			"user": "compania"
+		},
+		"-KuYpfdxbgfJBL7P60IF": {
+			"created": 1505987312580,
+			"email": "",
+			"name": "JOSE MIGUEL ",
+			"surname": "MARIN",
+			"tel": "000000000",
+			"user": "salitre"
+		},
+		"-KuYwSMo3C5AEzrFPj6y": {
+			"created": 1505989089083,
+			"email": "teachergracielity@gmail.com",
+			"name": "GRACIELA ",
+			"surname": "PEÑA",
+			"tel": "646668807",
+			"user": "salitre"
+		},
+		"-KuZHHOXLz7SrAIa_0CB": {
+			"created": 1505994811062,
+			"email": "roanco@gmail.com",
+			"name": "ROCIO ",
+			"surname": "CORTES POLO",
+			"tel": "607154219",
+			"user": "salitre"
+		},
+		"-KuZLfIrEtJYddNg-mrp": {
+			"created": 1505995961675,
+			"email": "m.salardon@hotmail.com",
+			"name": "MARIBEL ",
+			"surname": "SALARDON MERCHAN ",
+			"tel": "675559507",
+			"user": "salitre"
+		},
+		"-KuZbWpRpOMp0cdne83V": {
+			"created": 1506000379313,
+			"email": "",
+			"name": "MERCEDES",
+			"surname": "SORIANO ",
+			"tel": "000000000",
+			"user": "salitre"
+		},
+		"-Ku_AA4qngxidJgE6Yr5": {
+			"created": 1506009723342,
+			"email": "sandraferrerg@hotmail.com",
+			"name": "SANDRA",
+			"surname": "FERRER GARCIA",
+			"tel": "630327777",
+			"user": "salitre"
+		},
+		"-Ku_Sza2b76tU1eIY4T6": {
+			"created": 1506014656986,
+			"email": "gbanabelen@gmail.com",
+			"name": "ANA BELEN ",
+			"surname": "GARCIA BLANCO",
+			"tel": "649580104",
+			"user": "salitre"
+		},
+		"-Kud7lrHq_zVsKome9ta": {
+			"created": 1506076204587,
+			"email": "anatellezgarcia@yahoo.es",
+			"name": "ANA ",
+			"surname": "TELLEZ GARCIA ",
+			"tel": "625410991",
+			"user": "salitre"
+		},
+		"-KudnNnYAx8wkozctSpP": {
+			"created": 1506087374135,
+			"email": "eloisachinchurreta@hotmail.com",
+			"name": "ELOISA ",
+			"surname": "CHINCHURRETA",
+			"tel": "675958539",
+			"user": "salitre"
+		},
+		"-Kue-Hlz6Zk63eS4AXBJ": {
+			"created": 1506090757810,
+			"email": "",
+			"name": "JUANA",
+			"surname": "AMORES",
+			"tel": "626801107",
+			"user": "compania"
+		},
+		"-KueBHpi4ckPnS-PoNt3": {
+			"created": 1506093903301,
+			"email": "lupo90@hotmail.com",
+			"name": "ELISA ",
+			"surname": "GOMEZ RIVERO ",
+			"tel": "656355948",
+			"user": "salitre"
+		},
+		"-KueOPMK_wWgz9eomFAW": {
+			"created": 1506097341988,
+			"email": "",
+			"name": "ROSA",
+			"surname": "GARCIA ",
+			"tel": "649975888",
+			"user": "compania"
+		},
+		"-KuqMuwi5vMiS7YmBMy7": {
+			"created": 1506298277780,
+			"email": "",
+			"name": "max",
+			"surname": "cattaneo",
+			"tel": "0000",
+			"user": "compania"
 		}
 	},
 	"transactions": {
@@ -8187,16 +8391,6 @@
 			"user": "salitre",
 			"value": -9.29
 		},
-		"-Kpyo9jNDH1P4OyQhQsd": {
-			"cardId": "-Kpyo4XN5ptnRpXMw_Su",
-			"clientId": "-Kpyo4CYxdGWhqt7o-84",
-			"created": 1501071191357,
-			"description": "PROMO 5 SESIONES VELA 30' + PRESO ",
-			"name": "TOÑI VARGAS LOPEZ",
-			"type": "efectivo",
-			"user": "salitre",
-			"value": 0
-		},
 		"-KpyoG90SFZ1Xg788U42": {
 			"cardId": "-Kpyo4XN5ptnRpXMw_Su",
 			"clientId": "-Kpyo4CYxdGWhqt7o-84",
@@ -8951,11 +9145,11 @@
 			"cardId": "-Kq8g1fL4PTyHos_eXnE",
 			"clientId": "-Kq8g1HyE16itlYwwm8u",
 			"created": 1501253669478,
-			"description": "CONSUME SOLO UNA SESION DE LABIO",
+			"description": "COMPRA NUEVO BONO DE CEJAS Y LABIO MAS MANICURA SEMIPERMANENTE",
 			"name": "MERCEDES GARCIA PIRIZ",
-			"type": "utilizo bonus",
+			"type": "tarjeta credito",
 			"user": "salitre",
-			"value": -5.9
+			"value": 77
 		},
 		"-Kq8j41zUcjSICziCsul": {
 			"cardId": "",
@@ -9111,11 +9305,11 @@
 			"cardId": "-Kq8g1fL4PTyHos_eXnE",
 			"clientId": "-Kq8g1HyE16itlYwwm8u",
 			"created": 1501258681470,
-			"description": "COMPRA NUEVO BONO DE CEJAS Y LABIO MAS MANICURA SEMIPERMANENTE",
+			"description": "CONSUME SOLO UNA SESION DE LABIO",
 			"name": "MERCEDES GARCIA PIRIZ",
-			"type": "tarjeta credito",
+			"type": "utilizo bonus",
 			"user": "salitre",
-			"value": 77
+			"value": -5.9
 		},
 		"-Kq8zlISjS8ezzigdnv9": {
 			"cardId": "",
@@ -12527,11 +12721,11 @@
 			"cardId": "-KrBpcjKHxCYpb3CIuKd",
 			"clientId": "-KrBpcLxVxBBQ8cpGS3U",
 			"created": 1502380317512,
-			"description": "CONSUME CEJAS",
+			"description": "COMPRA BONO DE CEJAS Y MANICURA NORMAL",
 			"name": "ELISABETH  NAVARRO SALA",
-			"type": "utilizo bonus",
+			"type": "tarjeta credito",
 			"user": "salitre",
-			"value": -7.5
+			"value": 47.5
 		},
 		"-KrBwrUA8ieIQ32h2t8Q": {
 			"cardId": "",
@@ -12767,11 +12961,11 @@
 			"cardId": "-KrBpcjKHxCYpb3CIuKd",
 			"clientId": "-KrBpcLxVxBBQ8cpGS3U",
 			"created": 1502388094018,
-			"description": "COMPRA BONO DE CEJAS Y MANICURA NORMAL",
+			"description": "CONSUME CEJAS",
 			"name": "ELISABETH  NAVARRO SALA",
-			"type": "tarjeta credito",
+			"type": "utilizo bonus",
 			"user": "salitre",
-			"value": 47.5
+			"value": -7.5
 		},
 		"-KrCJ2TD20gUY2kfCTuF": {
 			"cardId": "-KrBpcjKHxCYpb3CIuKd",
@@ -13075,11 +13269,11 @@
 			"cardId": "-KrGtK3lti5kjRPB0SUE",
 			"clientId": "-KrGtJd0pnPHVdC2s2Oc",
 			"created": 1502465116699,
-			"description": "CONSUME SESION DE HILO",
+			"description": "COMPRA BONO DE LABIO Y COSMETICA",
 			"name": "MARIA LUISA CABELLO CAMARERO",
-			"type": "utilizo bonus",
+			"type": "tarjeta credito",
 			"user": "salitre",
-			"value": -4.5
+			"value": 135.66
 		},
 		"-KrGzMtQczuyLuT0lsKb": {
 			"cardId": "",
@@ -13305,11 +13499,11 @@
 			"cardId": "-KrGtK3lti5kjRPB0SUE",
 			"clientId": "-KrGtJd0pnPHVdC2s2Oc",
 			"created": 1502475497337,
-			"description": "COMPRA BONO DE LABIO Y COSMETICA ",
+			"description": "CONSUME SESION DE HILO",
 			"name": "MARIA LUISA CABELLO CAMARERO",
-			"type": "tarjeta credito",
+			"type": "utilizo bonus",
 			"user": "salitre",
-			"value": 135.66
+			"value": -4.5
 		},
 		"-KrHWFMHNtfLtFqf6F_N": {
 			"cardId": "-KrGtK3lti5kjRPB0SUE",
@@ -13557,6 +13751,7 @@
 			"created": 1502967842812,
 			"description": "CONSUME HILO FACIAL ",
 			"name": "JULIA  VIVES",
+			"transactionId": "-KoNrPTkFKpTha42tzRb",
 			"type": "utilizo bonus",
 			"user": "salitre",
 			"value": -16
@@ -14487,6 +14682,7 @@
 			"created": 1503476160586,
 			"description": "CONSUME SESION DE CEJAS Y LABIO",
 			"name": "MARIA GLORIA  GALACHO LOPEZ ",
+			"transactionId": "-KqZDftUS9nMenYHRw83",
 			"type": "utilizo bonus",
 			"user": "salitre",
 			"value": -11.8
@@ -15895,6 +16091,7 @@
 			"created": 1503936608327,
 			"description": "CONSUME HILO CEJAS Y LABIO ",
 			"name": "MARIANGELES  PORTILLO RUIZ",
+			"transactionId": "-KrkvfyjpZMrAjguUl-g",
 			"type": "utilizo bonus",
 			"user": "salitre",
 			"value": -11.8
@@ -17169,16 +17366,6 @@
 			"user": "salitre",
 			"value": 16
 		},
-		"-KstHTumJ1tRGSZzTm7a": {
-			"cardId": "-KoDdq2uLRYn5DAQ_Z5_",
-			"clientId": "-KoDdorugAEALZc-4AHs",
-			"created": 1504199700228,
-			"description": "CONSUME HILO CEJAS ",
-			"name": "LAURA  HERAS DIAZ ",
-			"type": "utilizo bonus",
-			"user": "salitre",
-			"value": -22.5
-		},
 		"-KstHaQzZPhhqZPvj_3c": {
 			"cardId": "-KoDdq2uLRYn5DAQ_Z5_",
 			"clientId": "-KoDdorugAEALZc-4AHs",
@@ -17345,6 +17532,7 @@
 			"created": 1504263099074,
 			"description": "CONSUME HILO FACIAL ",
 			"name": "JULIA  VIVES",
+			"transactionId": "-KoNrPTkFKpTha42tzRb",
 			"type": "utilizo bonus",
 			"user": "salitre",
 			"value": -16
@@ -18363,6 +18551,7 @@
 			"created": 1504696987434,
 			"description": "CONSUME SESION RF ",
 			"name": "MARIA JOSE HIDALGO FERNANDEZ",
+			"transactionId": "-KppppxE2WNd3jNqsB5P",
 			"type": "utilizo bonus",
 			"user": "salitre",
 			"value": -27
@@ -20766,6 +20955,7 @@
 			"description": "CONSUME HILO FACIAL",
 			"name": "JULIA  VIVES",
 			"toPrint": false,
+			"transactionId": "-KoNrPTkFKpTha42tzRb",
 			"type": "utilizo bonus",
 			"user": "salitre",
 			"value": -16
@@ -21591,6 +21781,7 @@
 			"description": "CONSUME 3 SESION DE CEJAS Y LABIO",
 			"name": "MARIA GLORIA  GALACHO LOPEZ ",
 			"toPrint": false,
+			"transactionId": "-KqZDftUS9nMenYHRw83",
 			"type": "utilizo bonus",
 			"user": "salitre",
 			"value": -11.8
@@ -22193,6 +22384,7 @@
 			"description": "CONSUME SESION DE CEJAS Y LABIO",
 			"name": "MARIANGELES  PORTILLO RUIZ",
 			"toPrint": false,
+			"transactionId": "-KrkvfyjpZMrAjguUl-g",
 			"type": "utilizo bonus",
 			"user": "salitre",
 			"value": -11.8
@@ -22439,15 +22631,1609 @@
 			"user": "salitre",
 			"value": -11.8
 		},
-		"-Kpt71Yl2AMMxLZ2NMAX": {
-			"cardId": "-Ko7LAPjTz8BzVNtBaMR",
-			"clientId": "-Kpt4uiB9YNwHNOZH-cD",
-			"created": 1506096133765,
-			"description": "COMPRA BONO TEST MAX",
-			"name": "VICTORIA AYALA VALLEJO",
+		"-KuU-LBHuaJDhMFUcej2": {
+			"cardId": "-KrBx6W2hD-uwU5PaOsb",
+			"clientId": "-KrBx6C2sbsGqRWDHIs1",
+			"created": 1505906221928,
+			"description": "15/9/17 CONSUME CERA ",
+			"name": "MARIA JOSE  GUERRERO RAMOS ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -30
+		},
+		"-KuU-r4Q0iiIZRpz2b87": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505906356657,
+			"description": "ELISA HUERTAS HILO",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KuU-x9l85-R0sbM1_fV": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505906381575,
+			"description": "PEPA OLID HILO",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KuU08ytk8Vx5sqTKob5": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505906434063,
+			"description": "CAROLINA HILO",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KuU0SDt0ryicCcwI-rO": {
+			"cardId": "",
+			"clientId": "-KrBAkTSjRDoe7xVlMz3",
+			"created": 1505906512911,
+			"description": "JABON DE ARGAN ",
+			"name": "MAICA  VARGAS LOPEZ ",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 22
+		},
+		"-KuU7YdJXSl0sx4z5Xh9": {
+			"cardId": "-KqctGz3zWUmE-DSF8FA",
+			"clientId": "-KqctGKqIsrkyHGTos7f",
+			"created": 1505908375012,
+			"description": "CONSUME HILO CEJAS ",
+			"name": "NIEVES  SANCHEZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "compania",
+			"value": -7.5
+		},
+		"-KuUH2uf7gEWb99bDNSa": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505910865664,
+			"description": "CARMEN GALLEGOS, PROMO MES, HF CARITA ",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 40
+		},
+		"-KuUZic0Ce9nTit4qLKx": {
+			"cardId": "-KuUZepoFHjArwNHsVJd",
+			"clientId": "-KuUZebkXNjiftI_Ktf7",
+			"created": 1505915759189,
+			"description": "COMPRA BONO HILO CEJAS Y LABIO ",
+			"name": "ELISA  PEREZ ZUMAQUERO ",
+			"toPrint": true,
 			"type": "tarjeta credito",
 			"user": "salitre",
 			"value": 59
+		},
+		"-KuUZm0dUnH-C9WrAAkS": {
+			"cardId": "-KuUZepoFHjArwNHsVJd",
+			"clientId": "-KuUZebkXNjiftI_Ktf7",
+			"created": 1505915773117,
+			"description": "CONSUME SESION HILO CEJAS Y LABIO ",
+			"name": "ELISA  PEREZ ZUMAQUERO ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KuUaZ8G9xm2eJl5moWi": {
+			"cardId": "-Kow1vLCiXYmhmqkzeGU",
+			"clientId": "-Kow1u7yvKm4mfBm0NF7",
+			"created": 1505916240550,
+			"description": "CONSUME HILO CEJAS ",
+			"name": "EVA MARIA ALMOGUER",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -7.5
+		},
+		"-KuUakDl9JZGpi6DWxU6": {
+			"created": 1505916290053,
+			"description": "FLORES ",
+			"name": "FLORISTERIA MERCEDES",
+			"type": "efectivo",
+			"user": "salitre",
+			"value": -6
+		},
+		"-KuUk6GxMRZTqv92S8Oo": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505918743757,
+			"description": "DEPILACION HILO CEJAS \n",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 10
+		},
+		"-KuUkBpxoap7Hj4Lgx9v": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505918766541,
+			"description": "JOSE MANUEL MOYANO RETAMERO, DEPILACION CERA ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 20
+		},
+		"-KuUoNpP1QWxlh3Hyl35": {
+			"cardId": "",
+			"clientId": "-KppOpVKL_0pvNRin4ct",
+			"created": 1505919864234,
+			"description": "MANICURA NORMAL ",
+			"name": "MARIA JOSE HIDALGO FERNANDEZ",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 10
+		},
+		"-KuUpoEXTvO_TVyp1Kqa": {
+			"cardId": "-KsOJz1Xa3VWh9KzQzyl",
+			"clientId": "-KsOJy_ei2p3wh9hTKV7",
+			"created": 1505920238642,
+			"description": "CONSUME CEJAS Y LABIO",
+			"name": "ISABEL  DIAZ TINEO",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KuUqdCubQDVS1DuTPDX": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505920455626,
+			"description": "CECILIA, LIFTING PESTAÑAS ",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 40
+		},
+		"-KuUxRedx-mg2xNW1XEJ": {
+			"cardId": "-KsO8xjrG860lbqHWKM4",
+			"clientId": "-KsO8xRIkBVg6iCMO3x4",
+			"created": 1505922239230,
+			"description": "CONSUME HILO CEJAS Y LABIO ",
+			"name": "ESTER GALVEZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KuV-DHe2okpxiq-nPp9": {
+			"cardId": "-KuV-6cshn-16UTVrQcx",
+			"clientId": "-KuV-5yUn2W8lZ4wdjKT",
+			"created": 1505922966777,
+			"description": "COMPRA BONO DE HILO CEJAS Y LABIO",
+			"name": "GEMA  JIMENEZ",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "compania",
+			"value": 59
+		},
+		"-KuV-LCtgvX74mBi37Np": {
+			"cardId": "-KuV-6cshn-16UTVrQcx",
+			"clientId": "-KuV-5yUn2W8lZ4wdjKT",
+			"created": 1505922999240,
+			"description": "CONSUME HILO CEJAS Y LABIO",
+			"name": "GEMA  JIMENEZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "compania",
+			"value": -11.8
+		},
+		"-KuV-vHzs7kLs7ODhILI": {
+			"cardId": "-KrGtK3lti5kjRPB0SUE",
+			"clientId": "-KrGtJd0pnPHVdC2s2Oc",
+			"created": 1505923151124,
+			"description": "CONSUME HILO LABIO ",
+			"name": "MARIA LUISA CABELLO CAMARERO",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -4.5
+		},
+		"-KuV6ejLvEx5vSDYtcCO": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505924918318,
+			"description": "HILO ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KuV6yGScKZK2GZSIcZm": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505924998324,
+			"description": "COSMETICA",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 51.57
+		},
+		"-KuV71hxYJm3ESqSRMmI": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505925016532,
+			"description": "CRISTINA MIRA HILO",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KuV77dhZiauBku2UygA": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505925040836,
+			"description": "ESTHER GALVEZ HF CARITA",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 40
+		},
+		"-KuV7B7Ki4klYOv-H8eI": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505925055084,
+			"description": "HILO ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KuV9_z1799qxoTxURru": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505925685273,
+			"description": "PEDICURA MARIAM",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 25
+		},
+		"-KuVEulkXZ5L2zuQgR_m": {
+			"cardId": "-KpF9Fxeddimm0ogfzJR",
+			"clientId": "-KpF9EquZhDPPl3XnZtS",
+			"created": 1505927081158,
+			"description": "CONSUME HILO CEJAS Y LABIO",
+			"name": "CRISTINA REDONDO ARANDA",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "compania",
+			"value": -11.8
+		},
+		"-KuVJeKxAKqWE6AkdIxh": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505928324563,
+			"description": "BRIGGITTE, PEDICURA PERMANENTE",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 30
+		},
+		"-KuVJjELwgjWqPIIsDmx": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505928344620,
+			"description": "MARIA, MANICURA",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 10
+		},
+		"-KuVJnrAbqTbZ8N8yjxN": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505928363553,
+			"description": "ISABEL, HILO LABIO",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 6
+		},
+		"-KuVK-cQlTUB2mKvgTgV": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505928415857,
+			"description": "LAURA, HILO CEJAS",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "compania",
+			"value": 10
+		},
+		"-KuVK6LMpTeBFUY8WNeq": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505928443373,
+			"description": "ELENA, HILO CEJAS",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "compania",
+			"value": 10
+		},
+		"-KuVKbdNoNfkd4WgU07p": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505928575662,
+			"description": "CONCHA, PROMO MES SEPTIEMBRE Y HILO LABIO",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "compania",
+			"value": 46
+		},
+		"-KuVLQ0KG4k75xU0NAwb": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505928786091,
+			"description": "ROSANA, MANICURA PERMANENTE, PEDICURA Y HILO LABIO",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "compania",
+			"value": 49
+		},
+		"-KuVLo5r-5-DMgzMn3Pu": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505928888845,
+			"description": "CRISTINA, HILO MENTON Y ELECTRICA",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 13
+		},
+		"-KuVRSgZ9mqTq788d1d_": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505930369914,
+			"description": "CEJAS AHINARA",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 10
+		},
+		"-KuVTQ4HpulagMQwkjbj": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505930883496,
+			"description": "AZAHARA LIFTING Y CEJAS",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 26
+		},
+		"-KuYkN--LDALoqPCA4Kk": {
+			"cardId": "-Ktkb720s5K9Xj0MEjra",
+			"clientId": "-Ko7PWujp05VgBkoGc27",
+			"created": 1505985921351,
+			"description": "CONSUME SESION DE VELA ",
+			"name": "RAQUEL MUÑOZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -43
+		},
+		"-KuYmooKvVVz13UqX8v9": {
+			"cardId": "-KsJOKOIlAjLjJ4EeoLX",
+			"clientId": "-KsJOJwnzGYFWQjondmg",
+			"created": 1505986563676,
+			"description": "CONSUME SESION HILO CEJAS Y LABIO ",
+			"name": "TOÑI GOMEZ CALDERON",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KuYmtQ4q7F3SsXasQvB": {
+			"cardId": "-KsJOKOIlAjLjJ4EeoLX",
+			"clientId": "-KsJOJwnzGYFWQjondmg",
+			"created": 1505986582540,
+			"description": "COMPRA PROMO MES, HF CARITA ",
+			"name": "TOÑI GOMEZ CALDERON",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 40
+		},
+		"-KuYo93xGM5Vho6lmdiE": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505986912900,
+			"description": "BEGOÑA MAESE CEJAS ",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 20
+		},
+		"-KuYoVMKCvafImcMZA_6": {
+			"cardId": "-KscYcTUmSlUUp0Bc7_B",
+			"clientId": "-KscYcAhk3KJsJoOfTXz",
+			"created": 1505987004188,
+			"description": "CONSUME SESION HILO CEJAS Y LABIO ",
+			"name": "AUXILIADORA ALVAREZ TORRES",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KuYplBC_Y57lQEBNvff": {
+			"cardId": "-KuYpfz5ECydXNeLUe9Y",
+			"clientId": "-KuYpfdxbgfJBL7P60IF",
+			"created": 1505987335252,
+			"description": "REGALO TAMARA NAVARRO, PROMO MES, HF CARITA ",
+			"name": "JOSE MIGUEL  MARIN",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 40
+		},
+		"-KuYqINEsJ3334X9pT1k": {
+			"cardId": "-KswfTvSSxudIHb7X1aa",
+			"clientId": "-Kswf9T_Kp2VMqLkGyZm",
+			"created": 1505987475287,
+			"description": "CONSUME SESION HILO CEJAS ",
+			"name": "ANA ELENA  JIMENEZ RIOS",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -7.5
+		},
+		"-KuYsjs3_XEKGpWSYfLy": {
+			"cardId": "-KsJsriMtIsBaJT1TgsL",
+			"clientId": "-KsJsrE6A7Z2xrvfDpDV",
+			"created": 1505988116299,
+			"description": "CONSUME CEJAS ",
+			"name": "MARCELA SAUCEDO",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -7.5
+		},
+		"-KuYtddJ0-WWvozSTBSJ": {
+			"cardId": "-KtzO5yt5MjsVLNXIfQJ",
+			"clientId": "-KtzO5dVxvO8yvlASpiE",
+			"created": 1505988352923,
+			"description": "CONSUME SESION CARITA FACIAL ",
+			"name": "MARIA  NIETO LOPEZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -217.5
+		},
+		"-KuYu5J4TuD2YtoMHwpx": {
+			"cardId": "",
+			"clientId": "-KtzO5dVxvO8yvlASpiE",
+			"created": 1505988470348,
+			"description": "DEPILACION HILO CEJAS Y LABIO ",
+			"name": "MARIA  NIETO LOPEZ",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 48
+		},
+		"-KuYwWc2kgafdG-75Fz5": {
+			"cardId": "-KuYwSdZbdW6Fva4wpFb",
+			"clientId": "-KuYwSMo3C5AEzrFPj6y",
+			"created": 1505989106506,
+			"description": "COMPRA BONO DE CEJAS Y LABIO",
+			"name": "GRACIELA  PEÑA",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 59
+		},
+		"-KuYwaHvEHYgbxKEznoB": {
+			"cardId": "-KuYwSdZbdW6Fva4wpFb",
+			"clientId": "-KuYwSMo3C5AEzrFPj6y",
+			"created": 1505989125635,
+			"description": "CONSUME UNA SESION DE LABIO",
+			"name": "GRACIELA  PEÑA",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -5.9
+		},
+		"-KuZ0rM9oucGAp5jG3g0": {
+			"cardId": "-KtRVh11i5cgjFY343ou",
+			"clientId": "-KtRVgiHn-un2tQfrJS_",
+			"created": 1505990506017,
+			"description": "CONSUME CEJAS Y LABIO",
+			"name": "ISABEL  SORIANO ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KuZ4ChbRlZpZwKgDClu": {
+			"cardId": "-KolMQwAtyH399ERgCQ3",
+			"clientId": "-KolL4675XrWrx0iugJN",
+			"created": 1505991383999,
+			"description": "CONSUME CEJAS Y LABIO",
+			"name": "NATACHA BAEZA",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KuZEEuRrwvoWdAZZq8y": {
+			"cardId": "-KpF35byfY_-yAtRg2UJ",
+			"clientId": "-KpF2hGzggOL_fd_X9Yu",
+			"created": 1505994014448,
+			"description": "CONSUME SESION VELA \n",
+			"name": "EVA CASTILLO SANCHEZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -43
+		},
+		"-KuZHLa9mnLBKPgqTkLz": {
+			"cardId": "-KuZHHeQZcxop7buiUCd",
+			"clientId": "-KuZHHOXLz7SrAIa_0CB",
+			"created": 1505994828255,
+			"description": "COMPRA BONO DE HILO CEJAS Y LABIO",
+			"name": "ROCIO  CORTES POLO",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 59
+		},
+		"-KuZHQ3m1OodJqfi91YJ": {
+			"cardId": "-KuZHHeQZcxop7buiUCd",
+			"clientId": "-KuZHHOXLz7SrAIa_0CB",
+			"created": 1505994846598,
+			"description": "CONSUME CEJAS  Y LABIO",
+			"name": "ROCIO  CORTES POLO",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KuZHZlehVCtH7YOSiCa": {
+			"cardId": "-KuZHHeQZcxop7buiUCd",
+			"clientId": "-KuZHHOXLz7SrAIa_0CB",
+			"created": 1505994886334,
+			"description": "LE QUEDAN DOS MICRO BONO PAPEL ",
+			"name": "ROCIO  CORTES POLO",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 0
+		},
+		"-KuZHiGHaIfw7WDm2OIR": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505994925222,
+			"description": "MARTA HILO",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KuZLnLj_iQ9rFYbWCp_": {
+			"cardId": "-KuZLfb6aqLuFYlg6Xg7",
+			"clientId": "-KuZLfIrEtJYddNg-mrp",
+			"created": 1505995994627,
+			"description": "COMPRA BONO HILO CEJAS Y LABIO ",
+			"name": "MARIBEL  SALARDON MERCHAN ",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 59
+		},
+		"-KuZLrRbejgauZf46tVO": {
+			"cardId": "-KuZLfb6aqLuFYlg6Xg7",
+			"clientId": "-KuZLfIrEtJYddNg-mrp",
+			"created": 1505996011387,
+			"description": "CONSUME HILO CEJAS Y LABIO ",
+			"name": "MARIBEL  SALARDON MERCHAN ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KuZSoQcsKa8Ri1FJh4c": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505997834035,
+			"description": "JASMINE, PORMO MES SEPTIEMBRE Y HILO FACIAL",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 60
+		},
+		"-KuZStaHkE9xw9fYp8xl": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505997855196,
+			"description": "ANA, ELECTRICA",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 12
+		},
+		"-KuZT0jUf8W5E1ZiB3kI": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1505997888553,
+			"description": "MARIA, ELECTRICA",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 10
+		},
+		"-KuZagZx8EhzhgVlwSu0": {
+			"cardId": "-Kq8HXboElEVaDk1VxGx",
+			"clientId": "-Kq8HXKoFpmI1v0D1i9S",
+			"created": 1506000161170,
+			"description": "CONSUME CEJAS Y LABIO\n",
+			"name": "BELEN  SORIANO CASTILLO ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KuZbp3fwy0nl18JZx9v": {
+			"cardId": "-KuZbXAxqd6UmcFsvirX",
+			"clientId": "-KuZbWpRpOMp0cdne83V",
+			"created": 1506000458112,
+			"description": "CHARO LOBATO COMPRA HIDROEXPRESS CARITA ",
+			"name": "MERCEDES SORIANO ",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 55
+		},
+		"-KuZcs8MV5zj5lZigDPg": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506000732841,
+			"description": "CHARO LOBATO, HIDROEXPRESS CARITA ",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 55
+		},
+		"-KuZlRoDtWQJfu0xtsr7": {
+			"cardId": "-KpVE3hRWrQ98v96z3Lz",
+			"clientId": "-KpVE3NJIcivqG6pJ9c_",
+			"created": 1506002980192,
+			"description": "CONSUMEN LAS DOS ULTIMAS SESIONES DE HILO",
+			"name": "MARIA DEL MAR HERNANDEZ LOPEZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -15
+		},
+		"-KuZli4U3Ke-p-72E3iU": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506003050929,
+			"description": "TOÑI HILO CEJAS ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 10
+		},
+		"-KuZpT5gZqkQtkyVcpEQ": {
+			"cardId": "-Kp_PRb69aPgfYczkbsm",
+			"clientId": "-Kp_PRBNRjzDNGKKzapt",
+			"created": 1506004034046,
+			"description": "CONSEME CEJAS Y LABIO",
+			"name": "PAQUI  CONTRERAS FORTES",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KuZtdFIRhza1Er163Fd": {
+			"cardId": "-KqXurKaJ7XieNo_Jud6",
+			"clientId": "-KqXupL5IHDe8SomsF6C",
+			"created": 1506005128473,
+			"description": "CONSUME HILO CEJAS",
+			"name": "SUSANA  SANCHEZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "compania",
+			"value": -7.5
+		},
+		"-KuZtuyBEOu0PsKH4vYA": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506005201043,
+			"description": "ISABEL, ELECTRICA",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "compania",
+			"value": 6
+		},
+		"-KuZtzNGJEEedsM_pxCD": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506005219096,
+			"description": "LETICIA, MAQUILLAJE",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "compania",
+			"value": 30
+		},
+		"-Ku_10bRezSlIUjFxjmO": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506007325236,
+			"description": "DEPILACION HILO CEJAS + TINTE CEJAS ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-Ku_4TrsHkP6CHfkD3fV": {
+			"cardId": "-KoIis8qoBEsTTe4kbor",
+			"clientId": "-KoIiqi4WhH3QzYbK0UU",
+			"created": 1506008231505,
+			"description": "CONSUME SESION DE CEJAS ",
+			"name": "TOÑI  ORIOLA LIJARCIO",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -7.5
+		},
+		"-Ku_4e16hCPPT_xiiJuT": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506008277215,
+			"description": "MANICURA PAQUI NORMAL",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 10
+		},
+		"-Ku_AFU5iiLo0sL1F8pB": {
+			"cardId": "-Ku_AAPz5fZmWTOfoiE3",
+			"clientId": "-Ku_AA4qngxidJgE6Yr5",
+			"created": 1506009745438,
+			"description": "BONO DE 5 CEJAS ",
+			"name": "SANDRA FERRER GARCIA",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 37.5
+		},
+		"-Ku_AK45UNUIQz19h9nK": {
+			"cardId": "-Ku_AAPz5fZmWTOfoiE3",
+			"clientId": "-Ku_AA4qngxidJgE6Yr5",
+			"created": 1506009764254,
+			"description": "CONSUME UNA SESION DE CEJAS ",
+			"name": "SANDRA FERRER GARCIA",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -7.5
+		},
+		"-Ku_AWSKl_-JH3TVm7dw": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506009814957,
+			"description": "YERAY CEJAS ",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 10
+		},
+		"-Ku_BTeUfKo511DOpKS1": {
+			"cardId": "-KpP4nXiTGPZHuOnTax0",
+			"clientId": "-KpP4ZFT7LXTrWkcCpS1",
+			"created": 1506010065655,
+			"description": "CONSUME SESION DE CEJAS Y LABIO",
+			"name": "MARICARMEN GARCIA GUERRERO",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-Ku_DIX5CuHWHOEQexjS": {
+			"cardId": "-Kp_qdW_7H6zJh8M1dRd",
+			"clientId": "-Kp_qdEhiO4gweMUbQou",
+			"created": 1506010544350,
+			"description": "CONSUME SESION HILO CEJAS Y LABIO ",
+			"name": "INMACULADA  PEREZ MUÑOZ ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-Ku_DanDXkXMVFWbwoue": {
+			"cardId": "",
+			"clientId": "-Kp_qdEhiO4gweMUbQou",
+			"created": 1506010623270,
+			"description": "LIFTING PESTAÑAS ",
+			"name": "INMACULADA  PEREZ MUÑOZ ",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 40
+		},
+		"-Ku_I5LAyMTkfLYflyfa": {
+			"cardId": "-KpR1ZgtpiQ2C7ynylg1",
+			"clientId": "-KpR1Z9l_EQ7pmdfVrFk",
+			"created": 1506011801059,
+			"description": "COMPRA BONO HILO CEJAS Y LABIO \nTINTE CEJAS ",
+			"name": "PALOMA PEREZ PEREZ",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 65
+		},
+		"-Ku_IDZHacZckXPiCWqJ": {
+			"cardId": "-KpR1ZgtpiQ2C7ynylg1",
+			"clientId": "-KpR1Z9l_EQ7pmdfVrFk",
+			"created": 1506011834729,
+			"description": "CONSUME SESION HILO CEJAS Y LABIO \nCONSUME TINTE CEJAS ",
+			"name": "PALOMA PEREZ PEREZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -29.6
+		},
+		"-Ku_IEwh8Ey9w_3YzsRO": {
+			"cardId": "-Kr1fHkvRMT9A-HSE9LD",
+			"clientId": "-Kr1fCwmD7zDdZu9UG7G",
+			"created": 1506011842413,
+			"description": "CONSUME HILO CEJAS Y LABIO",
+			"name": "SUSANA ORTIGOSO",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "compania",
+			"value": -11.8
+		},
+		"-Ku_KEWsf5ng5K0xnLL_": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506012364984,
+			"description": "ANGELES, ELECTRICA Y HILO LABIO",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 14
+		},
+		"-Ku_SVtvr6yNJVyHGC5E": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506014531282,
+			"description": "HILO",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-Ku_T4cAJ9db5qW18KUg": {
+			"cardId": "-Ku_T-0wKj1M-mn-Ck97",
+			"clientId": "-Ku_Sza2b76tU1eIY4T6",
+			"created": 1506014681698,
+			"description": "BONO DE 5 RADIOFRECUENCIAS",
+			"name": "ANA BELEN  GARCIA BLANCO",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 135
+		},
+		"-Ku_T9vQF5LEeOc0d3hd": {
+			"cardId": "-Ku_T-0wKj1M-mn-Ck97",
+			"clientId": "-Ku_Sza2b76tU1eIY4T6",
+			"created": 1506014703410,
+			"description": "CONSUME UNA SESION DE RF",
+			"name": "ANA BELEN  GARCIA BLANCO",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -27
+		},
+		"-Ku_UH_2eqQlBRih4o7i": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506014996890,
+			"description": "CEJAS Y LABIO ",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 16
+		},
+		"-Ku_fgaEei5u715lMfdq": {
+			"cardId": "-KstPuZQRYdX1PphjEYJ",
+			"clientId": "-KstPuEgr_pdJH0xIUdp",
+			"created": 1506018249189,
+			"description": "CONSUME SESION DE CEJAS ",
+			"name": "CARMEN  PADIAL PEREZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -7.5
+		},
+		"-Ku_gqi5VWKp_PNwpBQy": {
+			"cardId": "",
+			"clientId": "-KstPuEgr_pdJH0xIUdp",
+			"created": 1506018552796,
+			"description": "MANICURA LABIO Y LIFTIN CEJAS",
+			"name": "CARMEN  PADIAL PEREZ",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 32
+		},
+		"-Ku_h1hqNGYBp0Gacypp": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506018601932,
+			"description": "HILO",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KucmOGrGDwbjPd4MzWu": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506070336720,
+			"description": "CEJAS",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 10
+		},
+		"-KucmT9pm-rAKgKEbUO3": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506070356750,
+			"description": "MANICURA",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 18
+		},
+		"-KucmX9BfEVmHxu3zQnE": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506070373094,
+			"description": "HILO ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 24
+		},
+		"-KucpfetlMDE8zNdrZ10": {
+			"cardId": "-Ksx9QEi0FwKN7fDLQC5",
+			"clientId": "-Ksx9PwALqyRPtPaVycK",
+			"created": 1506071198482,
+			"description": "CONSUME SESION HILO CEJAS Y LABIO ",
+			"name": "CRISTINA  MARFIL FERNANDEZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-Kucu_Q7C2LdHGkdulf9": {
+			"cardId": "-Ko7SsYXQ8N7R6OnV1x7",
+			"clientId": "-Ko7SqqmcYmFEGooQGJ0",
+			"created": 1506072483617,
+			"description": "CONSUME LABIO",
+			"name": "ROSA MARIA ROMERO ALCAIDE",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -5.9
+		},
+		"-KuczWUnw_g5zIrCXqq1": {
+			"cardId": "-Kqhc6KKW1vGBl7L7kew",
+			"clientId": "-Kqhc6-CXoQ7PqpzP7eG",
+			"created": 1506073778276,
+			"description": "CONSUME LABIO",
+			"name": "MARTA VILLANUEVA ESTEVEZ ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -4.5
+		},
+		"-Kud--anFy0SrFgIgsG8": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506073905700,
+			"description": "HILO ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-Kud7qN2QH0JEDfGO7wy": {
+			"cardId": "-Kud7mEIwex6QjR-aCpx",
+			"clientId": "-Kud7lrHq_zVsKome9ta",
+			"created": 1506076223068,
+			"description": "COMPRA BONO HILO CEJAS Y LABIO ",
+			"name": "ANA  TELLEZ GARCIA ",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 59
+		},
+		"-Kud7uPud8ChjpZvV1Lp": {
+			"cardId": "-Kud7mEIwex6QjR-aCpx",
+			"clientId": "-Kud7lrHq_zVsKome9ta",
+			"created": 1506076239635,
+			"description": "CONSUME SESION HILO CEJAS Y LABIO ",
+			"name": "ANA  TELLEZ GARCIA ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-Kud7yhPIJJypc0Rhffx": {
+			"cardId": "-Kud7mEIwex6QjR-aCpx",
+			"clientId": "-Kud7lrHq_zVsKome9ta",
+			"created": 1506076257203,
+			"description": "2 SESIONES MENTON BONO PAPEL ",
+			"name": "ANA  TELLEZ GARCIA ",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 0
+		},
+		"-KudA-1O1d6oHLK2zIYY": {
+			"cardId": "-KsDV925Vu-okXrPrVXV",
+			"clientId": "-KsDV8Xh6MThXF2tlJEV",
+			"created": 1506076786930,
+			"description": "CONSUME SESION HILO CEJAS ",
+			"name": "ADRIANA  LOPEZ LEIVA",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -7.5
+		},
+		"-KudEX-4jNusLAS6TSUl": {
+			"cardId": "-KsDL9Q4CzyPuSsu7oXl",
+			"clientId": "-KsDJg6OBskrmnbxFqqp",
+			"created": 1506077974622,
+			"description": "CONSUME SESION HILO CEJAS Y LABIO ",
+			"name": "LAURA GARCIA PEREZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KudHwu4YiYE7x9MVpaH": {
+			"cardId": "-Ks9M3rzcPlprHDkQ9Tz",
+			"clientId": "-Ks9M3WrEFRP7Z4jsy8P",
+			"created": 1506078871262,
+			"description": "CONSUME SESION HILO CEJAS ",
+			"name": "VIRGINIA HEREDIA GARCIA",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -7.5
+		},
+		"-KudI16LBA_pPDNeaiXT": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506078892591,
+			"description": "BELEN, DEPILACION HILO CEJAS ",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 10
+		},
+		"-KudI8tTcopQvcsjLsiM": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506078924471,
+			"description": "ARANCHA CABRERA RODRIGUEZ, PROMO MES, HF CARITA ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 40
+		},
+		"-KudIIiKJfh7SZoB2TSe": {
+			"cardId": "",
+			"clientId": "-Ko7PWujp05VgBkoGc27",
+			"created": 1506078964718,
+			"description": "PROMO MES, HF CARITA ",
+			"name": "RAQUEL MUÑOZ",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 40
+		},
+		"-KudOIrw71BCS-GgGeVN": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506080538195,
+			"description": "CEJAS Y LABIO",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KudYCEppuftZbHrAKC4": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506083132492,
+			"description": "ANA RAMIREZ MANOS PIES E HILO",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 71
+		},
+		"-Kudb8VkWzdNt_a_3THU": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506084166002,
+			"description": "MARIA ROSA LLEDO MUÑOZ, DEPILACION HILO CEJAS Y LABIO ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KudbwVMdYIU-QRpyr-M": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506084374874,
+			"description": "MARTA, DEPILACION HILO  ",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 14
+		},
+		"-KudfCZgtSligMJPd1SB": {
+			"cardId": "-Kq84tMQJ65i0xRCEjod",
+			"clientId": "-Kq84srozt7Bx6sr_3DW",
+			"created": 1506085231214,
+			"description": "CONSUME SESION HILO LABIO ",
+			"name": "CRISTINA MARTIN NOGUERA",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -4.5
+		},
+		"-Kudnh2fpUlzmK3lJCYu": {
+			"cardId": "-KudnO4wVdup4aALnjQ3",
+			"clientId": "-KudnNnYAx8wkozctSpP",
+			"created": 1506087457087,
+			"description": "BONO  5 CEJAS \nHF CARITA PROMO",
+			"name": "ELOISA  CHINCHURRETA",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 77
+		},
+		"-KudnlUX_6Fe1sOhpmyM": {
+			"cardId": "-KudnO4wVdup4aALnjQ3",
+			"clientId": "-KudnNnYAx8wkozctSpP",
+			"created": 1506087475254,
+			"description": "CONSUME CEJAS",
+			"name": "ELOISA  CHINCHURRETA",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -7.5
+		},
+		"-Kudq2t-5An2x9dVIZLy": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506088075479,
+			"description": "LUCIA, MANICURA Y PEDICURA PERMANENTE",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 48
+		},
+		"-KudqxaRM-cvh5t1KeYl": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506088312339,
+			"description": "MARIA,DOS CEJAS HILO",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "compania",
+			"value": 20
+		},
+		"-Kudr6UqZ5QcFp1FvVPM": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506088352397,
+			"description": "ANGELA,HILO FACIAL Y CEJAS",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 30
+		},
+		"-KudrBXLoJRCXZPOk2bA": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506088373037,
+			"description": "MIRIAM, PEDICURA PERMANENTE",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 30
+		},
+		"-KudrGmiuHN-nHlx5Rhn": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506088394565,
+			"description": "GEMA, HILO CEJAS",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 10
+		},
+		"-Kudsw9zN9fmcEdzwfiz": {
+			"cardId": "-KqTQV_AsYNujamX3AHd",
+			"clientId": "-KqTQUxY47Ol83jZmNWK",
+			"created": 1506088829715,
+			"description": "CONSUME CEJAS",
+			"name": "MONICA NAHARRO JORGE",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -7.5
+		},
+		"-Kudt286wXigxmBSeX9z": {
+			"cardId": "-KqTQV_AsYNujamX3AHd",
+			"clientId": "-KqTQUxY47Ol83jZmNWK",
+			"created": 1506088858267,
+			"description": "CONSUME CEJAS",
+			"name": "MONICA NAHARRO JORGE",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -7.5
+		},
+		"-Kue-UFm91CS8kb-rNyy": {
+			"cardId": "-Kue-IMhawL2C4TSlJ7L",
+			"clientId": "-Kue-Hlz6Zk63eS4AXBJ",
+			"created": 1506090808933,
+			"description": "COMPRA BONO HILO CEJAS Y LABIO",
+			"name": "JUANA AMORES",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 59
+		},
+		"-Kue-_XSlHXIx_UNrLz5": {
+			"cardId": "-Kue-IMhawL2C4TSlJ7L",
+			"clientId": "-Kue-Hlz6Zk63eS4AXBJ",
+			"created": 1506090834640,
+			"description": "CONSUME HILO CEJAS Y LABIO",
+			"name": "JUANA AMORES",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "compania",
+			"value": -11.8
+		},
+		"-Kue3WFBBEZFeiFAX2dS": {
+			"cardId": "-Kr0QT0_ACvFlW4FKNhO",
+			"clientId": "-Kr0QSipfrxXsyZ4i_hv",
+			"created": 1506091865187,
+			"description": "CONSUME CEJAS Y LABIO",
+			"name": "DESIREE SANCHEZ MARTIN ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-Kue7ONWP80ANFV1A8Yv": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506092881528,
+			"description": "ROCIO ARNAIZ, PROMO MES, HF CARITA ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 40
+		},
+		"-Kue7W2FjyoRLmWduceq": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506092912936,
+			"description": "M. M. MONTORO GARCIA, DEPILACION HILO CEJAS Y LABIO ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KueAlqbsSsVJXX7IcFq": {
+			"cardId": "",
+			"clientId": "-Kss76W4CEMN6ezmz3Yb",
+			"created": 1506093768190,
+			"description": "SESION VELA 30'+ PRESO ",
+			"name": "SUSANA GARCIA SANCHEZ",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 45
+		},
+		"-KueBNUyDXtrdlCugAB8": {
+			"cardId": "-KueBI7bIAVcg2ZhUhE4",
+			"clientId": "-KueBHpi4ckPnS-PoNt3",
+			"created": 1506093926485,
+			"description": "COMPRA BONO HILO CEJAS Y LABIO ",
+			"name": "ELISA  GOMEZ RIVERO ",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 59
+		},
+		"-KueBSCDJ-3WB5pSgaYL": {
+			"cardId": "-KueBI7bIAVcg2ZhUhE4",
+			"clientId": "-KueBHpi4ckPnS-PoNt3",
+			"created": 1506093945765,
+			"description": "CONSUME SESION HILO CEJAS ",
+			"name": "ELISA  GOMEZ RIVERO ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -5.9
+		},
+		"-KueEt4gOPpstu0dt15C": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506094846403,
+			"description": "MANICURA HILO ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 20
+		},
+		"-KueMmNiX2xQwp0QV2Se": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506096916101,
+			"description": "CEJAS ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 10
+		},
+		"-KueOUR4AqkonrBUqTvT": {
+			"cardId": "-KueOPwGpNUMbev2Guij",
+			"clientId": "-KueOPMK_wWgz9eomFAW",
+			"created": 1506097362771,
+			"description": "COMPRA BONO DE HILO CEJAS Y LABIO",
+			"name": "ROSA GARCIA ",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 59
+		},
+		"-KueO_1poDVUDkEUon4i": {
+			"cardId": "-KueOPwGpNUMbev2Guij",
+			"clientId": "-KueOPMK_wWgz9eomFAW",
+			"created": 1506097385731,
+			"description": "CONSUME HILO CEJAS Y LABIO",
+			"name": "ROSA GARCIA ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "compania",
+			"value": -11.8
+		},
+		"-KueOqDg-cuxGNqiSumF": {
+			"cardId": "-KsPCaXDfdHZVimn9Sk_",
+			"clientId": "-KsPC_tqmPG-4i3yHRQG",
+			"created": 1506097456122,
+			"description": "CONSUME HILO CEJAS Y LABIO",
+			"name": "ROSA IGLESIAS",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "compania",
+			"value": -11.8
+		},
+		"-KueVX8-iq70U59mS2oL": {
+			"cardId": "-KrfeeZC9DHsnP8H0eNF",
+			"clientId": "-KrfedxSFN4PMq4gwcnG",
+			"created": 1506099208853,
+			"description": "CEJAS Y LABIO",
+			"name": "PATRICIA  PADILLA CONEJO",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -11.8
+		},
+		"-KueXqYa9ZXR2F6DVSxs": {
+			"cardId": "-KtwKTtd-wt8A5-Sjp1P",
+			"clientId": "-KtwKTAGFbMk1wWbD9dM",
+			"created": 1506099816763,
+			"description": "SESION DE VELA SMOOT ",
+			"name": "CARMEN  VALDERRAMA GONZALEZ",
+			"toPrint": false,
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -53
+		},
+		"-Kuec4MhVqdShLZRjXBJ": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506101188600,
+			"description": "SONIA,PEDICURA PERMANENTE, MANICURA PERMANENTE Y HILO CEJAS",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "compania",
+			"value": 58
+		},
+		"-KueddDcbCanmfwxr5PW": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506101597182,
+			"description": "HILO CEJAS",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 10
+		},
+		"-KuedqP9GSXpkQk3vSdq": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506101651167,
+			"description": "PATRICIA 2 HF CARITA",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 80
+		},
+		"-KuekRu4z0zbBUP_-LFi": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506103381741,
+			"description": "HILO CEJAS ",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "salitre",
+			"value": 10
+		},
+		"-KuepQyfK_rQd45TaL8e": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506104688660,
+			"description": "ALCIA HILO",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 16
+		},
+		"-KuiYNeX_EOvZvGHyknS": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506167066126,
+			"description": "ELISABETH, MAQUILLAJE",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "compania",
+			"value": 30
+		},
+		"-KuiYVbVWUyje9jrIXfJ": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506167098700,
+			"description": "MIRIAM, MANICURA PERMANENTE Y HILO CEJAS",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 28
+		},
+		"-KuiYanFkeQ-iVpvX3nn": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506167124028,
+			"description": "INMACULADA, RELLENO MICROBLADING",
+			"name": "SIN CONTACTOS",
+			"toPrint": true,
+			"type": "tarjeta credito",
+			"user": "compania",
+			"value": 80
+		},
+		"-KuiYiIkWHPa2PgnSxrV": {
+			"cardId": "",
+			"clientId": "-Ko7NjALDw2rdlK-BvV9",
+			"created": 1506167154780,
+			"description": "SAMARA, DOS HILO CEJAS",
+			"name": "SIN CONTACTOS",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "compania",
+			"value": 20
+		},
+		"-Kuq9GS9F4zdD0bnk98e": {
+			"cardId": "-Kpyo4XN5ptnRpXMw_Su",
+			"clientId": "-Kpyo4CYxdGWhqt7o-84",
+			"created": 1501071191357,
+			"description": "PROMO 5 SESIONES VELA 30' + PRESO",
+			"name": "TOÑI VARGAS LOPEZ",
+			"toPrint": false,
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 0
+		},
+		"-KuqBIclvkvxCoWq0R0U": {
+			"cardId": "-KoDdq2uLRYn5DAQ_Z5_",
+			"clientId": "-KoDdorugAEALZc-4AHs",
+			"created": 1504199700228,
+			"description": "CONSUME HILO CEJAS",
+			"name": "LAURA  HERAS DIAZ ",
+			"toPrint": false,
+			"transactionId": "-KoDdv1X9-iZdo2H4q5r",
+			"type": "utilizo bonus",
+			"user": "salitre",
+			"value": -22.5
 		}
 	}
 }

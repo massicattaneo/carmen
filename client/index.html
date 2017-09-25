@@ -28,7 +28,6 @@
     	cjs.navigator.import('../server/data.json'),
     	webSocketPromise
 	]).done(function (json) {
-        //var db = cjs.Db.staticJSONAdapter(JSON);
 		const require = window.require || undefined;
 		var electron = (require !== undefined) ? require('electron') : {};
         var db = cjs.Db.firebaseAdapter();
