@@ -17,11 +17,11 @@
     <div id="page"></div>
 </div>
 <script>
-//	var webSocket = new WebSocket('ws://127.0.0.1:8081');
+	var webSocket = new WebSocket('ws://127.0.0.1:8081');
 	var webSocketPromise = cjs.Need();
-//	webSocket.onopen = function(){
+	webSocket.onopen = function(){
 		webSocketPromise.resolve();
-//	};
+	};
 
 
     cjs.Need([
@@ -31,7 +31,7 @@
         //var db = cjs.Db.staticJSONAdapter(JSON);
 		const require = window.require || undefined;
 		var electron = (require !== undefined) ? require('electron') : {};
-        var db = cjs.Db.staticJSONAdapter(json);
+        var db = cjs.Db.firebaseAdapter();
         db.init({
             apiKey: "AIzaSyC8aJIXp0QBbzLsCethcKEdNmJrPEaNhoU",
             authDomain: "inandout-76471.firebaseapp.com",
@@ -46,9 +46,7 @@
                     cjs.navigator
                             .import('js/bootstrap.js')
                             .done(function (bootstrap) {
-                                bootstrap(db, {send: function () {
-
-								}});
+                                bootstrap(db, webSocket);
 
                             });
                 }).fail(function () {
