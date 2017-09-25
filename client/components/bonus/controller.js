@@ -29,14 +29,14 @@ function controller() {
 			e.stopPropagation();
 			var {transactionId, clientName, cardId, clientId} = config.data;
 			var data ={
-				value: obj.get('value').getValue(),
+				value: parseFloat(obj.get('value').getValue()),
 				type: 'utilizo bonus',
 				cardId: cardId,
 				clientId: clientId,
 				transactionId: transactionId,
 				toPrint: false,
 				name: clientName,
-				description: obj.get('description').getValue()				
+				description: obj.get('description').getValue()
 			};
 			obj.get().fire('transaction-add', data);
 		};

@@ -145,7 +145,6 @@ function boostrap(imports) {
 					});
 				},
 				saveBonusBuyTransaction: function (data) {
-					debugger;
 					db.add('transactions', {
 						user: config.user,
 						description: data.description,
