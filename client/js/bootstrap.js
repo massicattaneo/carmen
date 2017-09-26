@@ -410,7 +410,6 @@ function boostrap(imports) {
 					var cashIds = newTot(params.cashMaximum, Object.keys(transactionsData)
 						.map(function (k) {return transactionsData[k];})
 						.filter(params.filter));
-					console.log(cashIds)
 					Object.keys(transactionsData)
 						.map(function (k) {
 							return transactionsData[k];
@@ -453,7 +452,7 @@ function boostrap(imports) {
 							(b.description + '  ').match(/(.{1,33}\s)\s*/g).forEach(function (line, i) {
 								doc.text(line, 30, start + (i * 5));
 							});
-							var netNumber = b.value * ((100 - config.IVA) / 100);
+							var netNumber = b.value / ((100 + config.IVA) / 100);
 							var net = new cjs.Currency(netNumber);
 							var iva = new cjs.Currency(b.value - netNumber);
 							doc.text(net.format('i.ff s'), 150, start, 'right');
