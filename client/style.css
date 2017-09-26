@@ -38,3 +38,16 @@ h1 {
 }
 
 .admin { display: none !important; }
+
+input, textarea, select {
+	border-radius: 5px;
+	border: 1px solid white;
+	background: #dcdada;
+	padding: 0px 10px;
+	line-height: 22px;
+}
+
+input[type=submit] {
+	background: green;
+	color: white;
+}
