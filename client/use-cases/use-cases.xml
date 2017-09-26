@@ -7,7 +7,7 @@
         <run component="utils" action="loadCards"/>
         <run component="utils" action="backupDb"/>
 		<run component="utils" action="hideAllPages"/>
-		<run component="clients" action="show"/>
+		<run component="calendar" action="show"/>
         <run component="blackScreen" action="removeCover"/>
     </uc>
 
@@ -188,6 +188,10 @@
 	</event>
 
     <event component="header" on="tap-header">
+		<if test="{0}==='calendar'">
+			<run component="utils" action="hideAllPages"/>
+			<run component="calendar" action="show"/>
+		</if>
 		<if test="{0}==='cash'">
 			<run component="utils" action="hideAllPages"/>
 			<run component="cash" action="show"/>

@@ -51,3 +51,19 @@ input[type=submit] {
 	background: green;
 	color: white;
 }
+
+.process-color-1 {background-color: violet !important; color: white !important;}
+.process-color-2 {background-color: orange !important; color: white !important;}
+.process-color-3 {background-color: darkcyan !important; color: white !important;}
+.process-color-4 {background-color: red !important; color: white !important;}
+.process-color-5 {background-color: yellow !important; color: black !important;}
+.process-color-6 {background-color: cornflowerblue !important; color: black !important;}
+.process-color-7 {background-color: purple !important; color: white !important;}
+.process-color-8 {background-color: greenyellow !important; color: black !important;}
+.process-color-9 {background-color: blue !important; color: white !important;}
+.process-color-10 {background-color: coral !important; color: white !important;}
+.process-color-11 {background-color: orangered !important; color: white !important;}
+.process-color-12 {background-color: mediumvioletred !important; color: white !important;}
+.process-color-13 {background: magenta !important; color: white !important;}
+.process-color-98 {background-color: grey !important; color: white !important;}
+.process-color-99 {background: repeating-linear-gradient(45deg,#555,#555 10px,rgba(0,0,0,0) 10px,rgba(0,0,0,0) 20px) !important; color: white !important;}

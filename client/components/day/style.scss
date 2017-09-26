@@ -1,29 +1,32 @@
 .& {
-  font-family: Arial;
-  background-color: #cccccc;
-  width: 155px;
-  height: 600px;
-  float: left;
-  margin: 0 5px;
-  padding: 0 10px;
-  font-size: 20px;
-  border-radius: 11px;
-  color: $secondaryTextColor;
+	font-family: Arial;
+	background-color: #cccccc;
+	width: 155px;
+	height: 570px;
+	float: left;
+	margin: 0 5px;
+	padding: 0 10px;
+	font-size: 20px;
+	border-radius: 11px;
+	color: $secondaryTextColor;
+	position: relative;
 }
 
 .& h6 {
-  margin: 5px 0;
-  font-size: 20px;
-  text-align: center;
+	margin: 5px 0;
+	font-size: 20px;
+	text-align: center;
 }
 
 .& .hour {
-  font-size: 11px;
-  border-bottom: 1px dotted black;
+	font-size: 11px;
+	border-top: 1px dotted black;
 }
 
-.& .hour:hover {
-  background-color: #999;
-}
+.& .hour label {    position: relative;
+	background: #cccccc;
+	top: -7px;}
 
-.& .users {display: inline-block}
+.& .users {
+	display: inline-block
+}

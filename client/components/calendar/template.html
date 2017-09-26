@@ -1,13 +1,34 @@
 <div>
-    <cjs:user><user-name>Carmen</user-name></cjs:user>
-    <cjs:user><user-name>Estefania</user-name></cjs:user>
-    <cjs:user><user-name>Carmen</user-name></cjs:user>
-    <cjs:user><user-name>Leyla</user-name></cjs:user>
-    <cjs:user><user-name>Cristina</user-name></cjs:user>
-    <br/><br/>
-    <cjs:day><day-name>Lunedì 1</day-name></cjs:day>
-    <cjs:day><day-name>Martedì 2</day-name></cjs:day>
-    <cjs:day><day-name>Mercoledì 3</day-name></cjs:day>
-    <cjs:day><day-name>Giovedì 4</day-name></cjs:day>
-    <cjs:day><day-name>Venerdì 5</day-name></cjs:day>
+	<div class="buttons">
+		<cjs:button data-on="click:prevMonth"><text><<<</text></cjs:button>
+		<cjs:button data-on="click:prevWeek"><text><<</text></cjs:button>
+		<cjs:button data-on="click:prevDay"><text><</text></cjs:button>
+		<h2 data-on="click:today" data-item="date">MIERCOLES 26 SEPTIEMBRE</h2>
+		<cjs:button data-on="click:nextDay"><text>></text></cjs:button>
+		<cjs:button data-on="click:nextWeek"><text>>></text></cjs:button>
+		<cjs:button data-on="click:nextMonth"><text>>>></text></cjs:button>
+	</div>
+	<cjs:minicalendar data-on="day-click:changeDay" class="mini-calendar" data-id="mini-calendar"></cjs:minicalendar>
+    <div class="processes" data-item="processes">
+		<cjs:process><process-name>Depilación</process-name><process-id>1</process-id><room>1</room></cjs:process>
+		<cjs:process><process-name>Hilo</process-name><process-id>2</process-id><room>1</room></cjs:process>
+		<cjs:process><process-name>Cejas</process-name><process-id>3</process-id><room>1</room></cjs:process>
+		<cjs:process><process-name>Labio</process-name><process-id>4</process-id><room>1</room></cjs:process>
+		<cjs:process><process-name>Cera</process-name><process-id>5</process-id><room>1</room></cjs:process>
+		<cjs:process><process-name>Higiene</process-name><process-id>6</process-id><room>2</room></cjs:process>
+		<cjs:process><process-name>Masaje</process-name><process-id>7</process-id><room>4</room></cjs:process>
+		<cjs:process><process-name>Vela</process-name><process-id>8</process-id><room>4</room></cjs:process>
+		<cjs:process><process-name>Manicura</process-name><process-id>9</process-id><room>1</room></cjs:process>
+		<cjs:process><process-name>Microblading</process-name><process-id>10</process-id><room>4</room></cjs:process>
+		<cjs:process><process-name>Pedicura</process-name><process-id>11</process-id><room>1</room></cjs:process>
+		<cjs:process><process-name>Lifting</process-name><process-id>12</process-id><room>1</room></cjs:process>
+		<cjs:process><process-name>Cejas y Labio</process-name><process-id>13</process-id><room>1</room></cjs:process>
+		<cjs:process><process-name>Otro</process-name><process-id>98</process-id><room>2</room></cjs:process>
+		<cjs:process><process-name>Libre</process-name><process-id>99</process-id><room>40</room></cjs:process>
+	</div>
+    <cjs:day data-id="Carmen" data-on="remove-event:removeEvent"><day-name>Carmen</day-name></cjs:day>
+    <cjs:day data-id="Carmen V." data-on="remove-event:removeEvent"><day-name>Carmen V.</day-name></cjs:day>
+    <cjs:day data-id="Estefania" data-on="remove-event:removeEvent"><day-name>Estefania</day-name></cjs:day>
+    <cjs:day data-id="Cristina" data-on="remove-event:removeEvent"><day-name>Cristina</day-name></cjs:day>
+    <cjs:day data-id="Eila" data-on="remove-event:removeEvent"><day-name>Eila</day-name></cjs:day>
 </div>

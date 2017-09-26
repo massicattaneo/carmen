@@ -1,0 +1,17 @@
+.& {
+	display: inline-block;
+	border-radius: 15px;
+	width: auto;
+	height: 15px;
+	line-height: 15px;
+	padding: 4px 10px;
+	font-size: 14px;
+	text-transform: uppercase;
+	cursor: -webkit-grab;
+	margin: 4px 0;
+}
+
+.& label {
+	margin-right: 5px;
+	cursor: -webkit-grab;
+}

@@ -1,8 +1,10 @@
 import NfcApp from './nfc-reader/index';
 import ServerApp from './server/index';
+import electronGoogleOauth from 'electron-google-oauth';
 
 var nfcApp = new NfcApp();
 var serverApp = new ServerApp();
+const auth = electronGoogleOauth();
 
 nfcApp.on('card-read', function (reader, card, data) {
 	serverApp.send(data)
@@ -34,11 +36,26 @@ process.argv.forEach(function (val) {
 	params[val.split('=')[0]] = val.split('=')[1];
 });
 
-function createWindow () {
+const preventQuit = e => e.preventDefault();
+app.on('will-quit', preventQuit);
+
+async function createWindow () {
+
+	var clientId = '927198449105-uf5fr7b0i475a3hlqk574opkrnph9enk.apps.googleusercontent.com';
+	var clientSecret = params.clientSecret;
+	const token = await auth.getAccessToken(
+		['https://www.googleapis.com/auth/calendar'],
+		clientId,
+		clientSecret
+	);
+
+	console.log(token.access_token);
+	app.removeListener('will-quit', preventQuit);
+
 	// Create the browser window.
 	mainWindow = new BrowserWindow({width: 1100, height: 890, icon: __dirname + '/client/images/icon.png'});
-	mainWindow.getPassword = function () {
-		return params.password;
+	mainWindow.getConfiguration = function () {
+		return {password: params.password, token: token.access_token};
 	};
 
 	// and load the index.html of the app.

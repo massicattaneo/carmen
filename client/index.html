@@ -1,56 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=0">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, user-scalable=0">
 	<link rel="icon" href="images/logo.ico">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
-    <script src="../bower_components/corejs/dist/corejs.js"></script>
-    <script src="../bower_components/jsPDF/dist/jspdf.debug.js"></script>
-    <title>IN & OUT</title>
-    <link type="text/css" href="style.css" rel="stylesheet"/>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+	<script src="https://apis.google.com/js/api.js"></script>
+	<script src="../bower_components/corejs/dist/corejs.js"></script>
+	<script src="../bower_components/jsPDF/dist/jspdf.debug.js"></script>
+	<title>IN & OUT</title>
+	<link type="text/css" href="style.css" rel="stylesheet"/>
 </head>
 <body class="loading">
 <div id="website">
-    <div id="header"></div>
-    <div id="page"></div>
+	<div id="header"></div>
+	<div id="page"></div>
 </div>
+
 <script>
+	const require = window.require || undefined;
+	var electron = (require !== undefined) ? require('electron') : {};
 	var webSocket = new WebSocket('ws://127.0.0.1:8081');
 	var webSocketPromise = cjs.Need();
-	webSocket.onopen = function(){
+	webSocket.onopen = function () {
 		webSocketPromise.resolve();
 	};
+	var CLIENT_ID = '927198449105-duu7fckkql9ks5gh6fg7g9fvu6hq8p04.apps.googleusercontent.com';
+	var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+	var SCOPES = "https://www.googleapis.com/auth/calendar";
+	var calendar = cjs.Calendar.googleCalendar(require && electron.remote.getCurrentWindow().getConfiguration().token);
+	var calendarPromise = calendar.init({ CLIENT_ID, DISCOVERY_DOCS, SCOPES });
 
-
-    cjs.Need([
-    	cjs.navigator.import('../server/data.json'),
-    	webSocketPromise
+	cjs.Need([
+		cjs.navigator.import('../server/data.json'),
+		webSocketPromise,
+		calendarPromise
 	]).done(function (json) {
-		const require = window.require || undefined;
-		var electron = (require !== undefined) ? require('electron') : {};
-        var db = cjs.Db.firebaseAdapter();
-        db.init({
-            apiKey: "AIzaSyC8aJIXp0QBbzLsCethcKEdNmJrPEaNhoU",
-            authDomain: "inandout-76471.firebaseapp.com",
-            databaseURL: "https://inandout-76471.firebaseio.com",
-            storageBucket: "inandout-76471.appspot.com",
-            messagingSenderId: "927198449105"
-        });
-        cjs.Component.injectDatabaseProxy(db);
-		var password = require ? electron.remote.getCurrentWindow().getPassword() : '12345678';
+		var db = cjs.Db.firebaseAdapter(json);
+		db.init({
+			apiKey: "AIzaSyC8aJIXp0QBbzLsCethcKEdNmJrPEaNhoU",
+			authDomain: "inandout-76471.firebaseapp.com",
+			databaseURL: "https://inandout-76471.firebaseio.com",
+			storageBucket: "inandout-76471.appspot.com",
+			messagingSenderId: "927198449105"
+		});
+		cjs.Component.injectDatabaseProxy(db);
+		var password = require ? electron.remote.getCurrentWindow().getConfiguration().password : '12345678';
 		db.login("info@inandoutbelleza.com", password)
-                .done(function () {
-                    cjs.navigator
-                            .import('js/bootstrap.js')
-                            .done(function (bootstrap) {
-                                bootstrap(db, webSocket);
+			.done(function () {
+				cjs.navigator
+					.import('js/bootstrap.js')
+					.done(function (bootstrap) {
+						bootstrap(db, webSocket, calendar);
 
-                            });
-                }).fail(function () {
-            alert('Falta la conexion a Internet!')
-        });
+					});
+			}).fail(function () {
+			alert('Falta la conexion a Internet!')
+		});
 
 	});
 

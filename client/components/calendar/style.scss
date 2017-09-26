@@ -1,5 +1,36 @@
 .& {
-  width: 100%;
-  text-align: left;
-  color: $mainTextColor;
+	width: 100%;
+	text-align: left;
+	color: $mainTextColor;
+	position: relative;
+	user-select: none;
+}
+
+.& .buttons {
+	margin: 0px 0 20px 0;
+}
+
+.& h2 {
+	display: inline-block;
+	padding: 0 20px;
+	margin: 0;
+	width: 430px;
+	text-align: center;
+}
+
+.& button {
+	height: 30px
+}
+
+.& .mini-calendar {
+	user-select: none;
+	position: absolute;
+	float: none;
+	top: -24px;
+	right: 13px;
+}
+
+.& .processes {
+	min-height: 69px;
+	max-width: 785px;
 }

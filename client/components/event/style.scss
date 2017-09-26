@@ -1,0 +1,30 @@
+.& {
+	position: absolute;
+	top: $positionY;
+	height: $height;
+	left: 40px;
+	overflow: hidden;
+	padding: 0 4px;
+	user-select: none;
+	border: 1px dotted white;
+	width: 114px;
+	font-size: 12px;
+	color: black;
+	background-color: white;
+}
+.&.editable {overflow: visible;}
+
+.& .label {user-select: none;}
+.&.editable .label {display: none;}
+.& .input {
+	display: none;
+	width: 173px;
+	left: -4px;
+	position: relative;
+	height: 61px;
+	z-index: 2;
+	font-size: 12px;
+}
+.&.editable .input {display: inline-block;}
+
+.& .full-screen {position: fixed; top: 0;left:0;right: 0;bottom: 0;z-index: 1; display: none;}

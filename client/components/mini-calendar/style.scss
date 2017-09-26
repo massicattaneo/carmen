@@ -1,0 +1,29 @@
+.& .day {
+	width: 15px;
+	height: 15px;
+	margin: 1px;
+	display: block;
+	float: left;
+	text-align: center;
+	font-size: 12px;
+	border-radius:12px;
+	cursor: pointer;
+	color: #989898;
+}
+
+.& .day.selected {background-color: rgba(255,255,255,0.3);}
+.& .day.work {color: white; pointer-events: all;}
+.& .day.old {pointer-events: none;color: #989898;}
+
+.& .day.header {
+	background-color: transparent;
+	font-weight: 800;
+	cursor: default;
+	color: #999e5c;
+}
+
+.& h5 {
+	color: $mainColor;
+	margin: 4px 0;
+	text-align: center;
+}

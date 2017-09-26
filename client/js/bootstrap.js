@@ -12,7 +12,7 @@
 function boostrap(imports) {
 	var Header = imports('components/header/controller.js');
 	var BlackScreen = imports('components/black-screen/controller.js');
-	// var Calendar = imports('components/calendar/controller.js');
+	var Calendar = imports('components/calendar/controller.js');
 	var Settings = imports('components/settings/controller.js');
 	var Print = imports('components/print/controller.js');
 	var Users = imports('components/users/controller.js');
@@ -27,7 +27,7 @@ function boostrap(imports) {
 	var useCases = imports('use-cases/use-cases.xml');
 	var StateMachine = imports('js/state-machine.js');
 
-	return function (db, webSocket) {
+	return function (db, webSocket, calendar) {
 		var clientsData = {};
 		var transactionsData = {};
 		var cardsData = {};
@@ -39,15 +39,18 @@ function boostrap(imports) {
 			}, unmute: function () {
 			}
 		};
-
+		cjs.Date.setUp(
+			['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
+			['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']);
 		config.db = db;
+		config.calendar = calendar;
 		register(config);
 
 		var header = Header(config);
 		header.createIn(document.getElementById('header'));
 
-		// var calendar = Calendar(config);
-		// calendar.createIn(document.getElementById('page'));
+		var calendar = Calendar(config);
+		calendar.createIn(document.getElementById('page'));
 
 		var settings = Settings(config);
 		settings.createIn(document.getElementById('page'));
@@ -118,7 +121,7 @@ function boostrap(imports) {
 		}
 
 		var sm = new StateMachine(useCases, staticData, {
-			header, blackScreen, clients, users, history, cash,
+			header, blackScreen, clients, users, history, cash, calendar,
 			settings, print, popUpDeleteClient, popUpDeleteTransaction, popUpDeleteCard, popUpWarn,
 			transactionAdd, cards, nfcReader, transactionCard,
 			db: {
@@ -245,6 +248,7 @@ function boostrap(imports) {
 				},
 				hideAllPages: function () {
 					clients.get().addStyle({ display: 'none' });
+					calendar.get().addStyle({ display: 'none' });
 					cards.get().addStyle({ display: 'none' });
 					transactionAdd.get().addStyle({ display: 'none' });
 					transactionCard.get().addStyle({ display: 'none' });

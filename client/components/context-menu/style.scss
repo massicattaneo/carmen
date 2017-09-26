@@ -1,0 +1,21 @@
+.& {
+	user-select: none;
+	min-width: 107px;
+	font-size: 13px;
+	padding: 2px 6px;
+	border: 1px outset white;
+	background-color: #989a98;
+	position: fixed;
+}
+
+.& .full-screen {position: fixed; top: 0;left:0;right: 0;bottom: 0;z-index: 1;}
+
+.& .item {
+	z-index: 2;
+	position: relative;
+}
+.& .item:hover {
+	background-color: #008000;
+	color: white;
+	cursor: pointer;
+}

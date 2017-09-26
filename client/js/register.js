@@ -13,9 +13,9 @@ function register(imports) {
     var dayTemplate = imports('components/day/template.html');
     var dayStyle = imports('components/day/style.scss');
 
-    var userController = imports('components/user/controller.js');
-    var userTemplate = imports('components/user/template.html');
-    var userStyle = imports('components/user/style.scss');
+    var processController = imports('components/process/controller.js');
+    var processTemplate = imports('components/process/template.html');
+    var processStyle = imports('components/process/style.scss');
 
     var listController = imports('components/list/controller.js');
     var listTemplate = imports('components/list/template.html');
@@ -56,6 +56,18 @@ function register(imports) {
 	var switchController = imports('components/switch/controller.js');
 	var switchTemplate = imports('components/switch/template.html');
 	var switchStyle = imports('components/switch/style.scss');
+
+	var eventController = imports('components/event/controller.js');
+	var eventTemplate = imports('components/event/template.html');
+	var eventStyle = imports('components/event/style.scss');
+
+	var miniCalController = imports('components/mini-calendar/controller.js');
+	var miniCalTemplate = imports('components/mini-calendar/template.html');
+	var miniCalStyle = imports('components/mini-calendar/style.scss');
+
+	var contextMenuController = imports('components/context-menu/controller.js');
+	var contextMenuTemplate = imports('components/context-menu/template.html');
+	var contextMenuStyle = imports('components/context-menu/style.scss');
 
     return function (config) {
 
@@ -100,12 +112,21 @@ function register(imports) {
             config: config
         });
 
+        /** MINI CALENDAR **/
+        cjs.Component.register({
+            name: 'minicalendar',
+            controller: miniCalController,
+            template: miniCalTemplate,
+            style: miniCalStyle,
+            config: config
+        });
+
         /** USER **/
         cjs.Component.register({
-            name: 'user',
-            controller: userController,
-            template: userTemplate,
-            style: userStyle,
+            name: 'process',
+            controller: processController,
+            template: processTemplate,
+            style: processStyle,
             config: config
         });
 
@@ -196,6 +217,24 @@ function register(imports) {
 			controller: switchController,
 			template: switchTemplate,
 			style: switchStyle,
+			config: config
+		});
+
+		/** EVENT **/
+		cjs.Component.register({
+			name: 'event',
+			controller: eventController,
+			template: eventTemplate,
+			style: eventStyle,
+			config: config
+		});
+
+		/** CONTEXT MENU **/
+		cjs.Component.register({
+			name: 'contextmenu',
+			controller: contextMenuController,
+			template: contextMenuTemplate,
+			style: contextMenuStyle,
 			config: config
 		});
 
