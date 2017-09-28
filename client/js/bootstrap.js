@@ -281,7 +281,7 @@ function boostrap(imports) {
 					)
 				},
 				printList: function (filter) {
-					var doc = new jsPDF('p', 'mm', [297, 210]);
+					var doc = new jspdf('p', 'mm', [297, 210]);
 					var linesHeight = 6;
 					var x = 0;
 					var y = 0;
@@ -315,7 +315,7 @@ function boostrap(imports) {
 					doc.output('save', 'listado.pdf');
 				},
 				printCards: function (filter) {
-					var doc = new jsPDF('p', 'mm', [297, 210]);
+					var doc = new jspdf('p', 'mm', [297, 210]);
 					var linesHeight = 6;
 					var x = 0;
 					var y = 0;
@@ -359,7 +359,7 @@ function boostrap(imports) {
 					doc.output('save', 'tarjetas.pdf');
 				},
 				printClients: function (filter) {
-					var doc = new jsPDF('p', 'mm', [297, 210]);
+					var doc = new jspdf('p', 'mm', [297, 210]);
 					var linesHeight = 6;
 					var x = 0;
 					var y = 0;
@@ -405,7 +405,7 @@ function boostrap(imports) {
 					doc.output('save', 'clients.pdf');
 				},
 				printBills: function (params) {
-					var doc = new jsPDF('p', 'mm', [297, 210]);
+					var doc = new jspdf('p', 'mm', [297, 210]);
 					var startNumber = Number(params.start) || 1;
 					var cashIds = newTot(params.cashMaximum, Object.keys(transactionsData)
 						.map(function (k) {return transactionsData[k];})
@@ -453,7 +453,7 @@ function boostrap(imports) {
 								doc.text(line, 30, start + (i * 5));
 							});
 							var netNumber = b.value / ((100 + config.IVA) / 100);
-							var net = new cjs.Currency(netNumber);
+							var net = new cjs.Currency(netNumber + 0.01);
 							var iva = new cjs.Currency(b.value - netNumber);
 							doc.text(net.format('i.ff s'), 150, start, 'right');
 							doc.text(config.IVA.toString() + '%', 175, start, 'right');
