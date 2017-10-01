@@ -14,5 +14,34 @@
 	"cardsText": "Tarjetas",
 	"printText": "Imprimir",
 	"IVA": 21,
-	"isLogged": false
+	"isLogged": false,
+	"processes": [
+		{"processId": 1, "summary": "depilación", "room": 1},
+		{"processId": 2, "summary": "cejas", "room": 1},
+		{"processId": 3, "summary": "higiene", "room": 4},
+		{"processId": 4, "summary": "masaje", "room": 3},
+		{"processId": 5, "summary": "vela", "room": 4},
+		{"processId": 6, "summary": "manicura", "room": 3},
+		{"processId": 7, "summary": "microblading", "room": 5},
+		{"processId": 8, "summary": "pedicura", "room": 3},
+		{"processId": 9, "summary": "lifting", "room": 2},
+		{"processId": 10, "summary": "cejas y labio", "room": 1},
+		{"processId": 11, "summary": "carita", "room": 8},
+		{"processId": 12, "summary": "maquillaje", "room": 4},
+		{"processId": 13, "summary": "completo", "room": 2},
+		{"processId": 98, "summary": "15 minutos", "room": 1},
+		{"processId": 98, "summary": "30 minutos", "room": 2},
+		{"processId": 98, "summary": "45 minutos", "room": 3},
+		{"processId": 98, "summary": "1 hora", "room": 4},
+		{"processId": 99, "summary": "turno", "room": 4},
+		{"processId": 99, "summary": "dia libre", "room": 40}
+	],
+	"users": [
+		{"id": "info@inandoutbelleza.com", "title": "Carmen", "week": [{"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": []}]},
+		{"id": "nog1o7vqalre9raep4v5r8bfl8@group.calendar.google.com", "title": "Carmen V.", "week": [{"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": []}]},
+		{"id": "63t8br7nmbaekjv8janmco6520@group.calendar.google.com", "title": "Estefania", "week": [{"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": []}]},
+		{"id": "2euki6s03uvcpq2l2il4oqlslk@group.calendar.google.com", "title": "Cristina", "week": [{"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": []}]},
+		{"id": "8eupe3uc8g0psn6hr9noi879mo@group.calendar.google.com", "title": "Eila", "week": [{"periods": []}, {"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10,14]]}]}
+	],
+	"calendarStep": 15
 }

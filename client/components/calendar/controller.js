@@ -22,49 +22,72 @@ function controller(imports) {
 			config: config
 		});
 		var date = new Date();
-		var employee = ['Carmen', 'Carmen V.', 'Estefania', 'Cristina', 'Eila'];
+		var users = {};
 		var isRequesting = false;
-		var debounce = 20 * 1000;
+		var debounce = 30 * 1000;
 
 		function setDate() {
 			obj.get('date').setValue((new cjs.Date(date.getTime())).format('dddd dd mmmm yyyy'));
 			obj.get('mini-calendar').setDate(date);
-			employee.forEach(function (e) {
-				var employ = obj.get(e);
-				employ.clearEvents();
-				employ.setDate(date);
-				config.calendar.get(e, date).done(function (e) {
-					employ.clearEvents();
+			Object.keys(users).forEach(function (userId) {
+				var day = users[userId].component;
+				day.clearEvents();
+				day.setDate(date);
+				config.calendar.get(users[userId].id, date).done(function (e) {
+					day.clearEvents();
 					e.result.items.forEach(function (i) {
 						var room = (new Date(i.end.dateTime).getTime() - new Date(i.start.dateTime).getTime()) / 1000 / 60 / 15;
-						var hourId = ((new Date(i.start.dateTime)).getHours()-10) * 4 + Math.ceil((new Date(i.start.dateTime)).getMinutes() / 15);
-						employ.drawEvent({ room, processId: i.description, hourId, label: i.summary, edit: false, id: i.id, start: new Date(i.start.dateTime) })
+						day.drawEvent({
+							room,
+							processId: i.extendedProperties ? i.extendedProperties.private.processId : (config.processes.find(a=>a.summary === i.summary.toLowerCase()) || {processId: 98}).processId,
+							description: i.description,
+							summary: i.summary,
+							edit: false,
+							id: i.id,
+							start: new Date(i.start.dateTime)
+						})
 					})
 				})
 			});
 		}
 
 		obj.removeEvent = function (e) {
-			obj.get(e.data.dayName).removeDrawEvent(e.data.id)
+			users[e.data.userId].component.removeDrawEvent(e.data.id);
 		};
 
 		obj.init = function () {
+			config.processes.forEach(function({processId, summary, room}) {
+				var process = cjs.Component.create('process', {
+					config: { processId , summary, room }
+				});
+				process.createIn(obj.get('processes'));
+			});
+			config.users.forEach(function({title, id, week}) {
+				var component = cjs.Component.create('day', {config: { userId: id, title, week }});
+				component.get().addListener('remove-event', obj.removeEvent);
+				users[id] = {title, id, component, week};
+				component.createIn(obj.get('days'));
+			});
 			window.addEventListener('mousemove', function () {
 				if (!isRequesting && obj.get().get().style.display === 'block') {
 					isRequesting = true;
 					setDate();
-					setTimeout(function () {isRequesting = false;}, debounce);
+					setTimeout(function () {
+						isRequesting = false;
+					}, debounce);
 				}
 
 			});
 		};
 
 		obj.show = function () {
-			obj.get().addStyle({ display: 'block' });
+			obj.get().addStyle({display: 'block'});
 			if (!isRequesting) {
 				isRequesting = true;
 				setDate();
-				setTimeout(function () {isRequesting = false;}, debounce);
+				setTimeout(function () {
+					isRequesting = false;
+				}, debounce);
 			}
 		};
 

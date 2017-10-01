@@ -4,70 +4,39 @@ function controller() {
 		var obj = {};
 		var events = {};
 		var pointer = new cjs.Date(Date.now()).format('yyyy-mm-dd');
-		var hours = ['10:00', '10:15', '10:30', '10:45', '11:00', '11:15', '11:30', '11:45', '12:00', '12:15',
-			'12:30', '12:45', '13:00', '13:15', '13:30', '13:45', '14:00', '14:15', '14:30', '14:45', '15:00',
-			'15:15', '15:30', '15:45', '16:00', '16:15', '16:30', '16:45', '17:00', '17:15', '17:30', '17:45',
-			'18:00', '18:15', '18:30', '18:45', '19:00', '19:15', '19:30', '19:45', '20:00',
-			'20:15', '20:30', '20:45', '21:00'];
+		var hours = [];
 
-		obj.init = function () {
-			hours.slice(0, 41).forEach(function (hour, id) {
-				var comp = cjs.Component({
-					template: `<div class="hour" data-on="drop:drop||dragover:dragover||dragenter:dragenter||dragleave:dragleave"><label>{{hour}}</label></div>`,
-					style: '.&.hover label {background-color: #33ce41}',
-					config: { hour, id }
-				}, {
-					dragenter: function () {
-						this.get().addStyle('hover');
-					},
-					dragleave: function () {
-						this.get().removeStyle('hover');
-					},
-					dragover: function (e) {
-						e.preventDefault()
-					},
-					drop: function (e) {
-						this.get().removeStyle('hover');
-						var hour = this.config.hour;
-						var hourId = this.config.id;
-						var { processId, room, label, action, id, dayName } = JSON.parse(e.dataTransfer.getData("config"));
-						if (action === 'add') {
-							obj.addEvent({ processId, hour, room, hourId, label, edit: true });
-						} else if (action === 'modify') {
-							obj.get().fire('remove-event', {dayName, id});
-							obj.addEvent({ processId, hour, room, hourId, label, edit: false });
-							config.calendar.delete(dayName, id);
-						}
-					}
+		function decimalToTime(decimalTimeString) {
+			var n = new Date(0,0);
+			n.setSeconds(+decimalTimeString * 60 * 60);
+			return n.toTimeString().slice(0, 8).split(':').concat([0]).map(e => parseInt(e,10));
+
+		}
+
+		obj.addEvent = function ({ processId, room, date, description, summary, edit }) {
+			var start = date;
+			var end = new Date(date.getTime() + (config.calendarStep * 60 * 1000));
+            config.calendar
+				.insert(config.userId, {summary,start,end,description,processId})
+				.done(function (id) {
+					obj.drawEvent({ room, processId, date, summary, description, edit, id, start })
 				});
-				comp.createIn(obj.get());
-			});
 		};
 
-		obj.addEvent = function ({ room, processId, hourId, label, edit }) {
-			var start = new Date(`${pointer} ${hours[hourId]}`);
-			config.calendar.insert(config.dayName, {
-				summary: label,
-				start: start,
-				end: new Date(`${pointer} ${hours[hourId + room]}`),
-				description: processId
-			}).done(function (id) {
-				obj.drawEvent({ room, processId, hourId, label, edit, id, start })
-			});
-		};
-
-		obj.drawEvent = function ({ room, processId, hourId, label, edit, id, start }) {
-			var top = 32 + (hourId * 13);
+		obj.drawEvent = function ({ room, processId, summary, description, edit, id, start }) {
+			var begin = new Date(start);
+			begin.setHours(10,0,0,0);
+			var top = 32 + (((start.getTime() - begin.getTime()) /60000)/config.calendarStep)*13;
 			var event = cjs.Component.create('event', {
 				config: {
-					dayName: config.dayName,
+					userId: config.userId,
 					processId,
 					id,
 					edit,
 					height: room * 13 + 'px',
-					hourId,
 					positionY: top + 'px',
-					label,
+					summary,
+					description,
 					start
 				}
 			});
@@ -90,6 +59,30 @@ function controller() {
 
 		obj.setDate = function (date) {
 			pointer = new cjs.Date(date.getTime()).format('yyyy-mm-dd');
+			hours.forEach(function (h) {h.remove();});
+			hours = [];
+			config.week[date.getDay()].periods.forEach(function (period) {
+				var start = new Date(date);
+				start.setHours(...decimalToTime(period[0]));
+				var end = new Date(date);
+				end.setHours(...decimalToTime(period[1]));
+				while (start.getTime() <= end.getTime()) {
+					var hour = cjs.Component.create('hour', {config: {label: (new cjs.Date(start)).format('TT:tt'), date: start}});
+					hour.get().addListener('hour-add-event', function (e) {
+						var { summary, processId, room, date, description, edit } = e.data;
+						obj.addEvent({ processId, room, date, description, summary, edit });
+					});
+					hour.get().addListener('hour-modify-event', function (e) {
+						var { userId, summary, id, processId, room, date, description, edit } = e.data;
+						obj.get().fire('remove-event', {userId, id});
+						obj.addEvent({ processId, room, date, description, summary, edit });
+						config.calendar.delete(userId, id);
+					});
+					hour.createIn(obj.get());
+					hours.push(hour);
+					start = new Date(start.getTime()+ (config.calendarStep * 60 * 1000));
+				}
+			});
 		};
 
 		return obj;

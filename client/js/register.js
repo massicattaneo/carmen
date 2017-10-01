@@ -69,6 +69,10 @@ function register(imports) {
 	var contextMenuTemplate = imports('components/context-menu/template.html');
 	var contextMenuStyle = imports('components/context-menu/style.scss');
 
+	var hourController = imports('components/hour/controller.js');
+	var hourTemplate = imports('components/hour/template.html');
+	var hourStyle = imports('components/hour/style.scss');
+
     return function (config) {
 
         cjs.Component.registerParserFunction('currency', function (data, item) {
@@ -235,6 +239,15 @@ function register(imports) {
 			controller: contextMenuController,
 			template: contextMenuTemplate,
 			style: contextMenuStyle,
+			config: config
+		});
+
+		/** HOUR **/
+		cjs.Component.register({
+			name: 'hour',
+			controller: hourController,
+			template: hourTemplate,
+			style: hourStyle,
 			config: config
 		});
 

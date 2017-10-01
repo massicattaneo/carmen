@@ -13,11 +13,6 @@ function controller(imports) {
 
 	var template = imports('components/calendar/template.html');
 	var style = imports('components/calendar/style.scss');
-	var hours = ['10:00', '10:15', '10:30', '10:45', '11:00', '11:15', '11:30', '11:45', '12:00', '12:15',
-		'12:30', '12:45', '13:00', '13:15', '13:30', '13:45', '14:00', '14:15', '14:30', '14:45', '15:00',
-		'15:15', '15:30', '15:45', '16:00', '16:15', '16:30', '16:45', '17:00', '17:15', '17:30', '17:45',
-		'18:00', '18:15', '18:30', '18:45', '19:00', '19:15', '19:30', '19:45', '20:00',
-		'20:15', '20:30', '20:45', '21:00'];
 
 	return function (config) {
 		var isEditing = false;
@@ -27,7 +22,15 @@ function controller(imports) {
 			config: config
 		});
 
+		function getLabelValue() {
+			var des = obj.get('description').getValue();
+            return obj.get('summary').getValue() + (des === '' ? '' : ':' + des);
+		}
+
 		obj.init = function () {
+			obj.get('description').setValue(config.description || '');
+			obj.get('summary').setValue(config.summary);
+			obj.get('label').setValue(getLabelValue());
 			if (config.edit) {
 				obj.edit();
 				obj.get('input').get().focus();
@@ -38,7 +41,7 @@ function controller(imports) {
 		obj.edit = function () {
 			isEditing = true;
 			obj.get().addStyle('editable');
-			obj.get('input').setValue(obj.get('label').getValue());
+			obj.get('input').setValue(obj.get('description').getValue());
 			window.addEventListener('keydown', obj.stopEdit);
 			obj.get('full-screen').addStyle({ display: 'block' });
 		};
@@ -46,13 +49,15 @@ function controller(imports) {
 		obj.stopEdit = function (e) {
 			if (e.key === 'Enter' || e.target === obj.get('full-screen').get()) {
 				obj.get().removeStyle('editable');
-				var value = obj.get('input').getValue().trim();
+				var description = obj.get('input').getValue().trim();
+				obj.get('description').setValue(description);
+				var summary = obj.get('summary').getValue().trim();
 				isEditing = false;
 				window.removeEventListener('keydown', obj.stopEdit);
 				obj.get('full-screen').addStyle({ display: 'none' });
-				obj.get('label').setAttribute('title', value);
-				config.calendar.update(config.dayName, config.id, { summary: value });
-				obj.get('label').setValue(value);
+				obj.get('label').setAttribute('title', getLabelValue());
+				config.calendar.update(config.userId, config.id, { description: description });
+				obj.get('label').setValue(getLabelValue());
 			}
 		};
 
@@ -64,8 +69,9 @@ function controller(imports) {
 
 			var data = {
 				processId: config.processId, room,
-				label: obj.get('label').getValue(),
-				action: 'modify', id: config.id, dayName: config.dayName
+				description: obj.get('description').getValue(),
+				summary: obj.get('summary').getValue(),
+				action: 'modify', id: config.id, userId: config.userId
 			};
 			ev.dataTransfer.setData("config", JSON.stringify(data));
 		};
@@ -95,17 +101,15 @@ function controller(imports) {
 			}, {
 				delete: function () {
 					cm.remove();
-					config.calendar.delete(config.dayName, config.id).done(function (e) {
+					config.calendar.delete(config.userId, config.id).done(function (e) {
 						obj.remove();
 					});
 				},
 				changeLength: function (e) {
 					cm.remove();
 					var room = Number(e.target.getAttribute('data-room'));
-					var hourId = config.hourId;
-					var date = new cjs.Date(config.start).format('yyyy-mm-dd');
-					var end = new Date(`${date} ${hours[hourId + room]}`);
-					config.calendar.update(config.dayName, config.id, { end, start: config.start }).done(function (e) {
+					var end = new Date(config.start.getTime() + (room*config.calendarStep)*60000);
+					config.calendar.update(config.userId, config.id, { end, start: config.start }).done(function (e) {
 						obj.get().addStyle({ height: room * 13 + 'px' })
 					});
 				}

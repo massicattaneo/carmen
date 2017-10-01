@@ -21,11 +21,11 @@
 <script>
 	const require = window.require || undefined;
 	var electron = (require !== undefined) ? require('electron') : {};
-	var webSocket = new WebSocket('ws://127.0.0.1:8081');
 	var webSocketPromise = cjs.Need();
-	webSocket.onopen = function () {
+//	var webSocket = new WebSocket('ws://127.0.0.1:8081');
+//	webSocket.onopen = function () {
 		webSocketPromise.resolve();
-	};
+//	};
 	var CLIENT_ID = '927198449105-duu7fckkql9ks5gh6fg7g9fvu6hq8p04.apps.googleusercontent.com';
 	var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 	var SCOPES = "https://www.googleapis.com/auth/calendar";
@@ -37,7 +37,8 @@
 		webSocketPromise,
 		calendarPromise
 	]).done(function (json) {
-		var db = cjs.Db.firebaseAdapter(json);
+//		var db = cjs.Db.firebaseAdapter();
+		var db = cjs.Db.staticJSONAdapter(json);
 		db.init({
 			apiKey: "AIzaSyC8aJIXp0QBbzLsCethcKEdNmJrPEaNhoU",
 			authDomain: "inandout-76471.firebaseapp.com",
@@ -52,7 +53,7 @@
 				cjs.navigator
 					.import('js/bootstrap.js')
 					.done(function (bootstrap) {
-						bootstrap(db, webSocket, calendar);
+						bootstrap(db, {send: function() {}}, calendar);
 
 					});
 			}).fail(function () {

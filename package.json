@@ -19,8 +19,7 @@
     "url": "https://github.com/massicattaneo/carmen/issues"
   },
   "dependencies": {
-    "@pokusew/pcsclite": "^0.4.17",
-    "electron-google-oauth": "^2.0.0"
+    "@pokusew/pcsclite": "^0.4.17"
   },
   "homepage": "https://github.com/massicattaneo/carmen#readme",
   "devDependencies": {
@@ -33,6 +32,7 @@
     "bower": "^1.8.0",
     "chalk": "^1.1.3",
     "electron": "~1.6.2",
+    "electron-google-oauth": "^2.0.0",
     "electron-rebuild": "^1.5.11",
     "http-serve": "^1.0.1",
     "prettyjson": "^1.2.1",
