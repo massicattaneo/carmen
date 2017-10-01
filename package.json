@@ -35,6 +35,7 @@
     "electron-google-oauth": "^2.0.0",
     "electron-rebuild": "^1.5.11",
     "http-serve": "^1.0.1",
+    "node-fetch": "^1.7.3",
     "prettyjson": "^1.2.1",
     "websocket": "^1.0.24",
     "winston": "^2.3.1"

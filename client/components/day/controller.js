@@ -13,13 +13,25 @@ function controller() {
 
 		}
 
+		obj.copyClipboard = function (e) {
+			config.clipboard.set(e.data);
+		};
+
+		obj.pasteClipboard = function (e) {
+			if (config.clipboard.get()) {
+				var { processId, room, description, summary } = config.clipboard.get();
+				var date = e.data.date;
+				obj.addEvent({ processId, room, date, description, summary, edit: false });
+			}
+		};
+
 		obj.addEvent = function ({ processId, room, date, description, summary, edit }) {
 			var start = date;
-			var end = new Date(date.getTime() + (config.calendarStep * 60 * 1000));
+			var end = new Date(date.getTime() + (config.calendarStep * 60 * 1000) * room);
             config.calendar
 				.insert(config.userId, {summary,start,end,description,processId})
 				.done(function (id) {
-					obj.drawEvent({ room, processId, date, summary, description, edit, id, start })
+					obj.drawEvent({ room, processId, summary, description, edit, id, start })
 				});
 		};
 
@@ -37,9 +49,11 @@ function controller() {
 					positionY: top + 'px',
 					summary,
 					description,
-					start
+					start,
+					room
 				}
 			});
+			event.get().addListener('copy-clipboard', obj.copyClipboard);
 			events[id] = event;
 			event.createIn(obj.get());
 		};
@@ -78,6 +92,7 @@ function controller() {
 						obj.addEvent({ processId, room, date, description, summary, edit });
 						config.calendar.delete(userId, id);
 					});
+					hour.get().addListener('paste-clipboard', obj.pasteClipboard);
 					hour.createIn(obj.get());
 					hours.push(hour);
 					start = new Date(start.getTime()+ (config.calendarStep * 60 * 1000));

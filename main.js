@@ -1,6 +1,7 @@
 import NfcApp from './nfc-reader/index';
 import ServerApp from './server/index';
 import electronGoogleOauth from 'electron-google-oauth';
+import fetch from 'node-fetch';
 
 var nfcApp = new NfcApp();
 var serverApp = new ServerApp();
@@ -21,7 +22,7 @@ serverApp.on('web-socket-message', async (data) => {
 
 const electron = require('electron')
 // Module to control application life.
-const app = electron.app
+const {app, Menu} = electron;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
@@ -43,27 +44,59 @@ async function createWindow () {
 
 	var clientId = '927198449105-uf5fr7b0i475a3hlqk574opkrnph9enk.apps.googleusercontent.com';
 	var clientSecret = params.clientSecret;
-	const token = await auth.getAccessToken(
+	let token = await auth.getAccessToken(
 		['https://www.googleapis.com/auth/calendar'],
 		clientId,
 		clientSecret
 	);
 
-	console.log(token.access_token);
 	app.removeListener('will-quit', preventQuit);
-
 	// Create the browser window.
+	console.log(JSON.stringify(token));
 	mainWindow = new BrowserWindow({width: 1100, height: 890, icon: __dirname + '/client/images/icon.png'});
 	mainWindow.getConfiguration = function () {
 		return {password: params.password, token: token.access_token};
 	};
+
+	// var agendaWindow = new BrowserWindow({width: 800, height: 600});
+
+	setTimeout(function renewToken() {
+		fetch('https://accounts.google.com/o/oauth2/token', {
+			method: 'post',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/x-www-form-urlencoded'
+			},
+			body: {
+				refresh_token: token.refresh_token,
+				client_id: clientId,
+				client_secret: clientSecret,
+				grant_type: token.refresh_token
+			}
+		}).catch(function (a) {
+			console.log(a);
+		}).then(function (res) {
+			return res.json()
+		}).then(function (json) {
+			token = json;
+			mainWindow.webContents.send('renew-token', token.access_token);
+			setTimeout(renewToken, (token.expires_in + 1) * 1000);
+		});
+	}, (token.expires_in + 1) * 1000);
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(url.format({
 		pathname: path.join(__dirname, 'client/index.html'),
 		protocol: 'file:',
 		slashes: true
-	}))
+	}));
+
+	// const menu = Menu.buildFromTemplate(template)
+	// Menu.setApplicationMenu(menu)
+
+	// agendaWindow.loadURL('https://calendar.google.com/calendar/embed?title=HOY&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=2&amp;hl=es&amp;bgcolor=%23FFFFFF&amp;ctz=Europe%2FMadrid');
+
+	//8eupe3uc8g0psn6hr9noi879mo%40group.calendar.google.com
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools()

@@ -42,6 +42,28 @@ function controller(imports) {
 			}
 		};
 
+		obj.contextmenu = function (e) {
+			e.preventDefault();
+			var cm = cjs.Component.create('contextmenu', {});
+			var comp = cjs.Component({
+				template: `<div>
+								<div data-on="click:paste" class="item">Pegar</div>
+							</div>`
+			}, {
+				paste: function () {
+					cm.remove();
+					var { date } = config;
+					obj.get().fire('paste-clipboard', {date});
+				}
+			});
+			comp.createIn(cm.get());
+			var top = e.pageY;
+			console.log(top);
+			if (top > 500) top-= 20;
+			cm.get().addStyle({ top: top + 'px', left: e.pageX + 'px' });
+			cm.createIn(document.body);
+		};
+
 		return obj;
 
 	}

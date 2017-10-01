@@ -44,6 +44,11 @@ function boostrap(imports) {
 			['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']);
 		config.db = db;
 		config.calendar = calendar;
+		var clipboard;
+		config.clipboard = {
+			get: function() {return clipboard;},
+			set: function(e) {clipboard = e}
+		};
 		register(config);
 
 		var header = Header(config);

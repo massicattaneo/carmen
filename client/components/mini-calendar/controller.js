@@ -23,7 +23,7 @@ function controller(imports) {
         });
 
 		function isWorkDay(date) {
-			return date.getDay() !== 0 && date.getDay() !== 6
+			return date.getDay() !== 0
 		}
 
 		obj.setDate = function (date) {

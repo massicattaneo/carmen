@@ -20,25 +20,30 @@
 
 <script>
 	const require = window.require || undefined;
-	var electron = (require !== undefined) ? require('electron') : {};
+	var electron = (require !== undefined) ? require('electron') : {ipcRenderer: {on: function() {}}};
 	var webSocketPromise = cjs.Need();
-//	var webSocket = new WebSocket('ws://127.0.0.1:8081');
-//	webSocket.onopen = function () {
+	var webSocket = new WebSocket('ws://127.0.0.1:8081');
+	webSocket.onopen = function () {
 		webSocketPromise.resolve();
-//	};
+	};
 	var CLIENT_ID = '927198449105-duu7fckkql9ks5gh6fg7g9fvu6hq8p04.apps.googleusercontent.com';
 	var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
 	var SCOPES = "https://www.googleapis.com/auth/calendar";
 	var calendar = cjs.Calendar.googleCalendar(require && electron.remote.getCurrentWindow().getConfiguration().token);
 	var calendarPromise = calendar.init({ CLIENT_ID, DISCOVERY_DOCS, SCOPES });
 
+	var ipcRenderer = electron.ipcRenderer;
+	ipcRenderer.on('renew-token', function (token) {
+		calendar.setToken(token);
+	});
+
 	cjs.Need([
 		cjs.navigator.import('../server/data.json'),
 		webSocketPromise,
 		calendarPromise
 	]).done(function (json) {
-//		var db = cjs.Db.firebaseAdapter();
-		var db = cjs.Db.staticJSONAdapter(json);
+		var db = cjs.Db.firebaseAdapter();
+//		var db = cjs.Db.staticJSONAdapter(json);
 		db.init({
 			apiKey: "AIzaSyC8aJIXp0QBbzLsCethcKEdNmJrPEaNhoU",
 			authDomain: "inandout-76471.firebaseapp.com",
@@ -53,7 +58,7 @@
 				cjs.navigator
 					.import('js/bootstrap.js')
 					.done(function (bootstrap) {
-						bootstrap(db, {send: function() {}}, calendar);
+						bootstrap(db, webSocket, calendar);
 
 					});
 			}).fail(function () {

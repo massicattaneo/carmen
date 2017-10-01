@@ -24,16 +24,22 @@ function controller(imports) {
 
 		function getLabelValue() {
 			var des = obj.get('description').getValue();
-            return obj.get('summary').getValue() + (des === '' ? '' : ':' + des);
+			if (Number(config.processId) < 98) {
+				return obj.get('summary').getValue() + (des === '' ? '' : ':' + des);
+			}
+            return des;
 		}
 
 		obj.init = function () {
+			if (Number(config.processId) === 98) {
+				config.summary = 'tratamiento';
+			}
 			obj.get('description').setValue(config.description || '');
 			obj.get('summary').setValue(config.summary);
 			obj.get('label').setValue(getLabelValue());
-			if (config.edit) {
+			obj.get('label').setAttribute('title', getLabelValue());
+			if (config.edit && (Number(config.processId) < 99)) {
 				obj.edit();
-				obj.get('input').get().focus();
 				obj.get('input').get().select();
 			}
 		};
@@ -44,6 +50,8 @@ function controller(imports) {
 			obj.get('input').setValue(obj.get('description').getValue());
 			window.addEventListener('keydown', obj.stopEdit);
 			obj.get('full-screen').addStyle({ display: 'block' });
+			obj.get('input').get().focus();
+			obj.get().fire('edit-mode', true);
 		};
 
 		obj.stopEdit = function (e) {
@@ -58,6 +66,7 @@ function controller(imports) {
 				obj.get('label').setAttribute('title', getLabelValue());
 				config.calendar.update(config.userId, config.id, { description: description });
 				obj.get('label').setValue(getLabelValue());
+				obj.get().fire('editMode', false);
 			}
 		};
 
@@ -90,11 +99,20 @@ function controller(imports) {
 							<div data-on="click:changeLength" data-room="3" class="item">45 minutos</div>
 							<div data-on="click:changeLength" data-room="4" class="item">1 hora</div>
 							<div data-on="click:changeLength" data-room="5" class="item">1 hora y 15 minutos</div>
-							<div data-on="click:changeLength" data-room="6" class="item">1 hora y 30 minutos</div>
+							<div data-on="click:changeLength" data-room="6" class="item">1 hora y media</div>
+							<div data-on="click:changeLength" data-room="7" class="item">1 hora y 45 minutos</div>
 							<div data-on="click:changeLength" data-room="8" class="item">2 horas</div>
+							<div data-on="click:changeLength" data-room="9" class="item">2 horas y 15 minuots</div>
+							<div data-on="click:changeLength" data-room="10" class="item">2 horas y media</div>
 							<div data-on="click:changeLength" data-room="12" class="item">3 horas</div>
 							<div data-on="click:changeLength" data-room="16" class="item">4 hora</div>
+							<div data-on="click:changeLength" data-room="20" class="item">5 hora</div>
+							<div data-on="click:changeLength" data-room="24" class="item">6 hora</div>
+							<div data-on="click:changeLength" data-room="28" class="item">7 hora</div>
 							<div data-on="click:changeLength" data-room="40" class="item">1 dia</div>
+							<hr/>
+							<div data-on="click:copy" class="item">Copiar</div>
+							<div data-on="click:cut" class="item">Cortar</div>
 							<hr/>
 							<div data-on="click:delete" class="item">Borrar</div>
 							</div>`
@@ -104,6 +122,19 @@ function controller(imports) {
 					config.calendar.delete(config.userId, config.id).done(function (e) {
 						obj.remove();
 					});
+				},
+				copy: function () {
+					cm.remove();
+					var { processId, summary, description, start, room } = config;
+					obj.get().fire('copy-clipboard', { processId, summary, description, start, room });
+				},
+				cut: function () {
+					cm.remove();
+					var { processId, summary, description, start, room } = config;
+					config.calendar.delete(config.userId, config.id).done(function (e) {
+						obj.remove();
+					});
+					obj.get().fire('copy-clipboard', { processId, summary, description, start, room });
 				},
 				changeLength: function (e) {
 					cm.remove();
@@ -115,7 +146,10 @@ function controller(imports) {
 				}
 			});
 			comp.createIn(cm.get());
-			cm.get().addStyle({ top: e.pageY + 'px', left: e.pageX + 'px' });
+			var top = e.pageY;
+			console.log(top);
+            if (top > 500) top-= 290;
+			cm.get().addStyle({ top: top + 'px', left: e.pageX + 'px' });
 			cm.createIn(document.body);
 		};
 

@@ -6,6 +6,10 @@
 	user-select: none;
 }
 
+.& .date {
+	cursor: pointer;
+}
+
 .& .buttons {
 	margin: 0px 0 20px 0;
 }

@@ -25,6 +25,7 @@ function controller(imports) {
 		var users = {};
 		var isRequesting = false;
 		var debounce = 30 * 1000;
+		var isEditing = false;
 
 		function setDate() {
 			obj.get('date').setValue((new cjs.Date(date.getTime())).format('dddd dd mmmm yyyy'));
@@ -51,6 +52,10 @@ function controller(imports) {
 			});
 		}
 
+		function editMode(e) {
+			isEditing = e.data;
+		}
+
 		obj.removeEvent = function (e) {
 			users[e.data.userId].component.removeDrawEvent(e.data.id);
 		};
@@ -66,10 +71,11 @@ function controller(imports) {
 				var component = cjs.Component.create('day', {config: { userId: id, title, week }});
 				component.get().addListener('remove-event', obj.removeEvent);
 				users[id] = {title, id, component, week};
+				component.get().addListener('edit-mode', editMode);
 				component.createIn(obj.get('days'));
 			});
 			window.addEventListener('mousemove', function () {
-				if (!isRequesting && obj.get().get().style.display === 'block') {
+				if (!isRequesting && obj.get().get().style.display === 'block' && !isEditing) {
 					isRequesting = true;
 					setDate();
 					setTimeout(function () {
