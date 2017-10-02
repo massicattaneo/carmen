@@ -2,6 +2,7 @@ import NfcApp from './nfc-reader/index';
 import ServerApp from './server/index';
 import electronGoogleOauth from 'electron-google-oauth';
 import fetch from 'node-fetch';
+const {stringify} = require('querystring');
 
 var nfcApp = new NfcApp();
 var serverApp = new ServerApp();
@@ -61,20 +62,20 @@ async function createWindow () {
 	// var agendaWindow = new BrowserWindow({width: 800, height: 600});
 
 	setTimeout(function renewToken() {
-		fetch('https://accounts.google.com/o/oauth2/token', {
-			method: 'post',
+		var body = stringify({
+			refresh_token: token.refresh_token,
+			client_id: clientId,
+			client_secret: clientSecret,
+			grant_type: 'refresh_token'
+		});
+		fetch('https://www.googleapis.com/oauth2/v4/token', {
+			method: 'POST',
 			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/x-www-form-urlencoded'
+				'accept': 'application/json',
+				'content-type': 'application/x-www-form-urlencoded'
 			},
-			body: {
-				refresh_token: token.refresh_token,
-				client_id: clientId,
-				client_secret: clientSecret,
-				grant_type: token.refresh_token
-			}
+			body
 		}).catch(function (a) {
-			console.log(a);
 		}).then(function (res) {
 			return res.json()
 		}).then(function (json) {

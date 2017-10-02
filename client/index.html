@@ -34,7 +34,7 @@
 	var calendarPromise = calendar.init({ CLIENT_ID, DISCOVERY_DOCS, SCOPES });
 
 	var ipcRenderer = electron.ipcRenderer;
-	ipcRenderer.on('renew-token', function (token) {
+	ipcRenderer.on('renew-token', function (event, token) {
 		calendar.setToken(token);
 	});
 
