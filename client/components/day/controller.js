@@ -19,23 +19,23 @@ function controller() {
 
 		obj.pasteClipboard = function (e) {
 			if (config.clipboard.get()) {
-				var { processId, room, description, summary } = config.clipboard.get();
+				var { processId, room, summary } = config.clipboard.get();
 				var date = e.data.date;
-				obj.addEvent({ processId, room, date, description, summary, edit: false });
+				obj.addEvent({ processId, room, date, summary, edit: false });
 			}
 		};
 
-		obj.addEvent = function ({ processId, room, date, description, summary, edit }) {
+		obj.addEvent = function ({ processId, room, date, summary, edit }) {
 			var start = date;
 			var end = new Date(date.getTime() + (config.calendarStep * 60 * 1000) * room);
             config.calendar
-				.insert(config.userId, {summary,start,end,description,processId})
+				.insert(config.userId, {summary,start,end,processId})
 				.done(function (id) {
-					obj.drawEvent({ room, processId, summary, description, edit, id, start })
+					obj.drawEvent({ room, processId, summary, edit, id, start })
 				});
 		};
 
-		obj.drawEvent = function ({ room, processId, summary, description, edit, id, start }) {
+		obj.drawEvent = function ({ room, processId, summary, edit, id, start }) {
 			var begin = new Date(start);
 			begin.setHours(10,0,0,0);
 			var top = 32 + (((start.getTime() - begin.getTime()) /60000)/config.calendarStep)*13;
@@ -48,7 +48,6 @@ function controller() {
 					height: room * 13 + 'px',
 					positionY: top + 'px',
 					summary,
-					description,
 					start,
 					room
 				}
@@ -83,13 +82,13 @@ function controller() {
 				while (start.getTime() <= end.getTime()) {
 					var hour = cjs.Component.create('hour', {config: {label: (new cjs.Date(start)).format('TT:tt'), date: start}});
 					hour.get().addListener('hour-add-event', function (e) {
-						var { summary, processId, room, date, description, edit } = e.data;
-						obj.addEvent({ processId, room, date, description, summary, edit });
+						var { summary, processId, room, date, edit } = e.data;
+						obj.addEvent({ processId, room, date, summary, edit });
 					});
 					hour.get().addListener('hour-modify-event', function (e) {
-						var { userId, summary, id, processId, room, date, description, edit } = e.data;
+						var { userId, summary, id, processId, room, date, edit } = e.data;
 						obj.get().fire('remove-event', {userId, id});
-						obj.addEvent({ processId, room, date, description, summary, edit });
+						obj.addEvent({ processId, room, date, summary, edit });
 						config.calendar.delete(userId, id);
 					});
 					hour.get().addListener('paste-clipboard', obj.pasteClipboard);

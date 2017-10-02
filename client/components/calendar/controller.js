@@ -38,10 +38,12 @@ function controller(imports) {
 					day.clearEvents();
 					e.result.items.forEach(function (i) {
 						var room = (new Date(i.end.dateTime).getTime() - new Date(i.start.dateTime).getTime()) / 1000 / 60 / 15;
-						day.drawEvent({
+						var filter = config.processes.filter(a=> i.summary.toLowerCase().indexOf(a.summary) !== -1);
+						var p = filter.length ? filter.sort((a,b) => b.summary.length - a.summary.length)[0] : {processId: 98};
+						var processId = (i.extendedProperties && i.extendedProperties.private) && i.extendedProperties.private.processId || p.processId;
+                        day.drawEvent({
 							room,
-							processId: i.extendedProperties ? i.extendedProperties.private.processId : (config.processes.find(a=>a.summary === i.summary.toLowerCase()) || {processId: 98}).processId,
-							description: i.description,
+							processId: processId,
 							summary: i.summary,
 							edit: false,
 							id: i.id,

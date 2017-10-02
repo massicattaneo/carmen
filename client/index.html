@@ -23,6 +23,7 @@
 	var electron = (require !== undefined) ? require('electron') : {ipcRenderer: {on: function() {}}};
 	var webSocketPromise = cjs.Need();
 	var webSocket = new WebSocket('ws://127.0.0.1:8081');
+//	var webSocket = {send: function() {}};
 	webSocket.onopen = function () {
 		webSocketPromise.resolve();
 	};

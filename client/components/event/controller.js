@@ -23,18 +23,10 @@ function controller(imports) {
 		});
 
 		function getLabelValue() {
-			var des = obj.get('description').getValue();
-			if (Number(config.processId) < 98) {
-				return obj.get('summary').getValue() + (des === '' ? '' : ':' + des);
-			}
-            return des;
+			return obj.get('summary').getValue();
 		}
 
 		obj.init = function () {
-			if (Number(config.processId) === 98) {
-				config.summary = 'tratamiento';
-			}
-			obj.get('description').setValue(config.description || '');
 			obj.get('summary').setValue(config.summary);
 			obj.get('label').setValue(getLabelValue());
 			obj.get('label').setAttribute('title', getLabelValue());
@@ -47,7 +39,7 @@ function controller(imports) {
 		obj.edit = function () {
 			isEditing = true;
 			obj.get().addStyle('editable');
-			obj.get('input').setValue(obj.get('description').getValue());
+			obj.get('input').setValue(obj.get('summary').getValue());
 			window.addEventListener('keydown', obj.stopEdit);
 			obj.get('full-screen').addStyle({ display: 'block' });
 			obj.get('input').get().focus();
@@ -57,14 +49,14 @@ function controller(imports) {
 		obj.stopEdit = function (e) {
 			if (e.key === 'Enter' || e.target === obj.get('full-screen').get()) {
 				obj.get().removeStyle('editable');
-				var description = obj.get('input').getValue().trim();
-				obj.get('description').setValue(description);
-				var summary = obj.get('summary').getValue().trim();
+				var summary = obj.get('input').getValue().trim();
+				obj.get('summary').setValue(summary);
 				isEditing = false;
 				window.removeEventListener('keydown', obj.stopEdit);
 				obj.get('full-screen').addStyle({ display: 'none' });
 				obj.get('label').setAttribute('title', getLabelValue());
-				config.calendar.update(config.userId, config.id, { description: description });
+				console.log(summary);
+				config.calendar.update(config.userId, config.id, { summary: summary });
 				obj.get('label').setValue(getLabelValue());
 				obj.get().fire('editMode', false);
 			}
@@ -78,7 +70,6 @@ function controller(imports) {
 
 			var data = {
 				processId: config.processId, room,
-				description: obj.get('description').getValue(),
 				summary: obj.get('summary').getValue(),
 				action: 'modify', id: config.id, userId: config.userId
 			};
@@ -125,16 +116,16 @@ function controller(imports) {
 				},
 				copy: function () {
 					cm.remove();
-					var { processId, summary, description, start, room } = config;
-					obj.get().fire('copy-clipboard', { processId, summary, description, start, room });
+					var { processId, summary, start, room } = config;
+					obj.get().fire('copy-clipboard', { processId, summary, start, room });
 				},
 				cut: function () {
 					cm.remove();
-					var { processId, summary, description, start, room } = config;
+					var { processId, summary, start, room } = config;
 					config.calendar.delete(config.userId, config.id).done(function (e) {
 						obj.remove();
 					});
-					obj.get().fire('copy-clipboard', { processId, summary, description, start, room });
+					obj.get().fire('copy-clipboard', { processId, summary, start, room });
 				},
 				changeLength: function (e) {
 					cm.remove();

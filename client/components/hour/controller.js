@@ -34,11 +34,11 @@ function controller(imports) {
 		obj.drop = function (e) {
 			obj.get().removeStyle('hover');
 			var date = config.date;
-			var { processId , summary, room, action, userId, description, id } = JSON.parse(e.dataTransfer.getData("config"));
+			var { processId , summary, room, action, userId, id } = JSON.parse(e.dataTransfer.getData("config"));
 			if (action === 'add') {
-				obj.get().fire('hour-add-event', { processId, room, date, summary, description, edit: true });
+				obj.get().fire('hour-add-event', { processId, room, date, summary, edit: true });
 			} else if (action === 'modify') {
-				obj.get().fire('hour-modify-event', { userId, id, processId, room, date, description, summary, edit: false });
+				obj.get().fire('hour-modify-event', { userId, id, processId, room, date, summary, edit: false });
 			}
 		};
 
@@ -46,9 +46,7 @@ function controller(imports) {
 			e.preventDefault();
 			var cm = cjs.Component.create('contextmenu', {});
 			var comp = cjs.Component({
-				template: `<div>
-								<div data-on="click:paste" class="item">Pegar</div>
-							</div>`
+				template: `<div><div data-on="click:paste" class="item">Pegar</div></div>`
 			}, {
 				paste: function () {
 					cm.remove();

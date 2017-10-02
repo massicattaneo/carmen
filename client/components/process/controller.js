@@ -20,7 +20,7 @@ function controller() {
 
         obj.dragstart = function (ev) {
 			var { processId , summary, room } = config;
-			ev.dataTransfer.setData("config", JSON.stringify({ processId, room, summary, description: '', action: 'add' }));
+			ev.dataTransfer.setData("config", JSON.stringify({ processId, room, summary, action: 'add' }));
         };
 
 
