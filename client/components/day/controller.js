@@ -79,6 +79,8 @@ function controller() {
 				start.setHours(...decimalToTime(period[0]));
 				var end = new Date(date);
 				end.setHours(...decimalToTime(period[1]));
+				const offset = ((start.getHours() - 10) * 13 * 4) + 4;
+				obj.get('title').addStyle({'margin-bottom': offset + 'px'});
 				while (start.getTime() <= end.getTime()) {
 					var hour = cjs.Component.create('hour', {config: {label: (new cjs.Date(start)).format('TT:tt'), date: start}});
 					hour.get().addListener('hour-add-event', function (e) {
