@@ -81,8 +81,16 @@ function controller() {
 				end.setHours(...decimalToTime(period[1]));
 				const offset = ((start.getHours() - 10) * 13 * 4) + 4;
 				obj.get('title').addStyle({'margin-bottom': offset + 'px'});
+				var hoursArray = [];
 				while (start.getTime() <= end.getTime()) {
-					var hour = cjs.Component.create('hour', {config: {label: (new cjs.Date(start)).format('TT:tt'), date: start}});
+					hoursArray.push({label: (new cjs.Date(start)).format('TT:tt'), date: start, cssClass: ''});
+					start = new Date(start.getTime()+ (config.calendarStep * 60 * 1000));
+				}
+				start.setHours(20,30,0,0);
+				hoursArray.push({label: 'notas', date: new Date(start.getTime()), cssClass: 'memo'});
+
+				hoursArray.forEach(function (e) {
+					var hour = cjs.Component.create('hour', {config: e});
 					hour.get().addListener('hour-add-event', function (e) {
 						var { summary, processId, room, date, edit } = e.data;
 						obj.addEvent({ processId, room, date, summary, edit });
@@ -96,8 +104,7 @@ function controller() {
 					hour.get().addListener('paste-clipboard', obj.pasteClipboard);
 					hour.createIn(obj.get());
 					hours.push(hour);
-					start = new Date(start.getTime()+ (config.calendarStep * 60 * 1000));
-				}
+				})
 			});
 		};
 

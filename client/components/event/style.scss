@@ -12,6 +12,12 @@
 	color: black;
 	background-color: #aeaeae;
 }
+
+.&.process-color-17 {
+	margin: 4px 0 0 -34px;
+	width: 140px;
+}
+
 .&.editable {overflow: visible;}
 
 .& .label {user-select: none;}
@@ -23,10 +29,11 @@
 	left: -4px;
 	top: 13px;
 	position: relative;
-	height: 61px;
+	height: 55px;
 	z-index: 2;
 	font-size: 12px;
 }
+.&.process-color-17 .input {top: 0px;}
 .&.editable .input {display: inline-block;}
 
 .& .full-screen {position: fixed; top: 0;left:0;right: 0;bottom: 0;z-index: 1; display: none;}
