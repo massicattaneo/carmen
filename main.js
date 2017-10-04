@@ -81,9 +81,9 @@ async function createWindow () {
 		}).then(function (json) {
 			token = json;
 			mainWindow.webContents.send('renew-token', token.access_token);
-			setTimeout(renewToken, (token.expires_in + 1) * 1000);
+			setTimeout(renewToken, (token.expires_in - 10) * 1000);
 		});
-	}, (token.expires_in + 1) * 1000);
+	}, (token.expires_in - 10) * 1000);
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(url.format({
