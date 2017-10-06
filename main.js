@@ -60,10 +60,10 @@ async function createWindow () {
 	};
 
 	// var agendaWindow = new BrowserWindow({width: 800, height: 600});
-
+	var refreshToken = token.refresh_token;
 	setTimeout(function renewToken() {
 		var body = stringify({
-			refresh_token: token.refresh_token,
+			refresh_token: refreshToken,
 			client_id: clientId,
 			client_secret: clientSecret,
 			grant_type: 'refresh_token'
@@ -81,9 +81,9 @@ async function createWindow () {
 		}).then(function (json) {
 			token = json;
 			mainWindow.webContents.send('renew-token', token.access_token);
-			setTimeout(renewToken, (token.expires_in - 10) * 1000);
+			setTimeout(renewToken, (token.expires_in - 60) * 1000);
 		});
-	}, (token.expires_in - 10) * 1000);
+	}, (token.expires_in - 60) * 1000);
 
 	// and load the index.html of the app.
 	mainWindow.loadURL(url.format({
