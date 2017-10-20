@@ -20,7 +20,7 @@ function controller() {
 
 		obj.update = function (info, id) {
 			obj.get().get().id = id;
-			obj.get('toPrint').setAttribute('disabled', info.type !== 'efectivo' ? 'disabled' : undefined);
+			obj.get('toPrint').setAttribute('disabled', (info.type !== 'efectivo') || (info.type === 'efectivo' && info.value <= 0) ? 'disabled' : undefined);
 			obj.get('toPrint').get().checked = info.toPrint;
 			obj.get('wrapper').setAttribute('title', 'ID = ' + id + ', USER = ' + info.user);
 			obj.get('created').setAttribute('title', cjs.Component.parse('short-date', info.created));
