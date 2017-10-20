@@ -21,7 +21,7 @@ function controller() {
 		obj.update = function (info, id) {
 			obj.get().get().id = id;
 			obj.get('toPrint').setAttribute('disabled', info.type !== 'efectivo' ? 'disabled' : undefined);
-			// obj.get('toPrint').get().checked = info.toPrint;
+			obj.get('toPrint').get().checked = info.toPrint;
 			obj.get('wrapper').setAttribute('title', 'ID = ' + id + ', USER = ' + info.user);
 			obj.get('created').setAttribute('title', cjs.Component.parse('short-date', info.created));
 			obj.get('type').setAttribute('title', info.type);
@@ -29,7 +29,7 @@ function controller() {
 			obj.get('description').setAttribute('title', info.description);
 			cjs.Component.parse('short-date', info.created, obj.get('created'));
 			obj.get('type').setValue(info.type);
-			cjs.Component.parse('transactionType', info.cardId && info.transactionId, obj.get('cardId'));
+			cjs.Component.parse('transactionType', (info.cardId && info.transactionId) || (info.cardId && info.value<0), obj.get('cardId'));
 			obj.get('name').setValue(info.name);
 			obj.get('description').setValue(info.description);
 			cjs.Component.parse('currency', info.value, obj.get('value'));
@@ -39,16 +39,6 @@ function controller() {
 		obj.changeSelected = function (e) {
 			obj.get().fire('transaction-change-print', {id: obj.get().get().id, checked: obj.get('toPrint').get().checked});
 		};
-
-		// obj.toPrintChange = function () {
-		// 	var param = {
-		// 		id: obj.get().get().id,
-		// 		toPrint: obj.get('toPrint').get().checked
-		// 	};
-		// 	config;
-		// 	debugger;
-		// 	obj.get().fire('toPrintChange', param)
-		// };
 
         return obj;
     }

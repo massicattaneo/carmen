@@ -55,6 +55,7 @@ function controller() {
 			Object.keys(data).forEach(function (key, i) {
 				list.get('transaction-list').add(key, data[key], i)
 			});
+			list.get('transaction-list').get('list').filter();
 			list.get().addStyle('transaction-list');
 			index === 0 && list.get().addStyle('selected');
 		}

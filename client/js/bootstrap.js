@@ -211,6 +211,13 @@ function boostrap(imports) {
 						delete cardsData[data.key];
 						cards.remove(data.key)
 					});
+					cash.get().addListener('transaction-change-print', function (e) {
+						let id = e.data.id;
+						transactionsData[id].toPrint = e.data.checked;
+						db.update('transactions/' + id + '/toPrint', e.data.checked);
+						cash.update(transactionsData[id], id);
+						cash.filter();
+					});
 				},
 				loadClients: function () {
 					db.ref('clients/').on('child_added', function (d) {
@@ -232,7 +239,7 @@ function boostrap(imports) {
 						transactionsData[d.key] = d.val();
 						if (cjs.Date.isToday(d.val().created)) {
 							cash.add(d.key, d.val(), Object.keys(transactionsData).length);
-							cjs.Component.collectData();
+							cash.filter();
 						}
 					});
 
@@ -427,15 +434,15 @@ function boostrap(imports) {
 				printBills: function (params) {
 					var doc = new jspdf('p', 'mm', [297, 210]);
 					var startNumber = Number(params.start) || 1;
-					var cashIds = newTot(params.cashMaximum, Object.keys(transactionsData)
-						.map(function (k) {return transactionsData[k];})
-						.filter(params.filter));
+					// var cashIds = newTot(params.cashMaximum, Object.keys(transactionsData)
+					// 	.map(function (k) {return transactionsData[k];})
+					// 	.filter(params.filter));
 					Object.keys(transactionsData)
 						.map(function (k) {
 							return transactionsData[k];
 						})
 						.filter(function (item) {
-							return params.filter(item) && (item.type === 'tarjeta credito' || cashIds.filter(i => i.created === item.created).length > 0)
+							return params.filter(item) && item.toPrint
 						})
 						.forEach(function (b, i) {
 							i !== 0 && doc.addPage();
@@ -506,11 +513,10 @@ function boostrap(imports) {
 				login: function () {
 					cash.empty();
 					Object.keys(transactionsData).forEach(function (key, index) {
-						if ((Date.now() - transactionsData[key].created) < (15*24*60*60*1000)) {
+						if ((Date.now() - transactionsData[key].created) < (95*24*60*60*1000)) {
 							cash.add(key, transactionsData[key], index);
 						}
 					});
-					cjs.Component.collectData();
 					cash.filter();
 				},
 				logout: function () {
@@ -520,7 +526,7 @@ function boostrap(imports) {
 							cash.add(key, transactionsData[key], index);
 						}
 					});
-					cjs.Component.collectData();
+					cash.filter();
 					cash.initialise();
 				},
 				hasClientCard: function (clientId) {

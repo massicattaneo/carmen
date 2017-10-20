@@ -17,29 +17,17 @@ function controller() {
         var data = {};
 
         obj.initialise = function() {
-			obj.get().addListener('transaction-change-print', function (e) {
-				data[e.data.id].toPrint = e.data.checked;
-				obj.get('list').filter();
-			});
+
 		};
 
 		obj.add = function(id, info, count) {
 			data[id] = info;
 			obj.get('list').addItemByInfo('transaction', id, info, count);
+		};
 
-			var total = 0;
-			var cardTotal = 0;
-			var keys = Object.keys(data);
-			keys.forEach(function (k) {
-				if (!(data[k].cardId && data[k].value < 0)) {
-					total += parseFloat(data[k].value);
-				}
-				if (data[k].cardId) {
-					cardTotal += parseFloat(data[k].value);
-				}
-			});
-			obj.get('list').filter();
-
+		obj.updateItem = function (info, id) {
+			data[id] = info;
+			obj.get('list').updateItem(info, id);
 		};
 
 		obj.empty = function () {

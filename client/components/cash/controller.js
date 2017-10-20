@@ -20,9 +20,15 @@ function cash(imports) {
 			obj.get('filter-to').get().valueAsDate = new Date();
 			obj.get('filter-from').get().valueAsDate = new Date();
 			obj.get('transaction-list').initialise();
+			obj.get('transaction-list').get('more-totals').addStyle({display: 'block'});
 			obj.filter();
 
 		};
+
+		obj.update = function (info, id) {
+			obj.get('transaction-list').updateItem(info, id)
+		};
+
 		obj.empty = function () {
 			obj.get('transaction-list').empty();
 		};

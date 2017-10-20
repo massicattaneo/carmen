@@ -35,6 +35,7 @@ function controller(imports) {
 				.forEach(function (key, i) {
 					obj.get('transaction-list').add(key, data[key], i)
 				});
+			obj.get('transaction-list').get('list').filter();
 		};
 
 		obj.populateByCardId = function (cardId, cardsData, clientsData, data) {
@@ -52,6 +53,7 @@ function controller(imports) {
 				.forEach(function (key, i) {
 					obj.get('transaction-list').add(key, data[key], i)
 				});
+			obj.get('transaction-list').get('list').filter();
 		};
 
 		obj.show = function () {
