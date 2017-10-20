@@ -24234,6 +24234,18 @@
 			"type": "utilizo bonus",
 			"user": "salitre",
 			"value": -22.5
+		},
+		"-KuqBIclvkvxCoWq0R0z": {
+			"cardId": "",
+			"clientId": "-KoDdorugAEALZc-4AHs",
+			"created": 1508510519937,
+			"description": "CONSUME HILO CEJAS",
+			"name": "LAURA  HERAS DIAZ ",
+			"toPrint": false,
+			"transactionId": "",
+			"type": "efectivo",
+			"user": "salitre",
+			"value": 22
 		}
 	}
 }

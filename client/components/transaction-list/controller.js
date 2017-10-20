@@ -16,27 +16,12 @@ function controller() {
 
         var data = {};
 
-        // obj.populate = function (d, filter) {
-			// var list = obj.get('list');
-        //     list.emptyCollection();
-			// data =d;
-        //     var keys = Object.keys(d).filter(function (k) {
-        //         return filter(k, d);
-        //     });
-        //     var total = 0;
-        //     var cardTotal = 0;
-        //     keys.forEach(function (k) {
-			// 	if (!(d[k].cardId && d[k].value<0)) {
-			// 		total += d[k].value;
-			// 	}
-			// 	if (d[k].cardId) {
-			// 		cardTotal += d[k].value;
-			// 	}
-        //     });
-        //     // list.populate('transaction', keys);
-        //     cjs.Component.parse('currency', cardTotal, obj.get('card-total'));
-        //     cjs.Component.parse('currency', total, obj.get('total'));
-        // };
+        obj.initialise = function() {
+			obj.get().addListener('transaction-change-print', function (e) {
+				data[e.data.id].toPrint = e.data.checked;
+				obj.get('list').filter();
+			});
+		};
 
 		obj.add = function(id, info, count) {
 			data[id] = info;
@@ -53,8 +38,8 @@ function controller() {
 					cardTotal += parseFloat(data[k].value);
 				}
 			});
-			cjs.Component.parse('currency', cardTotal, obj.get('card-total'));
-			cjs.Component.parse('currency', total, obj.get('total'));
+			obj.get('list').filter();
+
 		};
 
 		obj.empty = function () {
@@ -65,6 +50,7 @@ function controller() {
         obj.refresh = function (e) {
             var total = 0;
 			var cardTotal = 0;
+			var selectedTotal = 0;
 			e.data.keys.forEach(function (k) {
 				if (!(data[k].cardId && data[k].value<0)) {
 					total += data[k].value;
@@ -72,9 +58,14 @@ function controller() {
 				if (data[k].cardId) {
 					cardTotal += data[k].value;
 				}
+				if (data[k].toPrint) {
+					selectedTotal += data[k].value;
+				}
             });
             cjs.Component.parse('currency', total, obj.get('total'));
 			cjs.Component.parse('currency', cardTotal, obj.get('card-total'));
+			cjs.Component.parse('currency', selectedTotal, obj.get('selected-total'));
+			cjs.Component.parse('currency', selectedTotal - (selectedTotal / ((100 + config.IVA) / 100)), obj.get('iva-total'));
 
 		};
 

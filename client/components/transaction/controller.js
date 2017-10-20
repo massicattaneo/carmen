@@ -29,11 +29,15 @@ function controller() {
 			obj.get('description').setAttribute('title', info.description);
 			cjs.Component.parse('short-date', info.created, obj.get('created'));
 			obj.get('type').setValue(info.type);
-			cjs.Component.parse('transactionType', info.cardId, obj.get('cardId'));
+			cjs.Component.parse('transactionType', info.cardId && info.transactionId, obj.get('cardId'));
 			obj.get('name').setValue(info.name);
 			obj.get('description').setValue(info.description);
 			cjs.Component.parse('currency', info.value, obj.get('value'));
 			obj.get('user').setValue(info.user);
+		};
+
+		obj.changeSelected = function (e) {
+			obj.get().fire('transaction-change-print', {id: obj.get().get().id, checked: obj.get('toPrint').get().checked});
 		};
 
 		// obj.toPrintChange = function () {

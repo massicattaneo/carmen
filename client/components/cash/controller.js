@@ -17,7 +17,14 @@ function cash(imports) {
 		obj.initialise = function () {
 			obj.get('salitre').get('checkbox').get().checked = localStorage.getItem('user') === 'salitre';
 			obj.get('compania').get('checkbox').get().checked = localStorage.getItem('user') === 'compania';
-			obj.filterByUser();
+			obj.get('filter-to').get().valueAsDate = new Date();
+			obj.get('filter-from').get().valueAsDate = new Date();
+			obj.get('transaction-list').initialise();
+			obj.filter();
+
+		};
+		obj.empty = function () {
+			obj.get('transaction-list').empty();
 		};
 
 		obj.show = function () {
@@ -50,7 +57,7 @@ function cash(imports) {
             return cjs.Need().resolve(array);
 		};
 
-		obj.filterByUser = function () {
+		obj.filter = function () {
 			var salitre = obj.get('salitre').get('checkbox').get().checked;
 			var compania = obj.get('compania').get('checkbox').get().checked;
 			var filter = '';
@@ -58,6 +65,9 @@ function cash(imports) {
 			else if (salitre) filter = 'user=salitre';
 			else if (compania) filter = 'user=compania';
 			else filter = 'user=none';
+			var from = (new cjs.Date(obj.get('filter-from').get().valueAsDate)).format('dd-mm-yyyy');
+			var to = (new cjs.Date(obj.get('filter-to').get().valueAsDate)).format('dd-mm-yyyy');
+			filter += ' && created>='+from+' && created <='+to;
 			obj.get('transaction-list').get('list').setFixedFilter(filter);
 		};
 

@@ -235,6 +235,7 @@ function boostrap(imports) {
 							cjs.Component.collectData();
 						}
 					});
+
 				},
 				backupDb: function () {
 					setTimeout(function () {
@@ -296,14 +297,18 @@ function boostrap(imports) {
 					var y = 0;
 					var numOFLinesPErPAge = 40;
 					var total = 0;
+					var toPrintTotal = 0;
 					Object.keys(transactionsData)
 						.map(function (k) {
 							return transactionsData[k];
 						})
 						.filter(filter)
 						.forEach(function (b, i) {
-							if (!(b.cardId && b.value < 0)) {
+							if (!(b.cardId && b.transactionId)) {
 								total += b.value;
+								if (b.toPrint) {
+									toPrintTotal += b.value;
+								}
 								if (i % numOFLinesPErPAge === 0) {
 									y = 20;
 									i !== 0 && doc.addPage();
@@ -317,9 +322,15 @@ function boostrap(imports) {
 							}
 
 						});
+
+					doc.addPage();
+
 					doc.setFontType("bold");
 					doc.text('TOTAL', x + 100, y + 10);
 					doc.text(cjs.Component.parse('currency', total), x + 170, y + 10);
+
+					doc.text('TOTAL IVA', x + 100, y + 20);
+					doc.text(cjs.Component.parse('currency', toPrintTotal - (toPrintTotal / ((100 + config.IVA) / 100))), x + 170, y + 20);
 
 					doc.output('save', 'listado.pdf');
 				},
@@ -492,7 +503,24 @@ function boostrap(imports) {
 
 					doc.output('save', 'facturas.pdf');
 				},
+				login: function () {
+					cash.empty();
+					Object.keys(transactionsData).forEach(function (key, index) {
+						if ((Date.now() - transactionsData[key].created) < (15*24*60*60*1000)) {
+							cash.add(key, transactionsData[key], index);
+						}
+					});
+					cjs.Component.collectData();
+					cash.filter();
+				},
 				logout: function () {
+					cash.empty();
+					Object.keys(transactionsData).forEach(function (key, index) {
+						if (cjs.Date.isToday(transactionsData[key].created)) {
+							cash.add(key, transactionsData[key], index);
+						}
+					});
+					cjs.Component.collectData();
 					cash.initialise();
 				},
 				hasClientCard: function (clientId) {

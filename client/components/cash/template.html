@@ -11,10 +11,15 @@
 			<text>COMPRAS</text>
 			<class>fa-shopping-cart</class>
 		</cjs:button>&nbsp;
-		<span class="users admin" data-item="users">
-			<cjs:switch data-on="change:filterByUser" data-id="salitre" data-value="salitre"></cjs:switch> SALITRE
+		&nbsp;&nbsp;&nbsp;
+		<span class="admin dates" data-item="dates">
+			<input data-on="change:filter" type="date" data-item="filter-from" required/> <=>
+			<input data-on="change:filter" type="date" data-item="filter-to" required/>
+		</span>
+		<span class="admin users" data-item="users">
+			<cjs:switch data-on="change:filter" data-id="salitre" data-value="salitre"></cjs:switch> SALITRE
 			&nbsp;&nbsp;
-			<cjs:switch data-on="change:filterByUser" data-id="compania" data-value="compania"></cjs:switch> COMPANIA
+			<cjs:switch data-on="change:filter" data-id="compania" data-value="compania"></cjs:switch> COMPANIA
 		</span>
     </div>
 	<fieldset class="list">

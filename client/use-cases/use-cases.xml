@@ -261,6 +261,10 @@
 		<run component="clients" action="show"/>
 	</event>
 
+	<event component="settings" on="login">
+		<run component="utils" action="login"/>
+	</event>
+
 	<event component="print" on="tap-export-clients">
 		<run component="utils" action="exportClients"/>
 	</event>

@@ -104,7 +104,7 @@ function controller() {
 		}
 
 		function complexFilter(filterText, itms) {
-			var array = filterText.substr(7).split(/&[^&]]/).map(function (f) {
+			var array = filterText.substr(7).split(/&&/).map(function (f) {
 				var values = f.split(/(=|>=|<=|>|<)/)
 				return { key: values[0].trim(), value: values[2].trim(), expression: values[1].trim() }
 			}).filter(function (f) {
@@ -119,7 +119,11 @@ function controller() {
 							return values.indexOf(value) !== -1;
 						} else {
 							if (isDate(value) && isDate(f.value)) {
-								return eval('date(value) '+f.expression+' date(f.value)');
+								if (f.expression.indexOf('<') !== -1) {
+									return eval('date(value).setHours(0,0,0,0) '+f.expression+' date(f.value).getTime()');
+								} else if (f.expression.indexOf('>') !== -1) {
+									return eval('date(value).setHours(23,59,0,0) '+f.expression+' date(f.value).getTime()');
+								}
 							}
 							if (isNumber(value) && isNumber(f.value)) {
 								return eval('number(value) '+f.expression+' number(f.value)');
@@ -140,7 +144,7 @@ function controller() {
 			return str.split('-').reverse().join('-').isDate();
 		}
 		function date(str) {
-			return new Date(str.split('-').reverse().join('-')).getTime();
+			return new Date(str.split('-').reverse().join('-'));
 		}
 
 		return obj;

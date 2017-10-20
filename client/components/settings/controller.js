@@ -74,8 +74,9 @@ function controller(imports) {
 				var remMinutes = parseInt(remaining/60, 10);
 				var remSeconds = remaining - (remMinutes*60);
 				c.get('time').setValue(remMinutes + ':' + remSeconds.toString().padLeft(2,'0'))
-			}, 1000)
+			}, 1000);
 			config.isLogged = true;
+			c.get().fire('login');
 		}
 
 		c.initSettings = function () {
