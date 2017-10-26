@@ -1,40 +1,61 @@
 .& {
-  display: none;
-  line-height: 29px;
+	display: none;
+	line-height: 29px;
 }
+
 .&.visible {
-  display: block;
+	display: block;
 }
+
 .&:hover {
-  background-color: rgba(255,255,255,0.2);
+	background-color: rgba(255, 255, 255, 0.2);
 }
+
+
 .& span {
-  display: inline-block;
+	display: inline-block;
 	overflow: hidden;
 	height: 23px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-.& .created {width: 100px;}
-.& .toPrint {display: none;}
-.cash .& .toPrint {display: inline-block;}
-.& .name {width: 185px;}
-.cash .& .name {width: 165px;}
+
+.& .created {
+	width: calc(12% - 13px);
+}
+
+.& .toPrint {
+	display: none;
+}
+
+.cash .& .toPrint {
+	display: inline-block;
+}
+
+.& .name {
+	width: calc(24% - 13px);
+}
+.cash .& .name {width: calc(24% - 33px)}
+
+
 
 .& .description {
-  width: 300px;
+	width: calc(40% - 13px);
 	font-size: 11px;
 }
+
 .& .type {
-  width: 100px;
+	width: calc(12% - 13px);
 }
+
 .& .value {
-  width: 120px;
-  color: #70e26b;
-  text-align: right;
+	width: calc(10% - 13px);
+	color: #70e26b;
+	text-align: right;
 }
+
 .& .value.negative {
-  color: #e26b6b;
+	color: #e26b6b;
 }
 
 .&.bonus .value {

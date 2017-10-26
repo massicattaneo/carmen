@@ -1,16 +1,19 @@
 .& input, .& button {
-  width: 180px;
-  height: 25px;
-  padding: 2px;
-  margin: 5px;
+	width: calc(20% - 21px);
+	height: 25px;
+	padding: 2px;
+	margin: 5px;
 }
+
 .& input[type=email] {
-  width: 220px;
+	width:  calc(30% - 21px);
 }
+
 .& input[type=tel] {
-  width: 90px;
+	width:  calc(15% - 21px);
 }
+
 .& input[type=submit] {
-  height:33px;
-  width: 100px;
+	height: 33px;
+	width:  calc(15% - 21px);
 }

@@ -1,7 +1,16 @@
+@font-face {
+	font-family: 'Helvetica Neue LT Std';
+	src: url('fonts/HelveticaNeueLTStd-Bd.otf');
+}
+@font-face {
+	font-family: 'Helvetica Neue LT Std Medium Condensed';
+	src: url('fonts/HelveticaNeueLTStd-MdCn.otf');
+}
+
 #website {
 	min-width: 930px;
 	margin: 0 auto;
-	width: 930px;
+	width: 1050px;
 }
 body {
 	font-family: Arial;
@@ -10,6 +19,9 @@ body {
 body.loading {
 	background: #000;
 }
+.font1 {font-family: 'Helvetica Neue LT Std';}
+.font2 {font-family: 'Helvetica Neue LT Std Medium Condensed';}
+
 ::-webkit-scrollbar {
 	width: 12px;
 }
@@ -38,7 +50,8 @@ h1 {
 }
 
 .admin { display: none !important; }
-
+.adminMode .admin { display: inline-block !important; }
+.adminMode .hideOnAdmin { display: none !important; }
 input, textarea, select {
 	border-radius: 5px;
 	border: 1px solid white;

@@ -17,10 +17,10 @@
 	text-overflow: ellipsis;
 }
 .& .created {
-  width: 100px;
+  width: calc(20% - 85px);
 }
 .& .name {
-	width: 620px;
+	width: calc(80% - 85px);
 }
 .& button {
 	width: 40px;

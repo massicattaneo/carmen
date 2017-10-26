@@ -27,14 +27,6 @@ function controller(imports) {
 			c.get().addStyle({ display: 'block' });
 		};
 
-		c.changeBg = function (e) {
-			setBg(e.target.getAttribute('data-index'));
-		};
-
-		c.changeAudio = function (e) {
-			setAudio(e.target.checked)
-		};
-
 		c.setUserSalitre = function (e) {
 			setUser('salitre')
 		};
@@ -46,11 +38,7 @@ function controller(imports) {
 		function logout() {
 			c.get('login').removeStyle('logged-in');
 			c.get('login').addStyle('logged-out');
-			var css = '.admin { display: none !important; }',
-				style = document.createElement('style');
-			style.type = 'text/css';
-			style.appendChild(document.createTextNode(css));
-			document.head.appendChild(style);
+			document.body.className = '';
 			clearTimeout(timeout);
 			clearInterval(interval);
 			c.get().fire('logout');
@@ -59,12 +47,7 @@ function controller(imports) {
 		function login() {
 			c.get('login').removeStyle('logged-out');
 			c.get('login').addStyle('logged-in');
-			var css = '.admin { display: inline-block !important; }',
-				style = document.createElement('style');
-			style.type = 'text/css';
-			style.appendChild(document.createTextNode(css));
-			document.head.appendChild(style);
-
+			document.body.className = 'adminMode';
 			var minutes = c.get('minutes').getValue();
 			countDownStart = new Date().getTime();
 			timeout = setTimeout(logout, 1000 * 60 * minutes);
@@ -81,7 +64,6 @@ function controller(imports) {
 
 		c.initSettings = function () {
 			setBg(localStorage.getItem('bg-image') || 1);
-			setAudio(localStorage.getItem('audio-on') === 'true');
 			setUser(localStorage.getItem('user'));
 			document.body.className = '';
 			config.user = localStorage.getItem('user');
@@ -102,16 +84,6 @@ function controller(imports) {
 		function setBg(bgIndex) {
 			localStorage.setItem('bg-image', bgIndex);
 			document.body.style.backgroundImage = 'url(images/bg/' + bgIndex + '.jpg)';
-		}
-
-		function setAudio(audioOn) {
-			localStorage.setItem('audio-on', audioOn.toString());
-			c.get('switch').get('checkbox').get().checked = audioOn;
-			if (audioOn) {
-				config.audioPlayer.unmute()
-			} else {
-				config.audioPlayer.mute()
-			}
 		}
 
 		function setUser(user) {

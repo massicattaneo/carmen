@@ -30,12 +30,16 @@
 	user-select: none;
 	position: absolute;
 	float: none;
-	top: -24px;
+	top: -5px;
 	right: 13px;
 }
 
 .& .processes {
 	min-height: 69px;
-	max-width: 785px;
+	max-width: calc(100% - 150px);
 	margin: 0 0 10px 0;
+}
+
+.& .days {
+
 }

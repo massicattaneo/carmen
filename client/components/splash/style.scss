@@ -1,0 +1,40 @@
+.& {
+	width: 100%;
+	text-align: left;
+	color: $mainTextColor;
+}
+
+.& .center {
+	text-align: center;
+	margin: 100px 0 0 0;
+}
+
+.& a, .& a:hover, .& a:visited {
+	color: $mainColor;
+}
+
+.& .center .image-wrapper {
+	margin: 0 0 50px 0;
+	position: relative;
+}
+.& .center .image-wrapper h1 {
+	font-family: 'Helvetica Neue LT Std';
+	position: absolute;
+	width: 100%;
+	top: 214px;
+	font-size: 96px;
+	font-weight: bold;
+}
+.& .center .image-wrapper h2 {
+	font-family: 'Helvetica Neue LT Std Medium Condensed';
+	font-weight: normal;
+	position: absolute;
+	width: 100%;
+	top: 269px;
+	font-size: 44px;
+}
+
+
+.& .center .image-wrapper img {
+	width: 400px;
+}

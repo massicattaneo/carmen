@@ -17,33 +17,38 @@ function boostrap(imports) {
 	var Print = imports('components/print/controller.js');
 	var Users = imports('components/users/controller.js');
 	var Clients = imports('components/clients/controller.js');
+	var Stats = imports('components/stats/controller.js');
+	var Archive = imports('components/archive/controller.js');
+	var Splash = imports('components/splash/controller.js');
 	var Cards = imports('components/cards/controller.js');
 	var Cash = imports('components/cash/controller.js');
 	var History = imports('components/history/controller.js');
 	var PopUp = imports('components/pop-up/controller.js');
 	var config = imports('js/config.json');
 	var register = imports('js/register.js');
-	var audioConfig = imports('sounds/config.json');
 	var useCases = imports('use-cases/use-cases.xml');
 	var StateMachine = imports('js/state-machine.js');
 
-	return function (db, webSocket, calendar) {
+	return function (db, webSocket, googleCalendar) {
 		var clientsData = {};
 		var transactionsData = {};
 		var cardsData = {};
-		// var audio = cjs.Audio();
-		// audio.init(audioConfig);
+
 		config.audioPlayer = {
 			play: function () {
 			}, mute: function () {
 			}, unmute: function () {
 			}
 		};
+		config.transactionsData = transactionsData;
+		config.cardsData = cardsData;
+		config.clientsData = clientsData;
+
 		cjs.Date.setUp(
 			['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'],
 			['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']);
 		config.db = db;
-		config.calendar = calendar;
+		config.calendar = googleCalendar;
 		var clipboard;
 		config.clipboard = {
 			get: function() {return clipboard;},
@@ -65,6 +70,15 @@ function boostrap(imports) {
 
 		var clients = Clients(config);
 		clients.createIn(document.getElementById('page'));
+
+		var stats = Stats(config);
+		stats.createIn(document.getElementById('page'));
+
+		var archive = Archive(config);
+		archive.createIn(document.getElementById('page'));
+
+		var splash = Splash(config);
+		splash.createIn(document.getElementById('page'));
 
 		var cards = Cards(config);
 		cards.createIn(document.getElementById('page'));
@@ -126,7 +140,7 @@ function boostrap(imports) {
 		}
 
 		var sm = new StateMachine(useCases, staticData, {
-			header, blackScreen, clients, users, history, cash, calendar,
+			header, blackScreen, clients, stats, splash, archive, users, history, cash, calendar,
 			settings, print, popUpDeleteClient, popUpDeleteTransaction, popUpDeleteCard, popUpWarn,
 			transactionAdd, cards, nfcReader, transactionCard,
 			db: {
@@ -235,14 +249,41 @@ function boostrap(imports) {
 					});
 				},
 				loadTransactions: function () {
-					db.ref('transactions/').on('child_added', function (d) {
+					var date = new Date();
+					date.setHours(0,0,0,0);
+					db.ref('transactions/').orderByChild("created").startAt(date.getTime()).on('child_added', function (d) {
 						transactionsData[d.key] = d.val();
-						if (cjs.Date.isToday(d.val().created)) {
-							cash.add(d.key, d.val(), Object.keys(transactionsData).length);
+						cash.add(d.key, d.val(), Object.keys(transactionsData).length);
+						cash.filter();
+					});
+				},
+				loadClientTransactions: function (clientId) {
+					var promise = cjs.Need();
+					db.ref('transactions/').orderByChild("clientId").equalTo(clientId).once('value', function (d) {
+						if (d.val()) {
+							Object.keys(d.val()).forEach(function (key, index) {
+								transactionsData[key] = d.val()[key];
+								cash.add(key, d.val()[key], index);
+							});
 							cash.filter();
 						}
+						promise.resolve();
 					});
-
+					return promise;
+				},
+				loadCardTransactions: function (cardId) {
+					var promise = cjs.Need();
+					db.ref('transactions/').orderByChild("cardId").equalTo(cardId).once('value', function (d) {
+						if (d.val()) {
+							Object.keys(d.val()).forEach(function (key, index) {
+								transactionsData[key] = d.val()[key];
+								cash.add(key, d.val()[key], index);
+							});
+						}
+						cash.filter();
+						promise.resolve();
+					});
+					return promise;
 				},
 				backupDb: function () {
 					setTimeout(function () {
@@ -261,6 +302,9 @@ function boostrap(imports) {
 				},
 				hideAllPages: function () {
 					clients.get().addStyle({ display: 'none' });
+					stats.get().addStyle({ display: 'none' });
+					archive.get().addStyle({ display: 'none' });
+					splash.get().addStyle({ display: 'none' });
 					calendar.get().addStyle({ display: 'none' });
 					cards.get().addStyle({ display: 'none' });
 					transactionAdd.get().addStyle({ display: 'none' });
@@ -511,13 +555,22 @@ function boostrap(imports) {
 					doc.output('save', 'facturas.pdf');
 				},
 				login: function () {
-					cash.empty();
-					Object.keys(transactionsData).forEach(function (key, index) {
-						if ((Date.now() - transactionsData[key].created) < (95*24*60*60*1000)) {
-							cash.add(key, transactionsData[key], index);
-						}
+					var date = new Date();
+					var duration = 95*24*60*60*1000;
+					date.setHours(0,0,0,0);
+					db.ref('transactions/').orderByChild("created")
+						.startAt(date.getTime()-duration)
+						.endAt(date.getTime())
+						.once('value', function (d) {
+						Object.assign(transactionsData, d.val());
+							cash.empty();
+							Object.keys(transactionsData).forEach(function (key, index) {
+								if ((Date.now() - transactionsData[key].created) < (duration)) {
+									cash.add(key, transactionsData[key], index);
+								}
+							});
+							cash.filter();
 					});
-					cash.filter();
 				},
 				logout: function () {
 					cash.empty();

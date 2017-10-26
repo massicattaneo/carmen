@@ -7,7 +7,7 @@
         <run component="utils" action="loadCards"/>
         <run component="utils" action="backupDb"/>
 		<run component="utils" action="hideAllPages"/>
-		<run component="calendar" action="show"/>
+		<run component="splash" action="show"/>
         <run component="blackScreen" action="removeCover"/>
     </uc>
 
@@ -63,6 +63,7 @@
 
 	<event component="nfcReader" on="card-detect">
 		<set path="activeCard" value="{0}"/>
+		<run component="utils" action="loadCardTransactions"/>
 		<run component="utils" action="getClientFromCard"/>
 		<set path="activeClient" value="{1}"/>
 		<reset-args/>
@@ -173,6 +174,7 @@
 		<read path="config/isLogged"/>
 		<if test="{0}!=='-Ko7NjALDw2rdlK-BvV9' || {3} === 'true'">
 			<run component="utils" action="hideAllPages"/>
+			<run component="utils" action="loadClientTransactions"/>
 			<run component="history" action="populate"/>
 			<run component="history" action="show"/>
 		</if>
@@ -183,6 +185,7 @@
 		<read path="cardsData"/>
 		<read path="clientsData"/>
 		<read path="transactionsData"/>
+		<run component="utils" action="loadCardTransactions"/>
 		<run component="history" action="populateByCardId"/>
 		<run component="history" action="show"/>
 	</event>
@@ -218,6 +221,14 @@
 		<if test="{0}==='print'">
 			<run component="utils" action="hideAllPages"/>
 			<run component="print" action="show"/>
+		</if>
+		<if test="{0}==='stats'">
+			<run component="utils" action="hideAllPages"/>
+			<run component="stats" action="show"/>
+		</if>
+		<if test="{0}==='archive'">
+			<run component="utils" action="hideAllPages"/>
+			<run component="archive" action="show"/>
 		</if>
     </event>
 

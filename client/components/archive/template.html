@@ -1,0 +1,49 @@
+<div>
+    <h1 data-item="title">{{archiveText}}</h1>
+	<fieldset>
+		<div>
+			<label>TRANSACCIONES DE "<strong>SIN CONTACOTS</strong>" MAS VIEJA DE 95 DIAS</label>
+			<em data-item="sin-contacto-count"></em>
+			<em data-item="sin-contacto-total"></em>
+			<cjs:button class="button" data-on="click:archive">
+				<text>ALMACENAR?</text>
+				<class>fa-archive</class>
+				<main-color>$secondaryColor</main-color>
+				<main-text-color>$mainSecondaryTextColor</main-text-color>
+			</cjs:button>
+		</div>
+		<div>
+			<label>TRANSACCIONES SIN RELACION CON TARJETAS MAS VIEJA DE 95 DIAS</label>
+			<em data-item="no-card-related-count"></em>
+			<em data-item="no-card-related-total"></em>
+			<cjs:button class="button" data-on="click:archive">
+				<text>ALMACENAR?</text>
+				<class>fa-archive</class>
+				<main-color>$secondaryColor</main-color>
+				<main-text-color>$mainSecondaryTextColor</main-text-color>
+			</cjs:button>
+		</div>
+		<div>
+			<label>TARJETAS VACIAS</label>
+			<em data-item="empty-cards-count"></em>
+			<em data-item="empty-cards-total"></em>
+			<cjs:button class="button" data-on="click:archive">
+				<text>ALMACENAR?</text>
+				<class>fa-archive</class>
+				<main-color>$secondaryColor</main-color>
+				<main-text-color>$mainSecondaryTextColor</main-text-color>
+			</cjs:button>
+		</div>
+		<div>
+			<label>COMPRAS MAS VIEJA DE 95 DIAS</label>
+			<em data-item="buy-transactions-count"></em>
+			<em data-item="buy-transactions-total"></em>
+			<cjs:button class="button" data-on="click:archive">
+				<text>ALMACENAR?</text>
+				<class>fa-archive</class>
+				<main-color>$secondaryColor</main-color>
+				<main-text-color>$mainSecondaryTextColor</main-text-color>
+			</cjs:button>
+		</div>
+	</fieldset>
+</div>

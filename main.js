@@ -54,7 +54,7 @@ async function createWindow () {
 	app.removeListener('will-quit', preventQuit);
 	// Create the browser window.
 	console.log(JSON.stringify(token));
-	mainWindow = new BrowserWindow({width: 1100, height: 890, icon: __dirname + '/client/images/icon.png'});
+	mainWindow = new BrowserWindow({width: 1200, height: 890, icon: __dirname + '/client/images/icon.png'});
 	mainWindow.getConfiguration = function () {
 		return {password: params.password, token: token.access_token};
 	};

@@ -5,7 +5,7 @@
 .& .total span {display: inline-block; color: #8b8b8b; line-height: 20px;}
 .& .total .line {display: block; margin: 5px 0}
 .& .total .label {
-  width: 748px;
+	width: calc(86% - 55px);
   text-align: right;
 }
 .& .total .strong {
