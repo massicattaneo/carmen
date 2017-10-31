@@ -163,7 +163,8 @@ function boostrap(imports) {
 						cardId: data.cardId,
 						name: data.name,
 						value: data.value,
-						type: data.type
+						type: data.type,
+						created: data.created
 					});
 				},
 				saveBonusBuyTransaction: function (data) {
@@ -175,7 +176,8 @@ function boostrap(imports) {
 						cardId: data.cardId,
 						name: data.name,
 						value: data.value,
-						type: data.type
+						type: data.type,
+						created: data.created
 					});
 				},
 				saveBonusUseTransaction: function (data) {
@@ -188,7 +190,8 @@ function boostrap(imports) {
 						name: data.name,
 						value: data.value,
 						type: data.type,
-						transactionId: data.transactionId
+						transactionId: data.transactionId,
+						created: data.created
 					});
 				},
 				saveBuy: function (data) {
@@ -197,7 +200,8 @@ function boostrap(imports) {
 						description: data.description,
 						name: data.name,
 						value: data.value,
-						type: data.type
+						type: data.type,
+						created: data.created
 					});
 				},
 				saveCard: function (id) {

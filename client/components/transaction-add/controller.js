@@ -20,6 +20,7 @@ function controller() {
 			obj.get().removeStyle('bonus-mode');
 			obj.get('title').setValue('PAGO');
 			obj.get('save').setAttribute('disabled');
+			obj.get('created').get().valueAsDate = new Date();
 		}
 
 		obj.addClientData = function (clientId, clientsData) {
@@ -58,6 +59,7 @@ function controller() {
 			var cardId = obj.get('card-id').getValue();
 			var value = transactionMultiplier * parseFloat(obj.get('value').getValue());
 			var type = ((!cardId) || value>=0) ? obj.get('type').getValue() : 'utilizo bonus';
+			var created = new Date(obj.get('created').getValue());
 			var data = {
 				value: value,
 				type: type,
@@ -65,7 +67,8 @@ function controller() {
 				toPrint: type === 'tarjeta credito',
 				name: obj.get('payer-name').getValue(),
 				description: obj.get('description').getValue(),
-				clientId: storeClientId
+				clientId: storeClientId,
+				created: created.getTime()
 			};
 			obj.get().fire('transaction-add', data)
 		};
