@@ -172,7 +172,7 @@
 		<read path="clientsData/{0}"/>
 		<read path="transactionsData"/>
 		<read path="config/isLogged"/>
-		<if test="{0}!=='-Ko7NjALDw2rdlK-BvV9' || {3} === 'true'">
+		<if test="{0}!=='-Ko7NjALDw2rdlK-BvV9'">
 			<run component="utils" action="hideAllPages"/>
 			<run component="utils" action="loadClientTransactions"/>
 			<run component="history" action="populate"/>
