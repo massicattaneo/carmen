@@ -87,6 +87,7 @@ function controller(imports) {
 		}
 
 		function setUser(user) {
+			config.user = user;
 			localStorage.setItem('user', user);
 			c.get('user-salitre').get('checkbox').get().checked = false;
 			c.get('user-compania').get('checkbox').get().checked = false;
