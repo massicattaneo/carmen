@@ -74,7 +74,11 @@ function controller() {
 			pointer = new cjs.Date(date.getTime()).format('yyyy-mm-dd');
 			hours.forEach(function (h) {h.remove();});
 			hours = [];
-			config.week[date.getDay()].periods.forEach(function (period) {
+			var exc = (config.exceptions || []).filter(function (item) {
+				return item.date === pointer;
+			});
+			var periods = exc.length ? exc[0].periods : config.week[date.getDay()].periods;
+			periods.forEach(function (period) {
 				var start = new Date(date);
 				start.setHours(...decimalToTime(period[0]));
 				var end = new Date(date);

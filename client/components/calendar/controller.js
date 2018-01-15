@@ -69,8 +69,8 @@ function controller(imports) {
 				});
 				process.createIn(obj.get('processes'));
 			});
-			config.users.forEach(function({title, id, week}) {
-				var component = cjs.Component.create('day', {config: { userId: id, title, week }});
+			config.users.forEach(function({title, id, week,exceptions}) {
+				var component = cjs.Component.create('day', {config: { userId: id, title, week, exceptions }});
 				component.get().addListener('remove-event', obj.removeEvent);
 				users[id] = {title, id, component, week};
 				component.get().addListener('edit-mode', editMode);
