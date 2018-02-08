@@ -47,10 +47,10 @@
 	],
 	"users": [
 		{"id": "info@inandoutbelleza.com", "title": "Carmen", "week": [{"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": []}]},
-		{"id": "nog1o7vqalre9raep4v5r8bfl8@group.calendar.google.com", "title": "Carmen V.", "week": [{"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": []}]},
-		{"id": "63t8br7nmbaekjv8janmco6520@group.calendar.google.com", "title": "Estefania", "week": [{"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": []}]},
-		{"id": "2euki6s03uvcpq2l2il4oqlslk@group.calendar.google.com", "title": "Cristina", "week": [{"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": []}]},
-		{"id": "gihc2ns56av7up7ni23f56e7ko@group.calendar.google.com", "title": "Vanessa", "week": [{"periods": []}, {"periods": [[12,20]]}, {"periods": [[12,20]]}, {"periods": [[12,20]]}, {"periods": [[12,20]]}, {"periods": [[12,20]]}, {"periods": []}]},
+		{"id": "nog1o7vqalre9raep4v5r8bfl8@group.calendar.google.com", "title": "Carmen V.", "week": [{"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10,14]]}]},
+		{"id": "63t8br7nmbaekjv8janmco6520@group.calendar.google.com", "title": "Estefania", "week": [{"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10,14]]}]},
+		{"id": "2euki6s03uvcpq2l2il4oqlslk@group.calendar.google.com", "title": "Cristina", "week": [{"periods": []}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10, 20]]}, {"periods": [[10,14]]}]},
+		{"id": "gihc2ns56av7up7ni23f56e7ko@group.calendar.google.com", "title": "Vanessa", "week": [{"periods": []}, {"periods": [[10,20]]}, {"periods": [[10,20]]}, {"periods": [[10,20]]}, {"periods": [[10,20]]}, {"periods": [[10,20]]}, {"periods": [[10,14]]}]},
 		{"id": "8eupe3uc8g0psn6hr9noi879mo@group.calendar.google.com", "title": "Eila",
 			"week": [{"periods": []}, {"periods": []}, {"periods": [[10, 19]]}, {"periods": [[10, 19]]}, {"periods": [[10, 19]]}, {"periods": [[10, 19]]}, {"periods": [[10,14]]}],
 			"exceptions": [{"periods": [[10, 19]], "date": "2018-03-26"}]
