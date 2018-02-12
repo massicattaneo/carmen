@@ -38,7 +38,8 @@ function controller() {
 		obj.drawEvent = function ({ room, processId, summary, edit, id, start }) {
 			var begin = new Date(start);
 			begin.setHours(10,0,0,0);
-			var top = 32 + (((start.getTime() - begin.getTime()) /60000)/config.calendarStep)*13;
+			let number = begin.getDay() === 6 ? 26 : 0;
+			var top = number +  32 + (((start.getTime() - begin.getTime()) /60000)/config.calendarStep)*13;
 			var event = cjs.Component.create('event', {
 				config: {
 					userId: config.userId,
@@ -83,7 +84,8 @@ function controller() {
 				start.setHours(...decimalToTime(period[0]));
 				var end = new Date(date);
 				end.setHours(...decimalToTime(period[1]));
-				const offset = ((start.getHours() - 10) * 13 * 4) + 4;
+				let number = start.getDay() === 6 ? 26 : 0;
+				const offset = number + ((start.getHours() - period[0]) * 13 * 4) + 4;
 				obj.get('title').addStyle({'margin-bottom': offset + 'px'});
 				var hoursArray = [];
 				while (start.getTime() <= end.getTime()) {
